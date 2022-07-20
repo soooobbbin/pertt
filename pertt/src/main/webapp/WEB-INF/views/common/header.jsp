@@ -3,11 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header 시작 -->
 <div id="main_logo">
-	<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-	<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
-	<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+	<div id="main_menubar">
+		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
+		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
+		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+	</div>
 	<h1 class="align-center">
-		<a href="${pageContext.request.contextPath}/main/main.do">PERTT</a>
+		<a href="${pageContext.request.contextPath}/main/main.do">
+			<img src="${pageContext.request.contextPath}/images/main_logo.png" width="290px" height="120px">
+		</a>
 	</h1>
 </div>
 <div id="main_nav">
