@@ -105,7 +105,7 @@ create table c_review (
  constraint c_review_fk foreign key (c_num) references contents (c_num)
 );
 
-create sequence c_review_seq;
+create sequence c_review_seq;  
 
 -- 리뷰 대댓글
 create table c_review_com(
