@@ -76,7 +76,7 @@ public class MemberVO {
    public Date getMod_date() {
       return mod_date;
    }
-   public void setModify_date(Date mod_date) {
+   public void setMod_date(Date mod_date) {
       this.mod_date = mod_date;
    }
 
