@@ -104,13 +104,13 @@ create table c_review (
  constraint c_review_fk foreign key (user_num) references user (user_num),
  constraint c_review_fk foreign key (c_num) references contents (c_num)
 );
-
-create sequence c_review_seq;
+   
+create sequence c_review_seq;  
 
 -- 리뷰 대댓글
 create table c_review_com(
 com_num number not null,
-com_contents clob not null,
+com_contents clob not null,  
 com_reg_date date not null,
 c_review_num number not null, 
 user_num number not null, 
@@ -125,6 +125,7 @@ references contents (c_num),
 );
 
 create sequence c_review_seq;
+   
 
 --ott순위
 create table ott_rank(
@@ -141,3 +142,7 @@ constraint ott_rank_fk foreign key(user_num) references user (user_num)
 );
 
 create sequence ott_rank_seq;
+  
+   
+
+
