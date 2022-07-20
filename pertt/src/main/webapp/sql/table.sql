@@ -141,6 +141,6 @@ constraint ott_rank_fk foreign key(user_num) references user (user_num)
 );
 
 create sequence ott_rank_seq;
-
+   
 
 
