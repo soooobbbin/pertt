@@ -125,6 +125,7 @@ references contents (c_num),
 );
 
 create sequence c_review_seq;
+   
 
 --ott순위
 create table ott_rank(
