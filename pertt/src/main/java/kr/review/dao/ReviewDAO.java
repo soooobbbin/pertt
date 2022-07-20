@@ -65,6 +65,7 @@ public class ReviewDAO {
 		}
 		return count;
 	}
+	
 	//글 목록(추천순, 댓글순, 최신순 정렬)
 	
 	//글 상세 
@@ -86,6 +87,4 @@ public class ReviewDAO {
 	//댓글 상세
 	//댓글 수정 
 	//댓글 삭제
-
-
 }
