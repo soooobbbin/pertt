@@ -42,8 +42,8 @@ create table ott(
 create sequence ott_seq;
 
 --회원 상세
-create table user_detail(
-   user_num number not null,
+create table member_detail(
+   member_num number not null,
    passwd varchar2(12) not null,
    name varchar2(10) not null,
    phone varchar2(15) not null,
@@ -51,42 +51,42 @@ create table user_detail(
    birth varchar2(10) not null,
    reg_date date not null default sysdate,
    mod_date date,
-   constraint user_detail_pk primary key (user_num),
-   constraint user_detail_fk foreign key (user_num) references user (user_num)
+   constraint member_detail_pk primary key (member_num),
+   constraint member_detail_fk foreign key (member_num) references member (member_num)
 )
 
 --좋아요
 create table like (
    like_num number not null,
    c_review_num number not null,
-   user_num not null,
+   member_num not null,
    constraint like_pk primary key (like_num),
    constraint like_fk foreign key (c_review_num) references c_review (c_review_num)
-   constraint like_fk foreign key (user_num) references user (user_num)
+   constraint like_fk foreign key (member_num) references member (member_num)
 )
 
 --좋아요 시퀀스
 create sequence like_seq;
 
 --회원관리
-create table user(
- user_num number not null,
- user_id varchar2(15) unique not null,
+create table member(
+ member_num number not null,
+ member_id varchar2(15) unique not null,
  auth number(1) default 1 not null, --회원등급:0탈퇴,1일반,2관리자
- constraint user_pk primary key (user_num)
+ constraint member_pk primary key (member_num)
 );
 
-create sequence user_seq;
+create sequence member_seq;
 
 --작품별점
 create table c_star(
  c_star_num number not null,
  star number not null,
  c_num number not null,
- user_num number not null,
+ member_num number not null,
  constraint c_star_pk primary key (c_star_num),
  constraint c_star_fk foreign key (c_num) references contents (c_num),
- constraint c_star_fk foreign key (user_num) references user (user_num)
+ constraint c_star_fk foreign key (member_num) references member (member_num)
 );
 create sequence c_star_seq;
 
@@ -97,11 +97,11 @@ create table c_review (
  c_review_mod_date date,
  c_review_content clob ,
  c_star_num number not null,
- user_num number not null,
+ member_num number not null,
  c_num number not null,
  constraint c_review_pk primary key(c_review_num),
  constraint c_review_fk foreign key (c_star_num) references c_star (c_star_num),
- constraint c_review_fk foreign key (user_num) references user (user_num),
+ constraint c_review_fk foreign key (member_num) references member (member_num),
  constraint c_review_fk foreign key (c_num) references contents (c_num)
 );
 
@@ -113,13 +113,13 @@ com_num number not null,
 com_contents clob not null,
 com_reg_date date not null,
 c_review_num number not null, 
-user_num number not null, 
+member_num number not null, 
 c_num number not null, 
 constraint c_review_com_pk primary key(com_num),
 constraint c_review_com_fk foreign key (c_review_num) 
 references c_review (c_review_num),
-constraint c_review_com_fk foreign key (user_num)
-references user (user_num),
+constraint c_review_com_fk foreign key (member_num)
+references member (member_num),
 constraint c_review_com_fk foreign key(c_num)
 references contents (c_num),
 );
@@ -134,10 +134,10 @@ usability number not null,
 quality number not null,
 ott_review varchar2(100),
 ott_num number not null,
-user_num number not null,
+member_num number not null,
 constraint ott_rank_pk primary key(ott_rank_num),
 constraint ott_rank_fk foreign key(ott_num) references ott (ott_num),
-constraint ott_rank_fk foreign key(user_num) references user (user_num)
+constraint ott_rank_fk foreign key(member_num) references member (member_num)
 );
 
 create sequence ott_rank_seq;
