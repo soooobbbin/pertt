@@ -11,7 +11,10 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<h4>게시판 최신글</h4>
+		<h1>이달의 OTT 순위</h1>
+		<div class="main-rank">
+			<a><img src="${pageContext.request.contextPath}/images/main_rank (1).jpg"></a>
+		</div>
 	</div>
 </div>
 </body>
