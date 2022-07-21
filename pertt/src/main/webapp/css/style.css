@@ -46,9 +46,9 @@ body{
 	width:150px;
 	text-align:left;
 }
-.content-main{
+/*.content-main{
 	padding:10px 20px;
-}
+}*/
 .result-display{
 	width:400px;
 	height:200px;
@@ -94,7 +94,7 @@ ul.search li{
 .list-space{
 	margin-bottom:10px;
 }
-table{
+/*table{
 	width:100%;
 	border:1px solid #000;
 	border-collapse:collapse;
@@ -103,7 +103,8 @@ table{
 table td, table th{
 	border:1px solid #000;
 	padding:5px;
-}
+}*/
+
 /*메인화면*/
 .rank1st-comment{
 	padding-top:30px;
