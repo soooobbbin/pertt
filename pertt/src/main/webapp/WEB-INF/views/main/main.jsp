@@ -21,6 +21,7 @@
 		<div class="rank1st-comment">"오리지널 영화부터 드라마,예능까지 최고!"</div>
 		
 		<div class="main-netflix">
+		<a><img src="${pageContext.request.contextPath}/images/logo_netflix2.png" ></a>
 			<div class="content">
 			넷플릭스는 전 세계 190개국 이상의, 2.1억 명의 회원을 보유한 스트리밍<br>
 			 엔터테인먼트 기업으로서 영화와 드라마, TV 프로그램, 다큐멘터리, 애니메이션 등의 <br>
