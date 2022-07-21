@@ -16,6 +16,7 @@ $(function(){
 			url:'checkDuplicatedId.do',
 			type:'post',
 			data:{id:$('#member_id').val()},
+			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(param){
