@@ -5,12 +5,11 @@
 <div id="main_logo">
 	<div id="main_menubar">
 		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-		<a href="${pageContext.request.contextPath}/member/myPage.do">마이페이지</a>
 		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 	</div>
 	<h1 class="align-center">
 		<a href="${pageContext.request.contextPath}/main/main.do">
-			<img src="${pageContext.request.contextPath}/images/main_logo.png" width="290px" height="120px">
+			<img src="${pageContext.request.contextPath}/images/logo_pertt.png" width="290px" height="120px">
 		</a>
 	</h1>
 </div>
