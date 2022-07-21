@@ -21,7 +21,7 @@ public class CheckDuplicatedIdAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		//전송된 데이터 반환
-		String member_id = request.getParameter("member_idid") ;
+		String member_id = request.getParameter("member_id") ;
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.checkMember(member_id);
@@ -30,9 +30,9 @@ public class CheckDuplicatedIdAction implements Action{
 		Map<String,String> mapAjax = 
 				        new HashMap<String,String>();
 		if(member == null) {//아이디 미중복
-			mapAjax.put("result", "member_idNotFound");
+			mapAjax.put("result", "idNotFound");
 		}else {//아이디 중복
-			mapAjax.put("result", "member_idDuplicated");
+			mapAjax.put("result", "idDuplicated");
 		}
 		
 		ObjectMapper mapper = new ObjectMapper();
