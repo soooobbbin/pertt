@@ -10,6 +10,8 @@ public class OttDAO {
 	private OttDAO() {}
 	
 	//ott 별점
+	
+	
 	//ott 별점 작성
 	//ott 별점 결과
 	
