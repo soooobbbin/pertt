@@ -10,7 +10,7 @@
 	</div>
 	<h1 class="align-center">
 		<a href="${pageContext.request.contextPath}/main/main.do">
-			<img src="${pageContext.request.contextPath}/images/main_logo.png" width="290px" height="120px">
+			<img src="${pageContext.request.contextPath}/images/logo_pertt.png" width="290px" height="120px">
 		</a>
 	</h1>
 </div>
