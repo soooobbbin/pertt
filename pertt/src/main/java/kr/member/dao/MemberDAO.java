@@ -46,12 +46,14 @@ public class MemberDAO {
 			}
 			
 			//member에 데이터 저장
-			sql = "INSERT INTO member (member_num, member_id) VALUES (?,?)";
+			sql = "INSERT INTO member (member_num, member_id,auth) VALUES (?,?,1)";
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt2 = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt2.setInt(1, num);
 			pstmt2.setString(2, member.getMember_id());
+			
+		
 			//JDBC 수행 4단계
 			pstmt2.executeUpdate();
 			
