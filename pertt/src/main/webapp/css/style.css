@@ -2,17 +2,17 @@
 
 /*공통*/
 body{
-	width:960px;
-	margin:0 auto;
-	background:#E6E6E6;
+	width:100%;
+	margin:0;
+	padding:0;
 }
-.page-main{
+/*.page-main{
 	background:white;
 	margin:40px 0;
 	border-radius:5px;
 	box-shadow:0 2px 6px rgba(100,100,100,0.3);
 	min-height:650px;
-}
+}*/
 #main_logo{
 	padding-top:20px;
 }
@@ -112,10 +112,19 @@ table td, table th{
 	margin:0 auto;
 }
 .main-netflix{
-	background: url("./images/main_netflix.png");
+	background-image: url("../images/main_netflix.jpg");
+	background-repeat: no-repeat;
 	background-position:center;
+	background-size:cover;
 	width:100%;
-	height:600px;
+	height:1000px;
+}
+.main-netflix .content{
+	color:white;
+	font-size:20px;
+	font-weight:bold;
+	width:800px;
+	height:500px;
 }
 /*등록, 수정폼*/
 form{
