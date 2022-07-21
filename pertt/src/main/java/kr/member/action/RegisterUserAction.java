@@ -7,7 +7,7 @@ import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 
-public class RegisterUserAction implements Action{
+public class RegisterUserAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,7 +28,7 @@ public class RegisterUserAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		dao.insertMember(member);
 		
-		return "/WEB-INF/views/member/registerUser.jsp";
+		return "/WEB-INF/views/member/registerUser.jsp" ;
 	}
 
 }
