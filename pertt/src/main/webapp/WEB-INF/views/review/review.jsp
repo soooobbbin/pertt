@@ -13,47 +13,49 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<img id="r-main" src="${pageContext.request.contextPath}/images/dug_main.png">
+	<div class="align-center">
 	<div class="contents-detail">
 		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
 		<ul>
-			<li class="review_title">${contents.title }</li>
+			<li class="review_title">${contents.title }
 			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
-			<c:if test="${contents.ott_num == 1 }">
-				<li>NETFLIX</li>
-			</c:if>
-			<c:if test="${contents.ott_num == 2 }">
-				<li>DISNEY+</li>
-			</c:if>
-			<c:if test="${contents.ott_num == 3 }">
-				<li>WATCHA</li>
-			</c:if>
-			<c:if test="${contents.ott_num == 4 }">
-				<li>TVING</li>
-			</c:if>
-			<c:if test="${contents.ott_num == 5 }">
-				<li>WAVVE</li>
-			</c:if>
+				<c:if test="${contents.ott_num == 1 }">
+					 NETFLIX</li>
+				</c:if>
+				<c:if test="${contents.ott_num == 2 }">
+					 DISNEY+</li>
+				</c:if>
+				<c:if test="${contents.ott_num == 3 }">
+					WATCHA</li>
+				</c:if>
+				<c:if test="${contents.ott_num == 4 }">
+					TVING</li>
+				</c:if>
+				<c:if test="${contents.ott_num == 5 }">
+					WAVVE</li>
+				</c:if>
 			<li>${contents.release } ${contents.genre } ${contents.country }</li>
 			<li>${contents.produce}</li>
 			<li>토마토</li>
+		 <li><hr size="1" width="300px" noshade="noshade"></li>
 		</ul>
+		<div class="review-star" >
+			<span>별점총점</span>
+			<span class="give-star">
+				<img src="${pageContext.request.contextPath}/images/give_star.jpg">
+			</span>
+		</div><!-- end of review_star -->
 	</div><!-- end of contents_detail -->
-	<hr size="1" width="300px" noshade="noshade">
+	</div>
 	
-	<div class="review-star" >
-		<h1 class="star-main">별점총점</h1>
-		<div class="give-star">
-			별점주기<br>
-			<img src="${pageContext.request.contextPath}/images/give_star.jpg">
-		</div>
-	</div><!-- end of review_star -->
+	<div class="end-float"></div>
 	
 	<div class="review-grey">
 		<div class="contents_plot"><!-- 배경 하얗게 -->
-			<h2>작품 소개</h2>
-			${contents.plot }
+			<p id="content-plot-title">작품 소개</p>
+			<p id="content-plot">${contents.plot }<p>
 		</div>
-		<h2>리뷰 쓰기</h2>
+		<h2 id="write-review">리뷰 쓰기</h2>
 		<div class="review-form">
 			<form action="reviewWrite.do" id="review_form">
 				<textarea rows="10" cols="80" enterkeyhint="내용을 입력해주세요"></textarea>
