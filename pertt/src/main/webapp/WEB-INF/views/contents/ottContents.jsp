@@ -14,7 +14,6 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<h2>게시판 목록</h2>
 		<form action="ottContents.do" method="get" id="search_form">
 			<ul class="search">
 				<li>
@@ -33,13 +32,17 @@
 				</li>
 			</ul>
 		</form> 
+		
+		<c:forEach var="category" items="${list}">
+		<h2>${category.category_name}</h2>
+		</c:forEach>
+		<c:forEach var="category" items="${list}">
+		<h2>${category.category_name}</h2>
+		</c:forEach>
 		<div class="list-space align-right">
 			<c:if test="${!empty user_num}">
 			<input type="button" value="글쓰기" onclick="location.href='writeForm.do'">
 			</c:if>
-			<input type="button" value="목록" onclick="location.href='list.do'">
-			<input type="button" value="홈으로" 
-			onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
 		<c:if test="${count == 0}">
 		<div class="result-display">

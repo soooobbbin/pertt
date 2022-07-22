@@ -16,7 +16,7 @@
 	</div>
 	<h1 class="align-center">
 		<a href="${pageContext.request.contextPath}/main/main.do">
-			<img src="${pageContext.request.contextPath}/images/logo_pertt.png" width="290px" height="120px">
+			<img src="${pageContext.request.contextPath}/images/logo_pertt.png" width="300px" height="150px">
 		</a>
 	</h1>
 </div>
@@ -32,16 +32,19 @@
 			<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do" id="netflix">넷플릭스</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1" id="netflix">넷플릭스</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/review/review.do" id="disney">디즈니</a>
+			<a href="${pageContext.request.contextPath}/review/review.do" id="disney">디즈니+</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do" id="watcha">왓챠</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=3" id="watcha">왓챠</a>
 		</li>
 		<li>
-		<a href="${pageContext.request.contextPath}/contents/ottContents.do" id="wavve">웨이브</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=4" id="tving">티빙</a>
+		</li>
+		<li>
+		<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=5" id="wavve">웨이브</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/ott/recommend.do">OTT추천</a>
