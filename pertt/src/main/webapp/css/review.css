@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/*작품상세+리뷰페이지*/
+#r-main{
+	width: 100%;
+}
+.contents-detail{
+	margin: 20px;
+	padding : 20px;
+}
+.contents-detail img{
+	margin: 0 10px 0 200px;
+}
+.review_title {
+    font-size: x-large;
+    font-weight: 800;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
