@@ -7,33 +7,36 @@
 <meta charset="UTF-8">
 <title>${contents.title }</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<img src="${pageContext.request.contextPath}/images/dug_main.png">
+	<img id="r-main" src="${pageContext.request.contextPath}/images/dug_main.png">
 	<div class="contents-detail">
 		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
-		<span class="review_title">${contents.title }</span>
-		<!-- ott_num에 따라 ott 이름 다르게 표시 -->
-		<c:if test="${contents.ott_num == 1 }">
-			<span>NETFLIX</span>
-		</c:if>
-		<c:if test="${contents.ott_num == 2 }">
-			<span>DISNEY+</span>
-		</c:if>
-		<c:if test="${contents.ott_num == 3 }">
-			<span>WATCHA</span>
-		</c:if>
-		<c:if test="${contents.ott_num == 4 }">
-			<span>TVING</span>
-		</c:if>
-		<c:if test="${contents.ott_num == 5 }">
-			<span>WAVVE</span>
-		</c:if>
-		<span>${contents.release } ${contents.genre } ${contents.country }</span>
-		<span>${contents.produce}</span>
-		<span>토마토</span>
+		<ul>
+			<li class="review_title">${contents.title }</li>
+			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
+			<c:if test="${contents.ott_num == 1 }">
+				<li>NETFLIX</li>
+			</c:if>
+			<c:if test="${contents.ott_num == 2 }">
+				<li>DISNEY+</li>
+			</c:if>
+			<c:if test="${contents.ott_num == 3 }">
+				<li>WATCHA</li>
+			</c:if>
+			<c:if test="${contents.ott_num == 4 }">
+				<li>TVING</li>
+			</c:if>
+			<c:if test="${contents.ott_num == 5 }">
+				<li>WAVVE</li>
+			</c:if>
+			<li>${contents.release } ${contents.genre } ${contents.country }</li>
+			<li>${contents.produce}</li>
+			<li>토마토</li>
+		</ul>
 	</div><!-- end of contents_detail -->
 	<hr size="1" width="300px" noshade="noshade">
 	
@@ -57,26 +60,35 @@
 				<input type="submit" value="등록">
 			</form>
 		</div><!-- end of review_form -->
-	</div><!-- end of review_grey -->
 	
-	<h2>리뷰</h2>
-	<div class="review-view">
-		<div class="review-box">
-			
+		<!-- 리뷰 목록 영역 -->
+		<h2>리뷰</h2>
+		<c:if test="${count != 0 }">
+		<div class="review-view">
+			<c:forEach  var="review" items="${list}">
+				<div class="review-box">
+					<span id="id">${review.id }</span>
+					<span id="star">별점</span>
+					<p id="content">${review.c_review_content }</p>
+					<span id="like">추천수</span>
+				</div>
+			</c:forEach>
 		</div>
-		<div class="review-box">
-		
+		<div class="align-center">
+				${page}
 		</div>
-	</div>
-
-
+		</c:if>
+		<c:if test="${count == 0 }">
+			<h2>리뷰가 없습니다.</h2>
+		</c:if>
+	</div><!-- end of review_grey -->
 </div>
 </body>
 </html>
 
 
 
--
+
 
 
 
