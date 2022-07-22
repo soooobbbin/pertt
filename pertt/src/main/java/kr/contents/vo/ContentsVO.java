@@ -13,9 +13,10 @@ public class ContentsVO {
 	private String plot;
 	private String produce;
 	private int grade;
-	
 	private int category_num; //카테고리
 	private int ott_num; //OTT
+	
+	private int category_name; //카테고리 이름
 	
 	
 	public int getC_num() {
