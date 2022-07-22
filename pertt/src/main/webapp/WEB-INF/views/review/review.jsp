@@ -55,7 +55,7 @@
 			<p id="content-plot-title">작품 소개</p>
 			<p id="content-plot">${contents.plot }<p>
 		</div>
-		<h2 id="write-review">리뷰 쓰기</h2>
+		<h2 class="write-review">리뷰 쓰기</h2>
 		<div class="review-form">
 			<form action="reviewWrite.do" id="review_form">
 				<textarea rows="10" cols="80" enterkeyhint="내용을 입력해주세요"></textarea>
@@ -64,7 +64,7 @@
 		</div><!-- end of review_form -->
 	
 		<!-- 리뷰 목록 영역 -->
-		<h2>리뷰</h2>
+		<h2 class="write-review">리뷰</h2>
 		<c:if test="${count != 0 }">
 		<div class="review-view">
 			<c:forEach  var="review" items="${list}">
@@ -76,6 +76,7 @@
 				</div>
 			</c:forEach>
 		</div>
+		<div class="end-float"></div>
 		<div class="align-center">
 				${page}
 		</div>

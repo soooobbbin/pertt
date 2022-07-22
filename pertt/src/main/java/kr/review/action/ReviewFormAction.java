@@ -31,6 +31,7 @@ public class ReviewFormAction implements Action{
 		//작품에 달린 리뷰 개수 구하기
 		ReviewDAO rDao = ReviewDAO.getInstance();
 		int count = rDao.getReviewCount(c_num);
+		
 		//페이지 처리
 		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count, 8, 5, "review.do");
 		
