@@ -11,9 +11,11 @@
 </head>
 <body>
 <div class="page-main">
+<div class="align-center">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div align="center"></div>
-	<table border="1" style="width:100%;">
+	<h2>OTT 소개</h2>
+	<table border="1" style="width:100%; bordercolor:white;">
 		<tr height="20%">
 			<th width="33%"></th>
 			<th width="33%">특징</th>
@@ -46,7 +48,8 @@
 		</tr>
 	</table>
 	<h2>가입비 비교</h2>
-	<table border="1" style="width:50%;">
+	<div class="align-center">
+	<table border="1" style="width:80%; margin-left: auto; margin-right: auto;">
 		<tr height="10%">
 			<th width="16%"></th>
 			<th width="16%">월 요금</th>
@@ -145,6 +148,8 @@
 			<td>4K</td>
 		</tr>
 	</table>
+	</div>
+</div>
 </div>
 </body>
 </html>
