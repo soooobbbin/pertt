@@ -117,7 +117,7 @@ public class MemberDAO {
 				member.setAuth(rs.getInt("auth"));
 				member.setPasswd(rs.getString("passwd"));
 				member.setEmail(rs.getString("email"));
-				member.setBirth(rs.getString("birth"));
+				member.setBirth(rs.getString("birth1"),rs.getString("birth2"),rs.getString("birth3"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -155,9 +155,9 @@ public class MemberDAO {
 				member.setAuth(rs.getInt("auth"));
 				member.setPasswd(rs.getString("passwd"));
 				member.setName(rs.getString("name"));
-				member.setPhone(rs.getString("phone"));
+				member.setPhone(rs.getString("phone1"), rs.getString("phone2"),rs.getString("phone3"));
 				member.setEmail(rs.getString("email"));
-				member.setBirth(rs.getString("birth"));
+				member.setBirth(rs.getString("birth1"),rs.getString("birth2"),rs.getString("birth3"));
 				member.setReg_date(rs.getDate("reg_date"));
 				member.setMod_date(rs.getDate("mod_date"));
 			}
@@ -362,9 +362,9 @@ public class MemberDAO {
 				member.setAuth(rs.getInt("auth"));
 				member.setPasswd(rs.getString("passwd"));
 				member.setName(rs.getString("name"));
-				member.setPhone(rs.getString("phone"));
+				member.setPhone(rs.getString("phone1"), rs.getString("phone2"),rs.getString("phone3"));
 				member.setEmail(rs.getString("email"));
-				member.setBirth(rs.getString("birth"));
+				member.setBirth(rs.getString("birth1"),rs.getString("birth2"),rs.getString("birth3"));
 				member.setReg_date(rs.getDate("reg_date"));
 				member.setMod_date(rs.getDate("mod_date"));
 				
