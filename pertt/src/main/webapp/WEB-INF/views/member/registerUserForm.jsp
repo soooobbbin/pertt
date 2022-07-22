@@ -20,7 +20,7 @@
 				<li>
 					<label for="member_id">아이디</label>
 					<input type="text" name="member_id" id="member_id"
-					  maxlength="12" autocomplete="off">
+					  maxlength="12" autocomplete="off" placeholder="아이디를 입력하세요">
 					<input type="button" value="ID중복체크"
 					      id="id_check">
 					<span id="message_id"></span>
@@ -28,23 +28,24 @@
 				</li>
 				<li>
 					<label for="passwd">비밀번호</label>
-					<input type="password" name="passwd" id="passwd" maxlength="12">
+					<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="비밀번호를 입력하세요">
 				</li>
 				<li>
 					<label for="name">이름</label>
-					<input type="text" name="name" id="name" maxlength="10">
+					<input type="text" name="name" id="name" maxlength="10" placeholder="이름을 입력하세요">
 				</li>
 				<li>
 					<label for="birth">생년월일</label>
-					<input type="text" name="birth" id="birth" maxlength="10">
+					<input type="text" name="birth" id="birth" maxlength="10" placeholder="생년월일 6자리를 입력하세요">
 				</li>
 				<li>
 					<label for="phone">핸드폰</label>
-					<input type="text" name="phone" id="phone" maxlength="15">
+					<input type="text" name="phone" id="phone" maxlength="15" placeholder="휴대폰번호를 입력하세요">
+					<div class="form-notice">*번호만 입력해주세요(예시:01012345678)</div>
 				</li>
 				<li>
 					<label for="email">이메일</label>
-					<input type="email" name="email" id="email" maxlength="50">
+					<input type="email" name="email" id="email" maxlength="50" placeholder="이메일을 입력하세요">
 				</li>
 				
 			</ul>
