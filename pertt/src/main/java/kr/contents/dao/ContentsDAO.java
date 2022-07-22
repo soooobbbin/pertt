@@ -93,7 +93,7 @@ public class ContentsDAO {
 		return count;
 	}
 	//작품 목록(검색글 목록)
-	public List<ContentsVO> getListBoard(int start, int end, 
+	public List<ContentsVO> getListContents(int start, int end, 
 			String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -131,16 +131,16 @@ public class ContentsDAO {
 				ContentsVO contents = new ContentsVO();
 				contents.setC_num(rs.getInt("c_num"));
 				contents.setTitle(rs.getString("title"));
-				contents.setPoster(rs.getString("title"));
-				contents.setRelease(rs.getDate("title"));
-				contents.setCountry(rs.getString("title"));
-				contents.setGenre(rs.getString("title"));
-				contents.setTomato(rs.getInt("title"));
-				contents.setPlot(rs.getString("title"));
-				contents.setProduce(rs.getString("title"));
-				contents.setGrade(rs.getInt("title"));
-				contents.setCategory_num(rs.getInt("title"));
-				contents.setOtt_num(rs.getInt("title"));
+				contents.setPoster(rs.getString("poster"));
+				contents.setRelease(rs.getDate("release"));
+				contents.setCountry(rs.getString("country"));
+				contents.setGenre(rs.getString("genre"));
+				contents.setTomato(rs.getInt("tomato"));
+				contents.setPlot(rs.getString("plot"));
+				contents.setProduce(rs.getString("produce"));
+				contents.setGrade(rs.getInt("grade"));
+				contents.setCategory_num(rs.getInt("category_num"));
+				contents.setOtt_num(rs.getInt("ott_num"));
 			
 				list.add(contents);
 			}
@@ -153,7 +153,101 @@ public class ContentsDAO {
 	}
 
 	//작품 상세
+	public ContentsVO getContents(int c_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		ContentsVO contents = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "SELECT * FROM contents WHERE c_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				contents = new ContentsVO();
+				contents.setC_num(rs.getInt("c_num"));
+				contents.setTitle(rs.getString("title"));
+				contents.setPoster(rs.getString("poster"));
+				contents.setRelease(rs.getDate("release"));
+				contents.setCountry(rs.getString("country"));
+				contents.setGenre(rs.getString("genre"));
+				contents.setTomato(rs.getInt("tomato"));
+				contents.setPlot(rs.getString("plot"));
+				contents.setProduce(rs.getString("produce"));
+				contents.setGrade(rs.getInt("grade"));
+				contents.setCategory_num(rs.getInt("category_num"));
+				contents.setOtt_num(rs.getInt("ott_num"));
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs,pstmt,conn);
+		}
+		return contents;
+	}
+	
 	//작품 수정
+	public void updateContents(ContentsVO contentsVO) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "UPDATE mvBoard SET title=?,poster=?,release=?,country=?,genre=?,"
+			+ "tomato=?,plot=?,produce=?,grade=?,category_num=?,ott_num=? WHERE c_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, contentsVO.getTitle());
+			pstmt.setString(2, contentsVO.getPoster());
+			pstmt.setDate(3, contentsVO.getRelease());
+			pstmt.setString(4, contentsVO.getCountry());
+			pstmt.setString(5, contentsVO.getGenre());
+			pstmt.setInt(6, contentsVO.getTomato());
+			pstmt.setString(7, contentsVO.getPlot());
+			pstmt.setString(8, contentsVO.getProduce());
+			pstmt.setInt(9, contentsVO.getGrade());
+			pstmt.setInt(10, contentsVO.getCategory_num());
+			pstmt.setInt(11, contentsVO.getOtt_num());
+			pstmt.setInt(12, contentsVO.getC_num());
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null,pstmt,conn);
+		}
+	}
+	
 	//작품 삭제
+	public void deleteContents(int c_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			sql = "DELETE FROM contents WHERE c_num=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_num);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null,pstmt,conn);
+		}
+	}
+
+	
 
 }
