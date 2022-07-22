@@ -10,7 +10,14 @@ public class ReviewVO {
 	private int c_star_num;
 	private int member_num;
 	private int c_num;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getC_review_num() {
 		return c_review_num;
 	}
