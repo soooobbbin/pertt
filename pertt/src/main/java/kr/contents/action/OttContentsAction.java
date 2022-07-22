@@ -43,7 +43,7 @@ public class OttContentsAction implements Action{
 		request.setAttribute("list4", list4);
 		
 		
-		return "/WEB-INF/views/contents/ottContnets.jsp";
+		return "/WEB-INF/views/contents/ottContents.jsp";
 	}
 
 }
