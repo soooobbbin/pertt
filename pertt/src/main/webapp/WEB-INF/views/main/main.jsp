@@ -32,7 +32,8 @@
 			</div>
 			<div class="mainBtn">
 			<input type="button" value="넷플릭스 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
-			<input type="button" value="넷플릭스 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=1'">
+			<input type="button" value="넷플릭스 작품 보러 가기>" class="moveBtn" 
+			onclick="location.href='${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1'">
 			</div>
 		</div>
 		<div class="main-disney">

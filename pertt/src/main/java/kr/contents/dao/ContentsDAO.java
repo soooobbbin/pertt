@@ -151,7 +151,8 @@ public class ContentsDAO {
 		}
 		return list;
 	}
-
+	
+	
 	//작품 상세
 	public ContentsVO getContents(int c_num) throws Exception{
 		Connection conn = null;
