@@ -30,6 +30,10 @@
 			넷플릭스 회원들이 오리지널 시리즈, 다큐멘터리, 드라마 등 다채로운 콘텐츠를 즐기는데<br>
 			 들이는 시간은 하루 평균 1억 2천 5백만 시간 이상이다.
 			</div>
+			<div class="mainBtn">
+			<input type="button" value="넷플릭스 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
+			<input type="button" value="넷플릭스 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=1'">
+			</div>
 		</div>
 		<div class="main-disney">
 		<a><img src="${pageContext.request.contextPath}/images/logo_disney2.png" class="mainlogo2"></a>
@@ -40,6 +44,10 @@
 
 			넷플릭스 회원들이 오리지널 시리즈, 다큐멘터리, 드라마 등 다채로운 콘텐츠를 즐기는데<br>
 			 들이는 시간은 하루 평균 1억 2천 5백만 시간 이상이다.
+			</div>
+			<div class="mainBtn">
+			<input type="button" value="디즈니+ 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
+			<input type="button" value="디즈니+ 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=2'">
 			</div>
 		</div>
 		
@@ -53,6 +61,10 @@
 			넷플릭스 회원들이 오리지널 시리즈, 다큐멘터리, 드라마 등 다채로운 콘텐츠를 즐기는데<br>
 			 들이는 시간은 하루 평균 1억 2천 5백만 시간 이상이다.
 			</div>
+			<div class="mainBtn">
+			<input type="button" value="왓챠 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
+			<input type="button" value="왓챠 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=3'">
+			</div>
 		</div>
 		<div class="main-tving">
 		<a><img src="${pageContext.request.contextPath}/images/logo_tving2.png" class="mainlogo4"></a>
@@ -64,6 +76,10 @@
 			넷플릭스 회원들이 오리지널 시리즈, 다큐멘터리, 드라마 등 다채로운 콘텐츠를 즐기는데<br>
 			 들이는 시간은 하루 평균 1억 2천 5백만 시간 이상이다.
 			</div>
+			<div class="mainBtn">
+			<input type="button" value="티빙 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
+			<input type="button" value="티빙 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=4'">
+			</div>
 		</div>
 		<div class="main-wavve">
 		<a><img src="${pageContext.request.contextPath}/images/logo_wavve2.png" class="mainlogo5"></a>
@@ -74,6 +90,10 @@
 
 			넷플릭스 회원들이 오리지널 시리즈, 다큐멘터리, 드라마 등 다채로운 콘텐츠를 즐기는데<br>
 			 들이는 시간은 하루 평균 1억 2천 5백만 시간 이상이다.
+			</div>
+			<div class="mainBtn">
+			<input type="button" value="웨이브 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
+			<input type="button" value="웨이브 작품 보러 가기>" class="moveBtn" onclick="location.href='ottContents.do?ott_num=5'">
 			</div>
 		</div>
 	</div>
