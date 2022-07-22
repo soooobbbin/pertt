@@ -11,7 +11,7 @@ import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 import kr.util.PagingUtil;
 
-public class AdminMemberList implements Action{
+public class AdminMemberListAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
