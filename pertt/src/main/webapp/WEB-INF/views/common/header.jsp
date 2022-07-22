@@ -4,8 +4,15 @@
 <!-- header 시작 -->
 <div id="main_logo">
 	<div id="main_menubar">
-		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+		<c:if test="${empty member_num}">
+			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
+			<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+		</c:if>
+		<c:if test="${!empty member_num && member_auth == 1}">
+			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
+		</c:if>
+	
 	</div>
 	<h1 class="align-center">
 		<a href="${pageContext.request.contextPath}/main/main.do">
