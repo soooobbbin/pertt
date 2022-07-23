@@ -51,8 +51,8 @@ public class MemberVO {
    public String getPhone() {
       return phone;
    }
-   public void setPhone(String phone) {
-      this.phone = phone;
+   public void setPhone(String phone1,String phone2,String phone3) {
+      this.phone = phone1+"-"+phone2+"-"+phone3 ;
    }
    public String getEmail() {
       return email;
@@ -64,8 +64,8 @@ public class MemberVO {
       return birth;
    }
 
-   public void setBirth(String birth) {
-      this.birth = birth;
+   public void setBirth(String birth1, String birth2,String birth3) {
+      this.birth = birth1+"-"+birth2+"-"+birth3;
    }
    public Date getReg_date() {
       return reg_date;

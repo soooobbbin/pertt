@@ -71,8 +71,9 @@ $(function(){
 			$('#birth').val('').focus();
 			return false;
 		}
+		
 		if($('#phone').val().trim()==''){
-			alert('전화번호를 입력하세요!');
+			alert('휴대폰 번호를 입력하세요!');
 			$('#phone').val('').focus();
 			return false;
 		}

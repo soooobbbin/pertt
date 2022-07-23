@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/*작품상세+리뷰페이지*/
+#r-main{
+	width: 100%;
+}
+
+div.contents-detail{
+	display: inline-block;
+	margin: 40px;
+}
+.contents-detail img{
+	float: left;
+}
+.contents-detail ul{
+	float: right;
+	text-align: left;
+}
+.contents-detail li{
+	margin: 5px;
+}
+.review_title {
+    font-size: x-large;
+    font-weight: 800;
+}
+.end-float{
+	clear: both;
+}
+.review-grey {
+    background-color: rgb(239, 239, 239);
+    padding: 40px;
+    text-align: center;
+}
+.contents_plot {
+	display:inline-block;
+	width:800px;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#content-plot-title {
+    text-align: left;
+    margin-block-start: unset;
+    margin-block-end: unset;
+    margin: 0 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+#content-plot {
+    text-align: left;
+    margin-block-start: unset;
+    margin-block-end: unset;
+    margin: 10px;
+}
+.write-review {
+    text-align: center;
+    margin: 40px 0 10px 0;
+    font-size: 1.4em;
+}
+div.review-form{
+    margin: 20px;
+    background-color: white;
+    width: 800px;
+    display: inline-block;
+    border-radius: 5px;
+}
+#review_form{
+    border: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+#review_form textarea  {
+    border-color: rgb(200, 200, 200);
+    resize: none;
+    width: 90%;
+    margin: 40px 40px 15px 40px;
+ }
+#review_form input[type="submit"] {
+    float: right;
+    width: 80px;
+    margin: 0 40px 20px 0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: gray;
+    height: 25px;
+}
+div.review-view{
+	display: inline-block;
+}
+div.review-box{
+    background-color: white;
+    margin: 13px;
+    float: left;
+    width: 300px;
+    border-radius: 5px;
+    width:315px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
