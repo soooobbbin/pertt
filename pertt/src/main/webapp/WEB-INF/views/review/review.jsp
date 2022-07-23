@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<img id="r-main" src="${pageContext.request.contextPath}/images/dug_main.png">
 	<div class="align-center">
+	<div class="review-align">
 	<div class="contents-detail">
 		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
 		<ul>
@@ -51,7 +53,8 @@
 	<div class="end-float"></div>
 	
 	<div class="review-grey">
-		<div class="contents_plot"><!-- 배경 하얗게 -->
+	<div class="review-align">
+		<div class="contents_plot" onclick="href.location='reviewDetail.do'"><!-- 배경 하얗게 -->
 			<p id="content-plot-title">작품 소개</p>
 			<p id="content-plot">${contents.plot }<p>
 		</div>
@@ -64,27 +67,46 @@
 		</div><!-- end of review_form -->
 	
 		<!-- 리뷰 목록 영역 -->
-		<h2 class="write-review">리뷰</h2>
+		
 		<c:if test="${count != 0 }">
+		<div class="align-center">
+		<span id="text-review">리뷰</span>
+			<div class="review-dropdown">
+					<ul class="myMenu">
+					    <li class="menu">
+					        정렬기준
+					        <ul class="menu_s submenu">
+					            <li>최신순</li>
+					            <li>추천순</li>
+					            <li>댓글순</li>
+					        </ul>   
+					    </li>
+					</ul>
+			</div>
+		</div>
 		<div class="review-view">
 			<c:forEach  var="review" items="${list}">
-				<div class="review-box">
+				<div class="review-box" onclick="location.href='reviewDetail.do?r_num=${review.c_review_num}'">
 					<span id="id">${review.id }</span>
 					<span id="star">별점</span>
-					<p id="content">${review.c_review_content }</p>
+					<p id="content">${fn:substring(review.c_review_content, 0, 106)}</p>
 					<span id="like">추천수</span>
 				</div>
 			</c:forEach>
 		</div>
 		<div class="end-float"></div>
 		<div class="align-center">
+			<div id="review-page">
 				${page}
+			</div>
 		</div>
 		</c:if>
 		<c:if test="${count == 0 }">
 			<h2>리뷰가 없습니다.</h2>
 		</c:if>
 	</div><!-- end of review_grey -->
+	</div>
+	</div>
 </div>
 </body>
 </html>
