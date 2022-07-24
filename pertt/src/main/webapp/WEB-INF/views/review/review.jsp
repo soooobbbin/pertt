@@ -9,6 +9,7 @@
 <title>${contents.title }</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/review.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -60,8 +61,11 @@
 		</div>
 		<h2 class="write-review">리뷰 쓰기</h2>
 		<div class="review-form">
-			<form action="reviewWrite.do" id="review_form">
-				<textarea rows="10" cols="80" enterkeyhint="내용을 입력해주세요"></textarea>
+			<!-- 리뷰 쓰기 폼 -->
+			<form action="reviewWrite.do" id="review_form" method="post">
+				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
+				<textarea rows="10" cols="80" id="content" name="content" 
+				placeholder="리뷰를 입력해주세요"></textarea>
 				<input type="submit" value="등록">
 			</form>
 		</div><!-- end of review_form -->
