@@ -58,15 +58,15 @@ public class MemberDAO {
 			pstmt2.executeUpdate();
 			
 			//member_detail에 데이터 저장
-			sql = "INSERT INTO member_detail (member_num,name,passwd,"
+			sql = "INSERT INTO member_detail (member_num,passwd,name,"
 				+ "phone,email,birth) VALUES "
 				+ "(?,?,?,?,?,?)";
 			//JDBC 수행 3단계
 			pstmt3 = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt3.setInt(1, num);
-			pstmt3.setString(2, member.getName());
-			pstmt3.setString(3, member.getPasswd());
+			pstmt3.setString(2, member.getPasswd());
+			pstmt3.setString(3, member.getName());
 			pstmt3.setString(4, member.getPhone());
 			pstmt3.setString(5, member.getEmail());
 			pstmt3.setString(6, member.getBirth());
@@ -272,6 +272,9 @@ public class MemberDAO {
 	}
 	
 	//관리자
+	
+	//작품 포스터 등록
+	
 	//전체글 개수(검색글 개수)
 	public int getMemberCountByAdmin(String keyfield,
 			                         String keyword)
@@ -408,6 +411,8 @@ public class MemberDAO {
 		}
 		
 	}
+	
+	
 	
 }
 
