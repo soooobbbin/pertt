@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import kr.contents.dao.ContentsDAO;
 import kr.contents.vo.ContentsVO;
 import kr.controller.Action;
@@ -41,11 +43,25 @@ public class ReviewFormAction implements Action{
 			list = rDao.getReviewList(c_num, page.getStartRow(), page.getEndRow());
 		}
 		
+		//============해당 작품에 별점/리뷰를 작성한 이력이 있는지 확인==========
+		boolean starCheck = false;
+		boolean reviewCheck = false;
+		//로그인한 member_num 받아오기
+		HttpSession session = request.getSession();
+		Integer member_num = (Integer)session.getAttribute("member_num");
+		//내 별점찾기 목록이 있으면 별점 준 이력 있음(true)
+		if(rDao.selectMyStar(member_num, c_num) != null) {
+			starCheck = true;
+		}
+		reviewCheck = rDao.checkReview(member_num, c_num);
+		
 		//request에 담아서 review.jsp로 보내기
 		request.setAttribute("contents", contents);//작품 상세
 		request.setAttribute("count", count);//전체 글 수 
 		request.setAttribute("list", list);//리뷰 목록
 		request.setAttribute("page", page.getPage());//페이지
+		request.setAttribute("starCheck", starCheck);
+		request.setAttribute("reviewCheck", reviewCheck);
 		return "/WEB-INF/views/review/review.jsp";
 		
 	}

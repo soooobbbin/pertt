@@ -269,11 +269,8 @@ public class ReviewDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-	//내 별점 검색 
-	
-	
-	//내 리뷰 검색 (해당 작품에 리뷰 쓴 적 있는지 확인)
-	public ReviewVO selectMyReview(int member_num, int c_num) throws Exception {
+	//내 별점과 리뷰 검색 (리뷰 없으면 content null로 반환됨) 
+	public ReviewVO selectMyStar(int member_num, int c_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -281,9 +278,8 @@ public class ReviewDAO {
 		ReviewVO review = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from c_review "
-					+ "where member_num=? and c_num=? "
-					+ "and c_review_content is not null";
+			sql = "select * from c_star s join c_review r using (c_star_num) "
+					+ "where s.member_num=? and s.c_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, member_num);
 			pstmt.setInt(2, c_num);
@@ -298,7 +294,7 @@ public class ReviewDAO {
 				review.setC_star_num(rs.getInt("c_star_num"));
 				review.setMember_num(rs.getInt("member_num"));
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
-				//star값만 없음
+				review.setStar(rs.getInt("star"));
 			}
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -306,6 +302,33 @@ public class ReviewDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		return review;
+	}
+	
+	//내 리뷰 검색 (해당 작품에 리뷰 쓴 적 있는지 확인)
+	public boolean checkReview(int member_num, int c_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		boolean check = false;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from c_review "
+					+ "where member_num=? and c_num=? "
+					+ "and c_review_content is not null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, c_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				check = true;
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return check;
 	}
 	
 	

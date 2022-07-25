@@ -9,6 +9,7 @@
 <title>${contents.title }</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/review.js"></script>
 </head>
 <body>
@@ -59,19 +60,31 @@
 			<p id="content-plot-title">작품 소개</p>
 			<p id="content-plot">${contents.plot }<p>
 		</div>
+		
 		<h2 class="write-review">리뷰 쓰기</h2>
 		<div class="review-form">
-			<!-- 리뷰 쓰기 폼 -->
-			<form action="reviewWrite.do" id="review_form" method="post">
-				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
-				<textarea rows="10" cols="80" id="content" name="content" 
-				placeholder="리뷰를 입력해주세요"></textarea>
-				<input type="submit" value="등록">
-			</form>
-		</div><!-- end of review_form -->
-	
-		<!-- 리뷰 목록 영역 -->
 		
+		<!-- 리뷰를 이미 작성한 경우 리뷰쓰기 폼 안 보임 -->
+		<c:if test="${reviewCheck}">
+			<h2>이미 리뷰를 작성했습니다.</h2>
+			<input type="button" value="내 리뷰 보러가기">
+		</c:if>
+		<c:if test="${!reviewCheck}">
+			<!-- 리뷰 쓰기 폼 -->
+			<form id="review_form" method="post" action="review.do">
+				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
+				<textarea rows="10" cols="80" id="r_content" name="r_content" 
+				<c:if test="${empty member_num}">disabled="disabled"</c:if>
+				placeholder="리뷰를 입력해주세요"
+				><c:if test="${empty member_num }">로그인이 필요합니다.</c:if></textarea>
+				<c:if test="${!empty member_num }">
+					<input type="submit" value="등록">
+				</c:if>
+			</form>
+		</c:if>
+		</div><!-- end of review_form -->
+		
+		<!-- 리뷰 목록 영역 -->
 		<c:if test="${count != 0 }">
 		<div class="align-center">
 		<span id="text-review">리뷰</span>
