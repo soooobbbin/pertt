@@ -126,7 +126,7 @@ public class ReviewDAO {
 		int count = 0;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select count(*) from c_review where c_num=?";
+			sql = "select count(*) from c_review where c_num=? and c_review_content is not null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);
 			rs = pstmt.executeQuery();
@@ -153,7 +153,7 @@ public class ReviewDAO {
 		try {
 			conn = DBUtil.getConnection();
 			sql = "select * from (select a.*, rownum rnum from "
-					+ "(select * from c_review where c_num = ?)a) "
+					+ "(select * from c_review where c_num = ? and c_review_content is not null)a) "
 					+ "where rnum >= ? and rnum <= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);

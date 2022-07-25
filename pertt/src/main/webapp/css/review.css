@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 /*작품상세+리뷰페이지*/
+form {
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px 10px 10px 30px;
+}
 .review-align{
 	display: inline-block;
 	width: 900px;

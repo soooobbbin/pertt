@@ -22,7 +22,7 @@ public class ReviewFormAction implements Action{
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
 		ContentsDAO dao = ContentsDAO.getInstance();
 		ContentsVO contents = dao.getContents(c_num);
-		
+		System.out.println(contents.getTitle());
 		//작품에 대한 별점의 평균 구해서 보내주기
 		
 		//===================리뷰 목록==================================
@@ -48,13 +48,14 @@ public class ReviewFormAction implements Action{
 		boolean reviewCheck = false;
 		//로그인한 member_num 받아오기
 		HttpSession session = request.getSession();
-		Integer member_num = (Integer)session.getAttribute("member_num");
-		//내 별점찾기 목록이 있으면 별점 준 이력 있음(true)
-		if(rDao.selectMyStar(member_num, c_num) != null) {
-			starCheck = true;
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num !=null) {//로그인한 경우
+			//내 별점찾기 목록이 있으면 별점 준 이력 있음(true)
+			if(rDao.selectMyStar(user_num, c_num) != null) {
+				starCheck = true;
+			}
+			reviewCheck = rDao.checkReview(user_num, c_num);
 		}
-		reviewCheck = rDao.checkReview(member_num, c_num);
-		
 		//request에 담아서 review.jsp로 보내기
 		request.setAttribute("contents", contents);//작품 상세
 		request.setAttribute("count", count);//전체 글 수 
