@@ -22,7 +22,11 @@
 				</tr>
 				<tr>
 					<td >내 OTT</td>
-					<td >  </td>
+					<td ><input type="radio" name="ott_c" value="넷플릭스">넷플릭스 
+                    <input type="radio" name="ott_c" value="디즈니+">디즈니+ 
+                    <input type="radio" name="ott_c" value="넷플릭스">왓챠<br> 
+                    <input type="radio" name="ott_c" value="티빙">티빙
+                    <input type="radio" name="ott_c" value="웨이브">웨이브</td>
 				</tr>
 				<tr>
 					<td >아이디</td>
