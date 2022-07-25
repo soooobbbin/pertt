@@ -4,39 +4,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>회원정보수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
-	<div class="content-main">
-		<h2>회원가입</h2>
-		<form class=register_form id="register_form" action="registerUser.do"
-		                           method="post">
-			<ul>
-				<li>
-					<label for="member_id">아이디</label>
-					<input type="text" name="member_id" id="member_id"
-					  maxlength="12" autocomplete="off" placeholder="아이디를 입력하세요">
-					<input type="button" value="ID중복체크"
-					      id="id_check">
-					<span id="message_id"></span>
-					<div class="form-notice">*영문 또는 숫자(4자~12자)</div>
-				</li>
-				<li>
-					<label for="passwd">비밀번호</label>
-					<input type="password" name="passwd" id="passwd" maxlength="12" placeholder="비밀번호를 입력하세요">
-				</li>
-				<li>
-					<label for="name">이름</label>
-					<input type="text" name="name" id="name" maxlength="10" placeholder="이름을 입력하세요">
-				</li>
-				<li>
-					<label for="birth">생년월일</label>
-					<input type="text" name="birth1" id="birth1" maxlength="4" size="5" class="inBorder" />년
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="mypage-main">
+	<h2 class="mp-sub">MY PAGE</h2>
+		
+		 <form class="mp-form" action="modifyUser.do" method="post"> 
+			<table  class="mp-info">
+				<tr> 
+					<td colspan=2 class="mp-info-T"> 회원정보</td>
+				</tr>
+				<tr>
+					<td >내 OTT</td>
+					<td >  </td>
+				</tr>
+				<tr>
+					<td >아이디</td>
+					<td ><input type="text" name="id" id="m_id"
+					                     maxlength="12"></td>
+				</tr>
+				<tr>
+					<td >현재 비밀번호</td>
+					<td ><input type="password" name="origin_passwd" 
+					        id="origin_passwd" maxlength="12"></td>
+				</tr>
+				<tr>
+					<td >새 비밀번호</td>
+					<td><input type="password" name="passwd" id="passwd"
+					                     maxlength="12"></td>
+				</tr>
+				<tr>
+					<td >새 비밀번호 확인</td>
+					<td><input type="password" name="cpasswd" id="cpasswd"
+					                     maxlength="12"><br>
+					 <span id="message_cpasswd"></span></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td ><input type="text" name="member_id" id="member_id"
+					                     maxlength="12"></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="birth1" id="birth1" maxlength="4" size="5" class="inBorder" />년
                 <select name = "birth2" class="inBorder">
                     <option value="01">01
                     <option value="02">02
@@ -83,41 +99,39 @@
                     <option value="29">29
                     <option value="30">30
                     <option value="31">31
-                </select>일
-					 
-				</li>
-				<li>
-					<label for="phone">핸드폰</label>
-					<select name="phone1" id="phone1" class="inBorder">
+                </select>일</td>
+				</tr>
+				<tr>
+					<td>휴대폰</td>
+					<td><select name="phone1" id="phone1" class="inBorder">
                     <option value="010">010
                     <option value="016">016
                     <option value="017">017
                     <option value="018">018
-                </select>-
-					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" placeholder="0000">-
+                </select> -
+					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" placeholder="0000"> -
 					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" placeholder="0000">
-					
-				</li>
-				<li>
-					<label for="email">이메일</label>
-					<input type="email" name="email" id="email" maxlength="50" placeholder="이메일을 입력하세요">
-				</li>
+					</td>
+				</tr>
+				<tr >
+					<td class="mp-td2">이메일</td>
+					<td class="mp-td2"><input type="text" name="email" id="email"
+					                     maxlength="12"></td>
+				</tr>
 				
+				
+				</table>
+			
+			<ul class="mp-btn">
+				<li>
+				<input type="submit" value="수정" onclick="location.href='myPage.do'">
+				
+				<input type="button" value="취소"
+				    onclick="location.href='myPage.do'">
+				   </li> 
 			</ul>
-			<div class="align-center">
-				<input type="submit" value="등록">
-				<input type="button" value="홈으로"
-				    onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
-			</div>
-		</form>
+		 </form> 
 	</div>
-
-
-
 </div>
 </body>
 </html>
-
-
-
-

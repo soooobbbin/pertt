@@ -6,13 +6,69 @@ body{
 	margin:0;
 	padding:0;
 }
-/*.page-main{
-	background:white;
-	margin:40px 0;
-	border-radius:5px;
-	box-shadow:0 2px 6px rgba(100,100,100,0.3);
-	min-height:650px;
-}*/
+
+
+.mypage-main{
+	padding:60px 120px;
+}
+
+.mp-sub{
+	font-style:italic;
+	font-weight:bold;
+	color: rgb(26, 188, 156);
+}
+.mp-form{
+	line-height:150%;
+	border: 0px;
+} 
+	
+
+.mp-info{
+	line-height:150%;
+	border-radius: 11px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113);
+    padding:30px 30px;
+    text-align: center;
+  
+}
+.mp-info-T{
+	line-height:250%;
+	font-size:115%;
+	font-weight:700;
+	margin-bottom:25px; 
+	text-align:left;
+}
+.mp-btn{
+	font-size:70%;
+	padding-left:170px;
+	
+}
+
+table{
+	text-align:center;
+	word-break:break-all;
+	height:auto;
+}
+
+th,td{
+	border-bottom: 1px solid #e8e8e8;
+    padding: 10px;
+}
+
+td.mp-td2{
+	border-bottom: 0px ;
+}
+
+input[type="text"],input[type="password"],input[type="email"]{
+	width:135px;
+	text-align:left;
+}
+.mp-info input[id="birth1"],input[id="phone2"],input[id="phone3"]{
+	width:45px;
+}
+
 #main_logo{
 	padding-top:20px;
 }
@@ -49,15 +105,7 @@ body{
 /*.content-main{
 	padding:10px 20px;
 }*/
-.result-display{
-	width:400px;
-	height:200px;
-	margin:50px auto;
-	border:1px solid #000;
-	display:flex;/*하위요소를 수직으로 쌓을 수 있는 공간을 만듬*/
-	align-items:center;/*세로 정렬*/
-	justify-content:center;/*가로 정렬*/
-}
+
 .align-center{
 	text-align:center;
 }
@@ -97,7 +145,7 @@ ul.search li{
 
 
 /*등록, 수정폼*/
-form{
+form.register_form{
 	width:600px;
 	margin:0 auto;
 	border:1px solid #000;
@@ -110,13 +158,12 @@ label{
 	width:130px;
 	float:left;/*태그를 왼쪽으로 정렬*/
 }
-input[type="text"],input[type="password"],input[type="email"]{
-	width:200px;
+#register_form input[type="text"],input[type="password"],input[type="email"]{
+	width:135px;
 }
 #register_form input[id="birth1"],input[id="phone2"],input[id="phone3"]{
 	width:50px;
 }
-
 .form-notice{
 	margin-left:130px;
 }
@@ -129,6 +176,9 @@ input[type="text"],input[type="password"],input[type="email"]{
 .mypage-end{
 	clear:both;
 }
+
+
+
 
 
 
