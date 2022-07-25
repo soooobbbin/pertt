@@ -7,47 +7,91 @@ body{
 	padding:0;
 }
 
+.mypage-div{
+	width:48%;
+	float:left;
+	padding:5px;
+}
 
 .mypage-main{
-	padding:60px 120px;
+	padding:60px 150px;
 }
 
 .mp-sub{
+	margin-left:150px;
 	font-style:italic;
 	font-weight:bold;
+	font-size:200%;
 	color: rgb(26, 188, 156);
 }
 .mp-form{
-	line-height:150%;
-	border: 0px;
-} 
+	border: 0px solid;
 	
+} 
+
+
 
 .mp-info{
-	line-height:150%;
+	line-height:200%;
 	border-radius: 11px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113);
-    padding:30px 30px;
-    text-align: center;
+    padding:15px 30px;
+    padding-bottom:30px;
+    margin-left:150px;
+    text-align: left;
+    width:25%;
+    height:900px;
+    font-weight:bold;
+    
   
 }
 .mp-info-T{
-	line-height:250%;
-	font-size:115%;
+	line-height:200%;
+	font-size:145%;
 	font-weight:700;
-	margin-bottom:25px; 
+	padding-top:20px;
+	padding-left:20px;
 	text-align:left;
+	border-bottom: 0px ;
 }
 .mp-btn{
-	font-size:70%;
-	padding-left:170px;
+	font-size:100%;
+	padding-left:250px;
+	margin-left:140px;
 	
 }
 
+
+.blue-btn{
+	background-color: rgba(52, 152, 219, 0.25);
+    text-align: center;
+    color: rgb(41, 128, 185);
+    font-weight: bold;
+    line-height: 2.3em;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 0px;
+    width:75px;
+    height:45px;
+}
+
+.gray-btn{
+	border-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    text-align: center;
+    color: rgb(158, 158, 158);
+    font-weight: bold;
+    line-height: 2.3em;
+    font-size: 13px;
+    border: 0px;
+    width:75px;
+    height:45px;
+}
+
 table{
-	text-align:center;
+	text-align:left;
 	word-break:break-all;
 	height:auto;
 }
@@ -57,16 +101,41 @@ th,td{
     padding: 10px;
 }
 
+.mptd{
+	font-size:90%;
+	text-align:left;
+}
+tr.mptr{
+	font-size:80%;
+}
+
 td.mp-td2{
 	border-bottom: 0px ;
 }
 
-input[type="text"],input[type="password"],input[type="email"]{
-	width:135px;
+.mp-info input[type="text"]{
+	width:180px;
 	text-align:left;
+	
 }
-.mp-info input[id="birth1"],input[id="phone2"],input[id="phone3"]{
-	width:45px;
+.mp-info input[type="password"]{
+	width:180px;
+	text-align:left;
+	
+}
+.mp-info input[type="email"]{
+	width:180px;
+	text-align:left;
+	}
+
+.mp-info input[id="birth1"]{
+	width:45px; text-align:left;
+}
+.mp-info input[id="phone2"]{
+	width:45px; text-align:left;
+}
+.mp-info input[id="phone3"]{
+	width:45px; text-align:left;
 }
 
 #main_logo{
@@ -158,21 +227,12 @@ label{
 	width:130px;
 	float:left;/*태그를 왼쪽으로 정렬*/
 }
-#register_form input[type="text"],input[type="password"],input[type="email"]{
-	width:135px;
-}
-#register_form input[id="birth1"],input[id="phone2"],input[id="phone3"]{
-	width:50px;
-}
+
 .form-notice{
 	margin-left:130px;
 }
 /*My Page*/
-.mypage-div{
-	width:48%;
-	float:left;
-	padding:5px;
-}
+
 .mypage-end{
 	clear:both;
 }

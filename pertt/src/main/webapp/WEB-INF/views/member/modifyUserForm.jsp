@@ -17,14 +17,14 @@
 		
 		 <form class="mp-form" action="modifyUser.do" method="post"> 
 			<table  class="mp-info">
-				<tr> 
-					<td colspan=2 class="mp-info-T"> 회원정보</td>
+				<tr > 
+					<td colspan=2 class="mp-info-T" > 회원정보</td>
 				</tr>
-				<tr>
+				<tr >
 					<td >내 OTT</td>
-					<td ><input type="radio" name="ott_c" value="넷플릭스">넷플릭스 
-                    <input type="radio" name="ott_c" value="디즈니+">디즈니+ 
-                    <input type="radio" name="ott_c" value="넷플릭스">왓챠<br> 
+					<td class="mptd"><input type="radio"  name="ott_c" value="넷플릭스">넷플릭스 
+                    <input type="radio" name="ott_c" value="디즈니+">디즈니+ <br> 
+                    <input type="radio" name="ott_c" value="넷플릭스">왓챠
                     <input type="radio" name="ott_c" value="티빙">티빙
                     <input type="radio" name="ott_c" value="웨이브">웨이브</td>
 				</tr>
@@ -43,7 +43,7 @@
 					<td><input type="password" name="passwd" id="passwd"
 					                     maxlength="12"></td>
 				</tr>
-				<tr>
+				<tr class="mptr">
 					<td >새 비밀번호 확인</td>
 					<td><input type="password" name="cpasswd" id="cpasswd"
 					                     maxlength="12"><br>
@@ -113,8 +113,8 @@
                     <option value="017">017
                     <option value="018">018
                 </select> -
-					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" placeholder="0000"> -
-					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" placeholder="0000">
+					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" > -
+					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" >
 					</td>
 				</tr>
 				<tr >
@@ -128,9 +128,9 @@
 			
 			<ul class="mp-btn">
 				<li>
-				<input type="submit" value="수정" onclick="location.href='myPage.do'">
+				<input type="submit" value="수정" class="blue-btn" onclick="location.href='myPage.do'">
 				
-				<input type="button" value="취소"
+				<input type="button" class="gray-btn" value="취소"
 				    onclick="location.href='myPage.do'">
 				   </li> 
 			</ul>

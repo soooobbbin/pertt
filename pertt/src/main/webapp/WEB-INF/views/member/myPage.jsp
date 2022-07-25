@@ -60,10 +60,10 @@
 				
 			<ul class="mp-btn">
 				<li>
-					<input type="button" value="수정"
+					<input type="button" value="수정" class="blue-btn"
 					    onclick="location.href='modifyUserForm.do'">
 				
-					<input type="button" value="회원탈퇴"
+					<input type="button" value="회원탈퇴" class="gray-btn"
 					  >
 				</li>
 		
