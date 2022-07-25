@@ -12,10 +12,11 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
-		<div>
-		<h2 class="admin_main_h2">전체 작품</h2></div>
-		<div>
-		<p class="admin_main_p">관리메뉴에서 회원 등급 변경이 가능하며, 내보내기(탈퇴)기능이 가능합니다.</p>
+		<div class="admin-main">
+		<div class="admin_main_h2"><h2>전체 작품</h2></div>
+		<div class="admin_main_p"><p>관리메뉴에서 회원 등급 변경이 가능하며, 내보내기(탈퇴)기능이 가능합니다.</p></div>
+		
+		
 		</div>
 		
 		<div>

@@ -33,9 +33,9 @@ public class LoginAction implements Action{
 		if(check) {//인증 성공
 			//로그인 처리
 			HttpSession session = request.getSession();
-			session.setAttribute("member_num", member.getMember_num());
-			session.setAttribute("member_id", member.getMember_id());
-			session.setAttribute("member_auth", member.getAuth());
+			session.setAttribute("user_num", member.getMember_num());
+			session.setAttribute("user_id", member.getMember_id());
+			session.setAttribute("user_auth", member.getAuth());
 			
 			//인증 성공시 호출
 			return "redirect:/main/main.do";

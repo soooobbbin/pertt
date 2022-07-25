@@ -88,7 +88,7 @@ public class MemberVO {
 	}
 
 	public void setBirth(String birth) {
-		this.birth = birth;
+		this.birth = birth;;
 	}
 	public Date getReg_date() {
 		return reg_date;

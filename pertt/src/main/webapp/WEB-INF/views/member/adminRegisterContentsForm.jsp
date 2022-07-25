@@ -15,12 +15,13 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 등록</h2>
+		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" 
+													enctype="multipart/form-data">
 		<%-- 등록 / 목록 버튼 --%>
 		<div class="align-right">
 			<input type="submit" value="등록">
 			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
 		</div>
-		<form id="contentsRegister_form" action="registerContents.do" method="post" enctype="multipart/form-data">
 			
 			
 			<%-- 작품 포스터 등록 --%>
@@ -53,7 +54,7 @@
 				<table>
 					<tr>
 						<td>제목</td>
-						<td id="last-child"><input type="text" id="title" name="title" value="제목을 입력해주세요"></td>
+						<td id="last-child"><input type="text" id="title" name="title" placeholder="제목을 입력하세요"></td>
 					</tr>
 					<tr>
 						<td>개봉일</td>
@@ -61,12 +62,13 @@
 					</tr>
 					<tr>
 						<td>국가</td>
-						<td id="last-child"><input type="text" id="country" name="country" value="국가를 입력하세요"></td>
+						<td id="last-child"><input type="text" id="country" name="country" placeholder="국가를 입력하세요"></td>
 					</tr>
 					<tr>
 						<td>장르</td>
 						<td id="last-child">
 							<select name="genre" size="1">
+								<option value="장르">장르</option>
 								<option value="로맨스">로맨스</option>
 								<option value="공포">공포</option>
 								<option value="코미디">코미디</option>
@@ -77,20 +79,21 @@
 					</tr>
 					<tr>
 						<td>토마토 지수</td>
-						<td id="last-child"><input type="text" id="tomato" name="tomato" value="토마토 지수를 입력하세요"></td>
+						<td id="last-child"><input type="text" id="tomato" name="tomato" placeholder="토마토 지수를 입력하세요"></td>
 					</tr>
 					<tr>
 						<td>줄거리</td>
-						<td id="last-child"><textarea rows="3" cols="30" name="content" id="content"></textarea></td>
+						<td id="last-child"><textarea rows="3" cols="30" name="plot" id="plot" placeholder="줄거리를 입력하세요"></textarea></td>
 					</tr>
 					<tr>
 						<td>출연/제작</td>
-						<td id="last-child"><input type="text" id="produce" name="produce" value="출연/제작란을 입력하세요"></td>
+						<td id="last-child"><input type="text" id="produce" name="produce" placeholder="출연/제작란을 입력하세요"></td>
 					</tr>
 					<tr>
 						<td>등급</td>
 						<td id="last-child">
 							<select name="grade" size="1">
+								<option value="등급">등급</option>
 								<option value="ALL">로맨스</option>
 								<option value="12+">공포</option>
 								<option value="15+">코미디</option>
@@ -103,6 +106,7 @@
 						<td id="last-child">
 							<select name="category" size="1">
 								<%-- 넷플릭스 카테고리 --%>
+								<option value="카테고리">카테고리</option>
 								<option value="오리지널 영화">오리지널 영화</option>
 								<option value="오리지널 드라마">오리지널 드라마</option>
 								<option value="오리지널 예능">오리지널 예능</option>
