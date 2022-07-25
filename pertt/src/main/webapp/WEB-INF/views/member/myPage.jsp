@@ -40,11 +40,11 @@
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td>${member.birth}</td>
+					<td>${member.birth1}</td>
 				</tr>
 				<tr>
 					<td>휴대폰</td>
-					<td>${member.phone}</td>
+					<td>${member.phone1}</td>
 				</tr>
 				<tr>
 					<td>이메일</td>

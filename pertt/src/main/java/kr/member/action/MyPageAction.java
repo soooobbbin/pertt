@@ -17,15 +17,15 @@ public class MyPageAction implements Action{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-		Integer member_num = 
-				(Integer)session.getAttribute("member_num");
-		if(member_num == null) {//로그인 되지 않은 경우
+		Integer user_num = 
+				(Integer)session.getAttribute("user_num");
+		if(user_num == null) {//로그인 되지 않은 경우
 			return "redirect:/member/loginForm.do";
 		}
 		
 		//로그인 된 경우
 		MemberDAO dao = MemberDAO.getInstance();
-		MemberVO member = dao.getMember(member_num);
+		MemberVO member = dao.getMember(user_num);
 		
 		request.setAttribute("member", member);
 		
