@@ -7,11 +7,22 @@ public class ReviewVO {
 	private Date c_review_reg_date;
 	private Date c_review_mod_date;
 	private String c_review_content;
-	private int c_star_num;
 	private int member_num;
 	private int c_num;
+	
+	//c_star 테이블(별점)
+	private int c_star_num;
+	private int star;
+	
+	//join해서 사용
 	private String id;
 	
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
 	public String getId() {
 		return id;
 	}
@@ -60,9 +71,6 @@ public class ReviewVO {
 	public void setC_num(int c_num) {
 		this.c_num = c_num;
 	}
-	
-	
-	
 }
 
 

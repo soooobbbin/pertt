@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.contents.vo.CategoryVO;
 import kr.contents.vo.ContentsVO;
 import kr.util.DBUtil;
 
@@ -141,7 +142,7 @@ public class ContentsDAO {
 				contents.setGrade(rs.getInt("grade"));
 				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));
-			
+
 				list.add(contents);
 			}
 		}catch(Exception e) {
@@ -151,8 +152,41 @@ public class ContentsDAO {
 		}
 		return list;
 	}
-	
-	
+	//작품 목록(카테고리별)
+	public List<ContentsVO> getContents2(int category_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		List<ContentsVO> list = null;
+		ContentsVO contents = null;
+
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "SELECT * FROM contents WHERE category_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, category_num);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<ContentsVO>();
+			if(rs.next()) {
+				contents = new ContentsVO();
+				contents.setC_num(rs.getInt("c_num"));
+				//contents.setTitle(rs.getString("title"));
+				contents.setPoster(rs.getString("poster"));
+				//contents.setCategory_name(rs.getString("category_name"));
+				contents.setCategory_num(rs.getInt("category_num"));
+				
+				list.add(contents);
+			}
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(rs,pstmt,conn);
+		}
+		return list;
+	}
 	//작품 상세
 	public ContentsVO getContents(int c_num) throws Exception{
 		Connection conn = null;
@@ -191,19 +225,19 @@ public class ContentsDAO {
 		}
 		return contents;
 	}
-	
+
 	//작품 수정
 	public void updateContents(ContentsVO contentsVO) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		
+
 		try {
 			conn = DBUtil.getConnection();
-			
+
 			sql = "UPDATE mvBoard SET title=?,poster=?,release=?,country=?,genre=?,"
-			+ "tomato=?,plot=?,produce=?,grade=?,category_num=?,ott_num=? WHERE c_num=?";
-			
+					+ "tomato=?,plot=?,produce=?,grade=?,category_num=?,ott_num=? WHERE c_num=?";
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, contentsVO.getTitle());
 			pstmt.setString(2, contentsVO.getPoster());
@@ -217,30 +251,30 @@ public class ContentsDAO {
 			pstmt.setInt(10, contentsVO.getCategory_num());
 			pstmt.setInt(11, contentsVO.getOtt_num());
 			pstmt.setInt(12, contentsVO.getC_num());
-			
+
 			pstmt.executeUpdate();
-			
+
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
 			DBUtil.executeClose(null,pstmt,conn);
 		}
 	}
-	
+
 	//작품 삭제
 	public void deleteContents(int c_num) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		
+
 		try {
 			conn = DBUtil.getConnection();
-			
+
 			sql = "DELETE FROM contents WHERE c_num=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);
-			
+
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -249,6 +283,6 @@ public class ContentsDAO {
 		}
 	}
 
-	
+
 
 }

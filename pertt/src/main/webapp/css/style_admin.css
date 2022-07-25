@@ -6,13 +6,11 @@ body{
 	margin:0;
 	padding:0;
 }
-/*.page-main{
+.page-main{
 	background:white;
-	margin:40px 0;
-	border-radius:5px;
-	box-shadow:0 2px 6px rgba(100,100,100,0.3);
-	min-height:650px;
-}*/
+	margin:0 auto;
+	min-height:750px;
+}
 #main_logo{
 	padding-top:20px;
 }
@@ -56,9 +54,30 @@ body{
 	width:150px;
 	text-align:left;
 }
-/*.content-main{
-	padding:10px 20px;
-}*/
+.content-left{
+	float:left;
+	width:20%;
+	height:580px;
+	background-color:#e0e0e0;
+}
+.content-right{
+	padding-top:30px;
+	padding-left:15px;
+}
+.content-right #red{
+	color:red;
+}
+.content-main{
+    width: 77%;
+    min-height: 600px;
+    float: left;
+    margin-left: 30px;
+}
+.content-main h2{
+	padding-top: 40px;
+	margin: 0 auto;
+    width: 840px;
+}
 .result-display{
 	width:400px;
 	height:200px;
@@ -72,7 +91,11 @@ body{
 	text-align:center;
 }
 .align-right{
-	text-align:right;
+	text-align: right;
+    height: 30px;
+    padding: 10px 10px;
+    width:840px;
+    margin:0 auto;
 }
 a:link{
 	text-decoration:none;
@@ -87,30 +110,36 @@ a:hover{
 	color:#6C6C6C;
 }
 /* 왼쪽 고정 카테고리 */
-.content-main{
-	width:295px;
-	height:580px;
-	background-color:#e0e0e0;
-	
-}
 .adminPage_btn , .contentsRegis_btn{
 	text-align:center;
 	
 }
 .adminPage_btn{
-	padding-top:10px;
-	width:240px;
-	height:40px;
-	background-color:#ffffff;
-	color:#606060;
-	
+	margin-top: 20px;
+    margin-left: 35px;
+    width: 75%;
+    vertical-align: middle;
+    padding-top: 10px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #606060;
+    position: static;
 }
 .contentsRegis_btn{
-	padding-top:20px;
-	border:1px solid;
+    padding-top: 10px;
+    background-color: #868686;
+    color: ghostwhite;
+    height: 30px;
+    width: 75%;
+    margin-left: 35px;
+    position: static;
 }
 /*목록*/
 form#search_form{
+	width: 200px;
+    margin: 0 10px 0 10px;
+    border: 1px solid #000;
+    padding: 120px 10px 10px 80px;
 	border:none;
 }
 ul.search{
@@ -127,18 +156,39 @@ ul.search li{
 .list-space{
 	margin-bottom:10px;
 }
-/*table{
-	width:100%;
-	border:1px solid #000;
+table{
+	width:80%;
+	border:0.5px solid #ffffff;
 	border-collapse:collapse;
 	margin-top:5px;
+	min-height: 400px;
 }
-table td, table th{
+table td{
 	border:1px solid #000;
 	padding:5px;
-}*/
-
+	padding-left:15px;
+	border-left: none;
+}
+table td#last-child {
+    border-right: none;
+}
 /*메인화면*/
+.admin_main_h2{
+	float: left;
+    width: 10%;
+    padding-left: 40px;
+    padding-top:30px;
+    margin-left: 50px;
+    position: relative;
+}
+.admin_main_p{
+    float: right;
+    width: 80%;
+    height: 28.5px;
+	padding-top: 47px;
+    font-size: small;
+    position: relative;
+}
 .rank1st-comment{
 	padding-top:30px;
 	padding-bottom:30px;
@@ -267,10 +317,11 @@ table td, table th{
 }
 /*등록, 수정폼*/
 form{
-	width:600px;
+	width:800px;
 	margin:0 auto;
-	border:1px solid #000;
+	/*border:1px solid #000;*/
 	padding:10px 10px 10px 30px;
+	min-height:500px;
 }
 ul{
 	list-style:none;
@@ -300,14 +351,25 @@ input[id="zipcode"]{
 .mypage-end{
 	clear:both;
 }
-.my-photo{
+/*작품 포스터 사진 영역*/
+.contents-poster{
+	width: 20%;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+.con-poster{
 	object-fit:cover;
 	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심
 	이미지 위치를 지정*/
 	object-position:top;
-	border-radius:50%;
+	border: 0.5px solid;
 }
-
+.contents-details{
+	float: right;
+    width: 75%;
+    text-align: left;
+}
 
 
 

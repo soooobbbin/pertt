@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>OTT 작품</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/contents.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
@@ -33,13 +33,24 @@
 			</ul>
 		</form> 
 		
-		<c:forEach var="category" items="${list}">
-		<h2>${category.category_name}</h2>
+	 	<c:forEach var="category" items="${categorys}">
+			<h2>${category.category_name}</h2>
 		</c:forEach>
-		<c:forEach var="category" items="${list}">
-		<h2>${category.category_name}</h2>
-		</c:forEach>
-		<div class="list-space align-right">
+			
+			<c:forEach var="contents" items="${list1}">
+			<h2>${contents.poster}</h2>
+			</c:forEach>
+			<c:forEach var="contents" items="${list2}">
+			<h2>${contents.poster}</h2>
+			</c:forEach>
+			<c:forEach var="contents" items="${list3}">
+			<h2>${contents.poster}</h2>
+			</c:forEach>
+			<c:forEach var="contents" items="${list4}">
+			<h2>${contents.poster}</h2>
+			</c:forEach>
+		
+		<%-- <div class="list-space align-right">
 			<c:if test="${!empty user_num}">
 			<input type="button" value="글쓰기" onclick="location.href='writeForm.do'">
 			</c:if>
@@ -73,6 +84,7 @@
 		</div>
 		</c:if>
 	</div>
+	--%>
 </div>
 </body>
 </html>

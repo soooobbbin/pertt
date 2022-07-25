@@ -276,6 +276,9 @@ public class MemberDAO {
 	}
 	
 	//관리자
+	
+	//작품 포스터 등록
+	
 	//전체글 개수(검색글 개수)
 	public int getMemberCountByAdmin(String keyfield,
 			                         String keyword)
@@ -412,6 +415,8 @@ public class MemberDAO {
 		}
 		
 	}
+	
+	
 	
 }
 
