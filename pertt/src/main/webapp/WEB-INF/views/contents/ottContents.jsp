@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="kr.contents.vo.ContentsVO" %>    
+<%@ page import="kr.contents.vo.ContentsVO" %> 
+<%@ page import="kr.contents.vo.CategoryVO" %>    
+   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -34,18 +36,29 @@
 				</li>
 			</ul>
 		</form> 
-		
-	 	<c:forEach var="category" items="${categoryList}" varStatus="status">
-			<h2>${category.category_name}contents${status.index}</h2>
-			<%
-			List<ContentsVO> list = (List<ContentsVO>)request.getAttribute("${status.index}");
-			%>
-			<%= list %>
-			<c:forEach var="contents" items="<%= list %>">
-				<span>${contents}</span>
-			</c:forEach>
-		</c:forEach>
+		<%
+			List<CategoryVO> categoryList = (List<CategoryVO>)request.getAttribute("categoryList");
+			for(int i=0;i<categoryList.size();i++){
+		%>
+			<h2><%= categoryList.get(i).getCategory_name() %></h2>
+		<% 		
+				List<ContentsVO> contentsList = (List<ContentsVO>)request.getAttribute("contents"+i);
+				for(int j=0;j<contentsList.size();j++){
+		%>			
+					<div class="contentsList">
+					<%=contentsList.get(j).getPoster() %>
+					</div>
+		<% 			
+				}
+			}
+		%>
 	</div>
 </div>
 </body>
 </html>
+
+
+
+
+
+

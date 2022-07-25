@@ -1,5 +1,7 @@
 package kr.member.action;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,12 +29,15 @@ public class AdminRegisterContentsAction implements Action{
 		//전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
 		
+		String date = request.getParameter("release");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 		//로그인 된 경우
 		MultipartRequest multi = FileUtil.createFile(request);
 		ContentsVO contents = new ContentsVO();
 		contents.setTitle(multi.getParameter("title"));
 		contents.setPoster(multi.getFilesystemName("poster"));
-		//contents.setRelease(multi.getParameter("release"));
+		contents.setRelease(multi.getParameter("release"));
 		contents.setCountry(multi.getParameter("country"));
 		contents.setGenre(multi.getParameter("genre"));
 		contents.setTomato(Integer.parseInt(multi.getParameter("tomato")));

@@ -46,7 +46,7 @@ $(function(){
 		let form_data = new FormData();
 		form_data.append('photo',con_poster);
 		$.ajax({
-			url:'updateMyPhoto.do',
+			url:'updatePosters.do',
 			type:'post',
 			data:form_data,
 			dataType:'json',
