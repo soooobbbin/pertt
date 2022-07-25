@@ -76,10 +76,10 @@
 			<form id="review_form">
 				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
 				<textarea rows="10" cols="80" id="r_content" name="content" 
-				<c:if test="${empty member_num}">disabled="disabled"</c:if>
+				<c:if test="${empty user_num}">disabled="disabled"</c:if>
 				placeholder="리뷰를 입력해주세요"
-				><c:if test="${empty member_num }">로그인이 필요합니다.</c:if></textarea>
-				<c:if test="${!empty member_num }">
+				><c:if test="${empty user_num }">로그인이 필요합니다.</c:if></textarea>
+				<c:if test="${!empty user_num }">
 					<input type="submit" value="등록">
 				</c:if>
 			</form>

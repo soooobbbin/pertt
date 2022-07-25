@@ -8,7 +8,8 @@ $(function(){
 			return false;	
 		}
 		
-		var reviewCheck = '${reviewCheck}';
+		/*var reviewCheck = '${reviewCheck}';
+		alert(reviewCheck);
 		if(reviewCheck){//리뷰 이미 작성했음
 			$('#review_duplicated').show();
 			$('#review_notDuplicated').hide();
@@ -16,7 +17,7 @@ $(function(){
 			$('#review_duplicated').hide();
 			$('#review_notDuplicated').show();
 		}
-		
+		*/
 		//리뷰 content 등록 
 		let form_data = $(this).serialize();
 		

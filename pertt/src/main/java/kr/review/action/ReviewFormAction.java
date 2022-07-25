@@ -22,7 +22,6 @@ public class ReviewFormAction implements Action{
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
 		ContentsDAO dao = ContentsDAO.getInstance();
 		ContentsVO contents = dao.getContents(c_num);
-		System.out.println(contents.getTitle());
 		//작품에 대한 별점의 평균 구해서 보내주기
 		
 		//===================리뷰 목록==================================

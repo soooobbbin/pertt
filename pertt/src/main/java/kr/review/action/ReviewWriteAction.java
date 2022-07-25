@@ -20,8 +20,8 @@ public class ReviewWriteAction implements Action {
 		//json으로 content insert 처리!!!
 		Map<String,String> mapAjax  = new HashMap<String, String>();
 		HttpSession session = request.getSession();
-		Integer member_num = (Integer)session.getAttribute("member_num");
-		if(member_num == null) {
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		if(user_num == null) {
 			mapAjax.put("result", "logout");
 		} else{//로그인된 경우
 			request.setCharacterEncoding("utf-8");
@@ -29,13 +29,13 @@ public class ReviewWriteAction implements Action {
 			ReviewDAO dao = ReviewDAO.getInstance();
 			
 			//리뷰를 쓴 적 없는 회원인지 확인. 리뷰 이미 썼으면 true로 반환
-			if(dao.checkReview(member_num, c_num)) {
+			if(dao.checkReview(user_num, c_num)) {
 				mapAjax.put("result", "duplicated");
 			} else {
 				String content = request.getParameter("content");
 				System.out.println("c_num : " +c_num);
 				System.out.println("content : " +content);
-				dao.updateReviewContent(member_num, c_num, content);
+				dao.updateReviewContent(user_num, c_num, content);
 				mapAjax.put("result", "success");
 			}
 		}
