@@ -28,8 +28,7 @@ public class OttContentsAction implements Action{
 		ContentsDAO contentsDao = ContentsDAO.getInstance();
 		for(int i=0;i<categoryList.size();i++) {
 			List<ContentsVO> contentsList = contentsDao.getListContents(1, 10, keyfield, keyword, categoryList.get(i).getCategory_num());
-			System.out.println("++"+"contents"+i);
-			request.setAttribute(""+i, contentsList);
+			request.setAttribute("contents"+i, contentsList);
 		}
 		request.setAttribute("categoryList", categoryList);
 
