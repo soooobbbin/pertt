@@ -91,7 +91,11 @@ public class ContentsVO {
 	public void setOtt_num(int ott_num) {
 		this.ott_num = ott_num;
 	}
-	
-	
-
+//	@Override
+//	public String toString() {
+//		return "ContentsVO [c_num=" + c_num + ", title=" + title + ", poster=" + poster + ", release=" + release
+//				+ ", country=" + country + ", genre=" + genre + ", tomato=" + tomato + ", plot=" + plot + ", produce="
+//				+ produce + ", grade=" + grade + ", category_num=" + category_num + ", ott_num=" + ott_num
+//				+ ", category_name=" + category_name + "]";
+//	}
 }

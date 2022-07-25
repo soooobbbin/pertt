@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="kr.contents.vo.ContentsVO" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -33,58 +35,17 @@
 			</ul>
 		</form> 
 		
-	 	<c:forEach var="category" items="${categorys}">
-			<h2>${category.category_name}</h2>
+	 	<c:forEach var="category" items="${categoryList}" varStatus="status">
+			<h2>${category.category_name}contents${status.index}</h2>
+			<%
+			List<ContentsVO> list = (List<ContentsVO>)request.getAttribute("${status.index}");
+			%>
+			<%= list %>
+			<c:forEach var="contents" items="<%= list %>">
+				<span>${contents}</span>
+			</c:forEach>
 		</c:forEach>
-			
-			<c:forEach var="contents" items="${list1}">
-			<h2>${contents.poster}</h2>
-			</c:forEach>
-			<c:forEach var="contents" items="${list2}">
-			<h2>${contents.poster}</h2>
-			</c:forEach>
-			<c:forEach var="contents" items="${list3}">
-			<h2>${contents.poster}</h2>
-			</c:forEach>
-			<c:forEach var="contents" items="${list4}">
-			<h2>${contents.poster}</h2>
-			</c:forEach>
-		
-		<%-- <div class="list-space align-right">
-			<c:if test="${!empty user_num}">
-			<input type="button" value="글쓰기" onclick="location.href='writeForm.do'">
-			</c:if>
-		</div>
-		<c:if test="${count == 0}">
-		<div class="result-display">
-			표시할 게시물이 없습니다.
-		</div>
-		</c:if>
-		<c:if test="${count > 0}">
-		<table>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
-			</tr>
-			<c:forEach var="board" items="${list}">
-			<tr>
-				<td>${board.board_num }</td>
-				<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
-				<td>${board.id}</td>
-				<td>${board.reg_date}</td>
-				<td>${board.hit}</td>
-			</tr>
-			</c:forEach>
-		</table>
-		<div class="align-center">
-			${page}
-		</div>
-		</c:if>
 	</div>
-	--%>
 </div>
 </body>
 </html>
