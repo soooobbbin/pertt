@@ -32,8 +32,6 @@ public class MemberVO {
 
 
 
-
-
 	public int getMember_num() {
 		return member_num;
 	}
@@ -72,47 +70,6 @@ public class MemberVO {
 		this.phone = phone;
 	}
 	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getBirth() {
-		if(birth1=="" || birth2=="" || birth3=="") {
-			birth="";
-		}else {
-			birth=birth1+"-"+birth2+"-"+birth3;
-		}
-		return birth;
-	}
-
-	public void setBirth(String birth) {
-		this.birth = birth;;
-	}
-	public Date getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
-	public Date getMod_date() {
-		return mod_date;
-	}
-	public void setMod_date(Date mod_date) {
-		this.mod_date = mod_date;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-	
-
-	
 	public String getPhone1() {
 		return phone1;
 	}
@@ -137,6 +94,26 @@ public class MemberVO {
 		this.phone3 = phone3;
 	}
 
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getBirth() {
+		if(birth1=="" || birth2=="" || birth3=="") {
+			birth="";
+		}else {
+			birth=birth1+"-"+birth2+"-"+birth3;
+		}
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;;
+	}
+	
 	public String getBirth1() {
 		return birth1;
 	}
@@ -161,6 +138,32 @@ public class MemberVO {
 		this.birth3 = birth3;
 	}
 
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	public Date getMod_date() {
+		return mod_date;
+	}
+	public void setMod_date(Date mod_date) {
+		this.mod_date = mod_date;
+	}
+
+	public String getMember_id() {
+		return member_id;
+	}
+
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	
+
+	
+	
+
+	
 
 
 
