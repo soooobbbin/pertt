@@ -1,12 +1,10 @@
 package kr.contents.vo;
 
-import java.sql.Date;
-
 public class ContentsVO {
 	private int c_num;
 	private String title;
 	private String poster;
-	private Date release;
+	private String release;
 	private String country;
 	private String genre;
 	private int tomato;
@@ -37,11 +35,18 @@ public class ContentsVO {
 	public void setPoster(String poster) {
 		this.poster = poster;
 	}
-	public Date getRelease() {
+	
+	public String getRelease() {
 		return release;
 	}
-	public void setRelease(Date release) {
+	public void setRelease(String release) {
 		this.release = release;
+	}
+	public int getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(int category_name) {
+		this.category_name = category_name;
 	}
 	public String getCountry() {
 		return country;
@@ -91,11 +96,6 @@ public class ContentsVO {
 	public void setOtt_num(int ott_num) {
 		this.ott_num = ott_num;
 	}
-//	@Override
-//	public String toString() {
-//		return "ContentsVO [c_num=" + c_num + ", title=" + title + ", poster=" + poster + ", release=" + release
-//				+ ", country=" + country + ", genre=" + genre + ", tomato=" + tomato + ", plot=" + plot + ", produce="
-//				+ produce + ", grade=" + grade + ", category_num=" + category_num + ", ott_num=" + ott_num
-//				+ ", category_name=" + category_name + "]";
-//	}
+
+	
 }

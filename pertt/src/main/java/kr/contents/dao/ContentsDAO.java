@@ -38,7 +38,7 @@ public class ContentsDAO {
 			//?에 데이터 바인딩
 			pstmt.setString(1, contents.getTitle());
 			pstmt.setString(2, contents.getPoster());
-			pstmt.setDate(3, contents.getRelease());
+			pstmt.setString(3, contents.getRelease());
 			pstmt.setString(4, contents.getCountry());
 			pstmt.setString(5, contents.getGenre());
 			pstmt.setInt(6, contents.getTomato());
@@ -106,9 +106,9 @@ public class ContentsDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			
-			
-			
+
+
+
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql += " AND c.title LIKE ?";
 				else if(keyfield.equals("2")) sub_sql += " AND c.genre LIKE ?";
@@ -136,7 +136,7 @@ public class ContentsDAO {
 				contents.setC_num(rs.getInt("c_num"));
 				contents.setTitle(rs.getString("title"));
 				contents.setPoster(rs.getString("poster"));
-				contents.setRelease(rs.getDate("release"));
+				contents.setRelease(rs.getString("release"));
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
 				contents.setTomato(rs.getInt("tomato"));
@@ -155,47 +155,7 @@ public class ContentsDAO {
 		}
 		return list;
 	}
-	//작품 목록(카테고리별)
-	public List<ContentsVO> getContents2(int category_num,int start, int end) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = null;
-		List<ContentsVO> list = null;
-		ContentsVO contents = null;
-		int cnt= 0;
 
-		try {
-			conn = DBUtil.getConnection();
-
-			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-					+"FROM(SELECT * FROM contents c WHERE category_num=? ORDER BY c_num DESC)a) "
-					+ "WHERE rnum >= ? AND rnum <= ?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, category_num);
-			pstmt.setInt(++cnt, start);
-			pstmt.setInt(++cnt, end);
-			
-			rs = pstmt.executeQuery();
-			list = new ArrayList<ContentsVO>();
-			if(rs.next()) {
-				contents = new ContentsVO();
-				contents.setC_num(rs.getInt("c_num"));
-				//contents.setTitle(rs.getString("title"));
-				contents.setPoster(rs.getString("poster"));
-				//contents.setCategory_name(rs.getString("category_name"));
-				contents.setCategory_num(rs.getInt("category_num"));
-				
-				list.add(contents);
-			}
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(rs,pstmt,conn);
-		}
-		return list;
-	}
 	//작품 상세
 	public ContentsVO getContents(int c_num) throws Exception{
 		Connection conn = null;
@@ -203,12 +163,12 @@ public class ContentsDAO {
 		ResultSet rs = null;
 		String sql = null;
 		ContentsVO contents = null;
-		
+
 		try {
 			conn = DBUtil.getConnection();
-			
+
 			sql = "SELECT * FROM contents WHERE c_num=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);
 			rs = pstmt.executeQuery();
@@ -217,7 +177,7 @@ public class ContentsDAO {
 				contents.setC_num(rs.getInt("c_num"));
 				contents.setTitle(rs.getString("title"));
 				contents.setPoster(rs.getString("poster"));
-				contents.setRelease(rs.getDate("release"));
+				contents.setRelease(rs.getString("release"));
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
 				contents.setTomato(rs.getInt("tomato"));
@@ -250,7 +210,7 @@ public class ContentsDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, contentsVO.getTitle());
 			pstmt.setString(2, contentsVO.getPoster());
-			pstmt.setDate(3, contentsVO.getRelease());
+			pstmt.setString(3, contentsVO.getRelease());
 			pstmt.setString(4, contentsVO.getCountry());
 			pstmt.setString(5, contentsVO.getGenre());
 			pstmt.setInt(6, contentsVO.getTomato());
@@ -291,7 +251,6 @@ public class ContentsDAO {
 			DBUtil.executeClose(null,pstmt,conn);
 		}
 	}
-
 
 
 }

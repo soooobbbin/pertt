@@ -15,13 +15,13 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 등록</h2>
+		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" 
+													enctype="multipart/form-data">
 		<%-- 등록 / 목록 버튼 --%>
 		<div class="align-right">
 			<input type="submit" value="등록">
 			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
 		</div>
-		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" 
-													enctype="multipart/form-data">
 			
 			
 			<%-- 작품 포스터 등록 --%>
