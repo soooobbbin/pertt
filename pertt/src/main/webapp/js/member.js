@@ -131,17 +131,17 @@ $(function(){
 			return false;
 		}
 		if($('#passwd').val().trim()==''){
-			alert('새비밀번호를 입력하세요!');
+			alert('새 비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
 			return false;
 		}
 		if($('#cpasswd').val().trim()==''){
-			alert('새비밀번호 확인을 입력하세요!');
+			alert('새 비밀번호 확인을 입력하세요!');
 			$('#cpasswd').val('').focus();
 			return false;
 		}
 		if($('#passwd').val()!=$('#cpasswd').val()){
-			alert('새비밀번호와 새비밀번호 확인 불일치');
+			alert('새 비밀번호와 새 비밀번호 확인 불일치');
 			$('#passwd').val('').focus();
 			$('#cpasswd').val('');
 			return false;
@@ -158,7 +158,7 @@ $(function(){
 	//새비밀번호와 새비밀번호 확인 일치시 메시지 처리
 	$('#cpasswd').keyup(function(){
 		if($('#passwd').val()==$('#cpasswd').val()){
-			$('#message_cpasswd').text('새비밀번호 일치');
+			$('#message_cpasswd').text('새 비밀번호 일치');
 		}else{
 			$('#message_cpasswd').text('');
 		}

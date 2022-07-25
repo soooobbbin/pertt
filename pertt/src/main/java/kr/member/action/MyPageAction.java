@@ -27,11 +27,13 @@ public class MyPageAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(member_num);
 		
+		request.setAttribute("member", member);
+		
 		//내 글 목록
 		/*//좋아요를 클릭한 게시물 -좋아요는 없지만 OTT리뷰글 게시글, 작품리뷰게시글, 댓글쓴 게시글이 있어야함
 		BoardDAO boardDao = BoardDAO.getInstance();
 		List<BoardVO> boardList = 
-				 boardDao.getListBoardFav(1, 5, user_num);
+				 boardDao.getListBoardFav(1, 5, member_num);
 		
 		request.setAttribute("member", member);
 		request.setAttribute("boardList", boardList);
