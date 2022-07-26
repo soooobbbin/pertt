@@ -8,13 +8,14 @@
 			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
 			<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 		</c:if>
-		<c:if test="${!empty user_num && user_auth == 1}">
+		<c:if test="${!empty user_num}">
 			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+		</c:if>
+		<c:if test="${!empty user_num && user_auth == 1}">
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</c:if>
-		<c:if test="${empty user_num && user_auth == 2}">
-			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-			<a href="${pageContext.request.contextPath}/main/main.do">메인화면</a>
+		<c:if test="${!empty user_num && user_auth == 2}">
+			<a href="${pageContext.request.contextPath}/main/main_admin.do">관리자 홈</a>
 		</c:if>
 	
 	
@@ -31,7 +32,7 @@
 			<a href="${pageContext.request.contextPath}/ott/intro.do">소개</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/ott/ottStar.do">ott별점주기</a>
+			<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
