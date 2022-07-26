@@ -41,10 +41,10 @@ public class ContentsDAO {
 			pstmt.setString(3, contents.getRelease());
 			pstmt.setString(4, contents.getCountry());
 			pstmt.setString(5, contents.getGenre());
-			pstmt.setInt(6, contents.getTomato());
+			pstmt.setString(6, contents.getTomato());
 			pstmt.setString(7, contents.getPlot());
 			pstmt.setString(8, contents.getProduce());
-			pstmt.setInt(9, contents.getGrade());
+			pstmt.setString(9, contents.getGrade());
 			pstmt.setInt(10, contents.getCategory_num());
 			pstmt.setInt(11, contents.getOtt_num());
 
@@ -139,10 +139,10 @@ public class ContentsDAO {
 				contents.setRelease(rs.getString("release"));
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
-				contents.setTomato(rs.getInt("tomato"));
+				contents.setTomato(rs.getString("tomato"));
 				contents.setPlot(rs.getString("plot"));
 				contents.setProduce(rs.getString("produce"));
-				contents.setGrade(rs.getInt("grade"));
+				contents.setGrade(rs.getString("grade"));
 				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));
 
@@ -180,10 +180,10 @@ public class ContentsDAO {
 				contents.setRelease(rs.getString("release"));
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
-				contents.setTomato(rs.getInt("tomato"));
+				contents.setTomato(rs.getString("tomato"));
 				contents.setPlot(rs.getString("plot"));
 				contents.setProduce(rs.getString("produce"));
-				contents.setGrade(rs.getInt("grade"));
+				contents.setGrade(rs.getString("grade"));
 				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));
 			}
@@ -213,10 +213,10 @@ public class ContentsDAO {
 			pstmt.setString(3, contentsVO.getRelease());
 			pstmt.setString(4, contentsVO.getCountry());
 			pstmt.setString(5, contentsVO.getGenre());
-			pstmt.setInt(6, contentsVO.getTomato());
+			pstmt.setString(6, contentsVO.getTomato());
 			pstmt.setString(7, contentsVO.getPlot());
 			pstmt.setString(8, contentsVO.getProduce());
-			pstmt.setInt(9, contentsVO.getGrade());
+			pstmt.setString(9, contentsVO.getGrade());
 			pstmt.setInt(10, contentsVO.getCategory_num());
 			pstmt.setInt(11, contentsVO.getOtt_num());
 			pstmt.setInt(12, contentsVO.getC_num());

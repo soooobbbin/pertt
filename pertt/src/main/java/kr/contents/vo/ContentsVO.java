@@ -7,10 +7,10 @@ public class ContentsVO {
 	private String release;
 	private String country;
 	private String genre;
-	private int tomato;
+	private String tomato;
 	private String plot;
 	private String produce;
-	private int grade;
+	private String grade;
 	private int category_num; //카테고리
 	private int ott_num; //OTT
 	
@@ -60,10 +60,10 @@ public class ContentsVO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public int getTomato() {
+	public String getTomato() {
 		return tomato;
 	}
-	public void setTomato(int tomato) {
+	public void setTomato(String tomato) {
 		this.tomato = tomato;
 	}
 	public String getPlot() {
@@ -78,10 +78,10 @@ public class ContentsVO {
 	public void setProduce(String produce) {
 		this.produce = produce;
 	}
-	public int getGrade() {
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 	public int getCategory_num() {
