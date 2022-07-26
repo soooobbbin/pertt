@@ -1,75 +1,37 @@
 @charset "UTF-8";
 
-.rating .rate_radio + label {
-    position: relative;
+#myform fieldset{
     display: inline-block;
-    margin-left: -4px;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    background-image: url('./img/starrate.png');
-    background-repeat: no-repeat;
-    background-size: 60px 60px;
-    cursor: pointer;
-    background-color: #f0f0f0;
+    direction: rtl;
+    border:0;
 }
-.rating .rate_radio:checked + label {
-    background-color: #ff8;
+#myform fieldset legend{
+    text-align: right;
 }
-
-/* 레이아웃 외곽 너비 400px 제한*/
-.wrap{
-    max-width: 480px;
-    margin: 0 auto; /* 화면 가운데로 */
-    background-color: #fff;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-
-}
-.reviewform textarea{
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.rating .rate_radio {
-    position: relative;
-    display: inline-block;
-    z-index: 20;
-    opacity: 0.001;
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    cursor: pointer;
-    vertical-align: top;
+#myform input[type=radio]{
     display: none;
 }
-.rating .rate_radio + label {
-    position: relative;
-    display: inline-block;
-    margin-left: -4px;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    background-image: url('./img/starrate.png');
-    background-repeat: no-repeat;
-    background-size: 60px 60px;
-    cursor: pointer;
-    background-color: #f0f0f0;
+#myform label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
 }
-.rating .rate_radio:checked + label {
-    background-color: #ff8;
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
-
-.warning_msg {
-    display: none;
-    position: relative;
-    text-align: center;
-    background: #ffffff;
-    line-height: 26px;
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+#reviewContents {
     width: 100%;
-    color: red;
+    height: 150px;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #e0e0e0;
+    border: solid 1.5px #D3D3D3;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
 }

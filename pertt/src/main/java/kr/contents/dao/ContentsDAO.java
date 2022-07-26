@@ -230,7 +230,31 @@ public class ContentsDAO {
 			DBUtil.executeClose(null,pstmt,conn);
 		}
 	}
+	
+	//포스터 수정
+	public void updatePoster(String poster, int c_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
 
+		try {
+			conn = DBUtil.getConnection();
+
+			sql = "UPDATE contents SET poster=? WHERE c_num=?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, poster);
+			pstmt.setInt(2, c_num);
+
+			pstmt.executeUpdate();
+
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			DBUtil.executeClose(null,pstmt,conn);
+		}
+	}
+	
 	//작품 삭제
 	public void deleteContents(int c_num) throws Exception{
 		Connection conn = null;

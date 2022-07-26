@@ -32,7 +32,7 @@
 				</li>
 				<li>
 					<label for="name">이름</label>
-					<input type="text" name="name" id="name" maxlength="14" placeholder="이름을 입력하세요">
+					<input type="text" name="name" id="name" maxlength="20" placeholder="이름을 입력하세요">
 				</li>
 				<li>
 					<label for="birth">생년월일</label>
