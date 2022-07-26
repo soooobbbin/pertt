@@ -21,7 +21,7 @@
 			<hr size="1" width="80%" color="#9a9a9a">
 			<ul class="admin_cate_contents">
 				<li>작품 조회</li>
-				<li>전체 작품</li>
+				<li><a href="${pageContext.request.contextPath}/contents/list.do">전체 작품</a></li>
 				<li>OTT</li>
 				<li>카테고리</li>
 				<li>등급</li>

@@ -11,7 +11,6 @@
 <body>
 <div class="page-main">
 	<div class="content-main">
-	<h2>전체 회원</h2>
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 		<div class="admin-main">
 			<div class="admin_main_h2"><h2>전체 회원</h2></div>

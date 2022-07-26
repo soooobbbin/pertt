@@ -17,9 +17,11 @@ public class ListAction implements Action{
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) pageNum = "1";
 		
+		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
-		Integer category_num = Integer.parseInt(request.getParameter("category_num"));
+		int category_num = Integer.parseInt(request.getParameter("category_num"));
+		
 		
 		ContentsDAO dao = ContentsDAO.getInstance();
 		int count = dao.getContentsCount(keyfield, keyword);
