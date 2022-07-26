@@ -29,8 +29,10 @@ public class UpdatePosterAction implements Action{
 			mapAjax.put("result", "logout");
 		}else {
 			ContentsDAO dao = ContentsDAO.getInstance();
+			
+			int c_num = Integer.parseInt(request.getParameter("c_num"));
 			//이미 저장한 프로필 사진이 있는지 정보를 읽어옴
-			//ContentsVO db_member = dao.getMember(user_num);
+			ContentsVO db_content = dao.getContents(c_num);
 			
 			//전송된 파일 업로드 처리
 			MultipartRequest multi = FileUtil.createFile(request);
@@ -39,13 +41,13 @@ public class UpdatePosterAction implements Action{
 			String poster = multi.getFilesystemName("poster");
 			
 			//프로필 사진 수정
-			dao.updatePoster(poster, user_num);
+			dao.updatePoster(poster, c_num);
 			
 			//세션에 저장된 프로필 사진 정보 갱신
 			session.setAttribute("poster", poster);
 			
 			//이전 프로필 이미지 삭제
-			FileUtil.removeFile(request,db_member.getPhoto());
+			FileUtil.removeFile(request,db_content.getPoster());
 			
 			mapAjax.put("result", "success");
 			

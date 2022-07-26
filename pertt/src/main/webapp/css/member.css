@@ -138,6 +138,23 @@ td.mp-td2{
 	width:45px; text-align:left;
 }
 
+/*회원삭제*/
+
+tr.dt-table{
+vertical-align: bottom;
+
+}
+
+td.dt-txt1{
+	border-bottom:none;	
+	font-size:150%;
+	 font-weight: bold;
+}
+td.dt-txt2{
+	border-bottom:none;	
+	vertical-align: bottom;
+	color:rgb(190, 190, 190);
+}
 #main_logo{
 	padding-top:20px;
 }
@@ -196,6 +213,7 @@ a:hover{
 /*목록*/
 form#search_form{
 	border:none;
+	
 }
 ul.search{
 	width:300px;
