@@ -12,6 +12,10 @@
 			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</c:if>
+		<c:if test="${empty user_num && user_auth == 2}">
+			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+			<a href="${pageContext.request.contextPath}/main/main.do">메인화면</a>
+		</c:if>
 	
 	
 	</div>

@@ -28,7 +28,7 @@
 			</ul>
 			<hr size="1" width="80%" color="#9a9a9a">
 			<input class="contentsRegis_btn" type="button" 
-				value="작품등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
+				value="작품 등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
 	</nav>
 </div>
 <!-- header 끝 -->
