@@ -36,22 +36,14 @@
 				</li>
 			</ul>
 		</form> 
-		<%
-			List<CategoryVO> categoryList = (List<CategoryVO>)request.getAttribute("categoryList");
-			for(int i=0;i<categoryList.size();i++){
-		%>
-			<h2><%= categoryList.get(i).getCategory_name() %></h2>
-		<% 		
-				List<ContentsVO> contentsList = (List<ContentsVO>)request.getAttribute("contents"+i);
-				for(int j=0;j<contentsList.size();j++){
-		%>			
-					<div class="contentsList">
-					<%=contentsList.get(j).getPoster() %>
-					</div>
-		<% 			
-				}
-			}
-		%>
+		<c:forEach var="list" items="${categoryList}" varStatus="status">
+		<h2>${list.category_name}</h2>
+			<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
+			<div class="contentsList">
+					${content.poster}
+			</div>
+			</c:forEach>
+		</c:forEach>
 	</div>
 </div>
 </body>

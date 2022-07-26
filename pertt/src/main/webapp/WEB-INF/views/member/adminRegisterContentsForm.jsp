@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 등록</h2>
-		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" enctype="multipart/form-data">
+		<form action="adminRegisterContents.do" method="post" id="contentsRegister_form"  enctype="multipart/form-data">
 	
 			<%-- 작품 포스터 등록 --%>
 			<div class="contents-poster">

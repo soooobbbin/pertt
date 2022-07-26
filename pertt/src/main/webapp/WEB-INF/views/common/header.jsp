@@ -8,8 +8,10 @@
 			<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
 			<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
 		</c:if>
-		<c:if test="${!empty user_num && user_auth == 1}">
+		<c:if test="${!empty user_num}">
 			<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+		</c:if>
+		<c:if test="${!empty user_num && user_auth == 1}">
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</c:if>
 	
