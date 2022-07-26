@@ -40,7 +40,7 @@ public class ListAction implements Action{
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
 		
-		return "/WEB-INF/views/contents/list.jsp";
+		return "/WEB-INF/views/contents/list.do";
 	}
 
 }
