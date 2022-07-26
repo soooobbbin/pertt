@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_admin.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
