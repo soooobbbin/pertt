@@ -1,71 +1,17 @@
-
-
-//페이지 접속할 때 리뷰 쓴 기록이 있으면 작성창 안보이게 하기
 $(function(){
-	let reviewCheck = $('#reviewCheck').val();
-		alert(reviewCheck);
-		if(reviewCheck){//리뷰 이미 작성했음
-			$('#review_duplicated').show();
-			$('#review_notDuplicated').hide();
-		} else {//리뷰 작성한 적 없음
-			$('#review_duplicated').hide();
-			$('#review_notDuplicated').show();
-		}
-	
-	//========================리뷰 쓰기===========================
-	//빈내용 확인
-	$('#review_form').submit(function(event){
-		if($('#r_content').val().trim() == ''){
-			alert('내용을 입력하세요');
-			$('#r_content').val('').focus();
-			return false;	
-		}
-		
-		
-		//리뷰 content 등록 
-		let form_data = $(this).serialize();
-		
-		//리뷰등록을 위한 서버 프로그램 연결
-		$.ajax({
-			url:'reviewWrite.do',
-			type:'post',
-			data:form_data,
-			dataType:'json',
-			cache:false,
-			timeout:30000,
-			success:function(param){
-				if(param.result == 'logout'){
-					alert('로그인한 후에 이용할 수 있습니다.');
-				}else if (param.result =='success'){
-					//폼 초기화
-					
-					//첫번째 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
-					
-					//작성 완료하면 리뷰 작성했습니다로 바꾸기
-					$('#review_duplicated').show();
-					$('#review_notDuplicated').hide();
-				}
-			},
-			error:function(){
-				alert('네트워크 오류 발생');
-			}	
-		});
-		event.preventDefault();
-	});
-	
 	//리뷰 목록
 	let currentPage;
 	let count;
 	let rowCount;
 	
-	//댓글 목록
+	//리뷰 목록
 	function selectReviewList(pageNum){
 		currentPage = pageNum;
-		
+		var c_num = $('#c_num2').val();
 		$.ajax({
-			url:'review.do',
+			url:'reviewList.do',
 			type:'post',
-			data:{pageNum:pageNum,c_num:$('#c_num').val()},
+			data:{pageNum:pageNum,c_num:c_num},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -88,10 +34,13 @@ $(function(){
 					</div>
 					*/
 					
-					let reviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do?r_num=${review.c_review_num}&#39;">';
-					reviewView += '<span id="id">' +reviewList.id +'</span>';
-					reviewView += '<span id="star">starf;' +reviewList.star +'</span>';
-					reviewView += '<p id="content">${fn:substring(' +reviewList.c_review_content +', 0, 106)}</p>';
+					let reviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
+					reviewView += '?c_review_num='+item.c_review_num;
+					reviewView += '&c_num='+c_num;
+					reviewView += '&#39;">';
+					reviewView += '<span id="id">' +item.id +'</span>';
+					reviewView += '<span id="star">starf;' +item.star +'</span>';
+					reviewView += '<p id="content">${fn:substring(' +item.c_review_content +', 0, 106)}</p>';
 					reviewView += '<span id="like">추천수</span>';
 					reviewView += '</div>';
 					
@@ -107,19 +56,54 @@ $(function(){
 					//다음 페이지가 존재
 					$('.paging-button').show();
 				}
-				
 			},
 			error:function(){
-				$('#loading').hide();
-				alert('네크워크 오류 발생');
+				alert('리뷰 목록에서 네크워크 오류 발생');
 			}
 		});
-		
 	}
 	
 	//페이지 처리 이벤트 연결(다음 댓글 보기 버튼 클릭시 데이터 추가)
 	$('.paging-button input').click(function(){
 		selectList(currentPage + 1);
+	});
+	
+	//========================리뷰 쓰기===========================
+	//빈내용 확인
+	$('#review_form').submit(function(event){
+		if($('#r_content').val().trim() == ''){
+			alert('내용을 입력하세요');
+			$('#r_content').val('').focus();
+			return false;	
+		}
+		
+		//리뷰 content 등록 
+		let form_data = $(this).serialize();
+		
+		//리뷰등록을 위한 서버 프로그램 연결
+		$.ajax({
+			url:'reviewWrite.do',
+			type:'post',
+			data:form_data,
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인한 후에 이용할 수 있습니다.');
+				}else if (param.result =='success'){
+					//첫번째 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
+					selectReviewList(1);
+					//작성 완료하면 리뷰 작성했습니다로 바꾸기
+					$('#review_duplicated').show();
+					$('#review_notDuplicated').hide();
+				}
+			},
+			error:function(){
+				alert('리뷰 쓰기에서 네트워크 오류 발생');
+			}	
+		});
+		event.preventDefault();
 	});
 	
 	selectReviewList(1);

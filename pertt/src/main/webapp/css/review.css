@@ -169,6 +169,42 @@ span#text-review {
     font-weight: bolder;
     font-size: 1.4em;
 }
+span#review_id{
+    float: left;
+    margin: 20px 0 0 20px;
+    font-size: 16pt;
+    font-weight: bold;
+}
+p#review_content{
+    clear: both;
+    margin: 0;
+    text-align: left;
+    padding: 20px;
+}
+span#review_regdate{
+	float:right;
+}
+img#like1{
+    float: right;
+    width: 25px;
+    margin: 0 10px 10px 10px;
+}
+span#output_like{
+	float:right;
+}
+span#comment{
+	float:right;
+}
+span#output_comment{
+    margin: 0 20px 0 5px;
+    float: right;
+}
+
+
+
+
+
+
 
 
 

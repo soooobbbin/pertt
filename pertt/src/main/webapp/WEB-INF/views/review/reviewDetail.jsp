@@ -18,7 +18,7 @@
 	<div class="contents-detail">
 		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
 		<ul>
-			<li class="review_title">${contents.title } 컨텐츠이름영역 디즈니!
+			<li class="review_title">${contents.title }
 			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
 				<c:if test="${contents.ott_num == 1 }">
 					 NETFLIX</li>
@@ -48,25 +48,27 @@
 	<div class="review-grey">
 	<div class="review-align">
 		<div class="review-form">
-			${review.contents }
-			리뷰 내용 영역
+			<span id="review_id">${review.id }</span>
+			<p id="review_content">${review.c_review_content }</p>
+			<span id="output_comment"> 6</span>
+			<span id="comment"> 댓글 </span>
+			<span id="output_like"> </span>
+			<img src="${pageContext.request.contextPath }/images/like1.png" id="like1">
+			<span id="review_regdate">${review.c_review_reg_date } </span>
+			
 		</div><!-- end of review_form -->
 	
-		<!-- 댓글 영역 -->
+		<!-- 댓글 목록 출력 시작 -->
+		<!-- 댓글 페이지 처리 -->
+		<div id="output"></div>
+		<div class="paging-button" style="display:none">
+			<input type="button" value="다음글 보기">
+		</div>
+		<div id="loading" style="display:none">
+			<img src="${pageContext.request.contextPath }/images/ajax-loader.gif">
+		</div>
+		<!-- 댓글 끝 -->
 		
-		<c:if test="${count != 0 }">
-		<div class="align-center">
-			댓글 영역
-		</div>
-		<div class="align-center">
-			<div id="com-page">
-				${page}
-			</div>
-		</div>
-		</c:if>
-		<c:if test="${count == 0 }">
-			<h2>댓글이 없습니다.</h2>
-		</c:if>
 	</div><!-- end of review_grey -->
 	</div>
 	</div>

@@ -64,7 +64,7 @@
 		
 		<h2 class="write-review">리뷰 쓰기</h2>
 		<div class="review-form">
-		
+		<input type="hidden" id="c_num2" name="c_num2" value="${contents.c_num}">
 		<!-- 리뷰를 이미 작성한 경우 리뷰쓰기 폼 안 보임 -->
 		<c:if test="${reviewCheck}">
 		<div id="review_duplicated">
@@ -106,16 +106,7 @@
 					</ul>
 			</div>
 		</div>
-		<div class="review-view">
-			<c:forEach  var="review" items="${list}">
-				<div class="review-box" onclick="location.href='reviewDetail.do?r_num=${review.c_review_num}'">
-					<span id="id">${review.id }</span>
-					<span id="star">별점</span>
-					<p id="content">${fn:substring(review.c_review_content, 0, 106)}</p>
-					<span id="like">추천수</span>
-				</div>
-			</c:forEach>
-		</div>
+		<div class="review-view" id="review-view"></div>
 		<div class="end-float"></div>
 		<div class="align-center">
 			<div id="review-page">
