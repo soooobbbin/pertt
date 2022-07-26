@@ -14,6 +14,9 @@
 		<c:if test="${!empty user_num && user_auth == 1}">
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</c:if>
+		<c:if test="${!empty user_num && user_auth == 2}">
+			<a href="${pageContext.request.contextPath}/main/main_admin.do">관리자 홈</a>
+		</c:if>
 	
 	
 	</div>
