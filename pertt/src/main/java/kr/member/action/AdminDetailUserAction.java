@@ -29,15 +29,15 @@ public class AdminDetailUserAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		//전송된 데이터 반환
-		int mem_num = 
+		int member_num = 
 		 Integer.parseInt(request.getParameter("member_num"));
 		int auth = 
 		    Integer.parseInt(request.getParameter("auth"));
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		dao.updateMemberByAdmin(auth, mem_num);
+		dao.updateMemberByAdmin(auth, member_num);
 		
-		request.setAttribute("mem_num", mem_num);
+		request.setAttribute("member_num", member_num);
 		
 		return "/WEB-INF/views/member/detailUser.jsp";
 	}
