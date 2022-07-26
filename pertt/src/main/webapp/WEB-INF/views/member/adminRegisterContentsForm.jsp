@@ -30,8 +30,7 @@
 					</li>
 					<li>
 						<div class="align-center">
-							<input type="button" value="파일 선택"
-							       id="poster_btn">
+							<input type="button" value="파일 선택" id="poster_btn">
 						</div>
 						<div id="poster_choice" style="display:none;">
 							<input type="file" id="photo" 
@@ -97,46 +96,46 @@
 					<tr>
 						<td>카테고리</td>
 						<td id="last-child">
-							<select name="category" size="1">
+							<select name="category_num" size="1">
 								<%-- 넷플릭스 카테고리 --%>
 								<optgroup label="넥플릭스 카테고리">
-								<option value="오리지널 영화">오리지널 영화</option>
-								<option value="오리지널 드라마">오리지널 드라마</option>
-								<option value="오리지널 예능">오리지널 예능</option>
-								<option value="영화/드라마/예능">영화/드라마/예능</option>
-								<option value="지브리">지브리</option>
+								<option value="1">오리지널 영화</option>
+								<option value="2">오리지널 드라마</option>
+								<option value="3">오리지널 예능</option>
+								<option value="4">영화/드라마/예능</option>
+								<option value="5">지브리</option>
 								</optgroup>
 								<%-- 디즈니 카테고리 --%>
 								<optgroup label="디즈니+ 카테고리">
-								<option value="오리지널">오리지널</option>
-								<option value="디즈니">디즈니</option>
-								<option value="픽사">픽사</option>
-								<option value="마블">마블</option>
-								<option value="내셔널지오그래픽">내셔널지오그래픽</option>
+								<option value="6">오리지널</option>
+								<option value="7">디즈니</option>
+								<option value="8">픽사</option>
+								<option value="9">마블</option>
+								<option value="10">내셔널지오그래픽</option>
 								</optgroup>
 								<%-- 왓챠 카테고리(오리지널 : 중복이라제외) --%>
 								<optgroup label="왓챠 카테고리">
-								<option value="오리지널">오리지널</option>
-								<option value="왓챠 독점">왓챠 독점</option>
-								<option value="인디영화">인디영화</option>
-								<option value="일본작품">일본작품</option>
-								<option value="단편영화">단편영화</option>
+								<option value="11">오리지널</option>
+								<option value="12">왓챠 독점</option>
+								<option value="13">인디영화</option>
+								<option value="14">일본작품</option>
+								<option value="15">단편영화</option>
 								</optgroup>
 								<%-- 티빙 카테고리(오리지널드라마/예능 : 중복이라제외) --%>
 								<optgroup label="티빙 카테고리">
-								<option value="오리지널 드라마">오리지널 드라마</option>
-								<option value="오리지널 예능">오리지널 예능</option>
-								<option value="TVN">TVN</option>
-								<option value="Mnet">Mnet</option>
-								<option value="OCN">OCN</option>
+								<option value="16">오리지널 드라마</option>
+								<option value="17">오리지널 예능</option>
+								<option value="18">TVN</option>
+								<option value="19">Mnet</option>
+								<option value="20">OCN</option>
 								</optgroup>
 								<%-- 웨이브 카테고리(오리지널 : 중복이라제외) --%>
 								<optgroup label="웨이브 카테고리">
-								<option value="오리지널">오리지널</option>
-								<option value="KBS">KBS</option>
-								<option value="MBC">MBC</option>
-								<option value="SBS">SBS</option>
-								<option value="IDOL 리얼리티">IDOL 리얼리티</option>
+								<option value="21">오리지널</option>
+								<option value="22">KBS</option>
+								<option value="23">MBC</option>
+								<option value="24">SBS</option>
+								<option value="25">IDOL 리얼리티</option>
 								</optgroup>
 							</select>
 						</td>
@@ -144,11 +143,11 @@
 					<tr>
 						<td>OTT</td>
 						<td id="last-child">
-							<input type="radio" id="netfilx" name="netfilx" value="1">넷플릭스
-							<input type="radio" id="disney" name="disney" value="2">디즈니
-							<input type="radio" id="watcha" name="watcha" value="3">왓챠
-							<input type="radio" id="tving" name="tving" value="4">티빙
-							<input type="radio" id="wavve" name="wavve" value="5">웨이브
+							<input type="radio" id="netfilx" name="ott_num" value="1">넷플릭스
+							<input type="radio" id="disney" name="ott_num" value="2">디즈니
+							<input type="radio" id="watcha" name="ott_num" value="3">왓챠
+							<input type="radio" id="tving" name="ott_num" value="4">티빙
+							<input type="radio" id="wavve" name="ott_num" value="5">웨이브
 						</td>
 					</tr>
 				</table>
