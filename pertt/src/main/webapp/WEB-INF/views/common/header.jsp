@@ -13,6 +13,7 @@
 			<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 		</c:if>
 	
+	
 	</div>
 	<h1 class="align-center">
 		<a href="${pageContext.request.contextPath}/main/main.do">
