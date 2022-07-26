@@ -38,7 +38,16 @@ public class LoginAction implements Action{
 			session.setAttribute("user_auth", member.getAuth());
 			
 			//인증 성공시 호출
-			return "redirect:/main/main.do";
+			if(member.getAuth() == 0) {
+				//탈퇴한 회원일 경우
+				//return "redirect:/main/main.do";
+			}else if(member.getAuth() == 1) {
+				//일반 회원일 경우
+				return "redirect:/main/main.do";
+			}else if(member.getAuth() == 2) {
+				//관리자일 경우
+				return "redirect:/main/main_admin.do";
+			}
 		}
 		//인증 실패시 호출
 		return "/WEB-INF/views/member/login.jsp";
