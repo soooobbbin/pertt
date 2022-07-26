@@ -32,7 +32,7 @@
 			<a href="${pageContext.request.contextPath}/ott/intro.do">소개</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/ott/ottStar.do">ott별점주기</a>
+			<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>

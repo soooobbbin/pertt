@@ -26,14 +26,14 @@ public class OttPriceStarAction implements Action{
 		}
 		
 		//로그인 된 경우
-		MultipartRequest multi = FileUtil.createFile(request);
-		OttRankVO ottRank = new OttRankVO();
 		request.setCharacterEncoding("utf-8");
+		int ott_num = Integer.parseInt(request.getParameter("ott_num"));
+		String content = request.getParameter("content");
 		OttDAO dao = OttDAO.getInstance();
-		dao.insertStar(OttRankVO);
+		//dao.insertStar(ott_num, ott_num, ott_num, ott_num, ott_num);
 		
 		//
 		
-		return "/WEB-INF/views/ott/ottStar.jsp";
+		return "/WEB-INF/views/ott/ottReview.jsp";
 	}
 }
