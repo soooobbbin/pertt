@@ -40,7 +40,7 @@
 		<h2>${list.category_name}</h2>
 			<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
 			<div class="contentsList">
-					${content.poster}
+				<img src="${pageContext.request.contextPath}/upload/${content.poster}">
 			</div>
 			</c:forEach>
 		</c:forEach>

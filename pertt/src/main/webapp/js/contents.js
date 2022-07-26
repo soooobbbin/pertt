@@ -9,17 +9,11 @@ $(function(){
 	});
 	
 	//============= 작품 포스터 등록 ==============//
-	//작품 포스터 등록 이벤트 연결
-	$('#poster_btn').click(function(){
-		$('#poster_choice').show();
-		$(this).hide();//수정 버튼 감추기
-	});
-	
 	//이미지 미리 보기
 	//처음 화면에 보여지는 이미지 읽기
 	let photo_path = $('.con-poster').attr('src');
 	let con_poster;
-	$('#photo').change(function(){
+	$('#poster_btn').change(function(){
 		con_poster = this.files[0];
 		if(!con_poster){
 			$('.con-poster').attr('src',photo_path);
@@ -44,49 +38,10 @@ $(function(){
 	
 	//이미지 전송
 	$('#photo_submit').click(function(){
-		if($('#photo').val()==''){
+		if($('#poster_btn').val()==''){
 			alert('파일을 선택하세요!');
-			$('#photo').focus();
+			$('#poster_btn').focus();
 			return;
 		}
-		
-		//파일 전송
-		let form_data = new FormData();
-		form_data.append('photo',con_poster);
-		$.ajax({
-			url:'updatePoster.do',
-			type:'post',
-			data:form_data,
-			dataType:'json',
-			contentType:false,//데이터 객체를 문자열로 바꿀지에 대한 값. true면 일반문자
-			processData:false,//해당 타입을 true로 하면 일반 text로 구분
-			enctype:'multipart/form-data',
-			success:function(param){
-				if(param.result == 'logout'){
-					alert('로그인 후 사용하세요!');
-				}else if(param.result == 'success'){
-					alert('프로필 사진이 수정되었습니다.');
-					photo_path = $('.con-poster').attr('src');
-					$('#photo').val('');
-					$('#poster_choice').hide();
-					$('#poster_btn').show();//수정 버튼 노출
-				}else{
-					alert('파일 전송 오류 발생');
-				}
-			},
-			error:function(){
-				alert('네트워크 오류 발생');
-			}
-			
-		});
-	});//end of click
-	
-	//이미지 미리보기 취소
-	$('#photo_reset').click(function(){
-		//이미지 미리보기 전 원래 이미지로 되돌리기
-		$('.con-poster').attr('src',photo_path);
-		$('#photo').val('');
-		$('#poster_choice').hide();
-		$('#poster_btn').show();//수정 버튼 노출
-	});//end of click
+	});
 });
