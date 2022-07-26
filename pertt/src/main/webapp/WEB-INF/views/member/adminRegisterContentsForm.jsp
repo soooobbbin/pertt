@@ -8,7 +8,7 @@
 <title>작품등록</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/admin.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -30,14 +30,9 @@
 					</li>
 					<li>
 						<div class="align-center">
-							<input type="button" value="파일 선택" id="poster_btn">
+							<input type="file" value="파일 선택" id="poster_btn" name="poster">
 						</div>
-						<div id="poster_choice" style="display:none;">
-							<input type="file" id="photo" 
-							     accept="image/gif,image/png,image/jpeg">
-							<input type="button" value="전송" id="photo_submit">
-							<input type="button" value="취소" id="photo_reset">     
-						</div>
+						
 					</li>
 				</ul>
 			</div>
