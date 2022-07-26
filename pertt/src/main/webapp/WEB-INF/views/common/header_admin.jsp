@@ -4,8 +4,8 @@
 <!-- header 시작 -->
 <div id="admin_top">
 	<div id="main_menubar">
-		<a href="${pageContext.request.contextPath}/member/loginForm.do">로그인</a>
-		<a href="${pageContext.request.contextPath}/member/registerUserForm.do">회원가입</a>
+		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/main/main.do">메인화면</a>
 	</div>
 	<div id="admin_logo">
 		<a><img src="${pageContext.request.contextPath}/images/admin_logo.png" width="300" height="125">
@@ -28,7 +28,7 @@
 			</ul>
 			<hr size="1" width="80%" color="#9a9a9a">
 			<input class="contentsRegis_btn" type="button" 
-				value="작품등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
+				value="작품 등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
 	</nav>
 </div>
 <!-- header 끝 -->

@@ -64,6 +64,7 @@
 					    onclick="location.href='modifyUserForm.do'">
 				
 					<input type="button" value="회원탈퇴" class="gray-btn"
+					onclick="location.href='deleteUserForm.do'"
 					  >
 				</li>
 		

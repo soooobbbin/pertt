@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>작품등록</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_admin.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
@@ -15,15 +15,8 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 등록</h2>
-		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" 
-													enctype="multipart/form-data">
-		<%-- 등록 / 목록 버튼 --%>
-		<div class="align-right">
-			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
-		</div>
-			
-			
+		<form id="contentsRegister_form" action="adminRegisterContents.do" method="post" enctype="multipart/form-data">
+	
 			<%-- 작품 포스터 등록 --%>
 			<div class="contents-poster">
 				<ul>
@@ -68,12 +61,12 @@
 						<td>장르</td>
 						<td id="last-child">
 							<select name="genre" size="1">
-								<option value="장르">장르</option>
+								<option label="장르">
 								<option value="로맨스">로맨스</option>
-								<option value="공포">공포</option>
+								<option value="스릴러">스릴러</option>
 								<option value="코미디">코미디</option>
-								<option value="수사">수사</option>
-								<option value="감동">감동</option>
+								<option value="드라마">드라마</option>
+								<option value="SF">SF</option>
 							</select>
 						</td>
 					</tr>
@@ -94,10 +87,10 @@
 						<td id="last-child">
 							<select name="grade" size="1">
 								<option value="등급">등급</option>
-								<option value="ALL">로맨스</option>
-								<option value="12+">공포</option>
-								<option value="15+">코미디</option>
-								<option value="19+">수사</option>
+								<option value="ALL">ALL</option>
+								<option value="12세 이상">12세 이상</option>
+								<option value="15세 이상">15세 이상</option>
+								<option value="19세 이상">19세 이상</option>
 							</select>
 						</td>
 					</tr>
@@ -106,36 +99,45 @@
 						<td id="last-child">
 							<select name="category" size="1">
 								<%-- 넷플릭스 카테고리 --%>
-								<option value="카테고리">카테고리</option>
+								<optgroup label="넥플릭스 카테고리">
 								<option value="오리지널 영화">오리지널 영화</option>
 								<option value="오리지널 드라마">오리지널 드라마</option>
 								<option value="오리지널 예능">오리지널 예능</option>
 								<option value="영화/드라마/예능">영화/드라마/예능</option>
 								<option value="지브리">지브리</option>
-								
+								</optgroup>
 								<%-- 디즈니 카테고리 --%>
+								<optgroup label="디즈니+ 카테고리">
 								<option value="오리지널">오리지널</option>
 								<option value="디즈니">디즈니</option>
 								<option value="픽사">픽사</option>
 								<option value="마블">마블</option>
 								<option value="내셔널지오그래픽">내셔널지오그래픽</option>
-								
+								</optgroup>
 								<%-- 왓챠 카테고리(오리지널 : 중복이라제외) --%>
+								<optgroup label="왓챠 카테고리">
+								<option value="오리지널">오리지널</option>
 								<option value="왓챠 독점">왓챠 독점</option>
 								<option value="인디영화">인디영화</option>
 								<option value="일본작품">일본작품</option>
 								<option value="단편영화">단편영화</option>
-								
+								</optgroup>
 								<%-- 티빙 카테고리(오리지널드라마/예능 : 중복이라제외) --%>
-								<option value="Tvn">Tvn</option>
+								<optgroup label="티빙 카테고리">
+								<option value="오리지널 드라마">오리지널 드라마</option>
+								<option value="오리지널 예능">오리지널 예능</option>
+								<option value="TVN">TVN</option>
 								<option value="Mnet">Mnet</option>
 								<option value="OCN">OCN</option>
-								
+								</optgroup>
 								<%-- 웨이브 카테고리(오리지널 : 중복이라제외) --%>
+								<optgroup label="웨이브 카테고리">
+								<option value="오리지널">오리지널</option>
 								<option value="KBS">KBS</option>
 								<option value="MBC">MBC</option>
 								<option value="SBS">SBS</option>
 								<option value="IDOL 리얼리티">IDOL 리얼리티</option>
+								</optgroup>
 							</select>
 						</td>
 					</tr>
@@ -150,8 +152,15 @@
 						</td>
 					</tr>
 				</table>
-			</div>
+		</div>
+		<%-- 등록 / 목록 버튼 --%>
+		<div class="mainBtn">
+			<input type="submit" value="등록">
+			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
+		</div>
+			
 		</form>
+														
 	</div> <%--  end of class=contents-main --%>
 </div>
 </body>
