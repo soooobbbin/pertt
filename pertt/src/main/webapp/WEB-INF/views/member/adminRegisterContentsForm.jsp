@@ -156,7 +156,7 @@
 		<%-- 등록 / 목록 버튼 --%>
 		<div class="mainBtn">
 			<input type="submit" value="등록">
-			<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
+			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
 			
 		</form>
