@@ -19,7 +19,8 @@
 	<div class="align-center">
 	<div class="review-align">
 	<div class="contents-detail">
-		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
+	
+	<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
 		<ul>
 			<li class="review_title">${contents.title }
 			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
@@ -65,12 +66,13 @@
 		<div class="review-form">
 		
 		<!-- 리뷰를 이미 작성한 경우 리뷰쓰기 폼 안 보임 -->
-		
+		<c:if test="${reviewCheck}">
 		<div id="review_duplicated">
 			<h2>이미 리뷰를 작성했습니다.</h2>
 			<input type="button" value="내 리뷰 보러가기">
 		</div>
-		
+		</c:if>
+		<c:if test="${!reviewCheck}">
 		<div id="review_notDuplicated">
 			<!-- 리뷰 쓰기 폼 -->
 			<form id="review_form">
@@ -84,6 +86,7 @@
 				</c:if>
 			</form>
 		</div>
+		</c:if>
 		</div><!-- end of review_form -->
 		
 		<!-- 리뷰 목록 영역 -->
@@ -123,6 +126,10 @@
 		<c:if test="${count == 0 }">
 			<h2>리뷰가 없습니다.</h2>
 		</c:if>
+		
+		<div class="paging-button" style="display:none">
+			<input type="button" value="다음글 보기">
+		</div>
 	</div><!-- end of review_grey -->
 	</div>
 	</div>

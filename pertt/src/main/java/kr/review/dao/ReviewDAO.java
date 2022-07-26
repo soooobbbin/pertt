@@ -9,6 +9,7 @@ import java.util.List;
 import kr.review.vo.CommentVO;
 import kr.review.vo.ReviewVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class ReviewDAO {
 	//싱글톤 패턴
@@ -164,7 +165,7 @@ public class ReviewDAO {
 			while(rs.next()) {
 				review = new ReviewVO();
 				review.setC_num(rs.getInt("c_num"));
-				review.setC_review_content(rs.getString("c_review_content"));
+				review.setC_review_content(StringUtil.useBrNoHtml(rs.getString("c_review_content")));
 				review.setC_review_mod_date(rs.getDate("c_review_mod_date"));
 				review.setC_review_num(rs.getInt("c_review_num"));
 				review.setC_review_reg_date(rs.getDate("c_review_reg_date"));
@@ -287,7 +288,9 @@ public class ReviewDAO {
 			if(rs.next()) {
 				review = new ReviewVO();
 				review.setC_num(rs.getInt("c_num"));
-				review.setC_review_content(rs.getString("c_review_content"));
+				if(rs.getString("c_review_content") != null) {
+					review.setC_review_content(StringUtil.useBrNoHtml(rs.getString("c_review_content")));
+				}
 				review.setC_review_num(rs.getInt("c_review_num"));
 				review.setC_review_reg_date(rs.getDate("c_review_reg_date"));
 				review.setC_review_mod_date(rs.getDate("c_review_mod_date"));
@@ -359,7 +362,7 @@ public class ReviewDAO {
 				comment = new CommentVO();
 				comment.setC_num(rs.getInt("c_num"));
 				comment.setC_review_num(rs.getInt("c_review_num"));
-				comment.setCom_contents(rs.getString("com_contents"));
+				comment.setCom_contents(StringUtil.useBrNoHtml(rs.getString("com_contents")));
 				comment.setCom_num(rs.getInt("com_num"));
 				comment.setCom_reg_date(rs.getDate("com_reg_date"));
 				comment.setMember_num(rs.getInt("member_num"));

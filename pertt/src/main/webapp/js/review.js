@@ -1,4 +1,17 @@
+
+
+//페이지 접속할 때 리뷰 쓴 기록이 있으면 작성창 안보이게 하기
 $(function(){
+	let reviewCheck = $('#reviewCheck').val();
+		alert(reviewCheck);
+		if(reviewCheck){//리뷰 이미 작성했음
+			$('#review_duplicated').show();
+			$('#review_notDuplicated').hide();
+		} else {//리뷰 작성한 적 없음
+			$('#review_duplicated').hide();
+			$('#review_notDuplicated').show();
+		}
+	
 	//========================리뷰 쓰기===========================
 	//빈내용 확인
 	$('#review_form').submit(function(event){
@@ -8,16 +21,7 @@ $(function(){
 			return false;	
 		}
 		
-		/*var reviewCheck = '${reviewCheck}';
-		alert(reviewCheck);
-		if(reviewCheck){//리뷰 이미 작성했음
-			$('#review_duplicated').show();
-			$('#review_notDuplicated').hide();
-		} else {//리뷰 작성한 적 없음
-			$('#review_duplicated').hide();
-			$('#review_notDuplicated').show();
-		}
-		*/
+		
 		//리뷰 content 등록 
 		let form_data = $(this).serialize();
 		
@@ -35,7 +39,7 @@ $(function(){
 				}else if (param.result =='success'){
 					//폼 초기화
 					
-					//첫번쨰 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
+					//첫번째 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
 					
 					//작성 완료하면 리뷰 작성했습니다로 바꾸기
 					$('#review_duplicated').show();
@@ -49,4 +53,102 @@ $(function(){
 		event.preventDefault();
 	});
 	
+	//리뷰 목록
+	let currentPage;
+	let count;
+	let rowCount;
+	
+	//댓글 목록
+	function selectReviewList(pageNum){
+		currentPage = pageNum;
+		
+		$.ajax({
+			url:'review.do',
+			type:'post',
+			data:{pageNum:pageNum,c_num:$('#c_num').val()},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				count = param.count;
+				rowCount = param.rowCount;
+				
+				if(pageNum == 1){
+					//처음 호출시는 해당 ID의 div의 내부 내용물을 제거
+					$('#review-view').empty();
+				}
+				
+				$(param.reviewList).each(function(index,item){
+					/*
+					<div class="review-box" onclick="location.href='reviewDetail.do?r_num=${review.c_review_num}'">
+					<span id="id">${review.id }</span>
+					<span id="star">별점</span>
+					<p id="content">${fn:substring(review.c_review_content, 0, 106)}</p>
+					<span id="like">추천수</span>
+					</div>
+					*/
+					
+					let reviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do?r_num=${review.c_review_num}&#39;">';
+					reviewView += '<span id="id">' +reviewList.id +'</span>';
+					reviewView += '<span id="star">starf;' +reviewList.star +'</span>';
+					reviewView += '<p id="content">${fn:substring(' +reviewList.c_review_content +', 0, 106)}</p>';
+					reviewView += '<span id="like">추천수</span>';
+					reviewView += '</div>';
+					
+					//문서 객체에 추가
+					$('#review-view').append(reviewView);
+				});//end of each
+				
+				//page button 처리
+				if(currentPage>=Math.ceil(count/rowCount)){
+					//다음 페이지가 없음
+					$('.paging-button').hide();
+				}else{
+					//다음 페이지가 존재
+					$('.paging-button').show();
+				}
+				
+			},
+			error:function(){
+				$('#loading').hide();
+				alert('네크워크 오류 발생');
+			}
+		});
+		
+	}
+	
+	//페이지 처리 이벤트 연결(다음 댓글 보기 버튼 클릭시 데이터 추가)
+	$('.paging-button input').click(function(){
+		selectList(currentPage + 1);
+	});
+	
+	selectReviewList(1);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
