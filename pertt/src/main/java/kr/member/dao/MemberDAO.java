@@ -68,13 +68,9 @@ public class MemberDAO {
 			pstmt3.setString(2, member.getPasswd());
 			pstmt3.setString(3, member.getName());
 			
-			pstmt3.setString(4, member.getPhone1());
-			pstmt3.setString(4, member.getPhone2());
-			pstmt3.setString(4, member.getPhone3());
+			pstmt3.setString(4, member.getPhone());
 			pstmt3.setString(5, member.getEmail());
-			pstmt3.setString(6, member.getBirth1());
-			pstmt3.setString(6, member.getBirth2());
-			pstmt3.setString(6, member.getBirth3());
+			pstmt3.setString(6, member.getBirth());
 		
 			//JDBC 수행 4단계
 			pstmt3.executeUpdate();
@@ -164,9 +160,9 @@ public class MemberDAO {
 				member.setAuth(rs.getInt("auth"));
 				member.setPasswd(rs.getString("passwd"));
 				member.setName(rs.getString("name"));
-				member.setPhone1(rs.getString("phone"));
+				member.setPhone(rs.getString("phone"));
 				member.setEmail(rs.getString("email"));
-				member.setBirth1(rs.getString("birth"));
+				member.setBirth(rs.getString("birth"));
 				member.setReg_date(rs.getDate("reg_date"));
 				member.setMod_date(rs.getDate("mod_date"));
 			}

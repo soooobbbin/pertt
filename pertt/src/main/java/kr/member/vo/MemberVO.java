@@ -58,11 +58,6 @@ public class MemberVO {
 	}
 	
 	public String getPhone() {
-		if(phone1=="" || phone2=="" || phone3=="") {
-			phone="";
-		}else {
-			phone=phone1+"-"+phone2+"-"+phone3;
-		}
 		return phone;
 	}
 	
@@ -102,11 +97,6 @@ public class MemberVO {
 		this.email = email;
 	}
 	public String getBirth() {
-		if(birth1=="" || birth2=="" || birth3=="") {
-			birth="";
-		}else {
-			birth=birth1+"-"+birth2+"-"+birth3;
-		}
 		return birth;
 	}
 
