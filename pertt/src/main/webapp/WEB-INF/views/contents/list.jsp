@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>작품 목록</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_admin.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin.js"></script>
 </head>
@@ -16,7 +16,7 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>게시판 목록</h2>
-		`<form action="list.do" method="get" id="search_form">
+		<form action="list.do" method="get" id="search_form">
 			<ul class="search">
 				<li>
 					<select name="keyfield">
@@ -33,14 +33,12 @@
 					<input type="submit" value="검색">
 				</li>
 			</ul>
-		</form> 
+		
 	
+		<%--
 		<c:forEach var="category" items="${list}">
 		<h2>${category.category_name}</h2>
-		</c:forEach>
-		<c:forEach var="category" items="${list}">
-		<h2>${category.category_name}</h2>
-		</c:forEach>
+		</c:forEach> --%>
 		<div class="list-space align-right">
 			<c:if test="${!empty user_num}">
 			<input type="button" value="작품 등록" onclick="location.href='adminRegisterContentsForm.do'">
@@ -58,17 +56,23 @@
 			<tr>
 				<th>글번호</th>
 				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회</th>
+				<th>개봉일</th>
+				<th>장르</th>
+				<th>카테고리</th>
 			</tr>
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="contents" items="${list}">
 			<tr>
-				<td>${board.board_num }</td>
-				<td><a href="detail.do?board_num=${board.board_num}">${board.title}</a></td>
-				<td>${board.id}</td>
-				<td>${board.reg_date}</td>
-				<td>${board.hit}</td>
+				<td>${contents.c_num }</td>
+				<td><a href="detail.do?c_num=${contents.c_num}">${contents.title}</a></td>
+				<td>${contents.release}</td>
+				<td>${contents.genre}</td>
+				<c:if test="${content.category_num == 1}">
+				<td>오리지널 영화</td>
+				</c:if>
+				<c:if test="${content.category_num == 6}">
+				<td>오리지널 예능</td>
+				</c:if>
+				
 			</tr>
 			</c:forEach>
 		</table>
@@ -76,6 +80,7 @@
 			${page}
 		</div>
 		</c:if>
+		</form> 
 	</div>
 </div>
 
