@@ -44,9 +44,9 @@ $(function(){
 	function displayLike(param){
 		let output;
 		if(param.status == 'noLike'){
-			output = '../images/like01.gif';
+			output = '../images/like1.png';
 		}else{
-			output = '../images/like02.gif';
+			output = '../images/like2.png';
 		}
 		//문서 객체에 추가
 		$('#output_like').attr('src',output);

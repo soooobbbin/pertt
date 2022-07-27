@@ -55,7 +55,7 @@
 			<p id="review_content">${review.c_review_content }</p>
 			<span id="output_comment"> 6</span>
 			<span id="comment"> 댓글 </span>
-			<span id="output_lCount"> </span>
+			<span id="output_lcount"> </span>
 			<img id="output_like" src="${pageContext.request.contextPath }/images/like1.png">
 			<span id="review_regdate">${review.c_review_reg_date } </span>
 			

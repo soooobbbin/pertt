@@ -187,10 +187,11 @@ span#review_regdate{
 img#output_like{
     float: right;
     width: 25px;
-    margin: 0 10px 10px 10px;
+    margin: 0 0 10px 10px;
 }
-span#output_like{
-	float:right;
+span#output_lcount{
+    float: right;
+    margin: 0 10px 0 5px;
 }
 span#comment{
 	float:right;

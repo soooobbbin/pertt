@@ -41,7 +41,7 @@ $(function(){
 					reviewView += '<span id="id">' +item.id +'</span>';
 					reviewView += '<span id="star">starf;' +item.star +'</span>';
 					reviewView += '<p id="content">${fn:substring(' +item.c_review_content +', 0, 106)}</p>';
-					reviewView += '<span id="like">추천수</span>';
+					reviewView += '<span id="like">'+item.lcount +'</span>';
 					reviewView += '</div>';
 					
 					//문서 객체에 추가

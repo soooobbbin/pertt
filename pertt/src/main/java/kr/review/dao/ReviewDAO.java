@@ -171,6 +171,7 @@ public class ReviewDAO {
 				review.setC_star_num(rs.getInt("c_star_num"));
 				review.setMember_num(rs.getInt("member_num"));
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
+				review.setLcount(selectLikeCount(rs.getInt("c_review_num")));
 				list.add(review);
 			}
 		} catch (Exception e) {
