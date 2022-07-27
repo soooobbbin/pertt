@@ -37,10 +37,12 @@
 			</ul>
 		</form> 
 		<c:forEach var="list" items="${categoryList}" varStatus="status">
+		<div class="category_name">
 		<h2>${list.category_name}</h2>
+		</div>
 			<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
 			<div class="contentsList">
-				<img src="${pageContext.request.contextPath}/upload/${content.poster}">
+				<img src="${pageContext.request.contextPath}/upload/${content.poster}" class="contentsImg">
 			</div>
 			</c:forEach>
 		</c:forEach>
