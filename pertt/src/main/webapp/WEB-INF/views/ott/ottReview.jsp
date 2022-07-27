@@ -11,37 +11,32 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ottStar.js"></script>
 </head>
 <body>
-<div class="wrap">
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<div class="page-main">
+<div class="align-center">
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div align="center"></div>
+    <img src="../images/logo_netflix.png" width=300>
     <h1>가성비</h1>
-    <form name="reviewform" class="reviewform" method="post" action="/save">
-        <input type="hidden" name="rate" id="rate" value="0"/>
-        <p class="title_star">별점과 리뷰를 남겨주세요.</p>
- 
-        <div class="review_rating">
-            <div class="warning_msg">별점을 선택해 주세요.</div>
-            <div class="rating">
-                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-                <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-                <label for="rating1"></label>
-                <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-                <label for="rating2"></label>
-                <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
-                <label for="rating3"></label>
-                <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-                <label for="rating4"></label>
-                <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-                <label for="rating5"></label>
-            </div>
-        </div>
-        <div class="review_contents">
-            <div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-            <textarea rows="10" class="review_textarea"></textarea>
-        </div>   
-        <div class="cmd">
-            <input type="button" name="save" id="save" value="등록">
-        </div>
-    </form>
+     <form class="mb-3" name="myform" id="myform" method="post">
+		<fieldset>
+			<span class="text-bold">별점을 선택해주세요</span>
+			<input type="radio" name="reviewStar" value="5" id="rate1"><label
+				for="rate1">★</label>
+			<input type="radio" name="reviewStar" value="4" id="rate2"><label
+				for="rate2">★</label>
+			<input type="radio" name="reviewStar" value="3" id="rate3"><label
+				for="rate3">★</label>
+			<input type="radio" name="reviewStar" value="2" id="rate4"><label
+				for="rate4">★</label>
+			<input type="radio" name="reviewStar" value="1" id="rate5"><label
+				for="rate5">★</label>
+		</fieldset>
+		<div>
+			<textarea class="col-auto form-control" type="text" id="reviewContents"
+					  placeholder="좋은 수강평을 남겨주시면 Cocolo에 큰 힘이 됩니다! 포인트 5000p도 지급!!"></textarea>
+		</div>
+	</form>
+</div>
 </div>
 </body>
 </html>

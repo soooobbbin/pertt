@@ -95,7 +95,7 @@ public class ContentsDAO {
 	}
 	//작품 목록(검색글 목록)
 	public List<ContentsVO> getListContents(int start, int end, 
-			String keyfield, String keyword, int category_num)throws Exception{
+			String keyfield, String keyword,int category_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -111,10 +111,10 @@ public class ContentsDAO {
 			conn = DBUtil.getConnection();
 
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql += " AND c.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql += " AND c.genre LIKE ?";
-				else if(keyfield.equals("3")) sub_sql += " AND c.produce LIKE ?";
-				else if(keyfield.equals("4")) sub_sql += " AND c.category_num LIKE ?";
+				if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
+				else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
+				else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
 			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
@@ -127,6 +127,7 @@ public class ContentsDAO {
 			if(keyword != null && !"".equals(keyword)) {
 				pstmt.setString(++cnt, "%"+keyword+"%");
 			}
+					
 			pstmt.setInt(++cnt, start);
 			pstmt.setInt(++cnt, end);
 

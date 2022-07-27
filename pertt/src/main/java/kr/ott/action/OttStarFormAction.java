@@ -14,9 +14,9 @@ public class OttStarFormAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		/*
 		//OTT 번호 받아서 별점 표시 호출
-		int ott_num = Integer.parseInt(request.getParameter("ott_num"));
+		OttVO
 		OttDAO dao = OttDAO.getInstance();
 		OttRankVO ottRank = dao.getOttRank(ott_num);
 
@@ -48,7 +48,7 @@ public class OttStarFormAction implements Action{
 		request.setAttribute("count", count);//전체 글 수 
 		request.setAttribute("list", list);//리뷰 목록
 		request.setAttribute("page", page.getPage());//페이지
-		
+		*/
 		return "/WEB-INF/views/ott/ottReview.jsp";
 	}
 }
