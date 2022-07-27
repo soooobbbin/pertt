@@ -15,7 +15,7 @@
 	<div class="mypage-main">
 	<h2 class="mp-sub">MY PAGE</h2>
 		
-		 <form class="mp-form" action="modifyUser.do" method="post"> 
+		 <form class="mp-form" action="modifyUser.do" method="post"  id="modify_form"> 
 			<table  class="mp-info">
 				<tr > 
 					<td colspan=2 class="mp-info-T" > 회원정보</td>
@@ -120,10 +120,10 @@
 				<tr >
 					<td class="mp-td2">이메일</td>
 					<td class="mp-td2"><input type="text" name="email" id="email"
-					                     maxlength="12"></td>
+					                     maxlength="20"></td>
 				</tr>
 				
-				
+	
 				</table>
 			
 			<ul class="mp-btn">

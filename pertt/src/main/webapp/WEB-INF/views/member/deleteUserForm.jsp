@@ -51,6 +51,7 @@
 					<td>내정보 및 사이트 이용기록이 모두 삭제되며, <span
 						style="color: rgb(231, 76, 60);">삭제된 데이터는 복구되지 않습니다</span></td>
 				</tr>
+				
 				<tr>
 					<td rowspan="2"><img
 						src="${pageContext.request.contextPath}/images/check.png"
@@ -75,7 +76,7 @@
 
 				</table>
 			</div>
-			<hr>
+			<hr><br>
 			<table>
 				<tr class="dt-table">
 					<td class="dt-txt1">아이디 / 비밀번호 확인</td>

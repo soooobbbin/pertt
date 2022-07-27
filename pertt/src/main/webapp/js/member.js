@@ -98,33 +98,10 @@ $(function(){
 			return false;
 		}
 	});
-	
+	 
 	//============= 회원정보수정 ==============//
 	$('#modify_form').submit(function(){
-		if($('#name').val().trim()==''){
-			alert('이름을 입력하세요!');
-			$('#name').val('').focus();
-			return false;
-		}
-		if($('#phone').val().trim()==''){
-			alert('전화번호를 입력하세요!');
-			$('#phone').val('').focus();
-			return false;
-		}
-		if($('#email').val().trim()==''){
-			alert('이메일을 입력하세요!');
-			$('#email').val('').focus();
-			return false;
-		}
-	});
-	
-	//============= 비밀번호수정 ==============//
-	$('#password_form').submit(function(){
-		if($('#id').val().trim()==''){
-			alert('아이디를 입력하세요!');
-			$('#id').val('').focus();
-			return false;
-		}
+		
 		if($('#origin_passwd').val().trim()==''){
 			alert('현재 비밀번호를 입력하세요!');
 			$('#origin_passwd').val('').focus();
@@ -146,7 +123,28 @@ $(function(){
 			$('#cpasswd').val('');
 			return false;
 		}
-	});//end of submit
+		if($('#name').val().trim()==''){
+			alert('이름을 입력하세요!');
+			$('#name').val('').focus();
+			return false;
+		}
+		if($('#birth').val().trim()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birth').val('').focus();
+			return false;
+		}
+		if($('#phone').val().trim()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone').val('').focus();
+			return false;
+		}
+		if($('#email').val().trim()==''){
+			alert('이메일을 입력하세요!');
+			$('#email').val('').focus();
+			return false;
+		}
+	});
+	
 	
 	//새비밀번호 확인까지 한 후 다시 새비밀번호를 수정하려고 하면
 	//새비밀번호 확인을 초기화
@@ -171,11 +169,7 @@ $(function(){
 			$('#member_id').val('').focus();
 			return false;
 		}
-		if($('#email').val().trim()==''){
-			alert('이메일을 입력하세요!');
-			$('#email').val('').focus();
-			return false;
-		}
+		
 		if($('#passwd').val().trim()==''){
 			alert('비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
