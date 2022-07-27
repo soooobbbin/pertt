@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<nav class="content-left">
-			<div class="adminPage_btn">관리자 페이지</div>
+			<div class="adminPage_btn" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">관리자 페이지</div>
 			<ul class="admin_cate_member">
 				<li>회원 관리</li>
 				<li>전체 회원</li>
