@@ -41,7 +41,7 @@
 		</c:forEach> --%>
 		<div class="list-space align-right">
 			<c:if test="${!empty user_num}">
-			<input type="button" value="작품 등록" onclick="location.href='adminRegisterContentsForm.do'">
+			<input type="button" value="작품 등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
 			<input type="button" value="홈으로"
 				 onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">
 			</c:if>
@@ -58,7 +58,7 @@
 				<th>제목</th>
 				<th>개봉일</th>
 				<th>장르</th>
-				<th>카테고리</th>
+				<th>OTT</th>
 			</tr>
 			<c:forEach var="contents" items="${list}">
 			<tr>
@@ -66,12 +66,24 @@
 				<td><a href="detail.do?c_num=${contents.c_num}">${contents.title}</a></td>
 				<td>${contents.release}</td>
 				<td>${contents.genre}</td>
-				<c:if test="${content.category_num == 1}">
-				<td>오리지널 영화</td>
-				</c:if>
-				<c:if test="${content.category_num == 6}">
-				<td>오리지널 예능</td>
-				</c:if>
+				<c:choose>
+				<c:when test="${contents.ott_num == 1}">
+				<td>netflix</td>
+				</c:when>
+				<c:when test="${contents.ott_num == 2}">
+				<td>disney</td>
+				</c:when>
+				<c:when test="${contents.ott_num == 3}">
+				<td>watcha</td>
+				</c:when>
+				<c:when test="${contents.ott_num == 4}">
+				<td>tving</td>
+				</c:when>
+				<c:otherwise>
+				<td>wavve</td>
+				</c:otherwise>
+				
+				</c:choose>
 				
 			</tr>
 			</c:forEach>
