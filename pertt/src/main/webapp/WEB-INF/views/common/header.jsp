@@ -41,7 +41,7 @@
 			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1" id="netflix">넷플릭스</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/review/review.do" id="disney">디즈니+</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=2" id="disney">디즈니+</a>
 		</li>
 		<li>
 			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=3" id="watcha">왓챠</a>

@@ -11,8 +11,10 @@
 <meta charset="UTF-8">
 <title>OTT 작품</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/contents.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/image-scroll.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/contents.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/image.scroll.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -40,11 +42,25 @@
 		<div class="category_name">
 		<h2>${list.category_name}</h2>
 		</div>
-			<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
-			<div class="contentsList">
-				<img src="${pageContext.request.contextPath}/upload/${content.poster}" class="contentsImg">
+		<div class="poster-main">
+            <div class="place-xy scroll">
+              <div class="poster-scroll">
+				<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
+					<img src="${pageContext.request.contextPath}/upload/${content.poster}" class="contentsImg">
+				</c:forEach>
+			 </div>
 			</div>
-			</c:forEach>
+			<div class="btn-left left" style="display: none;">
+                <button type="button" class="poster-btn">
+                   <span>&lt;</span>
+                </button>
+            </div>
+            <div class="btn-right right" <c:if test="${empty requestScope['contents'+=status.index]}">style="display:none;"</c:if>>
+                <button type="button" class="poster-btn">
+                   <span>&gt;</span>    
+                </button>
+            </div>
+		</div>	 	
 		</c:forEach>
 	</div>
 </div>
