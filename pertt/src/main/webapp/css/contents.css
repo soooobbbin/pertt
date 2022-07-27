@@ -8,16 +8,16 @@ body{
 }
 
 .content-main{
-	color:white;
+	color:black;
 	padding:10px 20px;
 }
-.page-main{
-	background:#3D3C40;
+/*.page-main{
+	background:white;
 	margin:0;
 	border-radius:5px;
 	box-shadow:0 2px 6px rgba(100,100,100,0.3);
 	min-height:1000px;
-}
+}*/
 #main_logo{
 	padding-top:20px;
 }
@@ -29,7 +29,7 @@ body{
 #main_nav{
 	padding:2px 10px 20px 10px;
 	height:20px;
-	background-color:#F9F3EE;
+	background-color:#C1BFBF;
 }
 #main_nav ul{
 	list-style:none;
@@ -51,9 +51,7 @@ body{
 	width:150px;
 	text-align:left;
 }
-/*.content-main{
-	padding:10px 20px;
-}*/
+
 .result-display{
 	width:400px;
 	height:200px;
@@ -145,4 +143,23 @@ input[id="zipcode"]{
 }
 .form-notice{
 	margin-left:130px;
+}
+
+/*작품 나열*/
+.contentsList{
+	float:left;
+	margin: 0 5px 40px 5px;
+	
+}
+.category_name{
+	clear:both;
+}
+.contentsImg{
+	width:340px;
+	height:250px;
+}
+img#prev, img#next{
+	cursor:pointer;
+	float:left;	
+	margin:100px 10px;
 }

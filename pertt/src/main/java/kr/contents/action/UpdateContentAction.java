@@ -16,7 +16,7 @@ import kr.contents.vo.ContentsVO;
 import kr.controller.Action;
 import kr.util.FileUtil;
 
-public class UpdatePosterAction implements Action{
+public class UpdateContentAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -41,7 +41,7 @@ public class UpdatePosterAction implements Action{
 			String poster = multi.getFilesystemName("poster");
 			
 			//프로필 사진 수정
-			dao.updatePoster(poster, c_num);
+			//dao.updatecontents(poster, c_num);
 			
 			//세션에 저장된 프로필 사진 정보 갱신
 			session.setAttribute("poster", poster);

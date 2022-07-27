@@ -56,25 +56,31 @@
 						<td id="last-child">
 							<select name="genre" size="1">
 								<option label="장르">
-								<option value="로맨스">로맨스</option>
-								<option value="스릴러">스릴러</option>
-								<option value="코미디">코미디</option>
-								<option value="드라마">드라마</option>
-								<option value="SF">SF</option>
+								<option value="#로맨스">로맨스</option>
+								<option value="#스릴러">스릴러</option>
+								<option value="#코미디">코미디</option>
+								<option value="#드라마">드라마</option>
+								<option value="#뮤지컬">뮤지컬</option>
+								<option value="#SF">SF</option>
+								<option value="#액션">액션</option>
+								<option value="#범죄">범죄</option>
+								<option value="#공포">공포</option>
+								<option value="#판타지">판타지</option>
+								<option value="#애니메이션">애니메이션</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td>토마토 지수</td>
-						<td id="last-child"><input type="text" id="tomato" name="tomato" placeholder="토마토 지수를 입력하세요"></td>
+						<td>러닝 타임</td>
+						<td id="last-child"><input type="text" id="tomato" name="tomato" placeholder="러닝타임을 입력하세요" autocomplete="off"></td>
 					</tr>
 					<tr>
 						<td>줄거리</td>
-						<td id="last-child"><textarea rows="3" cols="30" name="plot" id="plot" placeholder="줄거리를 입력하세요"></textarea></td>
+						<td id="last-child"><textarea rows="3" cols="50" name="plot" id="plot" placeholder="줄거리를 입력하세요"></textarea></td>
 					</tr>
 					<tr>
 						<td>출연/제작</td>
-						<td id="last-child"><input type="text" id="produce" name="produce" placeholder="출연/제작란을 입력하세요"></td>
+						<td id="last-child"><textarea rows="3" cols="50" id="produce" name="produce" placeholder="출연/제작란을 입력하세요"></textarea></td>
 					</tr>
 					<tr>
 						<td>등급</td>
@@ -82,9 +88,9 @@
 							<select name="grade" size="1">
 								<option value="등급">등급</option>
 								<option value="ALL">ALL</option>
-								<option value="12세 이상">12세 이상</option>
-								<option value="15세 이상">15세 이상</option>
-								<option value="19세 이상">19세 이상</option>
+								<option value="12+">12세 이상</option>
+								<option value="15+">15세 이상</option>
+								<option value="19+">19세 이상</option>
 							</select>
 						</td>
 					</tr>
@@ -93,7 +99,7 @@
 						<td id="last-child">
 							<select name="category_num" size="1">
 								<%-- 넷플릭스 카테고리 --%>
-								<optgroup label="넥플릭스 카테고리">
+								<optgroup label="넷플릭스 카테고리">
 								<option value="1">오리지널 영화</option>
 								<option value="2">오리지널 드라마</option>
 								<option value="3">오리지널 예능</option>

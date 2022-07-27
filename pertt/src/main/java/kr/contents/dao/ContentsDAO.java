@@ -9,6 +9,7 @@ import java.util.List;
 import kr.contents.vo.CategoryVO;
 import kr.contents.vo.ContentsVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class ContentsDAO {
 	//싱글턴 패턴
@@ -101,19 +102,20 @@ public class ContentsDAO {
 		ResultSet rs = null;
 		List<ContentsVO> list = null;
 		String sql = null;
-		String sub_sql = "";
+		String sub_sql ="";
+		if(category_num != 0) {
+			sub_sql = "WHERE category_num = ?";
+		}
 		int cnt = 0;
 
 		try {
 			conn = DBUtil.getConnection();
 
-
-
 			if(keyword!=null && !"".equals(keyword)) {
 				if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
 				else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
 				else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
-				//else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
+				else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
 			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
@@ -122,7 +124,7 @@ public class ContentsDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
-			//pstmt.setInt(++cnt, category_num);
+			pstmt.setInt(++cnt, category_num);
 			if(keyword != null && !"".equals(keyword)) {
 				pstmt.setString(++cnt, "%"+keyword+"%");
 			}
@@ -182,8 +184,8 @@ public class ContentsDAO {
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
 				contents.setTomato(rs.getString("tomato"));
-				contents.setPlot(rs.getString("plot"));
-				contents.setProduce(rs.getString("produce"));
+				contents.setPlot(StringUtil.useBrNoHtml(rs.getString("plot")));
+				contents.setProduce(StringUtil.useBrNoHtml(rs.getString("produce")));
 				contents.setGrade(rs.getString("grade"));
 				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));
@@ -231,29 +233,6 @@ public class ContentsDAO {
 		}
 	}
 	
-	//포스터 수정
-	public void updatePoster(String poster, int c_num) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-
-		try {
-			conn = DBUtil.getConnection();
-
-			sql = "UPDATE contents SET poster=? WHERE c_num=?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, poster);
-			pstmt.setInt(2, c_num);
-
-			pstmt.executeUpdate();
-
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null,pstmt,conn);
-		}
-	}
 	
 	//작품 삭제
 	public void deleteContents(int c_num) throws Exception{
