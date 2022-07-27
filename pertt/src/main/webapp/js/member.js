@@ -98,7 +98,7 @@ $(function(){
 			return false;
 		}
 	});
-	
+	 
 	//============= 회원정보수정 ==============//
 	$('#modify_form').submit(function(){
 		

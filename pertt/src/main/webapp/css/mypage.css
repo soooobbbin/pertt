@@ -38,7 +38,7 @@ body{
     border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113);
     padding:15px 30px;
     padding-bottom:30px;
-    margin-left:100px;
+    margin-left:150px;
     text-align: left;
     width:25%;
     height:900px;
@@ -102,7 +102,7 @@ td.mp-td2{
 .mp-btn{
 	font-size:100%;
 	padding-left:250px;
-	margin-left:110px;
+	margin-left:140px;
 	
 }
 /*수정버튼*/
