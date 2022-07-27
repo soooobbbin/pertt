@@ -95,25 +95,26 @@ public class ContentsDAO {
 	}
 	//작품 목록(검색글 목록)
 	public List<ContentsVO> getListContents(int start, int end, 
-			String keyfield, String keyword, int category_num)throws Exception{
+			String keyfield, String keyword,int category_num)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ContentsVO> list = null;
 		String sql = null;
-		String sub_sql = "WHERE category_num = ?";
+		String sub_sql ="";
+		if(category_num != 0) {
+			sub_sql = "WHERE category_num = ?";
+		}
 		int cnt = 0;
 
 		try {
 			conn = DBUtil.getConnection();
 
-
-
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql += " AND c.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql += " AND c.genre LIKE ?";
-				else if(keyfield.equals("3")) sub_sql += " AND c.produce LIKE ?";
-				else if(keyfield.equals("4")) sub_sql += " AND c.category_num LIKE ?";
+				if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
+				else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
+				else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
 			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
@@ -126,6 +127,7 @@ public class ContentsDAO {
 			if(keyword != null && !"".equals(keyword)) {
 				pstmt.setString(++cnt, "%"+keyword+"%");
 			}
+					
 			pstmt.setInt(++cnt, start);
 			pstmt.setInt(++cnt, end);
 
@@ -230,29 +232,6 @@ public class ContentsDAO {
 		}
 	}
 	
-	//포스터 수정
-	public void updatePoster(String poster, int c_num) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-
-		try {
-			conn = DBUtil.getConnection();
-
-			sql = "UPDATE contents SET poster=? WHERE c_num=?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, poster);
-			pstmt.setInt(2, c_num);
-
-			pstmt.executeUpdate();
-
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null,pstmt,conn);
-		}
-	}
 	
 	//작품 삭제
 	public void deleteContents(int c_num) throws Exception{
