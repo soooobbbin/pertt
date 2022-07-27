@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -128,9 +128,10 @@
 			
 			<ul class="mp-btn">
 				<li>
-				<input type="submit" value="수정" class="blue-btn" onclick="location.href='myPage.do'">
+				<input type="submit" value="수정" class="blue-btn" 
+				onclick="location.href='myPage.do'">
 				
-				<input type="button" class="gray-btn" value="취소"
+				<input type="button" value="취소" class="gray-btn" 
 				    onclick="location.href='myPage.do'">
 				   </li> 
 			</ul>
