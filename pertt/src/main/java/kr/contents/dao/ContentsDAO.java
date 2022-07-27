@@ -9,6 +9,7 @@ import java.util.List;
 import kr.contents.vo.CategoryVO;
 import kr.contents.vo.ContentsVO;
 import kr.util.DBUtil;
+import kr.util.StringUtil;
 
 public class ContentsDAO {
 	//싱글턴 패턴
@@ -183,8 +184,8 @@ public class ContentsDAO {
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
 				contents.setTomato(rs.getString("tomato"));
-				contents.setPlot(rs.getString("plot"));
-				contents.setProduce(rs.getString("produce"));
+				contents.setPlot(StringUtil.useBrNoHtml(rs.getString("plot")));
+				contents.setProduce(StringUtil.useBrNoHtml(rs.getString("produce")));
 				contents.setGrade(rs.getString("grade"));
 				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));

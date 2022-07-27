@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -15,7 +15,7 @@
 	<div class="mypage-main">
 	<h2 class="mp-sub">MY PAGE</h2>
 		
-		 <form class="mp-form" action="modifyUser.do" method="post"> 
+		 <form class="mp-form" action="modifyUser.do" method="post"  id="modify_form"> 
 			<table  class="mp-info">
 				<tr > 
 					<td colspan=2 class="mp-info-T" > 회원정보</td>
@@ -120,17 +120,18 @@
 				<tr >
 					<td class="mp-td2">이메일</td>
 					<td class="mp-td2"><input type="text" name="email" id="email"
-					                     maxlength="12"></td>
+					                     maxlength="20"></td>
 				</tr>
 				
-				
+	
 				</table>
 			
 			<ul class="mp-btn">
 				<li>
-				<input type="submit" value="수정" class="blue-btn" onclick="location.href='myPage.do'">
+				<input type="submit" value="수정" class="blue-btn" 
+				onclick="location.href='myPage.do'">
 				
-				<input type="button" class="gray-btn" value="취소"
+				<input type="button" value="취소" class="gray-btn" 
 				    onclick="location.href='myPage.do'">
 				   </li> 
 			</ul>
