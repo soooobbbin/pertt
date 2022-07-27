@@ -60,6 +60,7 @@
 								<option value="#스릴러">스릴러</option>
 								<option value="#코미디">코미디</option>
 								<option value="#드라마">드라마</option>
+								<option value="#뮤지컬">뮤지컬</option>
 								<option value="#SF">SF</option>
 								<option value="#액션">액션</option>
 								<option value="#범죄">범죄</option>
@@ -71,7 +72,7 @@
 					</tr>
 					<tr>
 						<td>러닝 타임</td>
-						<td id="last-child"><input type="text" id="tomato" name="tomato" placeholder="러닝타임을 입력하세요"></td>
+						<td id="last-child"><input type="text" id="tomato" name="tomato" placeholder="러닝타임을 입력하세요" autocomplete="off"></td>
 					</tr>
 					<tr>
 						<td>줄거리</td>
