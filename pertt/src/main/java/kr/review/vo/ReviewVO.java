@@ -16,7 +16,14 @@ public class ReviewVO {
 	
 	//join해서 사용
 	private String id;
+	private int lcount; // 좋아요 수
 	
+	public int getLcount() {
+		return lcount;
+	}
+	public void setLcount(int lcount) {
+		this.lcount = lcount;
+	}
 	public int getStar() {
 		return star;
 	}
