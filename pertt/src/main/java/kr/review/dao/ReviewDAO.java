@@ -10,6 +10,7 @@ import kr.review.vo.CommentVO;
 import kr.review.vo.LikeVO;
 import kr.review.vo.ReviewVO;
 import kr.util.DBUtil;
+import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class ReviewDAO {
@@ -80,11 +81,31 @@ public class ReviewDAO {
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "update c_review set c_review_content=? " + "where member_num=? and c_num=?";
+			sql = "update c_review set c_review_content=? " 
+					+ "where member_num=? and c_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, content);
 			pstmt.setInt(2, member_num);
 			pstmt.setInt(3, c_num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	//리뷰 수정
+	public void modifyReviewContent(int c_review_num, String c_review_content) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "update c_review set c_review_content=?, c_review_mod_date=sysdate " 
+					+ "where c_review_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, c_review_content);
+			pstmt.setInt(2, c_review_num);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -191,8 +212,7 @@ public class ReviewDAO {
 		ReviewVO review = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from c_review join c_star using (c_star_num) " 
-					+ "where c_review_num=?";
+			sql = "select * from c_review join c_star using (c_star_num) " + "where c_review_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_review_num);
 			rs = pstmt.executeQuery();
@@ -204,6 +224,9 @@ public class ReviewDAO {
 				review.setC_review_reg_date(rs.getDate("c_review_reg_date"));
 				review.setC_star_num(rs.getInt("c_star_num"));
 				review.setMember_num(rs.getInt("member_num"));
+				if(rs.getDate("c_review_mod_date") != null) {
+					review.setC_review_mod_date(rs.getDate("c_review_mod_date"));
+				}
 				// 메소드로 id 받아오기
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
 				// star테이블 join
@@ -249,13 +272,18 @@ public class ReviewDAO {
 			// 오토커밋 해제
 			conn.setAutoCommit(false);
 			// 댓글 삭제
+			sql = "delete from c_review_com where c_review_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_review_num);
+			pstmt.executeUpdate();
+			
 			// 좋아요 삭제
 			sql = "delete from r_like where c_review_num=?";
 			pstmt2 = conn.prepareStatement(sql);
 			pstmt2.setInt(1, c_review_num);
 			pstmt2.executeUpdate();
 
-			sql = "delete from c_review where c_review_num = ?";
+			sql = "update c_review set c_review_content=null where c_review_num = ?";
 			pstmt3 = conn.prepareStatement(sql);
 			pstmt3.setInt(1, c_review_num);
 			pstmt3.executeUpdate();
@@ -332,8 +360,8 @@ public class ReviewDAO {
 		return check;
 	}
 
-	//=================좋아요=====================
-	//좋아요 등록
+	// =================좋아요=====================
+	// 좋아요 등록
 	public void insertLike(int c_review_num, int member_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -341,8 +369,7 @@ public class ReviewDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-			sql = "INSERT INTO r_like (r_like_num,c_review_num," 
-					+ "member_num) VALUES (r_like_seq.nextval,?,?)";
+			sql = "INSERT INTO r_like (r_like_num,c_review_num," + "member_num) VALUES (r_like_seq.nextval,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_review_num);
 			pstmt.setInt(2, member_num);
@@ -354,7 +381,7 @@ public class ReviewDAO {
 		}
 	}
 
-	//좋아요 개수
+	// 좋아요 개수
 	public int selectLikeCount(int c_review_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -378,7 +405,7 @@ public class ReviewDAO {
 		return count;
 	}
 
-	//회원번호와 게시물 번호를 이용한 좋아요 정보
+	// 회원번호와 게시물 번호를 이용한 좋아요 정보
 	public LikeVO selectLike(int r_review_num, int member_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -406,7 +433,7 @@ public class ReviewDAO {
 		return like;
 	}
 
-	//좋아요 삭제
+	// 좋아요 삭제
 	public void deleteLike(int r_like_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -424,7 +451,7 @@ public class ReviewDAO {
 		}
 	}
 
-	//내가 선택한 좋아요 목록
+	// 내가 선택한 좋아요 목록
 	public List<ReviewVO> getListBoardLike(int start, int end, int member_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -433,12 +460,9 @@ public class ReviewDAO {
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "SELECT * FROM (SELECT a.*, rownum rnum " 
-					+ "FROM (SELECT * FROM c_review b JOIN "
-					+ "member m USING(member_num) JOIN r_like l " 
-					+ "USING(c_review_num) WHERE l.member_num=? "
-					+ "ORDER BY c_review_num DESC)a) " 
-					+ "WHERE rnum >= ? AND rnum<=?";
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum " + "FROM (SELECT * FROM c_review b JOIN "
+					+ "member m USING(member_num) JOIN r_like l " + "USING(c_review_num) WHERE l.member_num=? "
+					+ "ORDER BY c_review_num DESC)a) " + "WHERE rnum >= ? AND rnum<=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, member_num);
@@ -465,8 +489,93 @@ public class ReviewDAO {
 	}
 
 	// 댓글 등록
+	public void insertComment(CommentVO comment) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "INSERT INTO c_review_com (com_num,com_reg_date," 
+					+ "com_content,c_review_num,member_num,c_num) "
+					+ "VALUES (c_review_com_seq.nextval,sysdate,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, comment.getCom_content());
+			pstmt.setInt(2, comment.getC_review_num());
+			pstmt.setInt(3, comment.getMember_num());
+			pstmt.setInt(4, comment.getC_num());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+
 	// 댓글 개수
+	public int getCommentCount(int c_review_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT COUNT(*) FROM c_review_com b " 
+					+ "WHERE b.c_review_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_review_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+
 	// 댓글 목록
+	public List<CommentVO> getListComment(int start, int end, int c_review_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<CommentVO> list = null;
+		String sql = null;
+
+		try {
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum " 
+					+ "FROM (SELECT * FROM c_review_com b "
+					+ "WHERE b.c_review_num=? ORDER BY b.com_num " 
+					+ "DESC)a) WHERE rnum >= ? AND rnum <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_review_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<CommentVO>();
+			while (rs.next()) {
+				CommentVO comment = new CommentVO();
+				comment.setCom_num(rs.getInt("com_num"));
+				comment.setCom_content(StringUtil.useBrNoHtml(rs.getString("com_content")));
+				// 날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+				comment.setCom_reg_date(DurationFromNow.getTimeDiffLabel(rs.getString("com_reg_date")));
+				comment.setC_review_num(rs.getInt("c_review_num"));
+				comment.setMember_num(rs.getInt("member_num"));
+				comment.setC_num(rs.getInt("c_num"));
+				comment.setId(getIdByMemberNum(rs.getInt("member_num")));
+				list.add(comment);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+
+		return list;
+	}
 
 	// 댓글 상세
 	public CommentVO getCommentDetail(int com_num) throws Exception {
@@ -485,9 +594,9 @@ public class ReviewDAO {
 				comment = new CommentVO();
 				comment.setC_num(rs.getInt("c_num"));
 				comment.setC_review_num(rs.getInt("c_review_num"));
-				comment.setCom_contents(StringUtil.useBrNoHtml(rs.getString("com_contents")));
+				comment.setCom_content(StringUtil.useBrNoHtml(rs.getString("com_content")));
 				comment.setCom_num(rs.getInt("com_num"));
-				comment.setCom_reg_date(rs.getDate("com_reg_date"));
+				comment.setCom_reg_date(rs.getString("com_reg_date"));
 				comment.setMember_num(rs.getInt("member_num"));
 			}
 		} catch (Exception e) {
@@ -498,6 +607,22 @@ public class ReviewDAO {
 		return comment;
 	}
 
-	// 댓글 수정
 	// 댓글 삭제
+	public void deleteComment(int com_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "DELETE FROM c_review_com WHERE com_num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, com_num);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
 }

@@ -75,7 +75,7 @@ span.write-review  {
     margin: 0 auto;
     font-size: 1.4em;
 }
-div.review-form {
+div.review-detail-box{
     margin: 0 20px 45px 20px;
     background-color: white;
     width: 820px;
