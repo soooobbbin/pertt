@@ -378,7 +378,7 @@ public class ReviewDAO {
 	}
 
 	//회원번호와 게시물 번호를 이용한 좋아요 정보
-	public LikeVO selectFav(int r_review_num, int member_num) throws Exception {
+	public LikeVO selectLike(int r_review_num, int member_num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

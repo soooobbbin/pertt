@@ -9,6 +9,8 @@
 <title>${contents.title }</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/reviewDetail.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -47,13 +49,14 @@
 	
 	<div class="review-grey">
 	<div class="review-align">
+		<input type="hidden" id="c_review_num" name="c_review_num" value="${review.c_review_num }">
 		<div class="review-form">
 			<span id="review_id">${review.id }</span>
 			<p id="review_content">${review.c_review_content }</p>
 			<span id="output_comment"> 6</span>
 			<span id="comment"> 댓글 </span>
-			<span id="output_like"> </span>
-			<img src="${pageContext.request.contextPath }/images/like1.png" id="like1">
+			<span id="output_lCount"> </span>
+			<img id="output_like" src="${pageContext.request.contextPath }/images/like1.png">
 			<span id="review_regdate">${review.c_review_reg_date } </span>
 			
 		</div><!-- end of review_form -->

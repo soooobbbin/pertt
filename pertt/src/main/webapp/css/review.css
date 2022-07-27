@@ -184,7 +184,7 @@ p#review_content{
 span#review_regdate{
 	float:right;
 }
-img#like1{
+img#output_like{
     float: right;
     width: 25px;
     margin: 0 10px 10px 10px;
