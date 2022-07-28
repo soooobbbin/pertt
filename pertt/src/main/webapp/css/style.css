@@ -95,6 +95,7 @@ a#intro, a#recommend{
   position: relative;
   display: inline-block;
   cursor:pointer;
+  margin-right:-50px;
 }
 
 .dropdown-content {
