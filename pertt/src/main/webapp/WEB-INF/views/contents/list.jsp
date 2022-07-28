@@ -17,7 +17,7 @@
 	<div class="content-main">
 		<h2>게시판 목록</h2>
 		<form action="list.do" method="get" id="search_form">
-			<ul class="search">
+			<ul class="list-search">
 				<li>
 					<select name="keyfield">
 						<option value="1">제목</option>
@@ -33,12 +33,6 @@
 					<input type="submit" value="검색">
 				</li>
 			</ul>
-		
-	
-		<%--
-		<c:forEach var="category" items="${list}">
-		<h2>${category.category_name}</h2>
-		</c:forEach> --%>
 		<div class="list-space align-right">
 			<c:if test="${!empty user_num}">
 			<input type="button" value="작품 등록" onclick="location.href='${pageContext.request.contextPath}/member/adminRegisterContentsForm.do'">
@@ -52,13 +46,13 @@
 		</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<table>
+		<table class="list-tb">
 			<tr>
-				<th>글번호</th>
+				<th id="first-th">글번호</th>
 				<th>제목</th>
 				<th>개봉일</th>
 				<th>장르</th>
-				<th>OTT</th>
+				<th id="last-child">OTT</th>
 			</tr>
 			<c:forEach var="contents" items="${list}">
 			<tr>
@@ -68,23 +62,21 @@
 				<td>${contents.genre}</td>
 				<c:choose>
 				<c:when test="${contents.ott_num == 1}">
-				<td>netflix</td>
+				<td id="last-child">netflix</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 2}">
-				<td>disney</td>
+				<td id="last-child">disney</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 3}">
-				<td>watcha</td>
+				<td id="last-child">watcha</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 4}">
-				<td>tving</td>
+				<td id="last-child">tving</td>
 				</c:when>
 				<c:otherwise>
-				<td>wavve</td>
+				<td id="last-child">wavve</td>
 				</c:otherwise>
-				
 				</c:choose>
-				
 			</tr>
 			</c:forEach>
 		</table>
