@@ -137,6 +137,10 @@ a:hover{
     margin-left: 35px;
     position: static;
 }
+
+div ul li#li-bold{
+	font-weight: bold;
+}
 /*목록*/
 form#search_form{
 	width: 200px;

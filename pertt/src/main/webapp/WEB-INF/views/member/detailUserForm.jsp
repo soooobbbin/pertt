@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보(관리자 전용)</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css" type="text/css">
 </head>
 <body>
 <div class="page-main">
-	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>${member.member_id}의 회원정보 (관리자 전용)</h2>
 		<form action="detailUser.do" method="post"
