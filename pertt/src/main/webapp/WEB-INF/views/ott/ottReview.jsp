@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>OTT 별점 주기</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ott_star.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ott-star.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ottStar.js"></script>
 </head>
@@ -14,6 +15,13 @@
 <div class="page-main">
 <div class="align-center">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<div class="botton">
+		<a href="ottReview.do?ott_num=1"><img src="../images/logo_square_netflix.png"/></a>
+		<a href="ottReview.do?ott_num=2"><img src="../images/logo_square_disney.png"/></a>
+		<a href="ottReview.do?ott_num=3"><img src="../images/logo_square_watcha.png"/></a>
+		<a href="ottReview.do?ott_num=4"><img src="../images/logo_square_tving.png"/></a>
+		<a href="ottReview.do?ott_num=5"><img src="../images/logo_square_wavve.png"/></a>
+	</div>
 	<div align="center"></div>
     <img src="../images/logo_netflix.png" width=300>
     <h1>가성비</h1>

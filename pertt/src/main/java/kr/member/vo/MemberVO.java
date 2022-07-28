@@ -9,15 +9,19 @@ public class MemberVO {
 	private int auth;
 	private String name;
 	private String passwd;
+	private  String origin_passwd;
+	
 	private String phone;
 	private String phone1;
 	private String phone2;
 	private String phone3;
+	
 	private String email;
 	private String birth;
 	private String birth1;
 	private String birth2;
 	private String birth3;
+	
 	private Date reg_date;
 	private Date mod_date;
 
@@ -56,6 +60,18 @@ public class MemberVO {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	
+	
+	public String getOrigin_passwd() {
+		return origin_passwd;
+	}
+
+
+
+	public void setOrigin_passwd(String origin_passwd) {
+		this.origin_passwd = origin_passwd;
+	}
+
 	
 	public String getPhone() {
 		return phone;

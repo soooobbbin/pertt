@@ -27,7 +27,7 @@ public class DeleteUserAction implements Action{
 		
 		//전송된 데이터 반환
 		String member_id = request.getParameter("member_id");
-		String email = request.getParameter("email");
+
 		String passwd = request.getParameter("passwd");
 		
 		//로그인한 아이디
@@ -38,10 +38,9 @@ public class DeleteUserAction implements Action{
 		MemberVO db_member = dao.checkMember(member_id);
 		boolean check = false;
 		
-		//사용자가 입력한 아이디가 존재하고 로그인한 아이디와 일치하며
-		//입력한 이메일과 저장된 이메일 일치 여부 체크
+		//사용자가 입력한 아이디가 존재하고 로그인한 아이디와 일치		
 		if(db_member!=null && member_id.equals(member_id) 
-				   && email.equals(db_member.getEmail())) {
+				   ) {
 			//비밀번호 일치 여부 체크
 			check = db_member.isCheckedPassword(passwd);
 		}

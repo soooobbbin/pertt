@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.dropdown > #intro').hover(function(){
+		$('.dropdown-content',this).stop().slideDown(500);
+	},
+	function(){
+		$('.dropdown-content',this).stop().slideUp(300);
+		
+	});
+});
+</script>
 <!-- header 시작 -->
 <div id="main_logo">
 	<div id="main_menubar">
@@ -28,33 +39,36 @@
 </div>
 <div id="main_nav">
 	<ul>
+		<div class="dropdown">
 		<li>
-			<a href="${pageContext.request.contextPath}/ott/intro.do">소개</a>
-		</li>
+			<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro">소개</a>
 		<li>
+		<div class="dropdown-content">
 			<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
-		</li>
-		<li>
+			<br><br>
 			<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
+		</div>
+		</div>
+		<li>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1" id="netflix">NETFLIX</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1" id="netflix">넷플릭스</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=2" id="disney">Disney+</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=2" id="disney">디즈니+</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=3" id="watcha">WATCHA</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=3" id="watcha">왓챠</a>
+			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=4" id="tving">TVING</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=4" id="tving">티빙</a>
+		<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=5" id="wavve">Wavve</a>
 		</li>
+		<div class="recommend">
 		<li>
-		<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=5" id="wavve">웨이브</a>
+			<a href="${pageContext.request.contextPath}/ott/recommend.do" id="recommend">OTT추천</a>
 		</li>
-		<li>
-			<a href="${pageContext.request.contextPath}/ott/recommend.do">OTT추천</a>
-		</li>
+		</div>
 	</ul>
 </div>
 <!-- header 끝 -->
