@@ -1,31 +1,36 @@
 package kr.review.vo;
 
-import java.sql.Date;
-
 public class CommentVO {
 	private int com_num;
-	private String com_contents;
-	private Date com_reg_date;
+	private String com_content;
+	private String com_reg_date;
 	private int c_review_num;
 	private int member_num;
 	private int c_num;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getCom_num() {
 		return com_num;
 	}
 	public void setCom_num(int com_num) {
 		this.com_num = com_num;
 	}
-	public String getCom_contents() {
-		return com_contents;
+	public String getCom_content() {
+		return com_content;
 	}
-	public void setCom_contents(String com_contents) {
-		this.com_contents = com_contents;
+	public void setCom_content(String com_content) {
+		this.com_content = com_content;
 	}
-	public Date getCom_reg_date() {
+	public String getCom_reg_date() {
 		return com_reg_date;
 	}
-	public void setCom_reg_date(Date com_reg_date) {
+	public void setCom_reg_date(String com_reg_date) {
 		this.com_reg_date = com_reg_date;
 	}
 	public int getC_review_num() {

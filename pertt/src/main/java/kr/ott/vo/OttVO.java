@@ -6,7 +6,15 @@ public class OttVO {
 	private String ott_content;
 	private String ott_url;
 	
+	private String member_id;
 	
+	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 	public int getOtt_num() {
 		return ott_num;
 	}

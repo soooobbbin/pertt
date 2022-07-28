@@ -35,6 +35,7 @@ public class ReviewWriteAction implements Action {
 				String content = request.getParameter("content");
 				dao.updateReviewContent(user_num, c_num, content);
 				mapAjax.put("result", "success");
+				System.out.println(content);
 			}
 		}
 		
