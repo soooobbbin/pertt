@@ -57,7 +57,7 @@ body{
 .content-left{
 	float:left;
 	width:20%;
-	height:580px;
+	height:780px;
 	background-color:#e0e0e0;
 }
 .content-right{
@@ -67,11 +67,12 @@ body{
 .content-right #red{
 	color:red;
 }
+
 .content-main{
     width: 77%;
     min-height: 600px;
     float: left;
-    margin-left: 30px;
+   	margin-left: 30px;
 }
 .content-main h2{
 	padding-top: 60px;
