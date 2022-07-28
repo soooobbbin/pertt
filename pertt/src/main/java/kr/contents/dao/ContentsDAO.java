@@ -112,14 +112,14 @@ public class ContentsDAO {
 			conn = DBUtil.getConnection();
 
 			if(keyword!=null && !"".equals(keyword)) {
-				if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
-				else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
-				else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
-				else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
+				if(keyfield.equals("1")) sub_sql += " WHERE title LIKE ?";
+				else if(keyfield.equals("2")) sub_sql += " WHERE genre LIKE ?";
+				else if(keyfield.equals("3")) sub_sql += " WHERE produce LIKE ?";
+				else if(keyfield.equals("4")) sub_sql += " WHERE category_num LIKE ?";
 			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-					+"FROM(SELECT * FROM contents c " + sub_sql+ " ORDER BY c_num DESC)a) "
+					+"FROM(SELECT * FROM contents " + sub_sql+ " ORDER BY c_num DESC)a) "
 					+"WHERE rnum >= ? AND rnum <= ?";
 
 			pstmt = conn.prepareStatement(sql);

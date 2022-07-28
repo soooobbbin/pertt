@@ -39,6 +39,11 @@
 				</li>
 			</ul>
 		</form> 
+		<c:if test="${count == 0}">
+		<div class="result-display">
+			표시할 게시물이 없습니다.
+		</div>
+		</c:if>
 		<c:forEach var="list" items="${categoryList}" varStatus="status">
 		<div class="category_name">
 		<h2>${list.category_name}</h2>
