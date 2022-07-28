@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('.dropdown > #intro').hover(function(){
+	$('.dropdown').hover(function(){
 		$('.dropdown-content',this).stop().slideDown(500);
 	},
 	function(){
 		$('.dropdown-content',this).stop().slideUp(300);
 		
 	});
-});
+})
 </script>
 <!-- header 시작 -->
 <div id="main_logo">
@@ -41,7 +41,7 @@ $(document).ready(function(){
 	<ul>
 		<div class="dropdown">
 		<li>
-			<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro">소개</a>
+			<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro" >소개</a>
 		<li>
 		<div class="dropdown-content">
 			<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
