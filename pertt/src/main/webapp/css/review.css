@@ -76,11 +76,12 @@ span.write-review  {
     font-size: 1.4em;
 }
 div.review-detail-box{
-    margin: 0 20px 45px 20px;
+    margin: 0 20px 0 20px;
     background-color: white;
     width: 820px;
     display: inline-block;
     border-radius: 5px;
+    padding: 0 10px 0 0;
 }
 #review_form{
     border: none;
@@ -158,6 +159,7 @@ ul.myMenu > li {
     border: 1px solid black;
     margin: 0 40px 0 0;
     border-radius: 5px;
+    cursor: pointer;
 }
     ul.myMenu > li:hover { background:#fff; }
     ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
@@ -200,15 +202,76 @@ span#output_comment{
     margin: 0 20px 0 5px;
     float: right;
 }
-
-
-
-
-
-
-
-
-
+#review_duplicated {
+	background-color: white;
+    width: 820px;
+    display: inline-block;
+    margin: 55px 0;
+    border-radius: 5px
+}
+#myReview {
+    margin: 10px 0 30px 0;
+    height: 40px;
+    width: 160px;
+    border: none;
+    font-size: 11.5pt;
+}
+#review_duplicated h2{
+	margin: 30px 0 20px 0;
+}
+#com_div{
+    width: 820px;
+    display: inline-block;
+    margin: 0 0 30px 0;
+}
+span.com-title{
+    float: left;
+    margin: 20px 0 15px 10px;
+    font-size: 13pt;
+    font-weight: bold;
+}
+form#com_form{
+	clear: both;
+	border: none;
+	width:100%;
+	padding: 0;
+}
+form#com_form textarea {
+    width: 100%;
+    height: 80px;
+    background-color: white;
+}
+span.letter-count{
+	float: right;
+	margin: 4px 15px 0 0;
+}
+#com_second input{
+	float: right;
+	margin: 3px 0 0 0;
+}
+div.item{
+	background-color: white;
+	width:830px;
+	display: inline-block;
+	border-radius: 5px;
+	margin: 10px 0 10px 0;
+}
+.item h4{
+	margin: 10px;
+	float: left;
+}
+.item p{
+	clear: both;
+    text-align: left;
+    padding: 10px 0 0 10px;
+}
+.item span{
+	margin: 0 10px 10px 0;
+    float: right;
+}
+.delete-comment-btn{
+	float: right;
+}
 
 
 

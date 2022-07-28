@@ -62,18 +62,34 @@
 			<p id="content-plot">${contents.plot }<p>
 		</div>
 		
+		<c:if test="${!reviewCheck}">
 		<h2 class="write-review">리뷰 쓰기</h2>
+		</c:if>
 		<div class="review-form">
 		<input type="hidden" id="c_num2" name="c_num2" value="${contents.c_num}">
 		<!-- 리뷰를 이미 작성한 경우 리뷰쓰기 폼 안 보임 -->
 		<c:if test="${reviewCheck}">
 		<div id="review_duplicated">
 			<h2>이미 리뷰를 작성했습니다.</h2>
-			<input type="button" value="내 리뷰 보러가기">
+			<input id="myReview" type="button" value="내 리뷰 보러가기">
 		</div>
 		</c:if>
 		<c:if test="${!reviewCheck}">
 		<div id="review_notDuplicated">
+			<!-- 리뷰 쓰기 폼 -->
+			<form id="review_form">
+				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
+				<textarea rows="10" cols="80" id="r_content" name="content" 
+				<c:if test="${empty user_num or !starCheck}">disabled="disabled"</c:if>
+				placeholder="리뷰를 입력해주세요"
+				><c:if test="${empty user_num }">로그인이 필요합니다.</c:if><c:if test="${!starCheck }">별점을 준 후에 이용하세요.</c:if></textarea>
+				<c:if test="${!empty user_num  or !starCheck}">
+					<input type="submit" value="등록">
+				</c:if>
+			</form>
+		</div>
+		</c:if>
+		<div id="review_notDuplicated" style="display:none;">
 			<!-- 리뷰 쓰기 폼 -->
 			<form id="review_form">
 				<input type="hidden" id="c_num" name="c_num"  value="${contents.c_num}">
@@ -86,7 +102,6 @@
 				</c:if>
 			</form>
 		</div>
-		</c:if>
 		</div><!-- end of review_form -->
 		
 		<!-- 리뷰 목록 영역 -->
@@ -98,10 +113,10 @@
 					    <li class="menu">
 					        정렬기준
 					        <ul class="menu_s submenu">
-					            <li>최신순</li>
-					            <li>추천순</li>
-					            <li>댓글순</li>
-					        </ul>   
+					            <li class="sort" data-num="1">최신순</li>
+					            <li class="sort" data-num="2">추천순</li>
+					            <li class="sort" data-num="3">댓글순</li>
+					        </ul>  
 					    </li>
 					</ul>
 			</div>

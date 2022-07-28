@@ -28,6 +28,7 @@ public class ReviewListAction implements Action {
 			pageNum = "1";
 		}
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		String sort = request.getParameter("sort");
 		ReviewDAO dao = ReviewDAO.getInstance();
 		int count = dao.getReviewCount(c_num);
 
@@ -38,7 +39,7 @@ public class ReviewListAction implements Action {
 
 		List<ReviewVO> reviewList = null;
 		if (count > 0) {
-			reviewList = dao.getReviewList(c_num, page.getStartRow(), page.getEndRow());
+			reviewList = dao.getReviewList(c_num, page.getStartRow(), page.getEndRow(), sort);
 		} else {
 			reviewList = Collections.emptyList();
 		}
