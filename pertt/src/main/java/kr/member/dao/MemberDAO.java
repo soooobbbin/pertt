@@ -67,7 +67,6 @@ public class MemberDAO {
 			pstmt3.setInt(1, num);
 			pstmt3.setString(2, member.getPasswd());
 			pstmt3.setString(3, member.getName());
-			
 			pstmt3.setString(4, member.getPhone());
 			pstmt3.setString(5, member.getEmail());
 			pstmt3.setString(6, member.getBirth());
@@ -139,7 +138,6 @@ public class MemberDAO {
 		String sql = null;
 		
 		
-		
 		try {
 			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
@@ -186,7 +184,7 @@ public class MemberDAO {
 			conn = DBUtil.getConnection();
 			//SQL문 작성
 			sql = "UPDATE member_detail SET passwd=?,name=?,"
-				+ "phone=?,email=?,birth=?,mod_date=SYSDATE "
+				+ "birth=?,phone=?,email=?,mod_date=SYSDATE "
 				+ "WHERE member_num=?";
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
@@ -196,8 +194,7 @@ public class MemberDAO {
 			pstmt.setString(3, member.getBirth());
 			pstmt.setString(4, member.getPhone());
 			pstmt.setString(5, member.getEmail());
-			pstmt.setDate(6, member.getMod_date());
-			pstmt.setInt(7, member.getMember_num());
+			pstmt.setInt(6, member.getMember_num());
 			
 			//JDBC 수행 4단계
 			pstmt.executeUpdate();
@@ -210,36 +207,8 @@ public class MemberDAO {
 		}
 		
 	}
-	//비밀번호 수정
-	public void updatePassword(String passwd,int member_num)
-	                                   throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		
-		try {
-			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션을 할당
-			conn = DBUtil.getConnection();
-			//SQL문 작성
-			sql = "UPDATE member_detail SET passwd=? "
-				+ "WHERE member_num=?";
-			
-			//JDBC 수행 3단계
-			pstmt = conn.prepareStatement(sql);
-			//?에 데이터 바인딩
-			pstmt.setString(1, passwd);
-			pstmt.setInt(2, member_num);
-			
-			//JDBC 수행 4단계
-			pstmt.executeUpdate();
-			
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			//자원정리
-			DBUtil.executeClose(null, pstmt, conn);
-		}
-	}
+	
+	
 	
 	//회원탈퇴(회원정보 삭제)
 	public void deleteMember(int member_num)throws Exception{

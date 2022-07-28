@@ -69,9 +69,11 @@
 			<div id="dt-check">
 				<table>
 					<tr>
-						<td><input type="checkbox" name="DT-check" value="DT-check">
+						<td><input type="checkbox" name="DT-check" value='Y' id="input-check">
+						<input type="hidden" name="DT-check" value='N' id="input-check_hidden">
+						
 						</td>
-						<td class="dt-txt3"><b>안내사항을 모두 확인했으며, 이에 동의 합니다</b></td>
+						<td class="dt-txt3"><b>안내사항을 모두 확인했으며, 이에 동의 합니다.</b></td>
 					</tr>
 
 				</table>
@@ -106,8 +108,8 @@
 			
 			<div class="align-right"> 
 				<input type="button" 
-					value="탈퇴취소" class="blue-btn" onclick="location.href='myPage.do'">
-					<input type="submit" value="회원탈퇴" class="gray-btn"> 
+					value="탈퇴취소" class="blue-btn2" onclick="location.href='myPage.do'">
+					<input type="submit" value="회원탈퇴" class="gray-btn2" id="delete_btn"> 
 			</div>
 		</form>
 	</div>
