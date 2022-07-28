@@ -20,18 +20,10 @@
 				<tr > 
 					<td colspan=2 class="mp-info-T" > 회원정보</td>
 				</tr>
-				<tr >
-					<td >내 OTT</td>
-					<td class="mptd"><input type="radio"  name="ott_c" value="넷플릭스">넷플릭스 
-                    <input type="radio" name="ott_c" value="디즈니+">디즈니+ <br> 
-                    <input type="radio" name="ott_c" value="넷플릭스">왓챠
-                    <input type="radio" name="ott_c" value="티빙">티빙
-                    <input type="radio" name="ott_c" value="웨이브">웨이브</td>
-				</tr>
+				
 				<tr>
 					<td >아이디</td>
-					<td ><input type="text" name="id" id="m_id"
-					                     maxlength="12"></td>
+					<td >${member.member_id}</td>
 				</tr>
 				<tr>
 					<td >현재 비밀번호</td>
@@ -51,7 +43,7 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td ><input type="text" name="member_id" id="member_id"
+					<td ><input type="text" name="name" id="name"
 					                     maxlength="12"></td>
 				</tr>
 				<tr>

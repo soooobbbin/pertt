@@ -22,10 +22,7 @@
 				<tr> 
 					<td colspan=2 class="mp-info-T"> 회원정보</td>
 				</tr>
-				<tr>
-					<td >내 OTT</td>
-					<td >  </td>
-				</tr>
+				
 				<tr>
 					<td >아이디</td>
 					<td >${member.member_id}</td>
@@ -64,8 +61,7 @@
 					    onclick="location.href='modifyUserForm.do'">
 				
 					<input type="button" value="회원탈퇴" class="gray-btn"
-					onclick="location.href='deleteUserForm.do'"
-					  >
+					onclick="location.href='deleteUserForm.do'">
 				</li>
 		
 			</ul>
