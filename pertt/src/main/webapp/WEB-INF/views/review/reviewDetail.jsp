@@ -58,6 +58,8 @@
 			<span id="output_lcount"> </span>
 			<img id="output_like" src="${pageContext.request.contextPath }/images/like1.png">
 			<span id="review_regdate">${review.c_review_reg_date } </span>
+			<div class="end-float"></div>
+			<div class="reviewDetail-bottom">
 			<c:if test="${!empty review.c_review_mod_date}">
 				<span id="review_moddate"> 최근 수정일 : ${review.c_review_mod_date} </span>
 			</c:if>
@@ -65,6 +67,7 @@
 			<input type="button" data-reviewnum="${review.c_review_num }" value="수정" class="modify-btn">
 			<input type="button" data-reviewnum="${review.c_review_num }" value="삭제" class="delete-btn">
 			</c:if>
+			</div>
 			
 		</div><!-- end of review_form -->
 		<div id="item" class="review-detail-box"></div><!-- 리뷰 수정 폼 나타나는 div -->
@@ -95,7 +98,7 @@
 		<!-- 댓글 페이지 처리 -->
 		<div id="com_output"></div>
 		<div class="paging-button" style="display:none">
-			<input type="button" value="다음글 보기">
+			<input id="next_btn" type="button" value="댓글 더보기">
 		</div>
 		<div id="loading" style="display:none">
 			<img src="${pageContext.request.contextPath }/images/ajax-loader.gif">

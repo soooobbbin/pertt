@@ -76,7 +76,7 @@ span.write-review  {
     font-size: 1.4em;
 }
 div.review-detail-box{
-    margin: 0 20px 0 20px;
+	margin: 0 20px 0 20px;
     background-color: white;
     width: 820px;
     display: inline-block;
@@ -95,6 +95,7 @@ div.review-detail-box{
     resize: none;
     width: 100%;
     margin: 40px 0px 15px 0px;
+    background-color: white;
 }
 #review_form input[type="submit"] {
     float: right;
@@ -263,7 +264,7 @@ div.item{
 .item p{
 	clear: both;
     text-align: left;
-    padding: 10px 0 0 10px;
+    padding: 5px 10px 0 10px;
 }
 .item span{
 	margin: 0 10px 10px 0;
@@ -271,9 +272,26 @@ div.item{
 }
 .delete-comment-btn{
 	float: right;
+    border: none;
+    margin: 0 5px 0 0;
+    height: 22px;
+    width: 50px;
+    cursor: pointer;
 }
-
-
+.reviewDetail-bottom{
+	float: right;
+	margin: 0 0 10px 0;
+}
+#next_btn{
+	border-radius: 5px;
+    margin: 20px;
+    color: white;
+    border: none;
+    background-color: #919191;
+    width: 130px;
+    height: 40px;
+    font-size: 13pt;
+}
 
 
 

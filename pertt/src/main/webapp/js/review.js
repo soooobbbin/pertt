@@ -39,9 +39,9 @@ $(function(){
 					reviewView += '&c_num='+c_num;
 					reviewView += '&#39;">';
 					reviewView += '<span id="id">' +item.id +'</span>';
-					reviewView += '<span id="star">' +item.star +'</span>';
+					reviewView += '<span id="star">★' +item.star +'</span>';
 					reviewView += '<p id="content">'+item.c_review_content +'</p>'; //106자 제한주기
-					reviewView += '<span id="like">'+item.lcount +'</span>';
+					reviewView += '<span id="like">좋아요 '+item.lcount +'</span>';
 					reviewView += '</div>';
 					
 					//문서 객체에 추가

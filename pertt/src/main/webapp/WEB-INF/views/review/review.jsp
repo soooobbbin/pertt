@@ -20,7 +20,7 @@
 	<div class="review-align">
 	<div class="contents-detail">
 	
-	<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
+	<img src="${pageContext.request.contextPath}/images/disney/.jpg">
 		<ul>
 			<li class="review_title">${contents.title }
 			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
@@ -57,7 +57,7 @@
 	
 	<div class="review-grey">
 	<div class="review-align">
-		<div class="contents_plot" onclick="href.location='reviewDetail.do'"><!-- 배경 하얗게 -->
+		<div class="contents_plot"><!-- 배경 하얗게 -->
 			<p id="content-plot-title">작품 소개</p>
 			<p id="content-plot">${contents.plot }<p>
 		</div>
@@ -71,7 +71,8 @@
 		<c:if test="${reviewCheck}">
 		<div id="review_duplicated">
 			<h2>이미 리뷰를 작성했습니다.</h2>
-			<input id="myReview" type="button" value="내 리뷰 보러가기">
+			<input id="myReview" type="button" value="내 리뷰 보러가기" 
+				onclick="location.href='reviewDetail.do?c_review_num=0&c_num=${contents.c_num}'">
 		</div>
 		</c:if>
 		<c:if test="${!reviewCheck}">
