@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>OTT 작품</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/contents.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/image-scroll.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>

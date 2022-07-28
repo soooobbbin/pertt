@@ -25,6 +25,7 @@ body{
 	padding:2px 10px 20px 10px;
 	height:20px;
 	background-color:#C1BFBF;
+	text-align:center;
 }
 #main_nav ul{
 	list-style:none;
@@ -37,6 +38,7 @@ body{
 	text-align:center;
 	vertical-align:middle;
 	padding-top:10px;
+	margin:0 30px;
 }
 #main_nav ul li.menu-profile{
 	padding-top:5px;
@@ -76,6 +78,48 @@ a:hover{
 	text-decoration:none;
 	color:#6C6C6C;
 }
+a#netflix,a#disney,a#watcha,a#tving,a#wavve{
+	font-weight:bold;
+	margin:0 20px;
+}
+a#intro, a#recommend{
+	font-weight:600;
+}
+.recommend{
+	min-width:100px;
+	display: inline-block;
+	margin-left:30px;
+}
+/*메뉴 드랍다운*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor:pointer;
+}
+
+.dropdown-content {
+  display:none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  margin:20px 0px 0px -200px;
+  cursor:pointer;
+  z-index: 100;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /*목록*/
 form#search_form{
 	border:none;
