@@ -102,11 +102,7 @@ $(function(){
 	//============= 회원정보수정 ==============//
 	$('#modify_form').submit(function(){
 		
-		if($('#origin_passwd').val().trim()==''){
-			alert('현재 비밀번호를 입력하세요!');
-			$('#origin_passwd').val('').focus();
-			return false;
-		}
+		
 		if($('#passwd').val().trim()==''){
 			alert('새 비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
