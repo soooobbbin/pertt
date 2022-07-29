@@ -77,10 +77,9 @@
 				<div class="re">
 
 				<div class="my-ottRe">OTT 리뷰
-				<div class="deletebtn">
+				
 							<input type="button" value="삭제" class="delete-btn">
-						</div>
-				</div>
+										</div>
 				<ul>
 					<li class="ottRe"><select name="ottReview">
 							<option value="넷플릭스">넷플릭스</option>
@@ -116,11 +115,15 @@
 				
 				<div class="re">
 				<div class="my-ottRe">내 댓글 목록
+			
 					<div class="more"><img
 						src="${pageContext.request.contextPath}/images/더보기.png" 
-						width="40px" height="25px"></div></div>
+						width="40px" height="25px"></div>
+						<input type="button" value="삭제" class="delete-btn"></div>
+						
+						
 				
-				
+				</div>
 			</div>
 		</div>
 	</div>
