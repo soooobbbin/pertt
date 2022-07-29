@@ -16,8 +16,6 @@ public class OttContentsAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String keyfield = request.getParameter("keyfield");
-		String keyword = request.getParameter("keyword");
 		
 		int ott_num = Integer.parseInt(request.getParameter("ott_num"));
 		
@@ -26,14 +24,11 @@ public class OttContentsAction implements Action{
 		List<CategoryVO> categoryList = categoryDao.getListCategory(ott_num);
 		
 		ContentsDAO contentsDao = ContentsDAO.getInstance();
-		int count = contentsDao.getContentsCount(keyfield, keyword);
-		if(count>0) {
 		for(int i=0;i<categoryList.size();i++) {
-			List<ContentsVO> contentsList = contentsDao.getListContents(1, 10, keyfield, keyword, categoryList.get(i).getCategory_num());
+			List<ContentsVO> contentsList = contentsDao.getListContents(1, 10, null, null, categoryList.get(i).getCategory_num());
 			request.setAttribute("contents"+i, contentsList);
 		}
-		}
-		request.setAttribute("count", count);
+		
 		request.setAttribute("categoryList", categoryList);
 
 		return "/WEB-INF/views/contents/ottContents.jsp";

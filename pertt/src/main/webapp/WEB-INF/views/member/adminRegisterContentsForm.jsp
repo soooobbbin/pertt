@@ -61,12 +61,15 @@
 								<option value="#코미디">코미디</option>
 								<option value="#드라마">드라마</option>
 								<option value="#뮤지컬">뮤지컬</option>
+								<option value="#미스터리">미스터리</option>
+								<option value="#리얼리티">리얼리티</option>
 								<option value="#SF">SF</option>
 								<option value="#액션">액션</option>
 								<option value="#범죄">범죄</option>
 								<option value="#공포">공포</option>
 								<option value="#판타지">판타지</option>
 								<option value="#애니메이션">애니메이션</option>
+								<option value="#다큐멘터리">다큐멘터리</option>
 							</select>
 						</td>
 					</tr>

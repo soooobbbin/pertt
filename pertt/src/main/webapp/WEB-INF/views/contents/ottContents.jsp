@@ -21,29 +21,7 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="content-main">
-		<form action="ottContents.do" method="get" id="search_form">
-			<ul class="search">
-				<li>
-					<select name="keyfield">
-						<option value="1">제목</option>
-						<option value="2">장르</option>
-						<option value="3">제작사/배우</option>
-					</select>     
-				</li>
-				<li>
-					<input type="search" size="16" name="keyword" 
-								id="keyword" value="${param.keyword}" >
-				</li>				
-				<li>
-					<input type="submit" value="검색">
-				</li>
-			</ul>
-		</form> 
-		<c:if test="${count == 0}">
-		<div class="result-display">
-			표시할 게시물이 없습니다.
-		</div>
-		</c:if>
+		
 		<c:forEach var="list" items="${categoryList}" varStatus="status">
 		<div class="category_name">
 		<h2>${list.category_name}</h2>
