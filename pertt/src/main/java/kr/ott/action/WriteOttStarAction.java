@@ -40,7 +40,7 @@ public class WriteOttStarAction implements Action{
 			}
 		}
 		
-		//JSOM 데이터 생성
+		//JSON 데이터 생성
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);
 		
