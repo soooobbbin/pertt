@@ -27,9 +27,9 @@
 					<td class="dt-txt1">탈퇴 안내</td>
 					<td class="dt-txt2">회원 탈퇴에 앞서 유의 사항 및 안내를 읽고 동의시 체크 박스를 클릭
 						해주십시오.</td>
-
 				</tr>
 			</table>
+			<br><br>
 			<table>
 				<tr>
 					<td rowspan="2"><img
@@ -85,6 +85,7 @@
 					<td class="dt-txt2">안전한 탈퇴를 위하여 아이디 및 비밀번호를 확인해주세요</td>
 				</tr>
 			</table>
+			<br>
 			<div class="align-center"> 
 
 			<table>
