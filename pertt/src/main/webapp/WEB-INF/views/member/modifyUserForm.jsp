@@ -177,7 +177,7 @@
 						src="${pageContext.request.contextPath}/images/더보기.png" 
 						width="40px" height="25px"></div></div>
 				
-				
+				</div>
 			</div>
 		</div>
 	</div>
