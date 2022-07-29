@@ -79,7 +79,6 @@ a:hover{
 }
 a#netflix,a#disney,a#watcha,a#tving,a#wavve{
 	font-weight:bold;
-	margin:0 20px;
 }
 a#intro, a#recommend{
 	font-weight:600;
@@ -87,7 +86,7 @@ a#intro, a#recommend{
 .recommend{
 	min-width:100px;
 	display: inline-block;
-	margin-left:30px;
+	margin-left:10px;
 }
 /*메뉴 드랍다운*/
 .dropdown {
@@ -279,18 +278,18 @@ table td, table th{
 	height:500px;
 }
 /*등록, 수정폼*/
-form{
-	width:600px;
-	margin:0 auto;
-	border:1px solid #000;
-	padding:10px 10px 10px 30px;
-}
 ul{
 	list-style:none;
 }
 label{
 	width:130px;
 	float:left;/*태그를 왼쪽으로 정렬*/
+}
+/*form{
+	width:600px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
 }
 input[type="text"],input[type="password"],input[type="email"]{
 	width:200px;
@@ -303,7 +302,7 @@ input[id="zipcode"]{
 }
 .form-notice{
 	margin-left:130px;
-}
+}*/
 /*My Page*/
 .mypage-div{
 	width:48%;
