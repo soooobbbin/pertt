@@ -119,6 +119,8 @@ $(function(){
 			$('#cpasswd').val('');
 			return false;
 		}
+		
+		
 		if($('#name').val().trim()==''){
 			alert('이름을 입력하세요!');
 			$('#name').val('').focus();
@@ -202,6 +204,8 @@ $(function(){
 			$('#message_id').text('');
 		}
 	});
+	
+	
 	
 	
 	//==========회원 탈퇴 약관 체크 확인==========//
