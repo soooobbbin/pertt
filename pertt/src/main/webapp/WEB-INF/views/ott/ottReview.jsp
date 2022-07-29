@@ -636,6 +636,17 @@
 				<!--======별점 부분 끝======-->
 					<input type="submit" value="전송">
 				</form>
+				<script>
+					$(function(){
+						$('#ottLike_form').submit(function(event){
+							
+							let form_data = $(this).serialize();
+							alert(form_data);
+							
+							event.preventDefault();
+						});
+					});
+				</script>
 		</div>
 	</div>
 </div>

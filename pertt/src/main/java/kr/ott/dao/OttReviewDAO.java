@@ -14,14 +14,14 @@ public class OttReviewDAO {
 	}
 	private OttReviewDAO() {}
 	
-	// 리뷰 등록 (reivew에 content update)
+	//한줄평 등록
 	public void updateOttReview(int member_num, int ott_num, String ott_review) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "UPDATE ott_review SET c_review_content=? " + "where member_num=? and c_num=?";
+			sql = "UPDATE ott_review SET ott_review=? WHERE member_num=? AND ott_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ott_review);
 			pstmt.setInt(2, member_num);
@@ -33,4 +33,12 @@ public class OttReviewDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
+	
+	//한줄평 삭제
+	
+	
+	//member_num으로 id 구하기
+	
+	//한 OTT의 총 한줄평 수
+
 }
