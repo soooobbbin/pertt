@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -35,7 +36,7 @@
 					<input type="text" name="name" id="name" maxlength="20" placeholder="이름을 입력하세요">
 				</li>
 				<li>
-					<label for="birth">생년월일</label>
+					<label for="birth" >생년월일</label>
 					<input type="text" name="birth1" id="birth1" maxlength="4" size="5" class="inBorder" />년
                 <select name = "birth2" class="inBorder">
                     <option value="01">01
@@ -93,9 +94,9 @@
                     <option value="016">016
                     <option value="017">017
                     <option value="018">018
-                </select>-
-					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" placeholder="0000">-
-					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" placeholder="0000">
+                </select> - 
+					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" class="phone" placeholder="0000"> - 
+					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" class="phone"  placeholder="0000">
 					
 				</li>
 				<li>
