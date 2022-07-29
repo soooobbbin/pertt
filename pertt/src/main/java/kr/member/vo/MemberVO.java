@@ -117,7 +117,7 @@ public class MemberVO {
 	}
 
 	public void setBirth(String birth) {
-		this.birth = birth;;
+		this.birth = birth;
 	}
 	
 	public String getBirth1() {
