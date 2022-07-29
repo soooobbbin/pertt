@@ -27,9 +27,9 @@
 					<td class="dt-txt1">탈퇴 안내</td>
 					<td class="dt-txt2">회원 탈퇴에 앞서 유의 사항 및 안내를 읽고 동의시 체크 박스를 클릭
 						해주십시오.</td>
-
 				</tr>
 			</table>
+			<br><br>
 			<table>
 				<tr>
 					<td rowspan="2"><img
@@ -69,9 +69,11 @@
 			<div id="dt-check">
 				<table>
 					<tr>
-						<td><input type="checkbox" name="DT-check" value="DT-check">
+						<td><input type="checkbox" name="DT-check" value='Y' id="input-check">
+						<input type="hidden" name="DT-check" value='N' id="input-check_hidden">
+						
 						</td>
-						<td class="dt-txt3"><b>안내사항을 모두 확인했으며, 이에 동의 합니다</b></td>
+						<td class="dt-txt3"><b>안내사항을 모두 확인했으며, 이에 동의 합니다.</b></td>
 					</tr>
 
 				</table>
@@ -83,6 +85,7 @@
 					<td class="dt-txt2">안전한 탈퇴를 위하여 아이디 및 비밀번호를 확인해주세요</td>
 				</tr>
 			</table>
+			<br>
 			<div class="align-center"> 
 
 			<table>
@@ -106,8 +109,8 @@
 			
 			<div class="align-right"> 
 				<input type="button" 
-					value="탈퇴취소" class="blue-btn" onclick="location.href='myPage.do'">
-					<input type="submit" value="회원탈퇴" class="gray-btn"> 
+					value="탈퇴취소" class="blue-btn2" onclick="location.href='myPage.do'">
+					<input type="submit" value="회원탈퇴" class="gray-btn2" id="delete_btn"> 
 			</div>
 		</form>
 	</div>

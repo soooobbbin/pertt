@@ -12,15 +12,15 @@
 		</a>
 	</div>
 	<nav class="content-left">
-			<div class="adminPage_btn" onclick="location.href='${pageContext.request.contextPath}/main/main_admin.do'">관리자 페이지</div>
+			<div class="adminPage_btn" onclick="location.href='${pageContext.request.contextPath}/member/memberList.do'">관리자 페이지</div>
 			<ul class="admin_cate_member">
-				<li>회원 관리</li>
-				<li>전체 회원</li>
+				<li id="li-bold">회원 관리</li>
+				<li><a href="${pageContext.request.contextPath}/member/memberList.do">전체 회원</a></li>
 				<li>탈퇴한 회원</li>
 			</ul>
 			<hr size="1" width="80%" color="#9a9a9a">
-			<ul class="admin_cate_contents">
-				<li>작품 조회</li>
+			<ul id="admin_cate_contents">
+				<li id="li-bold">작품 조회</li>
 				<li><a href="${pageContext.request.contextPath}/contents/list.do">전체 작품</a></li>
 				<li>OTT</li>
 				<li>카테고리</li>

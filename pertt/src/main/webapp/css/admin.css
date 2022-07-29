@@ -75,8 +75,8 @@ body{
    	margin-left: 30px;
 }
 .content-main h2{
-	padding-top: 40px;
-	margin: 0 auto;
+	padding-top: 60px;
+	margin: 0 0 10px 40px;
     width: 900px;
 }
 .result-display{
@@ -90,12 +90,14 @@ body{
 }
 .align-center{
 	text-align:center;
+	width: 790px;
+    margin: 20px;
 }
 .align-right{
 	text-align: right;
     height: 30px;
     padding: 10px 10px;
-    width:840px;
+    width:790px;
     margin:0 auto;
 }
 a:link{
@@ -135,6 +137,10 @@ a:hover{
     margin-left: 35px;
     position: static;
 }
+
+div ul li#li-bold{
+	font-weight: bold;
+}
 /*목록*/
 form#search_form{
 	width: 200px;
@@ -164,14 +170,34 @@ table{
 	margin-top:5px;
 	min-height: 400px;
 }
-table td{
+table th{
+	padding:10px;
+	border:1px solid #000;
+}
+table td, th#first-th{
 	border:1px solid #000;
 	padding:5px;
 	padding-left:15px;
 	border-left: none;
 }
-table td#last-child {
+table td#last-child ,th#last-child{
     border-right: none;
+}
+/*list 페이지 테이블*/
+.list-tb{
+	width:800px;
+}
+ul.list-search{
+	width:300px;
+	list-style:none;
+	padding:0;
+	margin: 15px 0 10px 0;
+    float: left;
+}
+ul.list-search li{
+	margin:0 0 9px 0;
+	padding:0;
+	display:inline;
 }
 /*메인화면*/
 .admin-main{
@@ -179,11 +205,10 @@ table td#last-child {
     float: left;
     padding-bottom:30px;
 }
+
 .admin_main_h2{
 	float:left;
     width: 100px;
-    padding-top:60px;
-    padding-left: 40px;
     margin:0 auto;
     position: relative;
 }
@@ -191,7 +216,8 @@ table td#last-child {
 	float:left;
     width: 400px;
     height: 28.5px;
-    padding-top: 100px;
+    padding-top: 56px;
+    margin-left: 40px;
     font-size: small;
     position: relative;
 }
@@ -207,7 +233,7 @@ form{
 	width:1000px;
 	margin:0 auto;
 	/*border:1px solid #000;*/
-	padding:50px 10px 10px 30px;
+	padding:50px 10px 10px 0px;
 	min-height:600px;
 }
 ul{
@@ -236,6 +262,9 @@ label{
 	float: right;
     width: 80%;
     text-align: left;
+}
+.poster-area{
+	text-align: center;
 }
 /*등록,목록 버튼*/
 .mainBtn{

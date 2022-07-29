@@ -10,7 +10,7 @@ public class MainAction2 implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return "/WEB-INF/views/main/main_admin.jsp";
+		return "/WEB-INF/views/member/memberList.jsp";
 	}
 
 }

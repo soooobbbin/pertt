@@ -102,11 +102,7 @@ $(function(){
 	//============= 회원정보수정 ==============//
 	$('#modify_form').submit(function(){
 		
-		if($('#origin_passwd').val().trim()==''){
-			alert('현재 비밀번호를 입력하세요!');
-			$('#origin_passwd').val('').focus();
-			return false;
-		}
+		
 		if($('#passwd').val().trim()==''){
 			alert('새 비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
@@ -143,9 +139,12 @@ $(function(){
 			$('#email').val('').focus();
 			return false;
 		}
+		
+		
 	});
-	
-	
+
+
+		
 	//새비밀번호 확인까지 한 후 다시 새비밀번호를 수정하려고 하면
 	//새비밀번호 확인을 초기화
 	$('#passwd').keyup(function(){
@@ -202,6 +201,18 @@ $(function(){
 		}else{
 			$('#message_id').text('');
 		}
+	});
+	
+	
+	//==========회원 탈퇴 약관 체크 확인==========//
+	
+	
+	$('#delete_btn').click(function(){
+		var cnt = $("input[name=DT-check]:checkbox:checked").length;    
+		if(cnt < 1){
+			alert('안내 사항을 확인 후 체크 바랍니다.');
+			return false;
+		 }
 	});
 	
 	//============= 회원관리 목록 ==============//
