@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
+<!-- 
+<script type="text/javascript">
+$(document).ready(function(){
+	 $('#moveDown').click(function(){
+		 $('html, body').animate({
+			 scrollTop:$('.main-netflix').offset().top
+		 }, 'slow');
+	 });
+ });
+</script>
+-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+
 </head>
 <body>
 <div class="page-main">
@@ -23,6 +36,7 @@
 		<div class="main-netflix">
 		<a><img src="${pageContext.request.contextPath}/images/logo_netflix2.png" class="mainlogo1"></a>
 			
+			<img src="${pageContext.request.contextPath}/images/down.png" class="moveDown">
 			<div class="mainBtn">
 			<input type="button" value="넷플릭스 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
 			<input type="button" value="넷플릭스 작품 보러 가기>" class="moveBtn" 
