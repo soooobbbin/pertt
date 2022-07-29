@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>MY페이지</title>
 <link rel="stylesheet"
+href="${pageContext.request.contextPath}/css/style.css"
 	href="${pageContext.request.contextPath}/css/mypage.css"
 	type="text/css">
 <script type="text/javascript"
