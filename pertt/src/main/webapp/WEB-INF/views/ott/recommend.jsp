@@ -36,7 +36,7 @@
 		</div>
 		</form>
 		<div class="price-bar">
-			<p>요금제 가격대(4인 기준)</p>
+			<p id="pricebar-p">요금제 가격대(4인 기준)</p>
 			<input type="range" id="priceBar" name="priceBar" min="0" max="17000">
 			<p>0원</p>
 		</div>
