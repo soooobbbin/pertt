@@ -384,7 +384,7 @@ public class ReviewDAO {
 		return list;
 	}
 		
-	//내가 쓴 댓글 리스트 반환
+	//내가 쓴 댓글 리스트 반환 (정렬 없음)
 	public List<CommentVO> selectMyComment(int member_num, int start, int end) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
