@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--
+
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#drop_menu').hover(function(){
-		$('.dropdown-content',this).stop().slideDown(500);
+	$('#drop_menu .dropdown').hover(function(){
+		$('.dropdown-content',this).animate('slideDown',500);
 	},
 	function(){
-		$('.dropdown-content',this).stop().slideUp(300);
+		$('.dropdown-content',this).animate('slideUp',500);
 		
 	});
 })
 </script>
-  -->
+
 <!-- header 시작 -->
 <div id="main_logo">
 	<div id="main_menubar">
@@ -45,7 +45,7 @@ $(document).ready(function(){
 			<div class="dropdown">
 			   <ul>
 					<li>
-						<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro" >소개</a>
+						<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro">소개</a>
 					</li>
 					<li>
 						<div class="dropdown-content">
