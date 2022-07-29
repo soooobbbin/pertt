@@ -30,7 +30,8 @@
             <div class="place-xy scroll">
               <div class="poster-scroll">
 				<c:forEach var="content" items="${requestScope['contents'+=status.index]}">
-					<img src="${pageContext.request.contextPath}/upload/${content.poster}" class="contentsImg">
+					<img src="${pageContext.request.contextPath}/upload/${content.poster}" class="contentsImg"
+					  onclick="location.href='${pageContext.request.contextPath}/review/review.do?c_num=${content.c_num}'">
 				</c:forEach>
 			 </div>
 			</div>
