@@ -2,18 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#drop_menu .dropdown').hover(function(){
-		$('.dropdown-content',this).animate('slideDown',500);
-	},
-	function(){
-		$('.dropdown-content',this).animate('slideUp',500);
-		
-	});
-})
-</script>
-
 <!-- header 시작 -->
 <div id="main_logo">
 	<div id="main_menubar">

@@ -164,6 +164,14 @@ table td, table th{
 	float:right;
 	margin-top:690px;
 }
+.moveDown{
+	text-align:center;
+	position:fixed;
+	margin:-50px 150px;
+	width:50px;
+	height:50px;
+	
+}
 .moveBtn{
 	width:200px;
 	height:50px;
