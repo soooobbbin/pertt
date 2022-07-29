@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--
 <script type="text/javascript">
 $(document).ready(function(){
-	$('.dropdown').hover(function(){
+	$('#drop_menu').hover(function(){
 		$('.dropdown-content',this).stop().slideDown(500);
 	},
 	function(){
@@ -12,6 +13,7 @@ $(document).ready(function(){
 	});
 })
 </script>
+  -->
 <!-- header 시작 -->
 <div id="main_logo">
 	<div id="main_menubar">
@@ -39,16 +41,22 @@ $(document).ready(function(){
 </div>
 <div id="main_nav">
 	<ul>
-		<div class="dropdown">
-		<li>
-			<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro" >소개</a>
-		<li>
-		<div class="dropdown-content">
-			<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
-		</div>
-		</div>
+	    <li id="drop_menu">
+			<div class="dropdown">
+			   <ul>
+					<li>
+						<a href="${pageContext.request.contextPath}/ott/intro.do" id="intro" >소개</a>
+					</li>
+					<li>
+						<div class="dropdown-content">
+							<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
+							<br><br>
+							<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</li>	
 		<li>
 			<a href="${pageContext.request.contextPath}/contents/ottContents.do?ott_num=1" id="netflix">NETFLIX</a>
 		</li>

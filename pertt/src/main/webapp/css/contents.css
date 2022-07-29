@@ -11,23 +11,24 @@ body{
 	color:black;
 	padding:10px 20px;
 }
+.contentsImg{
+	width:340px;
+	height:250px;
+	margin-bottom:50px;
+}
 
-
-/*작품 나열*/
+/*작품 나열
 .contentsList{
 	float:left;
-	margin: 0 5px 40px 5px;
+	margin: 0 5px 100px 5px;
 	
 }
 .category_name{
 	clear:both;
 }
-.contentsImg{
-	width:340px;
-	height:250px;
-}
+
 img#prev, img#next{
 	cursor:pointer;
 	float:left;	
 	margin:100px 10px;
-}
+}*/
