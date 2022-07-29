@@ -24,15 +24,32 @@
 		<a href="ottReview.do?ott_num=5"><img src="../images/logo_square_wavve.png" width=150 style="border-radius:10px; box-shadow: 5px 5px 5px #959595; margin: 0 10px 0 0;"></a>
 	</div>
 	<div class="parent">
-		<div class="netflix"><img src="../images/logo_none_netflix.png"></div>
-		<div class="star">
+		<div class="netflix">
+		    <c:if test="${param.ott_num==1}">
+				<img src="../images/logo_none_netflix.png">
+			</c:if>
+			<c:if test="${param.ott_num==2}">
+				<img src="../images/logo_none_disney.png">
+			</c:if>
+			<c:if test="${param.ott_num==3}">
+				<img src="../images/logo_none_watcha.png">
+			</c:if>
+			<c:if test="${param.ott_num==4}">
+				<img src="../images/logo_none_tving.png">
+			</c:if>
+			<c:if test="${param.ott_num==5}">
+				<img src="../images/logo_none_wavve.png">
+			</c:if>
+		</div>
+		<div class="star" style="background-color:yellow;">
+		    <form id="ottLike_form">
 			<h1>가성비</h1>
 			<!--=======별점 부분=======-->
 			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
 			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
 			점수에 따라 별점 width 변화 --%>
 			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
+				<input type="hidden" value="${OttStarVO.ott_star_num }" name="price" id="ott_starnum_star">
 				<c:if test="${OttStarVO == null}">
 					<%--평가기록 없을 때 --%>
 					<div class="rateit" id="starRate"
@@ -227,11 +244,8 @@
 				<!--======별점 부분 끝======-->
 			<h1>사용성</h1>
 			<!--=======별점 부분=======-->
-			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
-			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
-			점수에 따라 별점 width 변화 --%>
 			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
+				<input type="hidden" value="${OttStarVO.ott_star_num }" name="usability" id="ott_starnum_star">
 				<c:if test="${OttStarVO == null}">
 					<%--평가기록 없을 때 --%>
 					<div class="rateit" id="starRate"
@@ -425,12 +439,9 @@
 				</script>
 				<!--======별점 부분 끝======-->
 			<h1>콘텐츠</h1>
-						<!--=======별점 부분=======-->
-			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
-			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
-			점수에 따라 별점 width 변화 --%>
+			<!--=======별점 부분=======-->
 			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
+				<input type="hidden" value="${OttStarVO.ott_star_num }" name="quality" id="ott_starnum_star">
 				<c:if test="${OttStarVO == null}">
 					<%--평가기록 없을 때 --%>
 					<div class="rateit" id="starRate"
@@ -623,6 +634,8 @@
 					});
 				</script>
 				<!--======별점 부분 끝======-->
+					<input type="submit" value="전송">
+				</form>
 		</div>
 	</div>
 </div>
