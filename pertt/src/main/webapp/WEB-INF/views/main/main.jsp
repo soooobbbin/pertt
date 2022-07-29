@@ -1,23 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
-<!-- 
-<script type="text/javascript">
-$(document).ready(function(){
-	 $('#moveDown').click(function(){
-		 $('html, body').animate({
-			 scrollTop:$('.main-netflix').offset().top
-		 }, 'slow');
-	 });
- });
-</script>
--->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
 
 </head>
 <body>
