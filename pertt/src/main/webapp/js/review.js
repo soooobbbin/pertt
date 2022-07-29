@@ -5,13 +5,13 @@ $(function(){
 	let rowCount;
 	
 	//리뷰 목록
-	function selectReviewList(pageNum){
+	function selectReviewList(pageNum,sort){
 		currentPage = pageNum;
 		var c_num = $('#c_num2').val();
 		$.ajax({
 			url:'reviewList.do',
 			type:'post',
-			data:{pageNum:pageNum,c_num:c_num},
+			data:{pageNum:pageNum,c_num:c_num,sort:sort},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -39,9 +39,9 @@ $(function(){
 					reviewView += '&c_num='+c_num;
 					reviewView += '&#39;">';
 					reviewView += '<span id="id">' +item.id +'</span>';
-					reviewView += '<span id="star">starf;' +item.star +'</span>';
-					reviewView += '<p id="content">${fn:substring(' +item.c_review_content +', 0, 106)}</p>';
-					reviewView += '<span id="like">'+item.lcount +'</span>';
+					reviewView += '<span id="star">★' +item.star +'</span>';
+					reviewView += '<p id="content">'+item.c_review_content +'</p>'; //106자 제한주기
+					reviewView += '<span id="like">좋아요 '+item.lcount +'</span>';
 					reviewView += '</div>';
 					
 					//문서 객체에 추가
@@ -93,7 +93,7 @@ $(function(){
 					alert('로그인한 후에 이용할 수 있습니다.');
 				}else if (param.result =='success'){
 					//첫번째 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
-					selectReviewList(1);
+					selectReviewList(1,1);
 					//작성 완료하면 리뷰 작성했습니다로 바꾸기
 					$('#review_duplicated').show();
 					$('#review_notDuplicated').hide();
@@ -106,7 +106,12 @@ $(function(){
 		event.preventDefault();
 	});
 	
-	selectReviewList(1);
+	//정렬하기
+	$('.sort').click(function(){
+		selectReviewList(1,$(this).attr('data-num'));
+	});
+	
+	selectReviewList(1,1);
 });
 
 

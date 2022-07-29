@@ -163,7 +163,7 @@ public class ReviewDAO {
 	}
 
 	// 글 목록(최신순(1) 추천순(2) 댓글순(3) 정렬)정렬은 추후에
-	public List<ReviewVO> getReviewList(int c_num, int start, int end) throws Exception {
+	public List<ReviewVO> getReviewList(int c_num, int start, int end, String sort) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -172,10 +172,21 @@ public class ReviewDAO {
 		List<ReviewVO> list = null;
 		ReviewVO review = null;
 		try {
+			if(sort.equals("1")) {
+				sub_sql = "c_review_num";
+			} else if(sort.equals("2")) {
+				sub_sql = "like_cnt";
+			} else if(sort.equals("3")) {
+				sub_sql = "com_cnt";
+			}
 			conn = DBUtil.getConnection();
-			sql = "select * from (select a.*, rownum rnum from "
-					+ "(select * from c_review where c_num = ? and c_review_content is not null)a) "
-					+ "where rnum >= ? and rnum <= ?";
+			sql = "select * from (select a.*, rownum rnum from (select * from c_review "
+				+ "LEFT OUTER JOIN (SELECT c_review_num, COUNT(*) com_cnt FROM "
+				+ "c_review_com GROUP BY c_review_num) USING(c_review_num) "
+				+ "LEFT OUTER JOIN (SELECT c_review_num, COUNT(*) like_cnt "
+				+ "FROM r_like GROUP BY c_review_num) USING(c_review_num) "
+				+ "where c_num = ? and c_review_content is not null "
+				+ "ORDER BY " +sub_sql +" DESC NULLS LAST)a) where rnum >= ? and rnum <= ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);
 			pstmt.setInt(2, start);
@@ -193,6 +204,7 @@ public class ReviewDAO {
 				review.setMember_num(rs.getInt("member_num"));
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
 				review.setLcount(selectLikeCount(rs.getInt("c_review_num")));
+				review.setStar(getStarByC_star_num(rs.getInt("c_star_num")));
 				list.add(review);
 			}
 		} catch (Exception e) {
@@ -202,7 +214,30 @@ public class ReviewDAO {
 		}
 		return list;
 	}
-
+	// star_num으로 star 구하기
+	public int getStarByC_star_num(int c_star_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int star = 0;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select star from c_star where c_star_num =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_star_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				 star = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return star;
+	}
+	
 	// 리뷰 상세
 	public ReviewVO getReviewDetail(int c_review_num) throws Exception {
 		Connection conn = null;
@@ -298,7 +333,95 @@ public class ReviewDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-
+	
+	//내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순))
+	public List<ReviewVO> selectMyReview(int member_num, int start, int end, String sort) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = "";
+		List<ReviewVO> list = null;
+		ReviewVO review = null;
+		try {
+			if(sort.equals("1")) {
+				sub_sql = "s.star";
+			} else if(sort.equals("2")) {
+				sub_sql = "r.c_review_num";
+			}
+			
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum " 
+					+ "FROM (SELECT * FROM c_review r JOIN c_star s "
+					+ "USING (c_star_num) where s.member_num=? and r.c_review_content is not null "
+					+ "order by " + sub_sql +" DESC)a) " 
+					+ "WHERE rnum >= ? AND rnum <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<ReviewVO>();
+			while (rs.next()) {
+				review = new ReviewVO();
+				review.setC_num(rs.getInt("c_num"));
+				review.setC_review_content(StringUtil.useBrNoHtml(rs.getString("c_review_content")));
+				review.setC_review_mod_date(rs.getDate("c_review_mod_date"));
+				review.setC_review_num(rs.getInt("c_review_num"));
+				review.setC_review_reg_date(rs.getDate("c_review_reg_date"));
+				review.setC_star_num(rs.getInt("c_star_num"));
+				review.setMember_num(rs.getInt("member_num"));
+				review.setId(getIdByMemberNum(rs.getInt("member_num")));
+				review.setLcount(selectLikeCount(rs.getInt("c_review_num")));
+				review.setStar(getStarByC_star_num(rs.getInt("c_star_num")));
+				list.add(review);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+		
+	//내가 쓴 댓글 리스트 반환 (정렬 없음)
+	public List<CommentVO> selectMyComment(int member_num, int start, int end) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		List<CommentVO> list = null;
+		CommentVO comment = null;
+		try {	
+			conn = DBUtil.getConnection();
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum " 
+					+ "FROM (SELECT * FROM c_review_com "
+					+ "where member_num =? order by com_num DESC)a) " 
+					+ "WHERE rnum >= ? AND rnum <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<CommentVO>();
+			while (rs.next()) {
+				comment = new CommentVO();
+				comment.setCom_num(rs.getInt("com_num"));
+				comment.setCom_content(rs.getString("com_content"));
+				comment.setCom_reg_date(rs.getString("com_reg_date"));
+				comment.setMember_num(rs.getInt("member_num"));
+				comment.setC_num(rs.getInt("c_num"));
+				list.add(comment);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
+	
 	// 내 별점과 리뷰 검색 (리뷰 없으면 content null로 반환됨)
 	public ReviewVO selectMyStar(int member_num, int c_num) throws Exception {
 		Connection conn = null;
