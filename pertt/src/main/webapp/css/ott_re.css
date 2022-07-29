@@ -19,35 +19,37 @@ div#recommend-p{
 	margin-bottom:70px;
 }
 form#ottRecommend_form{
-	width: 800px;
-    height: 200px;
+	width: 1000px;
+    height: 300px;
     margin: 0 auto;
-    border: 1px solid #000;
-    padding: 25px 10px 10px 30px
+    padding: 15px 30px 15px 30px;
 }
 div.checkbox1 {
     margin: 0 auto;
     padding-left: 100px;
-    min-height: 60px;
+    min-height: 80px;
+    font-size: 15pt
 }
 div.checkbox2 {
     clear: both;
     margin: 0 auto;
-    padding-left: 200px;
-    min-height: 60px;
+    padding-left: 280px;
+    min-height: 80px;
+    font-size: 15pt;
 }
 .checkbox3 {
     clear: both;
     margin: 0 auto;
-    padding-left: 50px;
-    min-height: 60px;
+    padding-left: 100px;
+    min-height: 80px;
+    font-size: 15pt;
 }
 div.cb1 {
-    width: 170px;
-    height: 30px;
+    width: 250px;
+    height: 40px;
     float: left;
     margin: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     background-color: #ededed;
     border-radius: 10px;
 }
@@ -56,23 +58,54 @@ div#cb1-2 ,#cb1-3{
 }
 
 div.cb2 {
-    width: 100px;
-    height: 30px;
+    vertical-align: middle;
+    width: 120px;
+    height: 40px;
     float: left;
     margin: 10px;
-    padding-top: 10px;
+    padding-top: 30px;
+    padding: 20px 10px 0px 0px;
     background-color: #ededed;
     border-radius: 10px;
 }
 div.cb3 {
-    width: 120px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     float: left;
     margin: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     background-color: #ededed;
     border-radius: 10px;
 }
+.price-bar {
+    font-size: 10pt;
+}
+input#priceBar {
+    width: 800px;
+    margin-left: 50px;
+}
+p#pricebar-p {
+    font-size: 15pt;
+    text-align: left;
+    padding: 0px 0px 0px 560px;
+}
+.ottCheck-btn {
+    padding: 30px;
+    font-size: 15pt;
+    color: whitesmoke;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    background-color: #828282;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
 
 
 
