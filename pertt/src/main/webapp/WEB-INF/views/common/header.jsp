@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!-- 
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#drop_menu .dropdown').hover(function(){
@@ -12,7 +13,8 @@ $(document).ready(function(){
 		
 	});
 })
-</script>
+</script> 
+-->
 
 <!-- header 시작 -->
 <div id="main_logo">
