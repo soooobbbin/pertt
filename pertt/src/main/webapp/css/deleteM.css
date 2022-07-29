@@ -96,80 +96,109 @@ td.dt-b {
 }
 
 /*기존코드*/
-table {
-	border-collapse: collapse;
-	border-spacing: 30px;
-	word-break: break-all;
-	height: auto;
-	text-align: center;
+#main_logo{
+	padding-top:20px;
 }
-
-td {
-	border-bottom: none;
-	padding: 10px;
-	text-align: left;
+#main_menubar{
+	width:200px;
+	float:right;
+	padding-right:30px;
 }
-
-/*헤더*/
-#main_logo {
-	padding-top: 20px;
+#main_nav{
+	padding:2px 10px 20px 10px;
+	height:20px;
+	background-color:#C1BFBF;
+	text-align:center;
 }
-
-#main_menubar {
-	width: 200px;
-	float: right;
-	padding-right: 30px;
+#main_nav ul{
+	list-style:none;
+	margin:0;
+	padding:0;
 }
-
-#main_nav {
-	padding: 2px 10px 20px 10px;
-	height: 20px;
-	background-color: #C1BFBF;
+#main_nav ul li{
+	display:inline-block;
+	width:100px;
+	text-align:center;
+	vertical-align:middle;
+	padding-top:10px;
+	margin:0 30px;
 }
-
-#main_nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+#main_nav ul li.menu-profile{
+	padding-top:5px;
+	width:25px;
 }
-
-#main_nav ul li {
+#main_nav ul li.menu-logout{
+	width:150px;
+	text-align:left;
+}
+/*.content-main{
+	padding:10px 20px;
+}*/
+.result-display{
+	width:400px;
+	height:200px;
+	margin:50px auto;
+	border:1px solid #000;
+	display:flex;/*하위요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+	align-items:center;/*세로 정렬*/
+	justify-content:center;/*가로 정렬*/
+}
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:none;
+	color:#6C6C6C;
+}
+a#netflix,a#disney,a#watcha,a#tving,a#wavve{
+	font-weight:bold;
+	margin:0 20px;
+}
+a#intro, a#recommend{
+	font-weight:600;
+}
+.recommend{
+	min-width:100px;
 	display: inline-block;
-	width: 100px;
-	text-align: center;
-	vertical-align: middle;
-	padding-top: 10px;
+	margin-left:30px;
+}
+/*메뉴 드랍다운*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor:pointer;
 }
 
-#main_nav ul li.menu-profile {
-	padding-top: 5px;
-	width: 25px;
+.dropdown-content {
+  display:none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  margin:20px 0px 0px -200px;
+  cursor:pointer;
+  z-index: 100;
 }
 
-#main_nav ul li.menu-logout {
-	width: 150px;
-	text-align: left;
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
 }
+.dropdown-content a:hover {background-color: #ddd;}
 
-.align-center {
-	text-align: center;
-}
-
-.align-right {
-	text-align: right;
-}
-
-a:link {
-	text-decoration: none;
-	color: #000000;
-}
-
-a:visited {
-	text-decoration: none;
-	color: #000000;
-}
-
-a:hover {
-	text-decoration: none;
-	color: #6C6C6C;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
