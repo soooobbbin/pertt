@@ -38,7 +38,8 @@
 						</tr>
 						<tr>
 							<td class="mp-1">현재 비밀번호</td>
-							<td class="mp-4">${member.passwd}</td>
+							<td class="mp-4"><input type="password" name="origin_passwd" id="origin_passwd"
+								maxlength="12"></td>
 						</tr>
 						<tr>
 							<td class="mp-1">새 비밀번호</td>
