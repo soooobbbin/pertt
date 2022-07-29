@@ -53,11 +53,13 @@
 		<div class="review-detail-box">
 			<span id="review_id">${review.id }</span>
 			<p id="review_content">${review.c_review_content }</p>
-			<span id="output_comment"> 6</span>
+			<span id="output_comment"> </span>
 			<span id="comment"> 댓글 </span>
 			<span id="output_lcount"> </span>
 			<img id="output_like" src="${pageContext.request.contextPath }/images/like1.png">
 			<span id="review_regdate">${review.c_review_reg_date } </span>
+			<div class="end-float"></div>
+			<div class="reviewDetail-bottom">
 			<c:if test="${!empty review.c_review_mod_date}">
 				<span id="review_moddate"> 최근 수정일 : ${review.c_review_mod_date} </span>
 			</c:if>
@@ -65,13 +67,14 @@
 			<input type="button" data-reviewnum="${review.c_review_num }" value="수정" class="modify-btn">
 			<input type="button" data-reviewnum="${review.c_review_num }" value="삭제" class="delete-btn">
 			</c:if>
+			</div>
 			
 		</div><!-- end of review_form -->
 		<div id="item" class="review-detail-box"></div><!-- 리뷰 수정 폼 나타나는 div -->
 		
 		<!-- 댓글 시작 -->
 		<div id="com_div">
-			<span class="com-title">댓글 달기</span>
+			<span class="com-title">댓글 쓰기</span>
 			<form id="com_form">
 				<input type="hidden" id="c_num" name="c_num" value="${contents.c_num }">
 				<input type="hidden" id="c_review_num" name="c_review_num" value="${review.c_review_num }">
@@ -81,11 +84,11 @@
 				<c:if test="${empty user_num }">disabled="disabled"</c:if>
 				><c:if test="${empty user_num }">로그인이 필요합니다.</c:if></textarea>
 				<c:if test="${!empty user_num }" >
-					<div id="com_first">
-						<span class="letter-count">300/300</span>
-					</div>
 					<div id="com_second" class="align-right">
 						<input type="submit" value="전송"> 
+					</div>
+					<div id="com_first">
+						<span class="letter-count">300/300</span>
 					</div>
 				</c:if>
 			</form>
@@ -95,7 +98,7 @@
 		<!-- 댓글 페이지 처리 -->
 		<div id="com_output"></div>
 		<div class="paging-button" style="display:none">
-			<input type="button" value="다음글 보기">
+			<input id="next_btn" type="button" value="댓글 더보기">
 		</div>
 		<div id="loading" style="display:none">
 			<img src="${pageContext.request.contextPath }/images/ajax-loader.gif">

@@ -35,7 +35,6 @@ $(function(){
 						com_output += ' <input type="button" data-com_num="'+item.com_num+'" value="삭제" class="delete-comment-btn">';
 					}
 					
-					com_output += '<hr size="1" noshade width="100%">';
 					com_output += '</div>';
 					com_output += '</div>';
 					
@@ -51,6 +50,8 @@ $(function(){
 					//다음 페이지가 존재
 					$('.paging-button').show();
 				}
+				//리뷰 아래쪽에 댓글 수 반영
+				$('#comment').html('댓글 ' +count);
 			},
 			error:function(){
 				$('#loading').hide();
