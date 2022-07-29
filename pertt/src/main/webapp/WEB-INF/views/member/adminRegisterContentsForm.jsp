@@ -29,7 +29,7 @@
 						</c:if>
 					</li>
 					<li>
-						<div class="align-center">
+						<div class="poster-area">
 							<input type="file" value="파일 선택" id="poster_btn" name="poster">
 						</div>
 						
