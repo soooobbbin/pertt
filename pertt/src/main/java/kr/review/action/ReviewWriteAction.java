@@ -33,7 +33,7 @@ public class ReviewWriteAction implements Action {
 				mapAjax.put("result", "duplicated");
 			} else {
 				String content = request.getParameter("content");
-				dao.updateReviewContent(user_num, c_num, content);
+				dao.modifyReviewContent(c_num, user_num, 0, content, true);
 				mapAjax.put("result", "success");
 				System.out.println(content);
 			}

@@ -40,7 +40,7 @@ public class UpdateReviewAction implements Action{
 		}else if(user_num!=null 
 				&& user_num == db_review.getMember_num()) {
 			//로그인한 회원번호와 작성자 회원번호 일치
-			dao.modifyReviewContent(c_review_num, c_review_content);
+			dao.modifyReviewContent(0, 0, c_review_num, c_review_content, false);
 			mapAjax.put("result", "success");
 			
 		}else {
