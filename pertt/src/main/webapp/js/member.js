@@ -20,6 +20,7 @@ $(function(){
 			cache:false,
 			timeout:30000,
 			success:function(param){
+				alert('param.result ='+param.result);
 				if(param.result == 'idNotFound'){
 					idChecked = 1;
 					$('#message_id').css('color','#000000').text('등록 가능 ID');
@@ -56,27 +57,47 @@ $(function(){
 			alert('아이디 중복 체크 필수');
 			return false;
 		}
-		if($('#name').val().trim()==''){
-			alert('이름을 입력하세요!');
-			$('#name').val('').focus();
-			return false;
-		}
 		if($('#passwd').val().trim()==''){
 			alert('비밀번호를 입력하세요!');
 			$('#passwd').val('').focus();
 			return false;
 		}
-		if($('#birth').val().trim()==''){
+		if($('#name').val().trim()==''){
+			alert('이름을 입력하세요!');
+			$('#name').val('').focus();
+			return false;
+		}
+		if($('#birth1').val().trim()==''){
 			alert('생년월일을 입력하세요!');
-			$('#birth').val('').focus();
+			$('#birth1').val('').focus();
+			return false;
+		}
+		if($('#birth2').val()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birth2').val('').focus();
+			return false;
+		}
+		if($('#birth3').val()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birth3').val('').focus();
+			return false;
+		}
+		if($('#phone1').val()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone1').val('').focus();
+			return false;
+		}
+		if($('#phone2').val().trim()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone2').val('').focus();
+			return false;
+		}
+		if($('#phone3').val().trim()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone3').val('').focus();
 			return false;
 		}
 		
-		if($('#phone').val().trim()==''){
-			alert('휴대폰 번호를 입력하세요!');
-			$('#phone').val('').focus();
-			return false;
-		}
 		if($('#email').val().trim()==''){
 			alert('이메일을 입력하세요!');
 			$('#email').val('').focus();
@@ -130,14 +151,35 @@ $(function(){
 			$('#name').val('').focus();
 			return false;
 		}
-		if($('#birth').val().trim()==''){
+		if($('#birth1').val().trim()==''){
 			alert('생년월일을 입력하세요!');
-			$('#birth').val('').focus();
+			$('#birth1').val('').focus();
 			return false;
 		}
-		if($('#phone').val().trim()==''){
+		if($('#birth2').val()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birth2').val('').focus();
+			return false;
+		}
+		if($('#birth3').val()==''){
+			alert('생년월일을 입력하세요!');
+			$('#birth3').val('').focus();
+			return false;
+		}
+		
+		if($('#phone1').val()==''){
 			alert('휴대폰 번호를 입력하세요!');
-			$('#phone').val('').focus();
+			$('#phone1').val('').focus();
+			return false;
+		}
+		if($('#phone2').val().trim()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone2').val('').focus();
+			return false;
+		}
+		if($('#phone3').val().trim()==''){
+			alert('휴대폰 번호를 입력하세요!');
+			$('#phone3').val('').focus();
 			return false;
 		}
 		if($('#email').val().trim()==''){

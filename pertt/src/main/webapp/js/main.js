@@ -6,7 +6,7 @@ $(function(){
 	 });
 	 
 	
-	$('#main_nav').hover(function(){
+	$('#drop_menu').click(function(){
 		$('.dropdown-content',this).animate('slideDown',500);
 	},
 	function(){

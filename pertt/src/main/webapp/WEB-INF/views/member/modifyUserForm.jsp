@@ -59,8 +59,8 @@
 						<tr>
 							<td class="mp-1">생년월일</td>
 							<td><input type="text" name="birth1" id="birth1"
-								maxlength="4" size="5" class="inBorder" />년 <select
-								name="birth2" class="inBorder">
+								maxlength="4" size="5" class="inBorder" />년 
+								<select name="birth2" class="inBorder" id="birth2">
 									<option value="01">01
 									<option value="02">02
 									<option value="03">03
@@ -73,7 +73,7 @@
 									<option value="10">10
 									<option value="11">11
 									<option value="12">12
-							</select>월 <select name="birth3" class="inBorder">
+							</select>월 <select name="birth3" class="inBorder" id="birth3">
 									<option value="01">01
 									<option value="02">02
 									<option value="03">03
@@ -120,8 +120,10 @@
 						</tr>
 						<tr>
 							<td class="mp-3">이메일</td>
-							<td class="mp-2"><input type="text" name="email" id="email"
-								maxlength="20"></td>
+							<td class="mp-2">
+								<input type="text" name="email" id="email" 
+									maxlength="20" placeholder="example@naver.com">
+							</td>
 						</tr>
 
 
