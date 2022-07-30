@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정</title>
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/style.css"
+	type="text/css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypage.css"
 	type="text/css">
@@ -36,7 +38,8 @@
 						</tr>
 						<tr>
 							<td class="mp-1">현재 비밀번호</td>
-							<td class="mp-4">${member.passwd}</td>
+							<td class="mp-4"><input type="password" name="origin_passwd" id="origin_passwd"
+								maxlength="12"></td>
 						</tr>
 						<tr>
 							<td class="mp-1">새 비밀번호</td>
@@ -56,8 +59,8 @@
 						<tr>
 							<td class="mp-1">생년월일</td>
 							<td><input type="text" name="birth1" id="birth1"
-								maxlength="4" size="5" class="inBorder" />년 <select
-								name="birth2" class="inBorder">
+								maxlength="4" size="5" class="inBorder" />년 
+								<select name="birth2" class="inBorder" id="birth2">
 									<option value="01">01
 									<option value="02">02
 									<option value="03">03
@@ -70,7 +73,7 @@
 									<option value="10">10
 									<option value="11">11
 									<option value="12">12
-							</select>월 <select name="birth3" class="inBorder">
+							</select>월 <select name="birth3" class="inBorder" id="birth3">
 									<option value="01">01
 									<option value="02">02
 									<option value="03">03
@@ -117,8 +120,10 @@
 						</tr>
 						<tr>
 							<td class="mp-3">이메일</td>
-							<td class="mp-2"><input type="text" name="email" id="email"
-								maxlength="20"></td>
+							<td class="mp-2">
+								<input type="text" name="email" id="email" 
+									maxlength="20" placeholder="example@naver.com">
+							</td>
 						</tr>
 
 
