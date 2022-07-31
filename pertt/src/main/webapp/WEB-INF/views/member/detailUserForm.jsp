@@ -37,6 +37,7 @@
 				<input type="button" value="목록"
 				      onclick="location.href='memberList.do'">
 			</div>  
+			
 			<ul>
 				<li>
 					<label>이름</label>${member.name}
@@ -50,7 +51,6 @@
 				<li>
 					<label>생년월일</label>${member.birth}
 				</li>
-
 			</ul>    
 		</form>
 	</div>
