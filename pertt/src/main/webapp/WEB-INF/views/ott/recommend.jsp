@@ -34,7 +34,7 @@
 			<div class="cb3" id="cb3-2"><input type="checkbox" id="cb8" value="animation">애니메이션</div>
 			<div class="cb3" id="cb3-3"><input type="checkbox" id="cb9" value="SF">SF</div>
 			<div class="cb3" id="cb3-4"><input type="checkbox" id="cb10" value="kbs">지상파 방송</div>
-			<div class="cb3" id="cb3-5"><input type="checkbox" id="cb11" value="cj">케이블 방송</div>
+			<div class="cb3" id="cb3-5"><input type="checkbox" id="cb11" value="tvn">케이블 방송</div>
 		</div>
 		</form>
 		<div class="price-bar">
@@ -46,9 +46,21 @@
 		    
 		</div>
 		
-		<div class="ottCheck-btn">
-			나에게 맞는 OTT확인하기!
+		<input type="button"  value="나에게 맞는 OTT확인하기!" id="ottCheckBtn">
+		<div class="result">
+			<img src="${pageContext.request.contextPath}/images/down-arrow.png" id="down_arrow" style="display:none;">
+			<div class="ott-result">
+			<img src="${pageContext.request.contextPath}/images/logo_netflix.png" id="netflix" style="display:none;" >
+			<img src="${pageContext.request.contextPath}/images/logo_disney.png" id="disney"  style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_watcha.png" id="watcha" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_tving.png" id="tving" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_wavve.png" id="wavve" style="display:none;">
+			
+			</div>
+		
+		
 		</div>
+			
 	</div>
 </div>
 </body>
