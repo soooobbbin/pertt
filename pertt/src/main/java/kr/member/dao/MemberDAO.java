@@ -358,6 +358,118 @@ public class MemberDAO {
 		}
 		return list;
 	}
+	
+	//탈퇴 회원 목록(검색글 목록)
+		public List<MemberVO> getResignedMemberByAdmin(
+				           int start,int end,
+				           String keyfield, String keyword)
+		                        throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberVO> list = null;
+		String sql = null;
+		String sub_sql = "";
+		int cnt = 0;
+		
+		try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+			conn = DBUtil.getConnection();
+			
+			if(keyword!=null && !"".equals(keyword)) {
+				//검색 처리
+				if(keyfield.equals("1")) sub_sql = "AND member_id LIKE ?";
+				else if(keyfield.equals("2")) sub_sql = "AND name LIKE ?";
+				else if(keyfield.equals("3")) sub_sql = "AND email LIKE ?";
+			}
+			
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+				+ "(SELECT * FROM member m LEFT OUTER JOIN "
+				+ "member_detail d USING (member_num) WHERE auth = 0" + sub_sql
+				+ " ORDER BY member_num DESC NULLS LAST)a) "
+				+ "WHERE rnum >= ? AND rnum <= ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			if(keyword!=null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, "%"+keyword+"%");
+			}
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
+			
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<MemberVO>();
+			while(rs.next()) {
+				MemberVO member = new MemberVO();
+				member.setMember_num(rs.getInt("member_num"));
+				member.setMember_id(rs.getString("member_id"));
+				member.setAuth(rs.getInt("auth"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setName(rs.getString("name"));
+				member.setPhone(rs.getString("phone"));
+				member.setEmail(rs.getString("email"));
+				member.setBirth(rs.getString("birth"));
+				member.setReg_date(rs.getDate("reg_date"));
+				member.setMod_date(rs.getDate("mod_date"));
+				
+				list.add(member);
+			}
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+		
+	//탈퇴 회원 레코드 수(검색 레코드 수)
+	public int getResignCountByAdmin(String keyfield,String keyword)throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String sub_sql = "";
+		int count = 0;
+		
+		try {
+		//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션을 할당
+		conn = DBUtil.getConnection();
+		
+		if(keyword!=null && !"".equals(keyword)) {
+		//검색 처리
+		if(keyfield.equals("1")) sub_sql = "AND member_id LIKE ?";
+		else if(keyfield.equals("2")) sub_sql = "AND name LIKE ?";
+		else if(keyfield.equals("3")) sub_sql = "AND email LIKE ?";
+		}
+		
+		sql = "SELECT COUNT(*) FROM member LEFT OUTER JOIN "
+		+ "member_detail USING (member_num) WHERE auth = 0 " + sub_sql;
+		
+		pstmt = conn.prepareStatement(sql);
+		
+		if(keyword!=null && !"".equals(keyword)) {
+		pstmt.setString(1, "%"+keyword+"%");
+		}
+		
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+		count = rs.getInt(1);
+		}
+		
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+			return count;
+		}
+	
+	
+	
+	
 	//회원정보(등급) 수정
 	public void updateMemberByAdmin(int auth, int member_num)
 	                              throws Exception{
