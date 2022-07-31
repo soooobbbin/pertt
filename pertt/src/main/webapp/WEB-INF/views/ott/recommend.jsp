@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ott_re.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ott_re.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -37,8 +39,11 @@
 		</form>
 		<div class="price-bar">
 			<p id="pricebar-p">요금제 가격대(4인 기준)</p>
-			<input type="range" id="priceBar" name="priceBar" min="0" max="17000">
-			<p>0원</p>
+		    <div>
+			<input type="range" id="priceBar" name="priceBar" min="0" max="4" step="1" value="0" >
+			<p id="output"></p>
+			</div>
+		    
 		</div>
 		
 		<div class="ottCheck-btn">
