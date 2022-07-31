@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
 </head>
@@ -16,16 +17,17 @@
 		<h2>로그인</h2>
 		<form id="login_form" action="login.do" 
 		                                    method="post">
+		                                    
 			<ul>
 				<li>
-					<label for="member_id">아이디</label>
-					<input type="text" name="member_id" id="member_id"
-					       maxlength="12" autocomplete="off">
-				</li>
+					<label for="member_id">아이디</label></li>
+					<li><input type="text" name="member_id" id="member_id"
+					       maxlength="12" autocomplete="off"></li>
+				
 				<li>	
-					<label for="passwd">비밀번호</label>
-					<input type="password" name="passwd"
-					       id="passwd" maxlength="12">
+					<label for="passwd">비밀번호</label></li>
+					<li><input type="password" name="passwd"
+					       id="passwd" maxlength="12"></li>
 				</li>
 			</ul>
 			<div class="align-center">
