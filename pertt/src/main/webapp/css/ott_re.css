@@ -77,6 +77,7 @@ div.cb3 {
     background-color: #ededed;
     border-radius: 10px;
 }
+/*요금제 가격대*/
 .price-bar {
     font-size: 10pt;
 }
@@ -99,7 +100,11 @@ p#pricebar-p {
     background-color: #828282;
     border-radius: 10px;
 }
-
+p#output {
+	font-size:12pt;
+	font-weight:bold;
+	text-align:center;
+}
 
 
 
