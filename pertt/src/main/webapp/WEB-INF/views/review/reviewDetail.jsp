@@ -19,29 +19,29 @@
 	<div class="align-center">
 	<div class="review-align">
 	<div class="contents-detail">
-		<img src="${pageContext.request.contextPath}/images/dug_poster.jpg">
+		<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num }/${contents.poster}">
 		<ul>
 			<li class="review_title">${contents.title }
 			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
 				<c:if test="${contents.ott_num == 1 }">
-					 NETFLIX</li>
+					<span class="ott-name"> NETFLIX</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 2 }">
-					 DISNEY+</li>
+					<span class="ott-name"> DISNEY+</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 3 }">
-					WATCHA</li>
+					<span class="ott-name"> WATCHA</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 4 }">
-					TVING</li>
+					<span class="ott-name"> TVING</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 5 }">
-					WAVVE</li>
+					<span class="ott-name"> WAVVE</span></li>
 				</c:if>
 		 <li><hr size="1" width="300px" noshade="noshade"></li>
 		</ul>
 		<div class="review-star" >
-			<span>별점총점</span>
+			<span>★${review.star}</span>
 		</div><!-- end of review_star -->
 	</div><!-- end of contents_detail -->
 	</div>
@@ -52,7 +52,9 @@
 	<div class="review-align">
 		<div class="review-detail-box">
 			<span id="review_id">${review.id }</span>
-			<p id="review_content">${review.c_review_content }</p>
+			<div id="item" class="review-modify-box">
+				<p id="review_content">${review.c_review_content }</p>
+			</div>
 			<span id="output_comment"> </span>
 			<span id="comment"> 댓글 </span>
 			<span id="output_lcount"> </span>
@@ -70,7 +72,6 @@
 			</div>
 			
 		</div><!-- end of review_form -->
-		<div id="item" class="review-detail-box"></div><!-- 리뷰 수정 폼 나타나는 div -->
 		
 		<!-- 댓글 시작 -->
 		<div id="com_div">

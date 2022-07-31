@@ -25,7 +25,7 @@ public class ReviewWriteAction implements Action {
 			mapAjax.put("result", "logout");
 		} else{//로그인된 경우
 			request.setCharacterEncoding("utf-8");
-			int c_num = Integer.parseInt(request.getParameter("c_num"));
+			int c_num = Integer.parseInt(request.getParameter("c_num2"));
 			ReviewDAO dao = ReviewDAO.getInstance();
 			
 			//리뷰를 쓴 적 없는 회원인지 확인. 리뷰 이미 썼으면 true로 반환
@@ -35,7 +35,6 @@ public class ReviewWriteAction implements Action {
 				String content = request.getParameter("content");
 				dao.modifyReviewContent(c_num, user_num, 0, content, true);
 				mapAjax.put("result", "success");
-				System.out.println(content);
 			}
 		}
 		

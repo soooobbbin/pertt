@@ -1,5 +1,40 @@
 $(function(){
-	//리뷰 목록
+	let user_num = $('#user_num').val();
+	let starCheck = $('#starCheck').val();
+	let reviewCheck = $('#reviewCheck').val();
+	
+	//===================별점주기 ========================
+	let c_num = $('#c_num').val();
+	
+	$('#star_btn').click(function(){
+		let star = $('.rate-star').val();
+		$.ajax({
+			url:'giveStar.do',
+			type:'post',
+			data:{star:star, c_num:c_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				if(param.result == 'logout'){
+					alert('로그인해야 작성할 수 있습니다.');
+				}else if(param.result == 'success'){
+					//위에 span 태그에 내 별점 띄워주기
+					$('#myStar').html('내별점 ★'+star);
+					$('.give-star').append(myStar);
+					//별점 총점을 다시 호출함
+					$('#star_avg').text('평균별점 : ★'+param.starAvg);
+					starCheck = 1;
+
+					showReviewForm(user_num,starCheck,reviewCheck);
+				}
+			},
+			error:function(){
+				alert('별점 등록에서 네트워크 오류 발생');	
+			}
+		});
+	});
+	//===================리뷰 목록=========================
 	let currentPage;
 	let count;
 	let rowCount;
@@ -7,7 +42,6 @@ $(function(){
 	//리뷰 목록
 	function selectReviewList(pageNum,sort){
 		currentPage = pageNum;
-		var c_num = $('#c_num2').val();
 		$.ajax({
 			url:'reviewList.do',
 			type:'post',
@@ -36,7 +70,7 @@ $(function(){
 					
 					let reviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
 					reviewView += '?c_review_num='+item.c_review_num;
-					reviewView += '&c_num='+c_num;
+					reviewView += '&c_num='+item.c_num;
 					reviewView += '&#39;">';
 					reviewView += '<span id="id">' +item.id +'</span>';
 					reviewView += '<span id="star">★' +item.star +'</span>';
@@ -68,9 +102,48 @@ $(function(){
 		selectList(currentPage + 1);
 	});
 	
+	//==================리뷰 쓰기 창============================
+	var review_form;
+	
+	//리뷰 쓰기 창 띄우기
+	function showReviewForm(user_num, starCheck, reviewCheck){
+		$('#review_notDuplicated').empty();
+		$('#review_duplicated').empty();
+		if(user_num == -1){
+			review_form = '<form id="review_form">';				
+			review_form += '<textarea rows="10" cols="80" id="r_content" name="content" disabled="disabled">';
+			review_form += '로그인이 필요합니다.</textarea>';
+			review_form += '</c:if></form>';
+			$('#review_duplicated').hide();
+			$('#review_notDuplicated').append(review_form);
+		} else if(starCheck==0){
+			review_form = '<form id="review_form">';				
+			review_form += '<textarea rows="10" cols="80" id="r_content" name="content" disabled="disabled">';
+			review_form += '별점을 준 후에 이용하세요.</textarea>';
+			review_form += '</c:if></form>';
+			$('#review_duplicated').hide();
+			$('#review_notDuplicated').append(review_form);
+		} else if(user_num != null && starCheck == 1 && reviewCheck == 0) {
+			review_form = '<form id="review_form">';
+			review_form += '<input type="hidden" name="c_num2"  value=' +c_num +'>';
+			review_form += '<textarea rows="10" cols="80" id="r_content" name="content"';
+			review_form += 'placeholder="리뷰를 입력해주세요"></textarea>';
+			review_form += '<input type="submit" value="등록">';
+			review_form += '</c:if></form>';
+			$('#review_duplicated').hide();
+			$('#review_notDuplicated').append(review_form);
+		} else if(reviewCheck == 1) {
+			review_form = '<h2>이미 리뷰를 작성했습니다.</h2>';
+			review_form += '<input id="myReview" type="button" value="내 리뷰 보러가기"'; 
+			review_form += 'onclick="location.href=&#39;reviewDetail.do?c_review_num=0&c_num='+c_num+'&#39;">';
+			$('#review_notDuplicated').hide();
+			$('#review_duplicated').append(review_form);
+		}
+	}
+	
 	//========================리뷰 쓰기===========================
 	//빈내용 확인
-	$('#review_form').submit(function(event){
+	$(document).on('submit','#review_form', function(event){
 		if($('#r_content').val().trim() == ''){
 			alert('내용을 입력하세요');
 			$('#r_content').val('').focus();
@@ -95,8 +168,7 @@ $(function(){
 					//첫번째 페이지 댓글 목록 다시 읽어오기(방금 작성한 댓글도 포함해서)
 					selectReviewList(1,1);
 					//작성 완료하면 리뷰 작성했습니다로 바꾸기
-					$('#review_duplicated').show();
-					$('#review_notDuplicated').hide();
+					showReviewForm(user_num,starCheck,1);
 				}
 			},
 			error:function(){
@@ -105,13 +177,14 @@ $(function(){
 		});
 		event.preventDefault();
 	});
-	
 	//정렬하기
 	$('.sort').click(function(){
 		selectReviewList(1,$(this).attr('data-num'));
 	});
 	
 	selectReviewList(1,1);
+	showReviewForm(user_num,starCheck,reviewCheck);
+	
 });
 
 

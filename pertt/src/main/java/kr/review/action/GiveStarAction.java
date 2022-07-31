@@ -26,7 +26,6 @@ public class GiveStarAction implements Action{
 		if( dao.selectMyStar(user_num, c_num) != null) {
 			starCheck = true;
 		}
-		System.out.println(starCheck);
 		
 		Map<String,Object> mapAjax = 
 		          new HashMap<String,Object>();
@@ -48,11 +47,9 @@ public class GiveStarAction implements Action{
 			mapAjax.put("result", "success");
 			mapAjax.put("starAvg", starAvg);
 		}
-		System.out.println(starAvg);
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);
 		request.setAttribute("ajaxData", ajaxData);
-		request.setAttribute("starCheck", true);
 		return "/WEB-INF/views/common/ajax_view.jsp";
 	}
 }

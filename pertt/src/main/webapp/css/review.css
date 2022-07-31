@@ -15,10 +15,12 @@ form {
 #r-main{
 	width: 100%;
 }
-
+.ott-name{
+	font-size: 12pt;
+}
 div.contents-detail{
 	display: inline-block;
-	margin: 40px;
+	margin: 45px 20px;
 }
 .contents-detail img{
 	float: left;
@@ -27,6 +29,7 @@ div.contents-detail{
 .contents-detail ul{
 	float: right;
 	text-align: left;
+	margin: 10px 0 0 0;
 }
 .contents-detail li{
 	margin: 5px;
@@ -85,6 +88,7 @@ div.review-detail-box{
     border-radius: 5px;
     padding: 0 10px 0 0;
 }
+
 #review_form{
     border: none;
     padding: 0;
@@ -209,7 +213,7 @@ span#output_comment{
 	background-color: white;
     width: 820px;
     display: inline-block;
-    margin: 55px 0;
+    margin: 55px 0 10px 0;
     border-radius: 5px
 }
 #myReview {
@@ -296,33 +300,44 @@ div.item{
 }
 
 /*=====별점 스타일=======*/
+span#myStar{
+	height: 40px;
+	margin: 0 0 0 50px;
+}
+div.give-star{
+	width:300px;
+	float: right;
+	padding: 0 25px 0 0;
+}
 .rating{
    /*현재 디자인에서만 필요하고 다른 디자인일 경우는 필요하지 않음*/
    display:inline-block;
-   width:500px;   
 }
 .rating .rate-check {
    display:none;
    
 }
 .rating .rate-check + label {
-    width: 20px;
-    height: 20px;
-    background-image: url('../images/star.png');
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/star.png);
     background-repeat: no-repeat;
-    background-size: 20px 20px;
+    background-size: 40px 40px;
     cursor: pointer;
     background-color: #f0f0f0;
 }
 .rating .rate-check:checked + label {
-    background-color: #eb7a34;
+    background-color: #fce803;
 }
 .rec-star {
    width: 15px;
     height: 15px;
-    background-color: #eb7a34;
+    background-color: #fce803;
 }
-
+#star_btn{
+	border: none;
+	font-size: 8.5pt;
+}
 
 
 

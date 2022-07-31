@@ -102,12 +102,14 @@ public class ReviewDAO {
 		double starAvg = -1;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select avg(star) from c_star where c_num =? and star is not null";
+			sql = "select avg(star), count(*) from c_star where c_num =? and star is not null";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, c_num);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				starAvg = rs.getDouble(1);
+			if(rs.next()) {
+				if(rs.getInt(2) == 0) {
+					starAvg = -1;
+				} else starAvg = rs.getDouble(1);
 			}
 		} catch (Exception e) {
 			throw new Exception(e);
