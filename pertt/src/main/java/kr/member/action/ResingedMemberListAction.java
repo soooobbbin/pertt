@@ -11,7 +11,7 @@ import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 import kr.util.PagingUtil;
 
-public class AdminMemberListAction implements Action{
+public class ResingedMemberListAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -38,16 +38,16 @@ public class AdminMemberListAction implements Action{
 		String keyword = request.getParameter("keyword");
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		int count = dao.getMemberCountByAdmin(
+		int count = dao.getResignCountByAdmin(
 				                        keyfield, keyword);
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
 		PagingUtil page = new PagingUtil(keyfield,keyword,
 				    Integer.parseInt(pageNum),count,20,10,
-				                          "memberList.do");
+				                          "resignedMemberList.do");
 		List<MemberVO> list = null;
 		if(count > 0) {
-			list = dao.getListMemberByAdmin(
+			list = dao.getResignedMemberByAdmin(
 					       page.getStartRow(),
 					       page.getEndRow(),
 					       keyfield,keyword);
@@ -57,7 +57,7 @@ public class AdminMemberListAction implements Action{
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
 		
-		return "/WEB-INF/views/member/memberList.jsp";
+		return "/WEB-INF/views/member/resignedMemberList.jsp";
 	}
 
 }

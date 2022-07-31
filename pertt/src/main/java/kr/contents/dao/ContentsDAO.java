@@ -207,7 +207,7 @@ public class ContentsDAO {
 		try {
 			conn = DBUtil.getConnection();
 
-			sql = "UPDATE mvBoard SET title=?,poster=?,release=?,country=?,genre=?,"
+			sql = "UPDATE contents SET title=?,poster=?,release=?,country=?,genre=?,"
 					+ "tomato=?,plot=?,produce=?,grade=?,category_num=?,ott_num=? WHERE c_num=?";
 
 			pstmt = conn.prepareStatement(sql);
