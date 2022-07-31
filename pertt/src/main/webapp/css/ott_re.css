@@ -77,6 +77,7 @@ div.cb3 {
     background-color: #ededed;
     border-radius: 10px;
 }
+/*요금제 가격대*/
 .price-bar {
     font-size: 10pt;
 }
@@ -89,7 +90,7 @@ p#pricebar-p {
     text-align: left;
     padding: 0px 0px 0px 560px;
 }
-.ottCheck-btn {
+#ottCheckBtn {
     padding: 30px;
     font-size: 15pt;
     color: whitesmoke;
@@ -98,12 +99,37 @@ p#pricebar-p {
     margin-top: 60px;
     background-color: #828282;
     border-radius: 10px;
+    border:none;
+}
+p#output {
+	font-size:12pt;
+	font-weight:bold;
+	text-align:center;
 }
 
-
-
-
-
+/*OTT 추천결과*/
+#netflix{
+	width: 400px; 
+	height:150px;
+}
+#disney{
+	width: 400px; 
+	height:250px;
+	
+}
+#watcha{
+	width: 400px; 
+	height:200px;
+}
+#tving{
+	width: 400px; 
+	height:150px;
+}
+#wavve{
+	width: 400px; 
+	height:150px;
+	
+}
 
 
 

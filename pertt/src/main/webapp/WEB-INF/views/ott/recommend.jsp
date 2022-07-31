@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ott_re.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ott_re.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -32,18 +34,33 @@
 			<div class="cb3" id="cb3-2"><input type="checkbox" id="cb8" value="animation">애니메이션</div>
 			<div class="cb3" id="cb3-3"><input type="checkbox" id="cb9" value="SF">SF</div>
 			<div class="cb3" id="cb3-4"><input type="checkbox" id="cb10" value="kbs">지상파 방송</div>
-			<div class="cb3" id="cb3-5"><input type="checkbox" id="cb11" value="cj">케이블 방송</div>
+			<div class="cb3" id="cb3-5"><input type="checkbox" id="cb11" value="tvn">케이블 방송</div>
 		</div>
 		</form>
 		<div class="price-bar">
 			<p id="pricebar-p">요금제 가격대(4인 기준)</p>
-			<input type="range" id="priceBar" name="priceBar" min="0" max="17000">
-			<p>0원</p>
+		    <div>
+			<input type="range" id="priceBar" name="priceBar" min="0" max="4" step="1" value="0" >
+			<p id="output"></p>
+			</div>
+		    
 		</div>
 		
-		<div class="ottCheck-btn">
-			나에게 맞는 OTT확인하기!
+		<input type="button"  value="나에게 맞는 OTT확인하기!" id="ottCheckBtn">
+		<div class="result">
+			<img src="${pageContext.request.contextPath}/images/down-arrow.png" id="down_arrow" style="display:none;">
+			<div class="ott-result">
+			<img src="${pageContext.request.contextPath}/images/logo_netflix.png" id="netflix" style="display:none;" >
+			<img src="${pageContext.request.contextPath}/images/logo_disney.png" id="disney"  style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_watcha.png" id="watcha" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_tving.png" id="tving" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/logo_wavve.png" id="wavve" style="display:none;">
+			
+			</div>
+		
+		
 		</div>
+			
 	</div>
 </div>
 </body>
