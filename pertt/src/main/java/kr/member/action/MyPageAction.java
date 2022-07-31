@@ -1,12 +1,20 @@
 package kr.member.action;
 
-//import java.util.List;
+import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.review.action.*;
+import kr.review.vo.ReviewVO;
+import kr.util.StringUtil;
+import kr.review.vo.CommentVO;
+import kr.review.dao.ReviewDAO;
 
+import kr.contents.dao.ContentsDAO;
+import kr.contents.vo.ContentsVO;
 import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
@@ -29,17 +37,32 @@ public class MyPageAction implements Action{
 		
 		request.setAttribute("member", member);
 		
-		//내 글 목록
-		/*//좋아요를 클릭한 게시물 -좋아요는 없지만 OTT리뷰글 게시글, 작품리뷰게시글, 댓글쓴 게시글이 있어야함
-		BoardDAO boardDao = BoardDAO.getInstance();
-		List<BoardVO> boardList = 
-				 boardDao.getListBoardFav(1, 5, member_num);
+		request.setCharacterEncoding("utf-8");
 		
-		request.setAttribute("member", member);
-		request.setAttribute("boardList", boardList);
-		*/
+		//작픔리뷰 //내 댓글목록
+		//컨텐츠 정보 가져오기
+		/*
+		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		ContentsDAO cDao = ContentsDAO.getInstance();
+		ContentsVO contents = cDao.getContents(c_num);
+		ReviewDAO rDao = ReviewDAO.getInstance();
 		
-		//내 OTT추천 목록
+		//내 글 조회  - 내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순)) //별점순 기본으로
+		List<ReviewVO> myReview = rDao.selectMyReview(user_num, 1, 3, "1");
+		
+		//내가 쓴 댓글 리스트 반환 
+	    List<CommentVO> comment =rDao.selectMyComment(user_num, 1, 2);
+		
+		//댓글을 쓴 게시글
+		 
+		 
+	   request.setAttribute("comment",comment);
+		request.setAttribute("myReview", myReview);
+		request.setAttribute("contents", contents); 
+		
+		
+		//내 OTT 리뷰
+		//내 OTT 추천 목록*/
 		
 		return "/WEB-INF/views/member/myPage.jsp";
 	}
