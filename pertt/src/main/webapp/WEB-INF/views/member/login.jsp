@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>로그인 정보</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/member.css" type="text/css">
 </head>
 <body>
 <div class="page-main">

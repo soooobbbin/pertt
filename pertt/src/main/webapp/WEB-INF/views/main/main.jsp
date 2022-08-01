@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
+
 </head>
 <body>
 <div class="page-main">
@@ -23,6 +25,7 @@
 		<div class="main-netflix">
 		<a><img src="${pageContext.request.contextPath}/images/logo_netflix2.png" class="mainlogo1"></a>
 			
+			<img src="${pageContext.request.contextPath}/images/down.png" class="moveDown">
 			<div class="mainBtn">
 			<input type="button" value="넷플릭스 별점 주러 가기>" class="moveBtn" onclick="location.href=''">
 			<input type="button" value="넷플릭스 작품 보러 가기>" class="moveBtn" 

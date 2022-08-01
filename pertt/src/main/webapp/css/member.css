@@ -9,8 +9,21 @@ body{
 	padding:0;
 }
 
+h2{
+	text-align:center;
+}
 
 /*등록, 수정폼*/
+form{
+	width:600px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+	
+}
+input [type="text"]{
+	width:300px;
+}
 .register_form{
 	width:600px;
 	margin:0 auto;
