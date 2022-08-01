@@ -32,8 +32,7 @@ public class MyPageReviewAction implements Action{
 		 
 		 
 	   request.setAttribute("comment",comment);
-		request.setAttribute("myReview", myReview);
-		request.setAttribute("contents", contents); 
+		request.setAttribute("myReview", myReview); 
 		mapAjax.put("result","success");
 		
 		//내 OTT 리뷰
