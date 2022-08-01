@@ -64,6 +64,8 @@ public class MyPageAction implements Action{
 		//내 OTT 리뷰
 		//내 OTT 추천 목록*/
 		
+		
+		
 		return "/WEB-INF/views/member/myPage.jsp";
 	}
 
