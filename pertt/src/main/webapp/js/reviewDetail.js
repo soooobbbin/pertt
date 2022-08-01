@@ -60,7 +60,11 @@ $(function(){
 	//=====================리뷰 수정 ==========================================
 	//리뷰 작성 폼 초기화
 	function initModifyForm(){
-		$('textarea').val('');
+		$('#review_content').show();
+		$('.modify-btn').show();
+		$('.delete-btn').show();
+		$('.review_moddate').show();
+		$('#mreview_form').remove();
 	}
 	
 	//리뷰 수정 버튼 클릭시 수정폼 노출
@@ -72,12 +76,15 @@ $(function(){
 		let content = $('#review_content').html().replace(/<br>/gi,'\n');
 		                                          //g:지정문자열 모두,i:대소문자 무시
 		//리뷰 수정폼 UI
-		let modifyUI = '<form id="mreview_form">';
+		let modifyUI = '<form id="mreview_form" style="width:800px;">';
 		modifyUI += '<input type="hidden" name="c_review_num" id="mreview_num" value="'+c_review_num+'">';
-		modifyUI += '<textarea rows="10" cols="80" name="c_review_content" id="mreview_content" class="rep-content">'+content+'</textarea>';
-		modifyUI += '<div id="mreview_second" class="align-right">';
+		modifyUI += '<div style="clear:both;"></div>';
+		modifyUI += '<textarea rows="10" cols="80" name="c_review_content" id="mreview_content" class="rep-content" ';
+		modifyUI += 'style="height:120px;margin:20px 0 10px 0;float:left;width:760px;">';
+		modifyUI += content+'</textarea>';
+		modifyUI += '<div id="mreview_second" class="align-right" style="clear:both;">';
 		modifyUI += ' <input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="review-reset">';
+		modifyUI += ' <input type="button" value="취소" class="review-reset" style="margin: 0 32px 0 0;">';
 		modifyUI += '</div>';
 		modifyUI += '</form>';
 		
@@ -87,10 +94,12 @@ $(function(){
 		
 		//지금 클릭해서 수정하고자 하는 데이터는 감추기
 		//수정버튼을 감싸고 있는 div
-		$(this).parent().hide();
-		
+		$('#review_content').hide();
+		$('.modify-btn').hide();
+		$('.delete-btn').hide();
+		$('#review_moddate').hide();
 		//수정폼을 수정하고자 하는 데이터가 있는 div에 노출
-		$('#item').append(modifyUI);
+		$('.review-modify-box').append(modifyUI);
 		
 	});
 	
@@ -98,13 +107,7 @@ $(function(){
 	$(document).on('click','.review-reset',function(){
 		initModifyForm();
 	});
-	
-	//리뷰 수정 폼 초기화
-	function initModifyForm(){
-		$('.review-detail-box').show();
-		$('#mreview_form').remove();
-	}
-	
+
 	//리뷰 수정
 	$(document).on('submit','#mreview_form',function(event){
 		if($('#mreview_content').val().trim()==''){

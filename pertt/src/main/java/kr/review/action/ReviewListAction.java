@@ -54,6 +54,7 @@ public class ReviewListAction implements Action {
 		mapAjax.put("reviewList", reviewList); // 리뷰리스트
 		// 로그인한 회원번호와 작성자 회원번호 일치 여부를 체크하기 위해 user_num 전송
 		mapAjax.put("user_num2", user_num2);
+		mapAjax.put("c_num2", c_num);
 		
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);

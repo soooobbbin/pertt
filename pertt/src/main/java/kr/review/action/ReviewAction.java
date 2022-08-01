@@ -30,26 +30,35 @@ public class ReviewAction implements Action{
 		ContentsVO contents = dao.getContents(c_num);
 		
 		//작품에 대한 별점의 평균 구해서 보내주기
-		
-		
+		ReviewDAO rDao = ReviewDAO.getInstance();
+		double starAvg = rDao.getStarAvg(c_num);		
+		starAvg = Math.round(starAvg*10)/10.0;
 		//============해당 작품에 별점/리뷰를 작성한 이력이 있는지 확인==========
-		boolean starCheck = false;
-		boolean reviewCheck = false;
+		int starCheck = -1;
+		int reviewCheck = 0;
 		//로그인한 member_num 받아오기
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
-		ReviewDAO rDao = ReviewDAO.getInstance();
+		ReviewVO reviewVO = new ReviewVO();
 		if(user_num !=null) {//로그인한 경우
-			//내 별점찾기 목록이 있으면 별점 준 이력 있음(true)
-			if(rDao.selectMyStar(user_num, c_num) != null) {
-				starCheck = true;
+			//내 별점찾기 목록이 있으면 별점 준 이력 있음(1)
+			reviewVO = rDao.selectMyStar(user_num, c_num);
+			if( reviewVO != null) {
+				starCheck = 1;
+				request.setAttribute("review", reviewVO);
+			} else {
+				starCheck = 0;
 			}
-			reviewCheck = rDao.checkReview(user_num, c_num);
-		}
-	
+			if(rDao.checkReview(user_num, c_num)) {
+				reviewCheck = 1;
+			};
+		} else user_num = -1;
+		System.out.println(starAvg);
+		request.setAttribute("u_num", user_num);
 		request.setAttribute("contents", contents);//작품 상세
-		request.setAttribute("starCheck", starCheck);
-		request.setAttribute("reviewCheck", reviewCheck);
+		request.setAttribute("starAvg", starAvg); // 별점 평균
+		request.setAttribute("starCheck", starCheck); //별점 여부 확인
+		request.setAttribute("reviewCheck", reviewCheck); // 리뷰 여부 확인
 		
 		return "/WEB-INF/views/review/review.jsp";
 		
