@@ -6,10 +6,8 @@ $(function(){
 	//한줄평 목록
 	function selectList(pageNum){
 		currentPage = pageNum;
-		
 		//로딩 이미지 노출
 		$('#loading').show();
-		
 		$.ajax({
 			url:'listOttReview.do',
 			type:'post',

@@ -53,7 +53,9 @@ public class ReviewAction implements Action{
 				reviewCheck = 1;
 			};
 		} else user_num = -1;
+		
 		System.out.println(starAvg);
+		
 		request.setAttribute("u_num", user_num);
 		request.setAttribute("contents", contents);//작품 상세
 		request.setAttribute("starAvg", starAvg); // 별점 평균

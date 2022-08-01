@@ -45,7 +45,7 @@
 		<!-- 별점 시작 -->
 		<div class="star">
 		    <form id="ottLike_form">
-		       <input type="hidden" value="ott_num" value="${param.ott_num}">
+		       <input type="hidden" name="ott_num" id="ott_num" value="${param.ott_num}"><!--  -->
 				<h1>가성비</h1>
 				<div class="rating">
 				   <input type="hidden" name="price" value="0" class="rate-star">    
@@ -104,7 +104,6 @@
 		<div id="ott_review_div">
 			<span class="re-title">한줄평 달기</span>
 			<form id="re_form" style="display:inline-block;">
-				<input type="hidden" name="ott_num" value="${ott.ott_num}" id="ott_num">
 				<textarea rows="3" cols="50" name="ott_re_content" 
 				  id="ott_re_content" class="rep-content"
 				  <c:if test="${empty user_num}">disabled="disabled"</c:if>
