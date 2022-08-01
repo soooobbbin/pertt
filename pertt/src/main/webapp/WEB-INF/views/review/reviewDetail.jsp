@@ -101,9 +101,6 @@
 		<div class="paging-button" style="display:none">
 			<input id="next_btn" type="button" value="댓글 더보기">
 		</div>
-		<div id="loading" style="display:none">
-			<img src="${pageContext.request.contextPath }/images/ajax-loader.gif">
-		</div>
 		<!-- 댓글 끝 -->
 		
 	</div><!--  end of review_grey -->

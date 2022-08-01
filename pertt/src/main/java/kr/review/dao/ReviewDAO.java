@@ -355,6 +355,30 @@ public class ReviewDAO {
 		}
 	}
 	
+	// 한 작품에 담긴 총 리뷰 수
+	public int getMyReviewCount(int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int count = 0;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select count(*) from c_review where member_num=? and c_review_content is not null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+		
 	//내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순))
 	public List<ReviewVO> selectMyReview(int member_num, int start, int end, String sort) throws Exception{
 		Connection conn = null;
@@ -395,10 +419,11 @@ public class ReviewDAO {
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
 				review.setLcount(selectLikeCount(rs.getInt("c_review_num")));
 				review.setStar(getStarByC_star_num(rs.getInt("c_star_num")));
-				//작품 번호로 작품 포스터 받아오기
+				//작품 번호로 작품 포스터/ott_num 받아오기
 				ContentsDAO cDao = ContentsDAO.getInstance();
 				ContentsVO contents = cDao.getContents(rs.getInt("c_num"));
 				review.setPoster(contents.getPoster());
+				review.setOtt_num(contents.getOtt_num());
 				list.add(review);
 			}
 		} catch (Exception e) {
