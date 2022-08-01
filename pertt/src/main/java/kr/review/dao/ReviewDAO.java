@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.contents.dao.ContentsDAO;
+import kr.contents.vo.ContentsVO;
 import kr.review.vo.CommentVO;
 import kr.review.vo.LikeVO;
 import kr.review.vo.ReviewVO;
@@ -14,7 +16,7 @@ import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class ReviewDAO {
-	// 싱글톤 패턴
+	//  싱글톤 패턴 
 	private static ReviewDAO instance = new ReviewDAO();
 
 	public static ReviewDAO getInstance() {
@@ -393,6 +395,10 @@ public class ReviewDAO {
 				review.setId(getIdByMemberNum(rs.getInt("member_num")));
 				review.setLcount(selectLikeCount(rs.getInt("c_review_num")));
 				review.setStar(getStarByC_star_num(rs.getInt("c_star_num")));
+				//작품 번호로 작품 포스터 받아오기
+				ContentsDAO cDao = ContentsDAO.getInstance();
+				ContentsVO contents = cDao.getContents(rs.getInt("c_num"));
+				review.setPoster(contents.getPoster());
 				list.add(review);
 			}
 		} catch (Exception e) {

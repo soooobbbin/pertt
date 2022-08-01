@@ -17,7 +17,7 @@ public class ReviewWriteAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//json으로 content insert 처리!!!
+		// json으로 content insert 처리!!!
 		Map<String,String> mapAjax  = new HashMap<String, String>();
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");

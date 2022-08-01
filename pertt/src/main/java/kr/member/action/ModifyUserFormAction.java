@@ -21,20 +21,26 @@ public class ModifyUserFormAction implements Action{
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
+
 		
-		
-		String[] birthArray = member.getBirth().split("-");
 		for(int i=0;i<birthArray.length;i++) {
 			if(i==1) member.setBirth1(birthArray[i]);
 			else if(i==2) member.setBirth2(birthArray[i]);
 			else member.setBirth3(birthArray[i]);
-		}
+		}*/
 		
 		String[] phoneArray = member.getPhone().split("-");
 		for(int i=0;i<phoneArray.length;i++) {
 			if(i==1) member.setPhone1(phoneArray[i]);
 			else if(i==2) member.setPhone2(phoneArray[i]);
 			else member.setPhone3(phoneArray[i]);
+		}
+		
+		String[] emailArray = member.getEmail().split("@");
+		for(int i=0;i<emailArray.length;i++) {
+			if(i==1) member.setEmail(emailArray[i]);
+			else if(i==2) member.setEmail2(emailArray[i]);
+			else member.setEmail3(emailArray[i]);
 		}
 		
 		request.setAttribute("member", member);

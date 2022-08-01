@@ -1,5 +1,5 @@
 package kr.review.vo;
-
+//
 import java.sql.Date;
 
 public class ReviewVO {
@@ -18,7 +18,14 @@ public class ReviewVO {
 	private String id;
 	private int lcount; // 좋아요 수
 	private int ccount; // 댓글 수 
+	private String poster;//작품의 포스터 이미지
 	
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
 	public int getCcount() {
 		return ccount;
 	}

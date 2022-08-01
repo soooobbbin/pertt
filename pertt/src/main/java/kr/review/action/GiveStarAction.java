@@ -23,9 +23,6 @@ public class GiveStarAction implements Action{
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		boolean starCheck = false;
-		if( dao.selectMyStar(user_num, c_num) != null) {
-			starCheck = true;
-		}
 		
 		Map<String,Object> mapAjax = 
 		          new HashMap<String,Object>();
@@ -33,6 +30,7 @@ public class GiveStarAction implements Action{
 		if(user_num == null) {
 			mapAjax.put("result", "logout");
 		} else {
+			if(dao.selectMyStar(user_num, c_num) != null) starCheck = true;
 			ReviewVO review = new ReviewVO();
 			review.setC_num(c_num);
 			review.setMember_num(user_num);

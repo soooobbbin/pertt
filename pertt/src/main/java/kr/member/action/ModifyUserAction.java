@@ -28,16 +28,43 @@ public class ModifyUserAction implements Action {
 		member.setMember_num(user_num);
 		
 		member.setPasswd(request.getParameter("passwd"));
-		member.setName(request.getParameter("name"));
+		member.setName(request.getParameter("name"));/*
 		member.setBirth(request.getParameter("birth1") + "-" + request.getParameter("birth2") + "-"
-				+ request.getParameter("birth3"));
+				+ request.getParameter("birth3"));*/
 		member.setPhone(request.getParameter("phone1") + "-" + request.getParameter("phone2") + "-"
 				+ request.getParameter("phone3"));
 		member.setEmail(request.getParameter("email"));
 		
+		//현재 비밀번호
+				String origin_passwd = 
+						request.getParameter("origin_passwd");
+				//새비밀번호
+				String passwd = request.getParameter("passwd");
+				
+				//현재 로그인 한 아이디
+				String user_id = 
+						(String)session.getAttribute("user_id");
+				
+				MemberDAO dao = MemberDAO.getInstance();
+				MemberVO member2 = dao.checkMember(user_id);
+				boolean check = false;
+				
+				//사용자가 입력한 아이디가 존재하고 로그인한 아이디와 일치하는지 체크
+				if(member2!=null ) {
+					//비밀번호 일치 여부 체크
+					check = member2.isCheckedPassword(origin_passwd);
+				}
+				
+				if(check) {//인증 성공
+					//비밀번호 변경      
+					dao.updateMember(member);
+				}
+				
+				request.setAttribute("check", check);
+				
+	 
 		
-		MemberDAO dao = MemberDAO.getInstance();
-		//dao.updateMember(member);
+
 		
 		//전송된 데이터 반환
 		//String id = request.getParameter("id");
