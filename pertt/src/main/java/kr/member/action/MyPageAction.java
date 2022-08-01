@@ -39,6 +39,7 @@ public class MyPageAction implements Action{
 		
 		request.setCharacterEncoding("utf-8");
 		
+
 		return "/WEB-INF/views/member/myPage.jsp";
 	}
 
