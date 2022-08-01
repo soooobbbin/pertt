@@ -14,7 +14,7 @@ public class ContentsVO {
 	private int category_num; //카테고리
 	private int ott_num; //OTT
 	
-	private int category_name; //카테고리 이름
+	private String category_name; //카테고리 이름
 	
 	
 	public int getC_num() {
@@ -42,10 +42,10 @@ public class ContentsVO {
 	public void setRelease(String release) {
 		this.release = release;
 	}
-	public int getCategory_name() {
+	public String getCategory_name() {
 		return category_name;
 	}
-	public void setCategory_name(int category_name) {
+	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
 	public String getCountry() {

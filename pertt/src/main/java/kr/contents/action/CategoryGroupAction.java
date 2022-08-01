@@ -11,10 +11,11 @@ import kr.controller.Action;
 import kr.member.dao.AdminDAO;
 import kr.util.PagingUtil;
 
-public class OttGroupAction implements Action{
+public class CategoryGroupAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		
@@ -35,28 +36,29 @@ public class OttGroupAction implements Action{
 		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
+		Integer category_num = Integer.parseInt(request.getParameter("category_num"));
 		
 		AdminDAO dao = AdminDAO.getInstance();
-		int count = dao.getOttGroupCount(
-				                        keyfield, keyword);
+		int count = dao.getCategoryGroupCount(
+				                        keyfield, keyword,category_num);
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
 		PagingUtil page = new PagingUtil(keyfield,keyword,
 				    Integer.parseInt(pageNum),count,20,10,
-				                          "ottGroup.do");
+				                          "categoryGroup.do");
 		List<ContentsVO> list = null;
 		if(count > 0) {
-			list = dao.getOttGroup(
+			list = dao.getCategoryGroup(
 					       page.getStartRow(),
 					       page.getEndRow(),
-					       keyfield,keyword);
+					       keyfield,keyword,category_num);
 		}
 		
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.setAttribute("page", page.getPage());
 		
-		return "/WEB-INF/views/contents/ottGroup.jsp";
+		return "/WEB-INF/views/contents/categoryGroup.jsp";
 	}
 
 }

@@ -37,7 +37,7 @@ public class GradeGroupAction implements Action{
 		String keyword = request.getParameter("keyword");
 		
 		AdminDAO dao = AdminDAO.getInstance();
-		int count = dao.getGradeGrounpCount(
+		int count = dao.getGradeGroupCount(
 				                        keyfield, keyword);
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
