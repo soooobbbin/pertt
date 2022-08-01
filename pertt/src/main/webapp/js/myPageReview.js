@@ -18,15 +18,31 @@ $(function(){
 				}else if (param.result =='success'){
 					alert('내가확인할 값'); 
 					
-				}
+					$('#myreview-view').empty();
+					}
+					$(param.myReview).each(function(index,item){
+						
+					$('#contents-image')
+					
+					let myReView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
+					myReView += '?c_review_num='+item.c_review_num;
+					
+					myReView += '&c_num='+item.c_num;
+					myReView += '<span id="mystar">★' +item.star +'</span>';
+					myReView += '</div>';
+					
+					//문서 객체에 추가
+					$('#myreview-view').append(myReView);
+				});//end of each
+				
+				
 			},
 			error:function(){
 				alert('내 글 보기에서 네트워크 오류 발생');
-			}	
-				
-	};
+			}			
+		});
 	
-	
+	}
 	
 	myReview(member_num);
 });
