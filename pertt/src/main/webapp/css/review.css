@@ -38,6 +38,9 @@ div.contents-detail{
     font-size: x-large;
     font-weight: 800;
 }
+.review_title span{
+    font-size: x-large;
+}
 .end-float{
 	clear: both;
 }
@@ -338,8 +341,23 @@ div.give-star{
 	border: none;
 	font-size: 8.5pt;
 }
-
-
+.review-star2 {
+	margin: 0 200px 0 0;
+}
+.review-star2 span{
+	font-weight: bold;
+    font-size: 25pt;
+}
+.ott-name2{
+	font-size: 15pt;
+}
+#contents_hr{
+	margin: 15px 0;
+}
+.review_title2{
+	font-size: 30px;
+    font-weight: bolder;
+}
 
 
 
