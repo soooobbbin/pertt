@@ -16,7 +16,7 @@
 			<ul class="admin_cate_member">
 				<li id="li-bold">회원 관리</li>
 				<li><a href="${pageContext.request.contextPath}/member/memberList.do">전체 회원</a></li>
-				<li>탈퇴한 회원</li>
+				<li><a href="${pageContext.request.contextPath}/member/resignedMemberList.do">탈퇴한 회원</a></li>
 			</ul>
 			<hr size="1" width="80%" color="#9a9a9a">
 			<ul id="admin_cate_contents">

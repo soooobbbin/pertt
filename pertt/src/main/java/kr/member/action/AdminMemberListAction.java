@@ -32,7 +32,7 @@ public class AdminMemberListAction implements Action{
 		
 		//관리자로 로그인한 경우
 		String pageNum = request.getParameter("pageNum");
-if(pageNum==null) pageNum = "1";
+		if(pageNum==null) pageNum = "1";
 		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");

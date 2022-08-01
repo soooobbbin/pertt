@@ -251,6 +251,17 @@ body {
 	float: left;
 }
 
+
+/*내글 조회-내 리뷰*/
+.my-re{
+	margin:60px;
+}
+.rp-image{
+width: 130px; 
+height:173px;	
+}
+
+
 /*기존코드*/
 table {
 	word-break: break-all;
