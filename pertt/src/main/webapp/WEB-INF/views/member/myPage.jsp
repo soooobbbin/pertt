@@ -18,7 +18,10 @@
 	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member.js"></script>
-
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/myreview.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
 
 <body>
@@ -106,10 +109,8 @@
 
 
 								<img src="${pageContext.request.contextPath}/images/더보기.png"
-									width="40px" height="25px"
-									onclick="location.href='reviewDetail.do?c_review_num=0&c_num&member_num=${contents.c_num}'">
-
-
+									width="40px" height="25px">
+									
 							</div>
 
 						</div>
@@ -151,11 +152,11 @@
 										width="40px" height="25px">
 								</div>
 
-								<input type="submit" value="삭제" class="delete-btn">
+								<input type="submit" value="삭제" class="delete-btn" id="delete_btn2">
 							</div>
 							<table>
 								<tr>
-									<td rowspan="2"><input type="checkbox" name="com_delete"
+									<td rowspan="2"><input type="checkbox" name="delete_com" id="delete_com"
 										value="삭제"></td>
 									<!--등록일 -->
 									<td colspan="2">등록일 ${comment.com_reg_date}</td>
@@ -164,7 +165,8 @@
 								</tr>
 								<tr>
 									<!-- 댓글 내용 -->
-									<td>내용${comment.com_content}</td>
+									<td>내용${fn:substring(comment.com_content,0,12)}</td>
+									
 								</tr>
 
 							</table>
