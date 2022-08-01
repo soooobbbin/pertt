@@ -19,9 +19,6 @@ $(function(){
 				if(param.result == 'logout'){
 					alert('로그인해야 작성할 수 있습니다.');
 				}else if(param.result == 'success'){
-					//위에 span 태그에 내 별점 띄워주기
-					$('#myStar').html('내별점 ★'+star);
-					$('.give-star').append(myStar);
 					//별점 총점을 다시 호출함
 					$('#star_avg').text('평균별점 : ★'+param.starAvg);
 					starCheck = 1;
@@ -59,14 +56,6 @@ $(function(){
 				}
 				
 				$(param.reviewList).each(function(index,item){
-					/*
-					<div class="review-box" onclick="location.href='reviewDetail.do?r_num=${review.c_review_num}'">
-					<span id="id">${review.id }</span>
-					<span id="star">별점</span>
-					<p id="content">${fn:substring(review.c_review_content, 0, 106)}</p>
-					<span id="like">추천수</span>
-					</div>
-					*/
 					
 					let reviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
 					reviewView += '?c_review_num='+item.c_review_num;

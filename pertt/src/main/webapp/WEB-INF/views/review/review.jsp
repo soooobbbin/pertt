@@ -72,7 +72,6 @@ $(document).ready(function(){
 					</ul>
 					<div class="review-star">
 						<span id="myStar">
-							<c:if test="${starCheck==1}">내별점 ★${review.star} </c:if>
 						</span>
 						<div class="give-star">
 							<!--  -->
