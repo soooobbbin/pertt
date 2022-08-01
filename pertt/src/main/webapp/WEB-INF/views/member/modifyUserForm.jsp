@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보수정</title>
-<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/style.css"
-	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/style.css" type="text/css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypage.css"
 	type="text/css">
@@ -38,8 +38,8 @@
 						</tr>
 						<tr>
 							<td class="mp-1">현재 비밀번호</td>
-							<td class="mp-4"><input type="password" name="origin_passwd" id="origin_passwd"
-								maxlength="12"></td>
+							<td class="mp-4"><input type="password" name="origin_passwd"
+								id="origin_passwd" maxlength="12"></td>
 						</tr>
 						<tr>
 							<td class="mp-1">새 비밀번호</td>
@@ -54,58 +54,11 @@
 						</tr>
 						<tr>
 							<td class="mp-1">이름</td>
-							<td><input type="text" name="name" id="name" maxlength="12"></td>
+							<td>${member.name}</td>
 						</tr>
 						<tr>
 							<td class="mp-1">생년월일</td>
-							<td><input type="text" name="birth1" id="birth1"
-								maxlength="4" size="5" class="inBorder" />년 
-								<select name="birth2" class="inBorder" id="birth2">
-									<option value="01">01
-									<option value="02">02
-									<option value="03">03
-									<option value="04">04
-									<option value="05">05
-									<option value="06">06
-									<option value="07">07
-									<option value="08">08
-									<option value="09">09
-									<option value="10">10
-									<option value="11">11
-									<option value="12">12
-							</select>월 <select name="birth3" class="inBorder" id="birth3">
-									<option value="01">01
-									<option value="02">02
-									<option value="03">03
-									<option value="04">04
-									<option value="05">05
-									<option value="06">06
-									<option value="07">07
-									<option value="08">08
-									<option value="09">09
-									<option value="10">10
-									<option value="11">11
-									<option value="12">12
-									<option value="13">13
-									<option value="14">14
-									<option value="15">15
-									<option value="16">16
-									<option value="17">17
-									<option value="18">18
-									<option value="19">19
-									<option value="20">20
-									<option value="21">21
-									<option value="22">22
-									<option value="23">23
-									<option value="24">24
-									<option value="25">25
-									<option value="26">26
-									<option value="27">27
-									<option value="28">28
-									<option value="29">29
-									<option value="30">30
-									<option value="31">31
-							</select>일</td>
+							<td>${member.birth}</td>
 						</tr>
 						<tr>
 							<td class="mp-1">휴대폰</td>
@@ -114,26 +67,24 @@
 									<option value="016">016
 									<option value="017">017
 									<option value="018">018
-							</select> - <input type="text" name="phone2" id="phone2" maxlength="4"
-								size="5"> - <input type="text" name="phone3" id="phone3"
+							</select> - <input type="number" name="phone2" id="phone2" maxlength="4"
+								size="5"> - <input type="number" name="phone3" id="phone3"
 								maxlength="4" size="5"></td>
 						</tr>
 						<tr>
 							<td class="mp-3">이메일</td>
-							<td class="mp-2">
-								<input type="text" name="email" id="email" 
-									maxlength="20" placeholder="example@naver.com">
-							</td>
+							<td class="mp-2"><input type="text" name="email" id="email">
+								
+								</td>
 						</tr>
 
 
 					</table>
 
 					<ul class="mp-btn">
-						<li><input type="submit" value="수정" class="blue-btn"> 
-						<input type="button"
-							value="뒤로가기" class="gray-btn" onclick="location.href='myPage.do'">
-						</li>
+						<li><input type="submit" value="수정" class="blue-btn">
+							<input type="button" value="뒤로가기" class="gray-btn"
+							onclick="location.href='myPage.do'"></li>
 					</ul>
 				</form>
 			</div>
@@ -142,9 +93,7 @@
 
 				<div class="re">
 
-					<div class="my-ottRe">OTT리뷰
-					
-					</div>
+					<div class="my-ottRe">OTT리뷰</div>
 					<ul>
 						<li class="ottRe"><select name="ottReview">
 								<option value="넷플릭스">넷플릭스</option>
@@ -166,22 +115,25 @@
 								width="40px" height="25px">
 						</div>
 					</div>
-					<div >
-					<ul class="more">
-						<li class="sort">별점순</li>
-						<li class="l">|</li>
-						<li class="sort">최신순</li>
-					</ul>
+					<div>
+						<ul class="more">
+							<li class="sort">별점순</li>
+							<li class="l">|</li>
+							<li class="sort">최신순</li>
+						</ul>
 					</div>
-					
+
 				</div>
-				
+
 				<div class="re">
-				<div class="my-ottRe">내 댓글 목록
-					<div class="more"><img
-						src="${pageContext.request.contextPath}/images/더보기.png" 
-						width="40px" height="25px"></div></div>
-				
+					<div class="my-ottRe">
+						내 댓글 목록
+						<div class="more">
+							<img src="${pageContext.request.contextPath}/images/더보기.png"
+								width="40px" height="25px">
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

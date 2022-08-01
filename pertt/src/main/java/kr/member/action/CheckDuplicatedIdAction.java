@@ -21,7 +21,7 @@ public class CheckDuplicatedIdAction implements Action{
 		request.setCharacterEncoding("utf-8");
 		
 		//전송된 데이터 반환
-		String member_id = request.getParameter("member_id") ;
+		String member_id = request.getParameter("id") ;
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.checkMember(member_id);

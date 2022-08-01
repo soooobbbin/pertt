@@ -17,6 +17,10 @@ public class MemberVO {
 	private String phone3;
 	
 	private String email;
+	private String email2;
+	private String email3;
+	
+
 	private String birth;
 	private String birth1;
 	private String birth2;
@@ -112,6 +116,29 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public String getEmail2() {
+		return email2;
+	}
+
+
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+
+
+	public String getEmail3() {
+		return email3;
+	}
+
+
+
+	public void setEmail3(String email3) {
+		this.email3 = email3;
+	}
+
 	public String getBirth() {
 		return birth;
 	}
