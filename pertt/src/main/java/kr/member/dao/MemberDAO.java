@@ -118,7 +118,6 @@ public class MemberDAO {
 				member.setPasswd(rs.getString("passwd"));
 				member.setEmail(rs.getString("email"));
 				
-				//member.setBirth(rs.getString("birth1"),rs.getString("birth2"),rs.getString("birth3"));
 			}
 		}catch(Exception e) {
 			throw new Exception(e);
@@ -183,18 +182,16 @@ public class MemberDAO {
 			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
 			//SQL문 작성
-			sql = "UPDATE member_detail SET passwd=?,name=?,"
-				+ "birth=?,phone=?,email=?,mod_date=SYSDATE "
+			sql = "UPDATE member_detail SET passwd=?,"
+				+ "phone=?,email=?,mod_date=SYSDATE "
 				+ "WHERE member_num=?";
 			//JDBC 수행 3단계 : PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(sql);
 			//?에 데이터 바인딩
 			pstmt.setString(1, member.getPasswd());
-			pstmt.setString(2, member.getName());
-			pstmt.setString(3, member.getBirth());
-			pstmt.setString(4, member.getPhone());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setInt(6, member.getMember_num());
+			pstmt.setString(2, member.getPhone());
+			pstmt.setString(3, member.getEmail());
+			pstmt.setInt(4, member.getMember_num());
 			
 			//JDBC 수행 4단계
 			pstmt.executeUpdate();
