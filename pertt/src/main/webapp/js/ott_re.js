@@ -85,11 +85,8 @@ $(function(){
 			tving += 1;
 		}
 		
-		//alert(netflix);
-		//alert(disney);
-		
 		const max = Math.max(netflix, disney, watcha, tving, wavve);
-		alert('최대값 :'+max);
+		//alert('최대값 :'+max);
 		
 		if(max == netflix){
 			$('img#netflix').show(); 

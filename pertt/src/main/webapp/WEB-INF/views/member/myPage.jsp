@@ -19,7 +19,7 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/myreview.js"></script>
+	src="${pageContext.request.contextPath}/js/myPageReview.js"></script>
 	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
@@ -103,8 +103,7 @@
 					<div class="re">
 						<div class="my-ottRe">
 							작품 리뷰
-							<img>
-							<span>별점 나올 부분</span>
+							
 							<div class="more">
 
 
@@ -123,21 +122,10 @@
 						</div>
 
 						<div class="my-re">
-							<!-- 클릭시 리뷰 페이지로 이동 -->
-							<c:if test="${!empty contents.poster}">
-								<img class="rp-image"
-									src="${pageContext.request.contextPath}/upload/${contents.poster}"
-									onclick="location.href='reviewDetail.do?c_review_num=0&c_num=${contents.c_num}'">
-							</c:if>
-							<c:if test="${empty contents.poster}">
-								<img class="rp-image"
-									src="${pageContext.request.contextPath}/images/blank2.png">
-							</c:if>
-							<!-- 내가 준 리뷰 - 작품 별점 -->
-							<div class="review-star">${review.c_star_num}</div>
-							<!-- 내가 준 리뷰 - 리뷰 등록일 -->
-							<span id="review_regdate">${review.c_review_reg_date} </span>
-
+						<div class="myreview-view" id="myreview-view"></div>
+						<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num}/${contents.poster}">
+							<span id="star">★${review.mystar}별점 나올 부분</span>
+							
 						</div>
 					</div>
 
