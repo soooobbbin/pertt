@@ -73,18 +73,17 @@ public class ReviewDAO {
 			DBUtil.executeClose(null, pstmt3, null);
 		}
 	}
-
-	// 리뷰 등록 (reivew에 content update)
-	public void updateReviewContent(int member_num, int c_num, String content) throws Exception {
+	
+	//별점 수정
+	public void updateStar(int member_num, int c_num, int star) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "update c_review set c_review_content=? " 
-					+ "where member_num=? and c_num=?";
+			sql = "update c_star set star=? where member_num=? and c_num=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, content);
+			pstmt.setInt(1, star);
 			pstmt.setInt(2, member_num);
 			pstmt.setInt(3, c_num);
 			pstmt.executeUpdate();
@@ -94,18 +93,58 @@ public class ReviewDAO {
 			DBUtil.executeClose(null, pstmt, conn);
 		}
 	}
-	//리뷰 수정
-	public void modifyReviewContent(int c_review_num, String c_review_content) throws Exception {
+	//작품별 별점 평균 구하기
+	public double getStarAvg(int c_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		double starAvg = -1;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select avg(star), count(*) from c_star where c_num =? and star is not null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, c_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getInt(2) == 0) {
+					starAvg = -1;
+				} else starAvg = rs.getDouble(1);
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return starAvg;
+	}
+	
+	//리뷰 등록&수정
+	public void modifyReviewContent(int c_num, int member_num, int c_review_num, String c_review_content, boolean isFirst) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
+		String sub_sql = "";
+		String sub_sql2 = "";
+		int cnt = 0;
 		try {
+			if(isFirst) {
+				sub_sql2 = "member_num=? and c_num=?";
+			} else {
+				sub_sql=", c_review_mod_date=sysdate";
+				sub_sql2 = "c_review_num = ?";
+				}
 			conn = DBUtil.getConnection();
-			sql = "update c_review set c_review_content=?, c_review_mod_date=sysdate " 
-					+ "where c_review_num=?";
+			sql = "update c_review set c_review_content=?" 
+					+sub_sql + " where "+sub_sql2;
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, c_review_content);
-			pstmt.setInt(2, c_review_num);
+			pstmt.setString(++cnt, c_review_content);
+			if(isFirst) {
+				pstmt.setInt(++cnt, member_num);
+				pstmt.setInt(++cnt, c_num);
+			} else {
+				pstmt.setInt(++cnt, c_review_num);
+			}
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -273,26 +312,6 @@ public class ReviewDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		return review;
-	}
-
-	// 글 수정
-	public void updateReview(String star, String content) throws Exception {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		try {
-			conn = DBUtil.getConnection();
-			// star 테이블의 star(별점값) 수정
-			// review 테이블의 mod_date, content 수정
-			sql = "";
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			throw new Exception(e);
-		} finally {
-			DBUtil.executeClose(null, pstmt, conn);
-		}
 	}
 
 	// 글 삭제
