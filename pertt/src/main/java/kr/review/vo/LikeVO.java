@@ -1,5 +1,5 @@
 package kr.review.vo;
-
+//
 public class LikeVO {
 	private int r_like_num;
 	private int c_review_num;

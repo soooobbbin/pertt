@@ -3,7 +3,7 @@ $(function(){
 	let starCheck = $('#starCheck').val();
 	let reviewCheck = $('#reviewCheck').val();
 	
-	//===================별점주기 ========================
+	//=================== 별점주기 ========================
 	let c_num = $('#c_num').val();
 	
 	$('#star_btn').click(function(){
@@ -34,7 +34,7 @@ $(function(){
 			}
 		});
 	});
-	//===================리뷰 목록=========================
+	//=================== 리뷰 목록=========================
 	let currentPage;
 	let count;
 	let rowCount;

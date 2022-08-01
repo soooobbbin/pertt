@@ -72,29 +72,24 @@ $(document).ready(function(){
 					</ul>
 					<div class="review-star">
 						<span id="myStar">
-							<c:if test="${starCheck==1}">내별점 ★${review.star}</c:if>
+							<c:if test="${starCheck==1}">내별점 ★${review.star} </c:if>
 						</span>
 						<div class="give-star">
 							<!--  -->
 							<div class="rating">
 						      <input type="hidden" name="star" value="0" class="rate-star">    
-						                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-						                <input type="checkbox" id="rating1" value="1" class="rate-check">
-						                <label for="rating1"></label>
-						                <input type="checkbox" id="rating2" value="2" class="rate-check">
-						                <label for="rating2"></label>
-						                <input type="checkbox" id="rating3" value="3" class="rate-check">
-						                <label for="rating3"></label>
-						                <input type="checkbox" id="rating4" value="4" class="rate-check">
-						                <label for="rating4"></label>
-						                <input type="checkbox" id="rating5" value="5" class="rate-check">
-						                <label for="rating5"></label>
+			                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+			                <c:forEach var="star" begin="1" end="5" varStatus="status">
+			                <input type="checkbox" id="rating${status.index}" value="${status.index}" class="rate-check"
+			                      <c:if test="${status.index<=review.star}">checked</c:if>>
+			                <label for="rating${status.index}"></label>
+			                </c:forEach>
 							</div>  
 							<input type="button" value="전송" id="star_btn">
 						</div>
-					</div><!-- end of review_star -->
+					</div><!-- end of  review_star -->
 			<span id="rating_text"></span>
-	</div><!-- end of contents_detail -->
+	</div><!-- end of  contents_detail -->
 	</div>
 	
 	<div class="end-float"></div>
@@ -150,7 +145,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 		</c:if>
-		<c:if test="${count == 0 }">
+		<c:if test="${count == 0 }" >
 			<h2>리뷰가 없습니다.</h2>
 		</c:if>
 		

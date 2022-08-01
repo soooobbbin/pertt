@@ -23,7 +23,7 @@ public class WriteLikeAction implements Action {
 				(Integer)session.getAttribute("user_num");
 		if(user_num == null) {
 			mapAjax.put("result", "logout");
-		} else {//로그인 된 경우
+		} else {// 로그인 된 경우
 			request.setCharacterEncoding("utf-8");
 			
 			int c_review_num = Integer.parseInt(
