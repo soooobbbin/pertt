@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.controller.Action;
 import kr.ott.dao.OttDAO;
-import kr.ott.vo.OttRankVO;
+import kr.ott.vo.OttStarVO;
 import kr.util.PagingUtil;
 
 public class OttStarFormAction implements Action{
