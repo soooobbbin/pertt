@@ -26,7 +26,7 @@
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<div class="mypage-main">
 			<h2 class="mp-sub">MY PAGE</h2>
-
+			<input type="hidden" id="member_num" value="${member.member_num}">
 
 			<div class="mypage-my2">
 				<form class="mp-form">
@@ -100,6 +100,8 @@
 					<div class="re">
 						<div class="my-ottRe">
 							작품 리뷰
+							<img>
+							<span>별점 나올 부분</span>
 							<div class="more">
 
 
