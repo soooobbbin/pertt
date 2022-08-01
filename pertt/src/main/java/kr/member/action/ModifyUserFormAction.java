@@ -22,6 +22,7 @@ public class ModifyUserFormAction implements Action{
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO member = dao.getMember(user_num);
 		
+		
 		String[] birthArray = member.getBirth().split("-");
 		for(int i=0;i<birthArray.length;i++) {
 			if(i==1) member.setBirth1(birthArray[i]);
