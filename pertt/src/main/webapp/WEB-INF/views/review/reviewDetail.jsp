@@ -21,26 +21,26 @@
 	<div class="contents-detail">
 		<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num }/${contents.poster}">
 		<ul>
-			<li class="review_title">${contents.title }
+			<li class="review_title2">${contents.title }</li>
 			<!-- ott_num에 따라 ott 이름 다르게 표시  -->
 				<c:if test="${contents.ott_num == 1 }">
-					<span class="ott-name"> NETFLIX</span></li>
+					<li><span class="ott-name2"> NETFLIX</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 2 }">
-					<span class="ott-name"> DISNEY+</span></li>
+					<li><span class="ott-name2"> DISNEY+</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 3 }">
-					<span class="ott-name"> WATCHA</span></li>
+					<li><span class="ott-name2"> WATCHA</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 4 }">
-					<span class="ott-name"> TVING</span></li>
+					<li><span class="ott-name2"> TVING</span></li>
 				</c:if>
 				<c:if test="${contents.ott_num == 5 }">
-					<span class="ott-name"> WAVVE</span></li>
+					<li><span class="ott-name2"> WAVVE</span></li>
 				</c:if>
-		 <li><hr size="1" width="300px" noshade="noshade"></li>
+		 <li><hr size="1" width="300px" noshade="noshade" id="contents_hr"></li>
 		</ul>
-		<div class="review-star" >
+		<div class="review-star2" >
 			<span>★${review.star}</span>
 		</div><!-- end of review_star  -->
 	</div><!-- end of contents_detail  -->
@@ -100,9 +100,6 @@
 		<div id="com_output"></div>
 		<div class="paging-button" style="display:none">
 			<input id="next_btn" type="button" value="댓글 더보기">
-		</div>
-		<div id="loading" style="display:none">
-			<img src="${pageContext.request.contextPath }/images/ajax-loader.gif">
 		</div>
 		<!-- 댓글 끝 -->
 		

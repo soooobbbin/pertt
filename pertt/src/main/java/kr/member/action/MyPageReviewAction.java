@@ -8,50 +8,51 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
 import kr.controller.Action;
 import kr.review.dao.ReviewDAO;
-import kr.review.vo.CommentVO;
 import kr.review.vo.ReviewVO;
+import kr.util.PagingUtil;
 
 public class MyPageReviewAction implements Action{
 	//내 리뷰 불러오기 dao 실행
 	//member_num / sort(String)타입
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		
-		HttpSession session = request.getSession();
-		Integer user_num = 
-				(Integer)session.getAttribute("user_num");
-		if(user_num == null) {//로그인 되지 않은 경우
-			return "redirect:/member/loginForm.do";
-		}
-		Map<String,Object> mapAjax = 
-		          new HashMap<String,Object>();
-		//작픔리뷰 //내 댓글목록
-		//컨텐츠 정보 가져오기
-		
+		request.setCharacterEncoding("utf-8");
+		Map<String,Object> mapAjax =  new HashMap<String,Object>();
 		ReviewDAO rDao = ReviewDAO.getInstance();
 		
+		//로그인 확인
+		HttpSession session = request.getSession();
+		Integer user_num = (Integer)session.getAttribute("user_num");
 		
+		if(user_num == null) {//로그인 되지 않은 경우
+			mapAjax.put("result","logout");
+		}else {
+			//페이지 처리
+			String pageNum = request.getParameter("pageNum");
+			if(pageNum == null) {
+				pageNum = "1";
+			}
+			int count = rDao.getMyReviewCount(user_num);
+			int rowCount = 8;//한번에 리뷰 8개 보여주기
+			PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), 
+												count, rowCount, 1, null);
+			mapAjax.put("count", count);
+			mapAjax.put("rowCount", rowCount);
+			
+			//리뷰 목록 반환
+			String sort = request.getParameter("sort");
+			List<ReviewVO> myReview = rDao.selectMyReview(user_num, page.getStartRow(), page.getEndRow(), sort);
+		    mapAjax.put("myReview", myReview); 
+			mapAjax.put("result","success");
+		}
 		
-		//내 글 조회  - 내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순)) //별점순 기본으로
-		List<ReviewVO> myReview = rDao.selectMyReview(user_num, 1, 3, "1");
-		
-		
-		//내가 쓴 댓글 리스트 반환 
-	    List<CommentVO> comment =rDao.selectMyComment(user_num, 1, 2);
-		
-		//댓글을 쓴 게시글
-		 
-		 
-	   request.setAttribute("comment",comment);
-		request.setAttribute("myReview", myReview); 
-		mapAjax.put("result","success");
-		
-		//내 OTT 리뷰
-		//내 OTT 추천 목록*/
-		
+		ObjectMapper mapper = new ObjectMapper();
+		String ajaxData = mapper.writeValueAsString(mapAjax);
+		request.setAttribute("ajaxData", ajaxData);
 		return "/WEB-INF/views/common/ajax_view.jsp";
 	}
 	
