@@ -30,21 +30,88 @@ $(function(){
 		let kbs = $('#cb10').is(':checked');
 		let tvn = $('#cb11').is(':checked');
 	
+		let netflix = 0;
+		let disney = 0;
+		let watcha = 0;
+		let tving = 0;
+		let wavve = 0;
 		
 		if(!indi && !animation && !sf && !kbs && !tvn){
 			alert('원하는 장르를 선택하세요.');
 			return;
 		}
+		
+		if(korea){
+			watcha += 1;
+			tving += 1;
+			wavve += 1;
+		}
+		if(english){
+			netflix += 1;
+			disney += 1;
+		}
+		if(japan){
+			netflix += 1;
+			watcha += 1;
+		}
+		if(movie){
+			netflix += 1;
+			disney += 1;
+			watcha += 1;
+		}
+		if(drama){
+			netflix += 1;
+			watcha += 1;
+			tving += 1;
+			wavve += 1;
+		}
+		if(variety){
+			tving += 1;
+			wavve += 1;
+		}
+		if(indi){
+			watcha += 1;
+		}
+		if(animation){
+			disney += 1;
+		}
 		if(sf){
+			netflix += 1;
+		}
+		if(kbs){
+			wavve += 1;
+		}
+		if(tvn){
+			tving += 1;
+		}
+		
+		//alert(netflix);
+		//alert(disney);
+		
+		const max = Math.max(netflix, disney, watcha, tving, wavve);
+		alert('최대값 :'+max);
+		
+		if(max == netflix){
 			$('img#netflix').show(); 
-			
-			}
+		}
+		if(max == disney){
+			$('img#disney').show(); 
+		}
+		if(max == watcha){
+			$('img#watcha').show(); 
+		}
+		if(max == tving){
+			$('img#tving').show(); 
+		}
+		if(max == wavve){
+			$('img#wavve').show(); 
+		}
 		$('img#down_arrow').show(); 
-		
-	
-		
+		$('#reset').show(); 
 		
 	});
+		
 	
+
 	
 });

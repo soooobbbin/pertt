@@ -46,6 +46,7 @@
 		    
 		</div>
 		
+	
 		<input type="button"  value="나에게 맞는 OTT확인하기!" id="ottCheckBtn">
 		<div class="result">
 			<img src="${pageContext.request.contextPath}/images/down-arrow.png" id="down_arrow" style="display:none;">
@@ -57,10 +58,12 @@
 			<img src="${pageContext.request.contextPath}/images/logo_wavve.png" id="wavve" style="display:none;">
 			
 			</div>
-		
-		
-		</div>
 			
+		</div>
+		<input type="button" value="다시 선택하기" id="reset" style="display:none;" 
+		onClick="window.location.reload()" >
+	
+		
 	</div>
 </div>
 </body>
