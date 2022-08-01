@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ott-review.css" type="text/css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ott-star.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/ott-review.js"></script>
 </head>
 <body>
 <div class="page-main">
@@ -24,606 +25,109 @@
 		<a href="ottReview.do?ott_num=5"><img src="../images/logo_square_wavve.png" width=150 style="border-radius:10px; box-shadow: 5px 5px 5px #959595; margin: 0 10px 0 0;"></a>
 	</div>
 	<div class="parent">
-		<div class="netflix"><img src="../images/logo_none_netflix.png"></div>
-		<div class="star">
-			<h1>가성비</h1>
-			<!--=======별점 부분=======-->
-			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
-			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
-			점수에 따라 별점 width 변화 --%>
-			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
-				<c:if test="${OttStarVO == null}">
-					<%--평가기록 없을 때 --%>
-					<div class="rateit" id="starRate"
-						data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-						style="font-size: 38px;"></div>
-					<script type="text/javascript">	
-			/* 비회원 체크 후 alert 호출  */
-				$("#starRate").bind('rated', function (event, value) {
-					var user_num = ${user_num};
-					if(user_num==0){ // 비회원상태: user_num=0
-						Swal.fire({			
-							title: ' ',						  
-							text: '평가하시려면 로그인하세요.',
-							imageUrl: '${pageContext.request.contextPath}/resources/images/star_icon.png',
-							imageWidth: 70,
-							imageHeight: 70,						  
-							imageAlt: 'Custom image',
-							confirmButtonColor: '#84d7fa',
-							confirmButtonText: '로그인',
-							width: 400,
-							padding: '2em'
-							})
-						//alert('평가하시려면 로그인이 필요해요.');
-						$('.rateit-selected').css('width',''); //클릭된 별점 reset
-					};				 
-				});			
-				</script>
-					</c:if>
-					<c:if test="${OttStarVO != null}">
-						<%--평가기록 있을때 --%>
-						<div class="rateit" id="starRate"
-							data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-							style="font-size: 38px;"></div>
-						<script type="text/javascript">
-				$(function(){
-					$('#do_rating').hide(); //평가하기문구hide
-					var rate = ${OttStarVO.price};				
-					if(rate==0.5){
-						$('.rateit-selected').css('width','18.9965px');
-						$('#rating_text').text('0.5');	
-						}
-					if(rate==1){
-						$('.rateit-selected').css('width','37.993px');
-						$('#rating_text').text('1');	
-						}
-					if(rate==1.5){
-						$('.rateit-selected').css('width','56.9895px');
-						$('#rating_text').text('1.5');	
-						}
-					if(rate==2){
-						$('.rateit-selected').css('width','75.986px');
-						$('#rating_text').text('2');	
-						}
-					if(rate==2.5){
-						$('.rateit-selected').css('width','94.9825px');
-						$('#rating_text').text('2.5');	
-						}
-					if(rate==3){
-						$('.rateit-selected').css('width','113.979px');
-						$('#rating_text').text('3');	
-						}
-					if(rate==3.5){
-						$('.rateit-selected').css('width','132.976px');
-						$('#rating_text').text('3.5');	
-						}
-					if(rate==4){
-						$('.rateit-selected').css('width','151.972px');
-						$('#rating_text').text('4');	
-						}
-					if(rate==4.5){
-						$('.rateit-selected').css('width','170.969px');
-						$('#rating_text').text('4.5');	
-						}
-					if(rate==5){
-						$('.rateit-selected').css('width','189.965px');
-						$('#rating_text').text('5');					
-					}
-				</script>
-					</c:if>
-				</div>
-				<script type="text/javascript">	
-			$(function(){
-				//(1)별점입력 및 변경
-				$('.star_area .rateit').bind('rated', function (e) { //rated reset		
-			        var ri = $(this);
-		      
-			        var user_num = ${user_num};		        
-					var value = ri.rateit('value'); 
-	
-			          $.ajax({
-			            url: 'WriteOttStarAction.do', 
-			            data: { 
-							star: value,
-							ott_num : $('#ott_num').val(),
-							member_num : user_num,
-							ott_star_num : ott_star_num
-							}, 
-			            dataType : 'json',
-			            type: 'POST',
-			            success: function (param) { 
-			            	if(param.result == 'logout'){
-								alert('로그인 후 사용하세요!');
-			            	}else if(param.result == 'success'){ //별점기록없으면 insert
-			            		$('#starnum_star').val(param.star_num);
-			            	}else if(param.result == 'success2'){ //별점기록있으면  update
-			            	}else{
-								alert('별점입력 오류 발생');
-							}	
-			            },
-			            error: function () {
-			            	alert('네트워크 오류 발생');
-			            }
-			        });  //end of ajax
-					
-			    });//별점입력끝 
-			    
-			    //(2)별점 취소 (0.5점 클릭->취소버튼 노출->취소가능)
-				 $("#starRate").bind('reset', function () { //reset버튼클릭시 이벤트 발생
-					 var user_num = ${user_num};
-				 
-			    	 $('#rating_text').text('평가하기');	//평가하기문구다시노출 
-			    	 $('#rateit-reset-2').css("visibility","hidden"); //리셋버튼감추기
-			    	 /* alert('평가를 취소하시겠습니까?')  */
-			    	 $.ajax({
-							url:'resetRating.do',
-							type:'post',
-							data: {
-								ott_num : $('#ott_num').val(),
-								member_num : user_num
-								},
-							dataType: 'json',
-							cache:false,
-							timeout:30000,
-							success:function(param){
-								if(param.result == 'logout'){
-									alert('로그인 후 사용하세요')					
-								}else if(param.result == 'success'){
-									/* alert('평가취소완료');	 */
-								}else{
-									alert('삭제시 오류 발생');
-								}
-							},
-							error:function(){
-								alert('네트워크 오류 발생')
-							}
-					}); 
-				});	 
-				    
-				//(3)별점에 따른 평가 문구 설정	    	
-			    $("#starRate").bind('rated', function (event, value) { //rated시 이벤트 발생
-			    	
-			    	$('#rateit-reset-2').css("visibility","hidden"); //리셋버튼hide		    	
-			    	$('#do_rating').hide(); //평가하기문구hide
-			    	
-				   	 if(value === 5 ){ 
-				   	 	$('#rating_text').text('5');		   
-				   	 }
-				   	 if(value === 4.5){
-				   		 $('#rating_text').text('4.5');		   
-				   	 }
-				   	 if(value === 4 ){
-				   		 $('#rating_text').text('4');		   
-				   	 }
-				   	 if(value === 3.5 ){
-				   		 $('#rating_text').text('3.5');		   
-				   	 }
-				   	 if(value === 3 ){
-				   		 $('#rating_text').text('3');		   
-				   	 }
-				   	 if(value === 2.5){
-				   		 $('#rating_text').text('2.5');		   
-				   	 }
-				   	 if(value === 2){
-				   		 $('#rating_text').text('2');		   
-				   	 }
-				   	 if(value === 1.5){
-				   		 $('#rating_text').text('1.5');		   
-				   	 }
-				   	 if(value === 1){
-				   		 $('#rating_text').text('1');		   
-				   	 }
-				   	 if(value === 0.5){ 
-				   		 $('#rating_text').text('0.5');	
-				  
-	
-					//0.5 hover시 리셋버튼 클릭어려워서 0.5클릭 시 리셋버튼 뜨게 설정
-								$('#rateit-reset-2').css("visibility", "visible");
-							}
-						});//평가문구끝
-					});
-				</script>
-				<!--======별점 부분 끝======-->
-			<h1>사용성</h1>
-			<!--=======별점 부분=======-->
-			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
-			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
-			점수에 따라 별점 width 변화 --%>
-			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
-				<c:if test="${OttStarVO == null}">
-					<%--평가기록 없을 때 --%>
-					<div class="rateit" id="starRate"
-						data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-						style="font-size: 38px;"></div>
-					<script type="text/javascript">	
-			/* 비회원 체크 후 alert 호출  */
-				$("#starRate").bind('rated', function (event, value) {
-					var user_num = ${user_num};
-					if(user_num==0){ // 비회원상태: user_num=0
-						Swal.fire({			
-							title: ' ',						  
-							text: '평가하시려면 로그인하세요.',
-							imageUrl: '${pageContext.request.contextPath}/resources/images/star_icon.png',
-							imageWidth: 70,
-							imageHeight: 70,						  
-							imageAlt: 'Custom image',
-							confirmButtonColor: '#84d7fa',
-							confirmButtonText: '로그인',
-							width: 400,
-							padding: '2em'
-							})
-						//alert('평가하시려면 로그인이 필요해요.');
-						$('.rateit-selected').css('width',''); //클릭된 별점 reset
-					};				 
-				});			
-				</script>
-					</c:if>
-					<c:if test="${OttStarVO != null}">
-						<%--평가기록 있을때 --%>
-						<div class="rateit" id="starRate"
-							data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-							style="font-size: 38px;"></div>
-						<script type="text/javascript">
-				$(function(){
-					$('#do_rating').hide(); //평가하기문구hide
-					var rate = ${OttStarVO.price};				
-					if(rate==0.5){
-						$('.rateit-selected').css('width','18.9965px');
-						$('#rating_text').text('0.5');	
-						}
-					if(rate==1){
-						$('.rateit-selected').css('width','37.993px');
-						$('#rating_text').text('1');	
-						}
-					if(rate==1.5){
-						$('.rateit-selected').css('width','56.9895px');
-						$('#rating_text').text('1.5');	
-						}
-					if(rate==2){
-						$('.rateit-selected').css('width','75.986px');
-						$('#rating_text').text('2');	
-						}
-					if(rate==2.5){
-						$('.rateit-selected').css('width','94.9825px');
-						$('#rating_text').text('2.5');	
-						}
-					if(rate==3){
-						$('.rateit-selected').css('width','113.979px');
-						$('#rating_text').text('3');	
-						}
-					if(rate==3.5){
-						$('.rateit-selected').css('width','132.976px');
-						$('#rating_text').text('3.5');	
-						}
-					if(rate==4){
-						$('.rateit-selected').css('width','151.972px');
-						$('#rating_text').text('4');	
-						}
-					if(rate==4.5){
-						$('.rateit-selected').css('width','170.969px');
-						$('#rating_text').text('4.5');	
-						}
-					if(rate==5){
-						$('.rateit-selected').css('width','189.965px');
-						$('#rating_text').text('5');					
-					}
-				</script>
-					</c:if>
-				</div>
-				<script type="text/javascript">	
-			$(function(){
-				//(1)별점입력 및 변경
-				$('.star_area .rateit').bind('rated', function (e) { //rated reset		
-			        var ri = $(this);
-		      
-			        var user_num = ${user_num};		        
-					var value = ri.rateit('value'); 
-	
-			          $.ajax({
-			            url: 'WriteOttStarAction.do', 
-			            data: { 
-							star: value,
-							ott_num : $('#ott_num').val(),
-							member_num : user_num,
-							ott_star_num : ott_star_num
-							}, 
-			            dataType : 'json',
-			            type: 'POST',
-			            success: function (param) { 
-			            	if(param.result == 'logout'){
-								alert('로그인 후 사용하세요!');
-			            	}else if(param.result == 'success'){ //별점기록없으면 insert
-			            		$('#starnum_star').val(param.star_num);
-			            	}else if(param.result == 'success2'){ //별점기록있으면  update
-			            	}else{
-								alert('별점입력 오류 발생');
-							}	
-			            },
-			            error: function () {
-			            	alert('네트워크 오류 발생');
-			            }
-			        });  //end of ajax
-					
-			    });//별점입력끝 
-			    
-			    //(2)별점 취소 (0.5점 클릭->취소버튼 노출->취소가능)
-				 $("#starRate").bind('reset', function () { //reset버튼클릭시 이벤트 발생
-					 var user_num = ${user_num};
-				 
-			    	 $('#rating_text').text('평가하기');	//평가하기문구다시노출 
-			    	 $('#rateit-reset-2').css("visibility","hidden"); //리셋버튼감추기
-			    	 /* alert('평가를 취소하시겠습니까?')  */
-			    	 $.ajax({
-							url:'resetRating.do',
-							type:'post',
-							data: {
-								ott_num : $('#ott_num').val(),
-								member_num : user_num
-								},
-							dataType: 'json',
-							cache:false,
-							timeout:30000,
-							success:function(param){
-								if(param.result == 'logout'){
-									alert('로그인 후 사용하세요')					
-								}else if(param.result == 'success'){
-									/* alert('평가취소완료');	 */
-								}else{
-									alert('삭제시 오류 발생');
-								}
-							},
-							error:function(){
-								alert('네트워크 오류 발생')
-							}
-					}); 
-				});	 
-				    
-				//(3)별점에 따른 평가 문구 설정	    	
-			    $("#starRate").bind('rated', function (event, value) { //rated시 이벤트 발생
-			    	
-			    	$('#rateit-reset-2').css("visibility","hidden"); //리셋버튼hide		    	
-			    	$('#do_rating').hide(); //평가하기문구hide
-			    	
-				   	 if(value === 5 ){ 
-				   	 	$('#rating_text').text('5');		   
-				   	 }
-				   	 if(value === 4.5){
-				   		 $('#rating_text').text('4.5');		   
-				   	 }
-				   	 if(value === 4 ){
-				   		 $('#rating_text').text('4');		   
-				   	 }
-				   	 if(value === 3.5 ){
-				   		 $('#rating_text').text('3.5');		   
-				   	 }
-				   	 if(value === 3 ){
-				   		 $('#rating_text').text('3');		   
-				   	 }
-				   	 if(value === 2.5){
-				   		 $('#rating_text').text('2.5');		   
-				   	 }
-				   	 if(value === 2){
-				   		 $('#rating_text').text('2');		   
-				   	 }
-				   	 if(value === 1.5){
-				   		 $('#rating_text').text('1.5');		   
-				   	 }
-				   	 if(value === 1){
-				   		 $('#rating_text').text('1');		   
-				   	 }
-				   	 if(value === 0.5){ 
-				   		 $('#rating_text').text('0.5');	
-				  
-	
-					//0.5 hover시 리셋버튼 클릭어려워서 0.5클릭 시 리셋버튼 뜨게 설정
-								$('#rateit-reset-2').css("visibility", "visible");
-							}
-						});//평가문구끝
-					});
-				</script>
-				<!--======별점 부분 끝======-->
-			<h1>콘텐츠</h1>
-						<!--=======별점 부분=======-->
-			<%--평가 기록이 없으면(OttStarVO == null) 평가할수있는 별점 div를 표시, 
-			기록이 있으면(OttStarVO != null) OttStarVO에서 price,usability,quality(별점)을 불러와 
-			점수에 따라 별점 width 변화 --%>
-			<div class="star_area">
-				<input type="hidden" value="${OttStarVO.ott_star_num }" id="ott_starnum_star">
-				<c:if test="${OttStarVO == null}">
-					<%--평가기록 없을 때 --%>
-					<div class="rateit" id="starRate"
-						data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-						style="font-size: 38px;"></div>
-					<script type="text/javascript">	
-			/* 비회원 체크 후 alert 호출  */
-				$("#starRate").bind('rated', function (event, value) {
-					var user_num = ${user_num};
-					if(user_num==0){ // 비회원상태: user_num=0
-						Swal.fire({			
-							title: ' ',						  
-							text: '평가하시려면 로그인하세요.',
-							imageUrl: '${pageContext.request.contextPath}/resources/images/star_icon.png',
-							imageWidth: 70,
-							imageHeight: 70,						  
-							imageAlt: 'Custom image',
-							confirmButtonColor: '#84d7fa',
-							confirmButtonText: '로그인',
-							width: 400,
-							padding: '2em'
-							})
-						//alert('평가하시려면 로그인이 필요해요.');
-						$('.rateit-selected').css('width',''); //클릭된 별점 reset
-					};				 
-				});			
-				</script>
-					</c:if>
-					<c:if test="${OttStarVO != null}">
-						<%--평가기록 있을때 --%>
-						<div class="rateit" id="starRate"
-							data-contentsid="${OttStarVO.ott_num}" data-rateit-mode="font"
-							style="font-size: 38px;"></div>
-						<script type="text/javascript">
-				$(function(){
-					$('#do_rating').hide(); //평가하기문구hide
-					var rate = ${OttStarVO.price};				
-					if(rate==0.5){
-						$('.rateit-selected').css('width','18.9965px');
-						$('#rating_text').text('0.5');	
-						}
-					if(rate==1){
-						$('.rateit-selected').css('width','37.993px');
-						$('#rating_text').text('1');	
-						}
-					if(rate==1.5){
-						$('.rateit-selected').css('width','56.9895px');
-						$('#rating_text').text('1.5');	
-						}
-					if(rate==2){
-						$('.rateit-selected').css('width','75.986px');
-						$('#rating_text').text('2');	
-						}
-					if(rate==2.5){
-						$('.rateit-selected').css('width','94.9825px');
-						$('#rating_text').text('2.5');	
-						}
-					if(rate==3){
-						$('.rateit-selected').css('width','113.979px');
-						$('#rating_text').text('3');	
-						}
-					if(rate==3.5){
-						$('.rateit-selected').css('width','132.976px');
-						$('#rating_text').text('3.5');	
-						}
-					if(rate==4){
-						$('.rateit-selected').css('width','151.972px');
-						$('#rating_text').text('4');	
-						}
-					if(rate==4.5){
-						$('.rateit-selected').css('width','170.969px');
-						$('#rating_text').text('4.5');	
-						}
-					if(rate==5){
-						$('.rateit-selected').css('width','189.965px');
-						$('#rating_text').text('5');					
-					}
-				</script>
-					</c:if>
-				</div>
-				<script type="text/javascript">	
-			$(function(){
-				//(1)별점입력 및 변경
-				$('.star_area .rateit').bind('rated', function (e) { //rated reset		
-			        var ri = $(this);
-		      
-			        var user_num = ${user_num};		        
-					var value = ri.rateit('value'); 
-	
-			          $.ajax({
-			            url: 'WriteOttStarAction.do', 
-			            data: { 
-							star: value,
-							ott_num : $('#ott_num').val(),
-							member_num : user_num,
-							ott_star_num : ott_star_num
-							}, 
-			            dataType : 'json',
-			            type: 'POST',
-			            success: function (param) { 
-			            	if(param.result == 'logout'){
-								alert('로그인 후 사용하세요!');
-			            	}else if(param.result == 'success'){ //별점기록없으면 insert
-			            		$('#starnum_star').val(param.star_num);
-			            	}else if(param.result == 'success2'){ //별점기록있으면  update
-			            	}else{
-								alert('별점입력 오류 발생');
-							}	
-			            },
-			            error: function () {
-			            	alert('네트워크 오류 발생');
-			            }
-			        });  //end of ajax
-					
-			    });//별점입력끝 
-			    
-			    //(2)별점 취소 (0.5점 클릭->취소버튼 노출->취소가능)
-				 $("#starRate").bind('reset', function () { //reset버튼클릭시 이벤트 발생
-					 var user_num = ${user_num};
-				 
-			    	 $('#rating_text').text('평가하기');	//평가하기문구다시노출 
-			    	 $('#rateit-reset-2').css("visibility","hidden"); //리셋버튼감추기
-			    	 /* alert('평가를 취소하시겠습니까?')  */
-			    	 $.ajax({
-							url:'resetRating.do',
-							type:'post',
-							data: {
-								ott_num : $('#ott_num').val(),
-								member_num : user_num
-								},
-							dataType: 'json',
-							cache:false,
-							timeout:30000,
-							success:function(param){
-								if(param.result == 'logout'){
-									alert('로그인 후 사용하세요')					
-								}else if(param.result == 'success'){
-									/* alert('평가취소완료');	 */
-								}else{
-									alert('삭제시 오류 발생');
-								}
-							},
-							error:function(){
-								alert('네트워크 오류 발생')
-							}
-					}); 
-				});	 
-				    
-				//(3)별점에 따른 평가 문구 설정	    	
-			    $("#starRate").bind('rated', function (event, value) { //rated시 이벤트 발생
-			    	
-			    	$('#rateit-reset-2').css("visibility","hidden"); //리셋버튼hide		    	
-			    	$('#do_rating').hide(); //평가하기문구hide
-			    	
-				   	 if(value === 5 ){ 
-				   	 	$('#rating_text').text('5');		   
-				   	 }
-				   	 if(value === 4.5){
-				   		 $('#rating_text').text('4.5');		   
-				   	 }
-				   	 if(value === 4 ){
-				   		 $('#rating_text').text('4');		   
-				   	 }
-				   	 if(value === 3.5 ){
-				   		 $('#rating_text').text('3.5');		   
-				   	 }
-				   	 if(value === 3 ){
-				   		 $('#rating_text').text('3');		   
-				   	 }
-				   	 if(value === 2.5){
-				   		 $('#rating_text').text('2.5');		   
-				   	 }
-				   	 if(value === 2){
-				   		 $('#rating_text').text('2');		   
-				   	 }
-				   	 if(value === 1.5){
-				   		 $('#rating_text').text('1.5');		   
-				   	 }
-				   	 if(value === 1){
-				   		 $('#rating_text').text('1');		   
-				   	 }
-				   	 if(value === 0.5){ 
-				   		 $('#rating_text').text('0.5');	
-				  
-	
-					//0.5 hover시 리셋버튼 클릭어려워서 0.5클릭 시 리셋버튼 뜨게 설정
-								$('#rateit-reset-2').css("visibility", "visible");
-							}
-						});//평가문구끝
-					});
-				</script>
-				<!--======별점 부분 끝======-->
+		<div class="netflix">
+		    <c:if test="${param.ott_num==1}">
+				<img src="../images/logo_none_netflix.png">
+			</c:if>
+			<c:if test="${param.ott_num==2}">
+				<img src="../images/logo_none_disney.png">
+			</c:if>
+			<c:if test="${param.ott_num==3}">
+				<img src="../images/logo_none_watcha.png">
+			</c:if>
+			<c:if test="${param.ott_num==4}">
+				<img src="../images/logo_none_tving.png">
+			</c:if>
+			<c:if test="${param.ott_num==5}">
+				<img src="../images/logo_none_wavve.png">
+			</c:if>
 		</div>
+		<!-- 별점 시작 -->
+		<div class="star">
+		    <form id="ottLike_form">
+		       <input type="hidden" name="ott_num" id="ott_num" value="${param.ott_num}"><!--  -->
+				<h1>가성비</h1>
+				<div class="rating">
+				   <input type="hidden" name="price" value="0" class="rate-star">    
+				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+				    <input type="checkbox" id="rating1" value="1" class="rate-check">
+				    <label for="rating1"></label>
+				    <input type="checkbox" id="rating2" value="2" class="rate-check">
+				    <label for="rating2"></label>
+				    <input type="checkbox" id="rating3" value="3" class="rate-check">
+				    <label for="rating3"></label>
+				    <input type="checkbox" id="rating4" value="4" class="rate-check">
+				    <label for="rating4"></label>
+				    <input type="checkbox" id="rating5" value="5" class="rate-check">
+				    <label for="rating5"></label>
+				</div>
+				
+				<h1>사용성</h1>
+				<div class="rating">
+				   <input type="hidden" name="usability" value="0" class="rate-star">    
+				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+				    <input type="checkbox" id="ratingb1" value="1" class="rate-check">
+				    <label for="ratingb1"></label>
+				    <input type="checkbox" id="ratingb2" value="2" class="rate-check">
+				    <label for="ratingb2"></label>
+				    <input type="checkbox" id="ratingb3" value="3" class="rate-check">
+				    <label for="ratingb3"></label>
+				    <input type="checkbox" id="ratingb4" value="4" class="rate-check">
+				    <label for="ratingb4"></label>
+				    <input type="checkbox" id="ratingb5" value="5" class="rate-check">
+				    <label for="ratingb5"></label>
+				</div>
+				
+				<h1>콘텐츠</h1>
+				<div class="rating">
+				   <input type="hidden" name="quality" value="0" class="rate-star">    
+				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+				    <input type="checkbox" id="ratingc1" value="1" class="rate-check">
+				    <label for="ratingc1"></label>
+				    <input type="checkbox" id="ratingc2" value="2" class="rate-check">
+				    <label for="ratingc2"></label>
+				    <input type="checkbox" id="ratingc3" value="3" class="rate-check">
+				    <label for="ratingc3"></label>
+				    <input type="checkbox" id="ratingc4" value="4" class="rate-check">
+				    <label for="ratingc4"></label>
+				    <input type="checkbox" id="ratingc5" value="5" class="rate-check">
+				    <label for="ratingc5"></label>
+				</div>
+				<div class="align-center">
+					<input type="submit" value="전송">
+				</div>
+			</form>
+		</div>
+		<!-- 별점 끝 -->
+		
+		<!-- 한줄평 시작 -->
+		<div id="ott_review_div">
+			<span class="re-title">한줄평 달기</span>
+			<form id="re_form" style="display:inline-block;">
+				<textarea rows="3" cols="50" name="ott_re_content" 
+				  id="ott_re_content" class="rep-content"
+				  <c:if test="${empty user_num}">disabled="disabled"</c:if>
+				  ><c:if test="${empty user_num}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+				<c:if test="${!empty user_num}">
+				<div id="re_first">
+					<span class="letter-count">300/300</span>
+				</div>
+				<div id="re_second" class="align-right">
+					<input type="submit" value="전송">
+				</div>
+				</c:if>
+			</form>
+		</div>
+		<!-- 한줄평 목록 출력 시작 -->
+		<div id="output"></div>
+		<div class="paging-button" style="display:none;">
+			<input type="button" value="다음글 보기">
+		</div>
+		<div id="loading" style="display:none;">
+			<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
+		</div>
+		<!-- 한줄평 목록 출력 끝 -->
+		<!-- 한줄평 끝 -->
 	</div>
 </div>
 </div>

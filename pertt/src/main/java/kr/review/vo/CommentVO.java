@@ -1,5 +1,5 @@
 package kr.review.vo;
-
+//
 public class CommentVO {
 	private int com_num;
 	private String com_content;

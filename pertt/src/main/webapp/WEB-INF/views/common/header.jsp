@@ -37,7 +37,7 @@
 					</li>
 					<li>
 						<div class="dropdown-content">
-							<a href="${pageContext.request.contextPath}/ott/ottReview.do">ott별점주기</a>
+							<a href="${pageContext.request.contextPath}/ott/ottReview.do?ott_num=1">ott별점주기</a>
 							<br><br>
 							<a href="${pageContext.request.contextPath}/ott/ottRank.do">ott랭킹보기</a>
 						</div>

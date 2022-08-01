@@ -24,7 +24,7 @@ public class ReviewAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//===================작품 상세 정보 ===============================
-		//작품 번호 받아서 작품 상세 호출
+		// 작품 번호 받아서 작품 상세 호출
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
 		ContentsDAO dao = ContentsDAO.getInstance();
 		ContentsVO contents = dao.getContents(c_num);
@@ -53,7 +53,7 @@ public class ReviewAction implements Action{
 				reviewCheck = 1;
 			};
 		} else user_num = -1;
-		System.out.println(starAvg);
+		
 		request.setAttribute("u_num", user_num);
 		request.setAttribute("contents", contents);//작품 상세
 		request.setAttribute("starAvg", starAvg); // 별점 평균

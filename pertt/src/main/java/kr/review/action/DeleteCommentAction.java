@@ -16,7 +16,7 @@ import kr.review.vo.CommentVO;
 public class DeleteCommentAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//전송된 데이터 인코딩 처리
+		// 전송된 데이터 인코딩 처리
 		request.setCharacterEncoding("utf-8");
 		
 		//전송된 데이터 반환

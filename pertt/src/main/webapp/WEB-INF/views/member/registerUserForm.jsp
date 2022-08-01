@@ -37,7 +37,7 @@
 				</li>
 				<li>
 					<label for="birth" >생년월일</label>
-					<input type="text" name="birth1" id="birth1" maxlength="4" size="5" class="inBorder" />년
+					<input type="number" name="birth1" id="birth1" maxlength="4" size="5" class="inBorder" />년
                 <select name = "birth2" class="inBorder">
                     <option value="01">01
                     <option value="02">02
@@ -95,13 +95,13 @@
                     <option value="017">017
                     <option value="018">018
                 </select> - 
-					<input type="text" name="phone2" id="phone2" maxlength="4" size="5" class="phone" placeholder="0000"> - 
-					<input type="text" name="phone3" id="phone3" maxlength="4" size="5" class="phone"  placeholder="0000">
+					<input type="number" name="phone2" id="phone2" maxlength="4" size="5" class="phone" placeholder="0000"> - 
+					<input type="number" name="phone3" id="phone3" maxlength="4" size="5" class="phone"  placeholder="0000">
 					
 				</li>
 				<li>
 					<label for="email">이메일</label>
-					<input type="email" name="email" id="email" maxlength="50" placeholder="이메일을 입력하세요">
+					<input type="email" name="email" id="email" maxlength="50" placeholder="test@example.com"> 					
 				</li>
 				
 			</ul>

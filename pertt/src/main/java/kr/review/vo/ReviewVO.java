@@ -1,5 +1,5 @@
 package kr.review.vo;
-
+//
 import java.sql.Date;
 
 public class ReviewVO {

@@ -14,7 +14,7 @@ import kr.util.DurationFromNow;
 import kr.util.StringUtil;
 
 public class ReviewDAO {
-	// 싱글톤 패턴
+	//  싱글톤 패턴 
 	private static ReviewDAO instance = new ReviewDAO();
 
 	public static ReviewDAO getInstance() {

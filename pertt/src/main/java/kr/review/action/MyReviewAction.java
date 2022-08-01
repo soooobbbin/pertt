@@ -24,7 +24,7 @@ public class MyReviewAction implements Action{
 			request.setAttribute("accessMsg", "해당 작품에 리뷰가 존재하지 않습니다.");
 			return "/WEB-INF/views/common/notice.jsp";
 		}
-		
+		//  
 		request.setAttribute("c_num", c_num);
 		request.setAttribute("c_review_num", review.getC_review_num());
 		

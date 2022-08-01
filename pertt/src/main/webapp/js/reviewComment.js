@@ -61,7 +61,7 @@ $(function(){
 		
 	}
 	
-	//페이지 처리 이벤트 연결(다음 댓글 보기 버튼 클릭시 데이터 추가)
+	//페이지 처리 이벤트 연결 (다음 댓글 보기 버튼 클릭시 데이터 추가)
 	$('.paging-button input').click(function(){
 		selectList(currentPage + 1);
 	});
@@ -105,7 +105,7 @@ $(function(){
 		event.preventDefault();
 	});
 	
-	//댓글 작성 폼 초기화
+	//댓글 작성 폼 초기화  
 	function initForm(){
 		$('textarea').val('');
 		$('#com_first .letter-count').text('300/300');
