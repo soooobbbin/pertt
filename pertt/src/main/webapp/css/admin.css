@@ -243,6 +243,28 @@ label{
 	width:130px;
 	float:left;/*태그를 왼쪽으로 정렬*/
 }
+/* 회원정보수정 */
+form.detail-form{
+	width: 900px;
+    margin: 0 auto;
+    padding: 50px 10px 10px 0px;
+    min-height: 600px;
+}
+.userDetail-table{
+	width: 800px;
+    border: 0.5px solid #ffffff;
+    border-collapse: collapse;
+    margin-top: 5px;
+    min-height: 300px;
+}
+.userDetail-table th{
+	padding: 10px 10px 10px 20px;
+    border: 1px solid #000;
+    text-align: left;
+    width: 100px;
+    background-color: aliceblue;
+}
+
 
 /*작품 포스터 사진 영역*/
 .contents-poster{
