@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.contents.vo.ContentsVO;
+import kr.member.vo.MemberVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
 
@@ -18,44 +19,7 @@ public class AdminDAO {
 		return instance;
 	}
 	private AdminDAO() {}
-
-	//작품 등록
-	public void insertContents(ContentsVO contents) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-
-		try {
-			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
-			conn = DBUtil.getConnection();
-			//SQL문 작성
-			sql = "INSERT INTO contents (c_num,title,poster,release,country,genre,tomato,"
-					+ "plot,produce,grade,category_num,ott_num) "
-					+ "VALUES (contents_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
-			//JDBC 수행 3단계 : PreparedStatement 객체 생성
-			pstmt = conn.prepareStatement(sql);
-			//?에 데이터 바인딩
-			pstmt.setString(1, contents.getTitle());
-			pstmt.setString(2, contents.getPoster());
-			pstmt.setString(3, contents.getRelease());
-			pstmt.setString(4, contents.getCountry());
-			pstmt.setString(5, contents.getGenre());
-			pstmt.setString(6, contents.getTomato());
-			pstmt.setString(7, contents.getPlot());
-			pstmt.setString(8, contents.getProduce());
-			pstmt.setString(9, contents.getGrade());
-			pstmt.setInt(10, contents.getCategory_num());
-			pstmt.setInt(11, contents.getOtt_num());
-
-			//JDBC 수행 4단계 : SQL문 실행
-			pstmt.executeUpdate();
-
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null, pstmt, conn);
-		}
-	}
+	
 	//총 레코드 수(검색 레코드 수)
 	public int getContentsCount(String keyfield,String keyword) throws Exception{
 		Connection conn = null;
@@ -92,18 +56,16 @@ public class AdminDAO {
 
 		return count;
 	}
+
 	//작품 목록(검색글 목록)
-	public List<ContentsVO> getListContents(int start, int end, 
-			String keyfield, String keyword,int category_num)throws Exception{
+	public List<ContentsVO> getListContentsByAdmin(int start, int end, 
+			String keyfield, String keyword)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<ContentsVO> list = null;
 		String sql = null;
 		String sub_sql ="";
-		if(category_num != 0) {
-			sub_sql = "WHERE category_num = ?";
-		}
 		int cnt = 0;
 
 		try {
@@ -113,7 +75,6 @@ public class AdminDAO {
 				if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
 				else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
 				else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
-				else if(keyfield.equals("4")) sub_sql += " WHERE c.category_num LIKE ?";
 			}
 
 			sql = "SELECT * FROM (SELECT a.*, rownum rnum "
@@ -122,7 +83,7 @@ public class AdminDAO {
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(++cnt, category_num);
+			
 			if(keyword != null && !"".equals(keyword)) {
 				pstmt.setString(++cnt, "%"+keyword+"%");
 			}
@@ -157,140 +118,148 @@ public class AdminDAO {
 		return list;
 	}
 
-	//작품 상세
-	public ContentsVO getContents(int c_num) throws Exception{
+	//관리자 헤더 카테고리 - ott 분류
+	public List<ContentsVO> getOttGroup(
+			           int start,int end,
+			           String keyfield, String keyword)
+	                        throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		List<ContentsVO> list = null;
 		String sql = null;
-		ContentsVO contents = null;
-
+		String sub_sql = "";
+		int cnt = 0;
+		
 		try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
-
-			sql = "SELECT * FROM contents WHERE c_num=?";
-
+			
+			if(keyword!=null && !"".equals(keyword)) {
+				//검색 처리
+				if(keyfield.equals("1")) sub_sql = "WHERE ott_name LIKE ? ";
+			}
+			
+			sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+				+ "(SELECT * FROM contents c LEFT OUTER JOIN "
+				+ "ott o USING (ott_num)  " + sub_sql
+				+ " ORDER BY c_num NULLS LAST)a) "
+				+ "WHERE rnum >= ? AND rnum <= ?";
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, c_num);
+			if(keyword!=null && !"".equals(keyword)) {
+				pstmt.setString(++cnt, "%"+keyword+"%");
+			}
+			pstmt.setInt(++cnt, start);
+			pstmt.setInt(++cnt, end);
+			
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				contents = new ContentsVO();
+			
+			list = new ArrayList<ContentsVO>();
+			while(rs.next()) {
+				ContentsVO contents = new ContentsVO();
 				contents.setC_num(rs.getInt("c_num"));
 				contents.setTitle(rs.getString("title"));
 				contents.setPoster(rs.getString("poster"));
 				contents.setRelease(rs.getString("release"));
 				contents.setCountry(rs.getString("country"));
 				contents.setGenre(rs.getString("genre"));
+				contents.setPlot(rs.getString("plot"));
 				contents.setTomato(rs.getString("tomato"));
-				contents.setPlot(StringUtil.useBrNoHtml(rs.getString("plot")));
-				contents.setProduce(StringUtil.useBrNoHtml(rs.getString("produce")));
+				contents.setProduce(rs.getString("produce"));
 				contents.setGrade(rs.getString("grade"));
-				contents.setCategory_num(rs.getInt("category_num"));
 				contents.setOtt_num(rs.getInt("ott_num"));
+				
+				list.add(contents);
 			}
+			
 		}catch(Exception e) {
 			throw new Exception(e);
 		}finally {
-			DBUtil.executeClose(rs,pstmt,conn);
+			//자원정리
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
-		return contents;
-	}
-
-	//작품 수정
-	public void updateContents(ContentsVO contentsVO) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-
-		try {
+		return list;
+		}
+		
+		//ott별 레코드 수(검색 레코드 수)
+		public int getOttGrounpCount(String keyfield,String keyword)throws Exception{
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			String sub_sql = "";
+			int count = 0;
+			
+			try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션을 할당
 			conn = DBUtil.getConnection();
-
-			sql = "UPDATE mvBoard SET title=?,poster=?,release=?,country=?,genre=?,"
-					+ "tomato=?,plot=?,produce=?,grade=?,category_num=?,ott_num=? WHERE c_num=?";
-
+			
+			if(keyword!=null && !"".equals(keyword)) {
+			//검색 처리
+			if(keyfield.equals("1")) sub_sql = "WHERE ott_name LIKE ?";
+			}
+			
+			sql = "SELECT COUNT(*) FROM contents LEFT OUTER JOIN "
+			+ "ott USING (ott_num) " + sub_sql;
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, contentsVO.getTitle());
-			pstmt.setString(2, contentsVO.getPoster());
-			pstmt.setString(3, contentsVO.getRelease());
-			pstmt.setString(4, contentsVO.getCountry());
-			pstmt.setString(5, contentsVO.getGenre());
-			pstmt.setString(6, contentsVO.getTomato());
-			pstmt.setString(7, contentsVO.getPlot());
-			pstmt.setString(8, contentsVO.getProduce());
-			pstmt.setString(9, contentsVO.getGrade());
-			pstmt.setInt(10, contentsVO.getCategory_num());
-			pstmt.setInt(11, contentsVO.getOtt_num());
-			pstmt.setInt(12, contentsVO.getC_num());
-
-			pstmt.executeUpdate();
-
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null,pstmt,conn);
-		}
-	}
-	
-	
-	//작품 삭제
-	public void deleteContents(int c_num) throws Exception{
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-
-		try {
-			conn = DBUtil.getConnection();
-
-			sql = "DELETE FROM contents WHERE c_num=?";
-
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, c_num);
-
-			pstmt.executeUpdate();
-		}catch(Exception e) {
-			throw new Exception(e);
-		}finally {
-			DBUtil.executeClose(null,pstmt,conn);
-		}
-	}
-	
-
-	//============= 관리자 ================
-	//작품 목록(검색글 목록)
-		public List<ContentsVO> getListContentsByAdmin(int start, int end, 
-				String keyfield, String keyword)throws Exception{
+			
+			if(keyword!=null && !"".equals(keyword)) {
+			pstmt.setString(1, "%"+keyword+"%");
+			}
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			count = rs.getInt(1);
+			}
+			
+			}catch(Exception e) {
+				throw new Exception(e);
+			}finally {
+				//자원정리
+				DBUtil.executeClose(rs, pstmt, conn);
+			}
+				return count;
+			}
+		
+		//관리자 헤더 카테고리 - 장르 분류
+		public List<ContentsVO> getGenreGroup(
+				           int start,int end,
+				           String keyfield, String keyword)
+		                        throws Exception{
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			List<ContentsVO> list = null;
 			String sql = null;
-			String sub_sql ="";
+			String sub_sql = "";
 			int cnt = 0;
-
+			
 			try {
+				//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 				conn = DBUtil.getConnection();
-
-				if(keyword!=null && !"".equals(keyword)) {
-					if(keyfield.equals("1")) sub_sql += " WHERE c.title LIKE ?";
-					else if(keyfield.equals("2")) sub_sql += " WHERE c.genre LIKE ?";
-					else if(keyfield.equals("3")) sub_sql += " WHERE c.produce LIKE ?";
-				}
-
-				sql = "SELECT * FROM (SELECT a.*, rownum rnum "
-						+"FROM(SELECT * FROM contents c " + sub_sql+ " ORDER BY c_num DESC)a) "
-						+"WHERE rnum >= ? AND rnum <= ?";
-
-				pstmt = conn.prepareStatement(sql);
-
 				
-				if(keyword != null && !"".equals(keyword)) {
+				if(keyword!=null && !"".equals(keyword)) {
+					//검색 처리
+					if(keyfield.equals("1")) sub_sql = "WHERE ott_name LIKE ? ";
+				}
+				
+				sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+					+ "(SELECT * FROM contents c LEFT OUTER JOIN "
+					+ "ott o USING (ott_num)  " + sub_sql
+					+ " ORDER BY c_num DESC NULLS LAST)a) "
+					+ "WHERE rnum >= ? AND rnum <= ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				if(keyword!=null && !"".equals(keyword)) {
 					pstmt.setString(++cnt, "%"+keyword+"%");
 				}
-						
 				pstmt.setInt(++cnt, start);
 				pstmt.setInt(++cnt, end);
-
+				
 				rs = pstmt.executeQuery();
+				
 				list = new ArrayList<ContentsVO>();
 				while(rs.next()) {
 					ContentsVO contents = new ContentsVO();
@@ -300,25 +269,26 @@ public class AdminDAO {
 					contents.setRelease(rs.getString("release"));
 					contents.setCountry(rs.getString("country"));
 					contents.setGenre(rs.getString("genre"));
-					contents.setTomato(rs.getString("tomato"));
 					contents.setPlot(rs.getString("plot"));
+					contents.setTomato(rs.getString("tomato"));
 					contents.setProduce(rs.getString("produce"));
 					contents.setGrade(rs.getString("grade"));
-					contents.setCategory_num(rs.getInt("category_num"));
 					contents.setOtt_num(rs.getInt("ott_num"));
-
+					
 					list.add(contents);
 				}
+				
 			}catch(Exception e) {
 				throw new Exception(e);
 			}finally {
+				//자원정리
 				DBUtil.executeClose(rs, pstmt, conn);
 			}
 			return list;
-		}
-
-		//탈퇴 회원 레코드 수(검색 레코드 수)
-		public int getMemberCountByAdmin(String keyfield,String keyword)throws Exception{
+			}
+			
+			//장르별 레코드 수(검색 레코드 수)
+			public int getGenreGrounpCount(String keyfield,String keyword)throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
@@ -332,13 +302,11 @@ public class AdminDAO {
 				
 				if(keyword!=null && !"".equals(keyword)) {
 				//검색 처리
-				if(keyfield.equals("1")) sub_sql = "AND member_id LIKE ?";
-				else if(keyfield.equals("2")) sub_sql = "AND name LIKE ?";
-				else if(keyfield.equals("3")) sub_sql = "AND email LIKE ?";
+				if(keyfield.equals("1")) sub_sql = "WHERE ott_name LIKE ?";
 				}
 				
-				sql = "SELECT COUNT(*) FROM member LEFT OUTER JOIN "
-				+ "member_detail USING (member_num) WHERE auth = 0 " + sub_sql;
+				sql = "SELECT COUNT(*) FROM contents LEFT OUTER JOIN "
+				+ "ott USING (ott_num) " + sub_sql;
 				
 				pstmt = conn.prepareStatement(sql);
 				
@@ -360,8 +328,110 @@ public class AdminDAO {
 					return count;
 				}
 
-
-
+			//관리자 헤더 카테고리 - 등급 분류
+			public List<ContentsVO> getGradeGroup(
+					           int start,int end,
+					           String keyfield, String keyword)
+			                        throws Exception{
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<ContentsVO> list = null;
+				String sql = null;
+				String sub_sql = "";
+				int cnt = 0;
+				
+				try {
+					//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
+					conn = DBUtil.getConnection();
+					
+					if(keyword!=null && !"".equals(keyword)) {
+						//검색 처리
+						if(keyfield.equals("1")) sub_sql = "WHERE grade LIKE ? ";
+					}
+					
+					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
+						+ "(SELECT * FROM contents c LEFT OUTER JOIN "
+						+ "ott o USING (ott_num)  " + sub_sql
+						+ " ORDER BY c_num NULLS LAST)a) "
+						+ "WHERE rnum >= ? AND rnum <= ?";
+					
+					pstmt = conn.prepareStatement(sql);
+					if(keyword!=null && !"".equals(keyword)) {
+						pstmt.setString(++cnt, "%"+keyword+"%");
+					}
+					pstmt.setInt(++cnt, start);
+					pstmt.setInt(++cnt, end);
+					
+					rs = pstmt.executeQuery();
+					
+					list = new ArrayList<ContentsVO>();
+					while(rs.next()) {
+						ContentsVO contents = new ContentsVO();
+						contents.setC_num(rs.getInt("c_num"));
+						contents.setTitle(rs.getString("title"));
+						contents.setPoster(rs.getString("poster"));
+						contents.setRelease(rs.getString("release"));
+						contents.setCountry(rs.getString("country"));
+						contents.setGenre(rs.getString("genre"));
+						contents.setPlot(rs.getString("plot"));
+						contents.setTomato(rs.getString("tomato"));
+						contents.setProduce(rs.getString("produce"));
+						contents.setGrade(rs.getString("grade"));
+						contents.setOtt_num(rs.getInt("ott_num"));
+						
+						list.add(contents);
+					}
+					
+				}catch(Exception e) {
+					throw new Exception(e);
+				}finally {
+					//자원정리
+					DBUtil.executeClose(rs, pstmt, conn);
+				}
+				return list;
+				}
+				
+				//등급별 레코드 수(검색 레코드 수)
+				public int getGradeGrounpCount(String keyfield,String keyword)throws Exception{
+					Connection conn = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					String sql = null;
+					String sub_sql = "";
+					int count = 0;
+					
+					try {
+					//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션을 할당
+					conn = DBUtil.getConnection();
+					
+					if(keyword!=null && !"".equals(keyword)) {
+					//검색 처리
+					if(keyfield.equals("1")) sub_sql = "WHERE grade LIKE ?";
+					}
+					
+					sql = "SELECT COUNT(*) FROM contents LEFT OUTER JOIN "
+					+ "ott USING (ott_num) " + sub_sql;
+					
+					pstmt = conn.prepareStatement(sql);
+					
+					if(keyword!=null && !"".equals(keyword)) {
+					pstmt.setString(1, "%"+keyword+"%");
+					}
+					
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+					count = rs.getInt(1);
+					}
+					
+					}catch(Exception e) {
+						throw new Exception(e);
+					}finally {
+						//자원정리
+						DBUtil.executeClose(rs, pstmt, conn);
+					}
+						return count;
+					}
 
 		
 		
