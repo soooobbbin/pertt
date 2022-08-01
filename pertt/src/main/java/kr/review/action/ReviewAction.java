@@ -24,7 +24,7 @@ public class ReviewAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//===================작품 상세 정보 ===============================
-		//작품 번호 받아서 작품 상세 호출
+		// 작품 번호 받아서 작품 상세 호출
 		int c_num = Integer.parseInt(request.getParameter("c_num"));
 		ContentsDAO dao = ContentsDAO.getInstance();
 		ContentsVO contents = dao.getContents(c_num);

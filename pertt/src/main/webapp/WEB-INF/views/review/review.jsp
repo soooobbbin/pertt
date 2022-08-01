@@ -72,7 +72,7 @@ $(document).ready(function(){
 					</ul>
 					<div class="review-star">
 						<span id="myStar">
-							<c:if test="${starCheck==1}">내별점 ★${review.star}</c:if>
+							<c:if test="${starCheck==1}">내별점 ★${review.star} </c:if>
 						</span>
 						<div class="give-star">
 							<!--  -->
@@ -92,9 +92,9 @@ $(document).ready(function(){
 							</div>  
 							<input type="button" value="전송" id="star_btn">
 						</div>
-					</div><!-- end of review_star -->
+					</div><!-- end of  review_star -->
 			<span id="rating_text"></span>
-	</div><!-- end of contents_detail -->
+	</div><!-- end of  contents_detail -->
 	</div>
 	
 	<div class="end-float"></div>
@@ -150,7 +150,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 		</c:if>
-		<c:if test="${count == 0 }">
+		<c:if test="${count == 0 }" >
 			<h2>리뷰가 없습니다.</h2>
 		</c:if>
 		

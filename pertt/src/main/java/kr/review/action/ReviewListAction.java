@@ -21,7 +21,7 @@ public class ReviewListAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//리뷰 리스트 보내주기
+		// 리뷰 리스트 보내주기
 		request.setCharacterEncoding("utf-8");
 		String pageNum = request.getParameter("pageNum");
 		if (pageNum == null) {

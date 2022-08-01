@@ -22,7 +22,7 @@
 		<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num }/${contents.poster}">
 		<ul>
 			<li class="review_title">${contents.title }
-			<!-- ott_num에 따라 ott 이름 다르게 표시 -->
+			<!-- ott_num에 따라 ott 이름 다르게 표시  -->
 				<c:if test="${contents.ott_num == 1 }">
 					<span class="ott-name"> NETFLIX</span></li>
 				</c:if>
@@ -42,8 +42,8 @@
 		</ul>
 		<div class="review-star" >
 			<span>★${review.star}</span>
-		</div><!-- end of review_star -->
-	</div><!-- end of contents_detail -->
+		</div><!-- end of review_star  -->
+	</div><!-- end of contents_detail  -->
 	</div>
 	
 	<div class="end-float"></div>
@@ -71,7 +71,7 @@
 			</c:if>
 			</div>
 			
-		</div><!-- end of review_form -->
+		</div><!-- end of review_form  -->
 		
 		<!-- 댓글 시작 -->
 		<div id="com_div">
@@ -106,7 +106,7 @@
 		</div>
 		<!-- 댓글 끝 -->
 		
-	</div><!-- end of review_grey -->
+	</div><!--  end of review_grey -->
 	</div>
 	</div>
 </div>

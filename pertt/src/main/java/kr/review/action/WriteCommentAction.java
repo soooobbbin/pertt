@@ -28,7 +28,7 @@ public class WriteCommentAction implements Action {
 			comment.setCom_content(request.getParameter("com_content"));
 			comment.setC_review_num(Integer.parseInt(request.getParameter("c_review_num")));
 			comment.setC_num(Integer.parseInt(request.getParameter("c_num")));
-			
+			//
 			ReviewDAO dao = ReviewDAO.getInstance();
 			dao.insertComment(comment);
 			

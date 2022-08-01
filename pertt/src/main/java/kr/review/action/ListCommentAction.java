@@ -28,8 +28,8 @@ public class ListCommentAction implements Action {
 		ReviewDAO dao = ReviewDAO.getInstance();
 		int count = dao.getCommentCount(c_review_num);
 		
-		//ajax방식으로 목록을 표기하기 때문에 페이징유틸은 페이지수 표시가 목적이 아니라
-		//목록 데이터의 페이지 처리를 위한 rownum 번호를 구하는 것이 목적
+		//  ajax방식으로 목록을 표기하기 때문에 페이징유틸은 페이지수 표시가 목적이 아니라
+		//목록 데이터의 페이지 처리를 위한 rownum  번호를 구하는 것이 목적
 		int rowCount = 10;//한번에 댓글 10개 보여주기
 		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), 
 											count, rowCount, 1, null);
