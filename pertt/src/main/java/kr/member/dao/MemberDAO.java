@@ -357,10 +357,10 @@ public class MemberDAO {
 	}
 	
 	//탈퇴 회원 목록(검색글 목록)
-		public List<MemberVO> getResignedMemberByAdmin(
-				           int start,int end,
-				           String keyfield, String keyword)
-		                        throws Exception{
+	public List<MemberVO> getResignedMemberByAdmin(
+			           int start,int end,
+			           String keyfield, String keyword)
+	                        throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -419,7 +419,7 @@ public class MemberDAO {
 			DBUtil.executeClose(rs, pstmt, conn);
 		}
 		return list;
-	}
+		}
 		
 	//탈퇴 회원 레코드 수(검색 레코드 수)
 	public int getResignCountByAdmin(String keyfield,String keyword)throws Exception{

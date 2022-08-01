@@ -22,9 +22,9 @@
 			<ul id="admin_cate_contents">
 				<li id="li-bold">작품 조회</li>
 				<li><a href="${pageContext.request.contextPath}/contents/list.do">전체 작품</a></li>
-				<li>OTT</li>
-				<li>카테고리</li>
-				<li>등급</li>
+				<li><a href="${pageContext.request.contextPath}/contents/ottGroup.do">OTT</a></li>
+				<li><a href="${pageContext.request.contextPath}/contents/CategoryGroup.do">카테고리</a></li>
+				<li><a href="${pageContext.request.contextPath}/contents/gradeGroup.do">등급</a></li>
 			</ul>
 			<hr size="1" width="80%" color="#9a9a9a">
 			<input class="contentsRegis_btn" type="button" 
