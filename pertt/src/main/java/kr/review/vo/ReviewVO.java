@@ -19,7 +19,14 @@ public class ReviewVO {
 	private int lcount; // 좋아요 수
 	private int ccount; // 댓글 수 
 	private String poster;//작품의 포스터 이미지
+	private int ott_num;//오티티번호
 	
+	public int getOtt_num() {
+		return ott_num;
+	}
+	public void setOtt_num(int ott_num) {
+		this.ott_num = ott_num;
+	}
 	public String getPoster() {
 		return poster;
 	}

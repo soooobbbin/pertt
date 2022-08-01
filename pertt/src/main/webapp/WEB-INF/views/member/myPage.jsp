@@ -19,8 +19,6 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/myPageReview.js"></script>
-	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
 
@@ -108,25 +106,23 @@
 
 
 								<img src="${pageContext.request.contextPath}/images/더보기.png"
-									width="40px" height="25px">
+									width="40px" height="25px" onclick="location.href='myReviewList.do'">
 									
 							</div>
 
 						</div>
-						<div>
-							<ul class="more">
-								<li class="sort" data-num="1">별점순</li>
-								<li class="l">|</li>
-								<li class="sort" data-num="2">최신순</li>
-							</ul>
+						
+						<!-- 리뷰 목록 부분 -->
+						<c:forEach var="review" items="${review }">
+						<div id="my_re">
+							<div class="review-box" 
+							onclick="location.href='reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
+								<img id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+								<span id="star"> ★ ${review.star}</span>
+								<span id="reg_date">${review.c_review_reg_date}</span>
+							</div>
 						</div>
-
-						<div class="my-re">
-						<div class="myreview-view" id="myreview-view"></div>
-						<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num}/${contents.poster}">
-							<span id="star">★${review.mystar}별점 나올 부분</span>
-							
-						</div>
+						</c:forEach>
 					</div>
 
 
@@ -134,7 +130,9 @@
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록
-
+								<div id="my_com">
+								<!-- 내 댓글 보이는 부분 -->
+								</div>
 								<div class="more">
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
 										width="40px" height="25px">
@@ -154,7 +152,6 @@
 								<tr>
 									<!-- 댓글 내용 -->
 									<td>내용${fn:substring(comment.com_content,0,12)}</td>
-									
 								</tr>
 
 							</table>

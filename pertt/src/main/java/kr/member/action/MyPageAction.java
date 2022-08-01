@@ -1,7 +1,8 @@
 package kr.member.action;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +37,11 @@ public class MyPageAction implements Action{
 		MemberVO member = dao.getMember(user_num);
 		
 		request.setAttribute("member", member);
-		
-		request.setCharacterEncoding("utf-8");
-		
+	
+		ReviewDAO rDao = ReviewDAO.getInstance();
+		//내 글 조회  - 내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순)) //별점순 기본으로
+		List<ReviewVO> review = rDao.selectMyReview(user_num, 1, 3, "1");
+		request.setAttribute("review", review);
 
 		return "/WEB-INF/views/member/myPage.jsp";
 	}
