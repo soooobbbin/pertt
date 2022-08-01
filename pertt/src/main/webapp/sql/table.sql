@@ -125,9 +125,9 @@ create sequence ott_seq;
 --ott 별점
 create table ott_star(
  ott_star_num number not null,
- price number(5,1) not null,
- usability number(5,1) not null,
- quality number(5,1) not null,
+ price number(1) not null,
+ usability number(1) not null,
+ quality number(1) not null,
  ott_num number not null,
  member_num number not null,
  constraint ott_star_pk primary key(ott_star_num),
