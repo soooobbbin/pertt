@@ -10,6 +10,7 @@ import kr.controller.Action;
 import kr.member.dao.MemberDAO;
 import kr.member.vo.MemberVO;
 import kr.review.dao.ReviewDAO;
+import kr.review.vo.CommentVO;
 import kr.review.vo.ReviewVO;
 
 public class ModifyUserFormAction implements Action{
@@ -47,16 +48,18 @@ public class ModifyUserFormAction implements Action{
          else member.setEmail3(emailArray[i]);
       }
       
-      request.setAttribute("member", member);
-      
-   
-    		
+		
     		request.setAttribute("member", member);
     	
     		ReviewDAO rDao = ReviewDAO.getInstance();
     		//내 글 조회  - 내가 쓴 리뷰 리스트 반환 (sort=1(별점순) sort=2(최신순)) //별점순 기본으로
     		List<ReviewVO> review = rDao.selectMyReview(user_num, 1, 3, "1");
     		request.setAttribute("review", review);
+
+    		//내 댓글 조회
+    		List<CommentVO> comment = rDao.selectMyComment(user_num, 1, 2);
+    		request.setAttribute("comment", comment);
+    		
       //로그인이 된 경우
       return "/WEB-INF/views/member/modifyUserForm.jsp";
       

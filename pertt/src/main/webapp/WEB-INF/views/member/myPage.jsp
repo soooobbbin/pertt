@@ -29,6 +29,7 @@
 		<h2 class="mp-sub">MY PAGE</h2>
 		<div class="align-center">
 			<div class="content-main">
+		
 		<div class="mypage-main">
 			
 			<input type="hidden" id="member_num" value="${member.member_num}">
@@ -78,15 +79,19 @@
 					</ul>
 				</form>
 			</div>
-
-			<form action="Review.do" id="Review" method="post" class="mypage-my">
 			
+						<div class="align-center">
+
+			<div class="content-main">
+			<div class="mypage-my2">
+			<form action="Review.do" id="Review" method="post" class="mypage-my">
+		
 					<div class="mp-TxT">내 글 조회</div>
 
 					<div class="re">
 
 						<div class="my-ottRe">
-							OTT 리뷰 <input type="submit" value="삭제" class="delete-btn">
+							OTT 리뷰<input type="submit" value="삭제" class="delete-btn">
 						</div>
 						<ul>
 							<li class="ottRe"><input type="checkbox" name="oRe_delete"></li>
@@ -97,8 +102,8 @@
 									<option value="왓챠">왓챠</option>
 									<option value="웨이브">웨이브</option>
 							</select></li>
-							<li class="ottRe">star ★★★</li>
-							<li class="ottRe">감상평</li>
+							<li class="ottRe" style="color:#fcbf19;"><b>★ 3</b></li>
+							<li class="ottRe">오리지널 작품에 볼 게 없다</li>
 						</ul>
 					</div>
 				<div class="content-main">
@@ -118,26 +123,27 @@
 					<div  class="rere">
 						<c:forEach var="review" items="${review }" >
 
-						<div id="my_re" class="my_re">
-							<div class="review-box" 
-							onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
-								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
-								</div>
-								<span id="star"> ★ ${review.star}</span>
-								<span id="reg_date">${review.c_review_reg_date}</span>
-							</div>
+						<div class="rere2">
+						<a href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
+							<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+						 <span style="color:#fcbf19;" class="star_re"><b>★ ${review.star}</b></span><br>
+							<span>${review.c_review_reg_date}</span>
+						</a>
+						</div>
+
+						
+						
 
 						</c:forEach>
 						 </div>
 				 <div class="float-clear">
-		    	<hr width="100%" size="1" noshade="noshade">
+		    	<hr width="100%" size="1" noshade="noshade" class="hrmy">
 		    </div>
 					</div>
 				</div>
 
 				
-			<div class="content-main">
-		
+
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록			
@@ -145,26 +151,27 @@
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
 										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 									
-								</div	>
+								</div>
 							</div>
 							<c:forEach var="comment" items="${comment }" >
+							<div class="rere3">
 									<div id="my_com" class="my_com">
 									<div class="comment-box" 
 									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
 										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
 										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
+										 <div class="float-clear"><hr width="90%"  noshade="noshade" class="hrmy2"></div>
 									</div>
-									</div>
+									</div></div>
 								</c:forEach>
 								</div>
-						</div> 
 					
-			</form>
-			</div>
+			</form></div></div>
+			</div></div>	
+					</div>
 			</div>
 		</div>
-	</div>
+
 
 </body>
 </html>
-
