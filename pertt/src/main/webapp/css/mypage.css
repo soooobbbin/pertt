@@ -221,10 +221,11 @@ body {
 }
 
 .myre_poster{
-	width:200px;
+	width:180px;
 	height:200px;
+	float:left;
+	margin:10px;
 }
-
 .ottRe {
 	float: left;
 	margin: 15px 20px;
@@ -264,7 +265,7 @@ body {
 /*내글 조회-내 리뷰*/
 .my-re{
 	margin:60px;
-	float:left;
+	display:flex;
 }
 .rp-image{
 width: 130px; 
