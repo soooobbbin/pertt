@@ -47,7 +47,7 @@ $(function(){
 					
 					$(param.myReview).each(function(index,item){
 						
-						let myReviewView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
+						let myReviewView = '<div class="review-box" onclick="location.href=\'../review/reviewDetail.do';
 						myReviewView += '?c_review_num='+item.c_review_num;
 						myReviewView += '&c_num='+item.c_num;
 						myReviewView += '&#39;">';

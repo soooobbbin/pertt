@@ -31,7 +31,7 @@ $(function(){
 					
 					$(param.myComment).each(function(index,item){
 						
-						let myCommnetView = '<div class="review-box" onclick="location.href=&#39;reviewDetail.do';
+						let myCommnetView = '<div class="review-box" onclick="location.href=\'../review/reviewDetail.do';
 						myCommnetView += '?c_review_num='+item.c_review_num;
 						myCommnetView += '&c_num='+item.c_num;
 						myCommnetView += '&#39;">';
