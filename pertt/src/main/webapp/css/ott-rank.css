@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*ott 랭킹순위*/
+.fs30 {padding: 0 0 0 300px; font-size: 30px; font-weight: bold;}
+.basic {font-weight: bold;}
+.middle {vertical-align:middle; display:inline-block;}
+.rpoint {width:900px; margin: auto; font-size: 16pt; font-weight: bold;}
+
+/**/
+.lmiddle {width: 1080px; margin: 0 auto 20px;}
+.netflix {width: 170px; margin: 0 20px;}
+.watcha {width: 170px; margin: 0 20px;}
+.tving {width: 170px; margin: 0 20px;}
+.disney {width: 170px; margin: 0 20px;}
+.wavve {width: 170px; margin: 0 20px;}
+.price {background-color: #ededed; padding: 80px 0;}
+.usability {background-color: lightgray; padding: 80px 0;}
+.prank {
+	margin: 20px 0;
+	padding: 0 400px;
+    font-size: 20pt;
+    font-weight: bold;
+    color: white;
+}
+.p {margin: 0 191px 0 0;}
+.p2 {margin: 0 176px 0 0;}
