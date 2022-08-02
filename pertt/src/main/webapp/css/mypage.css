@@ -25,10 +25,14 @@ body {
 	font-size: 200%;
 	color: rgb(26, 188, 156);
 }
-
+.mp-my3{
+	float:left;
+	text-align: center;
+}
 .mypage-my2 {
-	float: left;
-	display:inline-block;text-align: center;
+display:inline-block ;
+	
+	
 }
 
 .mp-form {
@@ -192,6 +196,10 @@ body {
 
 /* 내글 조회 */
 
+#regdate{
+	color:#8a8a8a;
+}
+
 .comment-box{
 	text-align:left;
 	line-height: 200%;
@@ -249,8 +257,8 @@ span{
 }
 
 .hrmy2{
-	border:0.1px dotted;
-	color:#f2f2f2;
+	border:0.6px dotted;
+	color:#cccccc;
 	padding-right:10px;
 }
 

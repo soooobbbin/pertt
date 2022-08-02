@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+h2{
+	font-weight: bold;
+	font-size: 200%;
+	color: rgb(26, 188, 156);
+}
+.align-center{
+	text-align:center;
+
+	}
+
+.content-main{
+	display:inline-block;
+	
+}
+
+.myReL-1,.myReL-2{
+	background-color: rgb(255, 255, 255); 
+	border-radius: 11px; 
+	border-width: 1px; 
+	border-style: solid; 
+	border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113); 
+	text-align:center;
+	width:1000px;
+	height:auto;
+	padding:50px 50px ;
+	margin:0 350px 50px;
+	display:inline-block;
+}
+
+#sortStar, #sortDate{
+	color:rgb(46, 204, 113);
+	
+}
+
+.mysort{
+	margin-bottom:10px;
+	margin-top:10px;
+}
+	
+.rl-1{
+	width:300px; 
+	height:350px;
+	float:left;
+	margin:15px;
+}
+	
+#contents-image{
+	width:300px; 
+	height:300px;
+}
+
+#star{
+	font-size:150%;
+	font-weight:bold;
+}
+
+span{
+	text-align: center;
+	line-height: 130%;
+}
+
+#reg_date{
+	color:#8a8a8a;
+}
+
+.paging-button{
+	padding-top:20px;
+	text-align:center;
+	clear: both;
+}
+
+#next_btn{
+	width:130px;
+	height:50px;
+	background-color: rgba(52, 152, 219, 0.25);
+	text-align: center;
+	color: rgb(41, 128, 185);
+	font-weight: bold;
+	line-height: 2.3em;
+	font-size: 13px;
+	border-radius: 10px;
+	border: 0px;
+	
+	
+}
