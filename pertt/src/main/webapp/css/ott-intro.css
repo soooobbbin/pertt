@@ -10,8 +10,10 @@
 table{
 	border-collapse:collapse;
 }
-th, td{
+.line{
 	border-left: 1px solid #a9a9a9;
+}
+tr,td{
 	padding: 8px 50px;
 }
 th:first-child, td:first-child{
@@ -23,11 +25,16 @@ tr.top{
 	color:#6d6d6d;
 }
 tr.colored:nth-child(even){
-	background-color:#cacaca;
+	background-color:#f1f1f1;
 }
 tr.colored:nth-child(odd){
 	background-color:#e0e0e0;
 }
 tr.white{
-	background-color:#f1f1f1;
+	background-color:#cacaca;
 }
+
+.net{background-color:#f1f1f1;}
+.dis{background-color:#e0e0e0;}
+.wat{background-color:#f1f1f1;}
+.bold{font-weight:bold;}
