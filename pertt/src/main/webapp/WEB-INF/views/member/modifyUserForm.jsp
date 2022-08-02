@@ -33,68 +33,69 @@
 				<div class="mypage-main">
 
 					<input type="hidden" id="member_num" value="${member.member_num}">
+					<div class="mp-my3">
+						<div class="mypage-my2">
+							<form class="mp-form">
+								<table class="mp-info">
+									<tr>
+										<td colspan="2" class="mp-TxT">회원정보</td>
+									</tr>
 
-					<div class="mypage-my2">
-						<form class="mp-form">
-							<table class="mp-info">
-								<tr>
-									<td colspan="2" class="mp-TxT">회원정보</td>
-								</tr>
-
-								<tr>
-									<td class="mp-1">아이디</td>
-									<td class="mp-4">${member.member_id}</td>
-								</tr>
-								<tr>
-									<td class="mp-1">현재 비밀번호</td>
-									<td class="mp-4"><input type="password"
-										name="origin_passwd" id="origin_passwd" maxlength="12"></td>
-								</tr>
-								<tr>
-									<td class="mp-1">새 비밀번호</td>
-									<td><input type="password" name="passwd" id="passwd"
-										maxlength="12"></td>
-								</tr>
-								<tr>
-									<td class="mp-1">새 비밀번호 확인</td>
-									<td><input type="password" name="cpasswd" id="cpasswd"
-										maxlength="12"><br> <span id="message_cpasswd"
-										style="color: rgb(46, 204, 113); font-weight: lighter;"></span></td>
-								</tr>
-								<tr>
-									<td class="mp-1">이름</td>
-									<td>${member.name}</td>
-								</tr>
-								<tr>
-									<td class="mp-1">생년월일</td>
-									<td>${member.birth}</td>
-								</tr>
-								<tr>
-									<td class="mp-1">휴대폰</td>
-									<td><select name="phone1" id="phone1" class="inBorder">
-											<option value="010">010
-											<option value="016">016
-											<option value="017">017
-											<option value="018">018
-									</select> - <input type="number" name="phone2" id="phone2" maxlength="4"
-										size="5"> - <input type="number" name="phone3"
-										id="phone3" maxlength="4" size="5"></td>
-								</tr>
-								<tr>
-									<td class="mp-3">이메일</td>
-									<td class="mp-2"><input type="text" name="email"
-										id="email"></td>
-								</tr>
+									<tr>
+										<td class="mp-1">아이디</td>
+										<td class="mp-4">${member.member_id}</td>
+									</tr>
+									<tr>
+										<td class="mp-1">현재 비밀번호</td>
+										<td class="mp-4"><input type="password"
+											name="origin_passwd" id="origin_passwd" maxlength="12"></td>
+									</tr>
+									<tr>
+										<td class="mp-1">새 비밀번호</td>
+										<td><input type="password" name="passwd" id="passwd"
+											maxlength="12"></td>
+									</tr>
+									<tr>
+										<td class="mp-1">새 비밀번호 확인</td>
+										<td><input type="password" name="cpasswd" id="cpasswd"
+											maxlength="12"><br> <span id="message_cpasswd"
+											style="color: rgb(46, 204, 113); font-weight: lighter;"></span></td>
+									</tr>
+									<tr>
+										<td class="mp-1">이름</td>
+										<td>${member.name}</td>
+									</tr>
+									<tr>
+										<td class="mp-1">생년월일</td>
+										<td>${member.birth}</td>
+									</tr>
+									<tr>
+										<td class="mp-1">휴대폰</td>
+										<td><select name="phone1" id="phone1" class="inBorder">
+												<option value="010">010
+												<option value="016">016
+												<option value="017">017
+												<option value="018">018
+										</select> - <input type="number" name="phone2" id="phone2"
+											maxlength="4" size="5"> - <input type="number"
+											name="phone3" id="phone3" maxlength="4" size="5"></td>
+									</tr>
+									<tr>
+										<td class="mp-3">이메일</td>
+										<td class="mp-2"><input type="text" name="email"
+											id="email"></td>
+									</tr>
 
 
-							</table>
+								</table>
 
-							<ul class="mp-btn">
-								<li><input type="submit" value="수정" class="blue-btn">
-									<input type="button" value="뒤로가기" class="gray-btn"
-									onclick="location.href='myPage.do'"></li>
-							</ul>
-						</form>
+								<ul class="mp-btn">
+									<li><input type="submit" value="수정" class="blue-btn">
+										<input type="button" value="뒤로가기" class="gray-btn"
+										onclick="location.href='myPage.do'"></li>
+								</ul>
+							</form>
+						</div>
 					</div>
 
 					<div class="align-center">
@@ -150,12 +151,15 @@
 															<img class="myre_poster" id="contents-image"
 															src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
 															<span style="color: #fcbf19;" class="star_re"><b>★
-																	${review.star}</b></span><br> <span>${review.c_review_reg_date}</span>
+																	${review.star}</b></span><br> <span id="regdate">${review.c_review_reg_date}</span>
 														</a>
 													</div>
-
 												</c:forEach>
+
 											</div>
+
+
+
 											<div class="float-clear">
 												<hr width="100%" size="1" noshade="noshade" class="hrmy">
 											</div>
@@ -179,11 +183,11 @@
 												<div id="my_com" class="my_com">
 													<div class="comment-box"
 														onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
-														<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
-														<span id="com_content">
+														<span id="com_reg_date" style="color: #969696;">등록일:
+															${comment.com_reg_date }</span><br> <span id="com_content">
 															${fn:substring(comment.com_content, 0, 25)} </span>
 														<div class="float-clear">
-															<hr width="90%" noshade="noshade" class="hrmy2">
+															<hr class="hrmy2">
 														</div>
 													</div>
 												</div>
