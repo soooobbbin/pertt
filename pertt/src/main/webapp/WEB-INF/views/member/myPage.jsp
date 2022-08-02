@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 
 <!DOCTYPE html>
 
@@ -134,31 +135,21 @@
 					
 						<div class="re">
 							<div class="my-ottRe">
-								내 댓글 목록
-								<div id="my_com">
-								<!-- 내 댓글 보이는 부분 -->
-								</div>
+								내 댓글 목록				
+							</div>
+							<c:forEach var="comment" items="${comment }" >
+									<div id="my_com" class="my_com">
+									<div class="comment-box" 
+									onclick="location.href='reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
+										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
+									</div>
+									</div>
+								</c:forEach>
 								<div class="more">
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
-										width="40px" height="25px">
+										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 								</div>
-
-								
-							</div>
-							<table>
-								<tr>
-									
-									<!--등록일 -->
-									<td colspan="2">등록일 ${comment.com_reg_date}</td>
-									<!--리뷰 컨텐츠 이름-->
-									<td>컨텐츠 명 : ${contents.title}</td>
-								</tr>
-								<tr>
-									<!-- 댓글 내용 -->
-									<td>내용${fn:substring(comment.com_content,0,12)}</td>
-								</tr>
-
-							</table>
 						</div>
 					
 			</form>
