@@ -11,41 +11,48 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import kr.controller.Action;
 import kr.ott.dao.OttDAO;
-import kr.ott.vo.OttStarVO;
+import kr.ott.vo.OttReviewVO;
 
 public class WriteOttStarAction implements Action{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String,Object> mapAjax = new HashMap<String,Object>();
+		request.setCharacterEncoding("utf-8");
+		OttDAO dao = OttDAO.getInstance();
+		int ott_num = Integer.parseInt(request.getParameter("ott_num"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		int usability = Integer.parseInt(request.getParameter("usability"));
+		int quality = Integer.parseInt(request.getParameter("quality"));
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
-		if(user_num==null) {//로그인이 되지 않은 경우
-			mapAjax.put("result", "logout");
-		}else {//로그인이 된 경우
-			//전송된 데이터 인코딩 처리
-			request.setCharacterEncoding("utf-8");
-			
-			int ott_num = Integer.parseInt(request.getParameter("ott_num"));
-			
-			OttDAO dao = OttDAO.getInstance();
-			OttStarVO ottStar = dao.checkStar(ott_num, user_num);
-			if(ottStar!=null) { //별점 기록 있으면 update
-				dao.updateStar(ottStar);
-				mapAjax.put("result", "success2");
-			}else { //별점 기록 없으면 insert
-				dao.insertStar(ottStar);
-				mapAjax.put("result","success");
-				mapAjax.put("status", "yesStar");
-			}
-		}
+		boolean starCheck = false;
 		
-		//JSON 데이터 생성
+		Map<String,Object> mapAjax = 
+		          new HashMap<String,Object>();
+		double starAvg = -1;
+		if(user_num == null) {
+			mapAjax.put("result", "logout");
+		} else {
+			if(dao.selectMyStar(user_num, ott_num) != null) starCheck = true;
+			OttReviewVO ottReview = new OttReviewVO();
+			ottReview.setOtt_num(ott_num);
+			ottReview.setMember_num(user_num);
+			ottReview.setPrice(price);
+			ottReview.setUsability(usability);
+			ottReview.setQuality(quality);
+			if(starCheck) {
+				dao.updateStar(user_num, ott_num, price, usability, quality);
+			} else {
+				dao.insertStar(ottReview);
+			}
+			starAvg = dao.getStarAvg(ott_num);
+			starAvg = Math.round((starAvg*10)/10.0);
+			mapAjax.put("result", "success");
+			mapAjax.put("starAvg", starAvg);
+		}
 		ObjectMapper mapper = new ObjectMapper();
 		String ajaxData = mapper.writeValueAsString(mapAjax);
-		
 		request.setAttribute("ajaxData", ajaxData);
-		
 		return "/WEB-INF/views/common/ajax_view.jsp";
 	}
 }
