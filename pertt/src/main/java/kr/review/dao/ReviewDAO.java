@@ -457,10 +457,13 @@ public class ReviewDAO {
 			while (rs.next()) {
 				comment = new CommentVO();
 				comment.setCom_num(rs.getInt("com_num"));
-				comment.setCom_content(rs.getString("com_content"));
-				comment.setCom_reg_date(rs.getString("com_reg_date"));
+				comment.setCom_content(StringUtil.useBrNoHtml(rs.getString("com_content")));
+				// 날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+				comment.setCom_reg_date(DurationFromNow.getTimeDiffLabel(rs.getString("com_reg_date")));
+				comment.setC_review_num(rs.getInt("c_review_num"));
 				comment.setMember_num(rs.getInt("member_num"));
 				comment.setC_num(rs.getInt("c_num"));
+				comment.setId(getIdByMemberNum(rs.getInt("member_num")));
 				list.add(comment);
 			}
 		} catch (Exception e) {
@@ -765,12 +768,14 @@ public class ReviewDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				comment = new CommentVO();
-				comment.setC_num(rs.getInt("c_num"));
-				comment.setC_review_num(rs.getInt("c_review_num"));
-				comment.setCom_content(StringUtil.useBrNoHtml(rs.getString("com_content")));
 				comment.setCom_num(rs.getInt("com_num"));
-				comment.setCom_reg_date(rs.getString("com_reg_date"));
+				comment.setCom_content(StringUtil.useBrNoHtml(rs.getString("com_content")));
+				// 날짜 -> 1분전, 1시간전, 1일전 형식의 문자열로 변환
+				comment.setCom_reg_date(DurationFromNow.getTimeDiffLabel(rs.getString("com_reg_date")));
+				comment.setC_review_num(rs.getInt("c_review_num"));
 				comment.setMember_num(rs.getInt("member_num"));
+				comment.setC_num(rs.getInt("c_num"));
+				comment.setId(getIdByMemberNum(rs.getInt("member_num")));
 			}
 		} catch (Exception e) {
 			throw new Exception(e);

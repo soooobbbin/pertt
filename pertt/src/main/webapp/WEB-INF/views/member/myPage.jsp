@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 
 <!DOCTYPE html>
 
@@ -25,8 +26,11 @@
 <body>
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
+		<h2 class="mp-sub">MY PAGE</h2>
+		<div class="align-center">
+			<div class="content-main">
 		<div class="mypage-main">
-			<h2 class="mp-sub">MY PAGE</h2>
+			
 			<input type="hidden" id="member_num" value="${member.member_num}">
 
 			<div class="mypage-my2">
@@ -104,7 +108,7 @@
 							
 							<div class="more">
 
-
+									
 								<img src="${pageContext.request.contextPath}/images/더보기.png"
 									width="40px" height="25px" onclick="location.href='myReviewList.do'">
 									
@@ -113,54 +117,44 @@
 						</div>
 						
 						<!-- 리뷰 목록 부분 -->
-						<c:forEach var="review" items="${review }">
-						<div id="my_re">
+					
+						<c:forEach var="review" items="${review }" >
+						<div id="my_re" class="my_re">
 							<div class="review-box" 
 							onclick="location.href='reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
-								<img id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+								</div>
 								<span id="star"> ★ ${review.star}</span>
 								<span id="reg_date">${review.c_review_reg_date}</span>
 							</div>
-						</div>
+						
 						</c:forEach>
 					</div>
 
 
-					<form action="deleteComment.do" method="post" id="deleteC_form">
+				
 						<div class="re">
 							<div class="my-ottRe">
-								내 댓글 목록
-								<div id="my_com">
-								<!-- 내 댓글 보이는 부분 -->
-								</div>
+								내 댓글 목록				
+							</div>
+							<c:forEach var="comment" items="${comment }" >
+									<div id="my_com" class="my_com">
+									<div class="comment-box" 
+									onclick="location.href='reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
+										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
+									</div>
+									</div>
+								</c:forEach>
 								<div class="more">
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
-										width="40px" height="25px">
+										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 								</div>
-
-								<input type="submit" value="삭제" class="delete-btn" id="delete_btn2">
-							</div>
-							<table>
-								<tr>
-									<td rowspan="2"><input type="checkbox" name="delete_com" id="delete_com"
-										value="삭제"></td>
-									<!--등록일 -->
-									<td colspan="2">등록일 ${comment.com_reg_date}</td>
-									<!--리뷰 컨텐츠 이름-->
-									<td>컨텐츠 명 : ${contents.title}</td>
-								</tr>
-								<tr>
-									<!-- 댓글 내용 -->
-									<td>내용${fn:substring(comment.com_content,0,12)}</td>
-								</tr>
-
-							</table>
-						</div>
-					</form>
+						</div> 
 					
-					
-				
 			</form>
+			</div>
+			</div>
 		</div>
 	</div>
 
