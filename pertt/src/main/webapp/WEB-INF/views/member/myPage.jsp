@@ -132,7 +132,7 @@
 					</div>
 
 
-					
+				
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록				
@@ -150,7 +150,7 @@
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
 										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 								</div>
-						</div>
+						</div> 
 					
 			</form>
 			</div>

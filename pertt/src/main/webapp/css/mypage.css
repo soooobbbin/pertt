@@ -224,7 +224,11 @@ body {
 	width:180px;
 	height:200px;
 	float:left;
-	margin:10px;
+	margin: 20px;
+}
+
+.star_date{
+	float:left;
 }
 .ottRe {
 	float: left;
@@ -265,7 +269,7 @@ body {
 /*내글 조회-내 리뷰*/
 .my-re{
 	margin:60px;
-	display:flex;
+	padding:15px;
 }
 .rp-image{
 width: 130px; 
