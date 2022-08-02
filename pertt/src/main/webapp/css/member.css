@@ -9,54 +9,169 @@ body{
 	padding:0;
 }
 
-h2{
-	text-align:center;
-}
 
-/*등록, 수정폼*/
-form{
-	width:600px;
-	margin:0 auto;
-	border:1px solid #000;
-	padding:10px 10px 10px 30px;
+/*로그인 폼*/
+
+
+li{
+	text-align:left;
+	margin-left:15px;
+}
+.align-center{
+	text-align:center;
+
+	}
+
+.content-main{
+	display:inline-block;
 	
 }
-input [type="text"]{
-	width:300px;
-}
-.register_form{
-	width:600px;
-	margin:0 auto;
-	border:1px solid #000;
-	padding:10px 10px 10px 30px;
+
+.login-main{
+	text-align:center;
+	
+	border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113);
+	border-radius: 11px;
+	border-width: 2.5px;
+	border-style: solid;
+	width:350px;
+	height:200px;
+	padding:20px 20px ;
+	margin:30px;
 }
 
-input#birth1.inBorder{
-	width:60px;
+.tb{
+	text-align:center;
+	padding:20px 20px ;
+}
+.td1{
+	display:inline-block;
+	line-height: 200%;
+	padding:10px 10px ;
+}
+.ip{
+	text-align:center;
+	height:120%;
+	
+}
+input#member_id.log-id, #passwd.log-pw {
+	width:180px;
+	height:30px;	
+	border:none;
+	box-shadow: insert 2px 2px 3px rgba(0, 0, 0, 0.2);
+	border-bottom: 0.5px solid;
+	
+	}
+	
+.login-btn{
+	text-align:center;
+	margin:15px;
+	
+}
+.log-b{
+	background-color:#adf7ff;
+	font-weight:bold;
+	border-radius: 11px;
+	border:none;
+	width:65px;
+	height:25px;
+	color:#636363;
 }
 
-input#phone3.phone{
-	width:54.5px;
+h2{
+	font-weight: bold;
+	font-size: 200%;
+	color: rgb(26, 188, 156);
 }
 
-input#phone2.phone{
-	width:54.5px;
+/*회원가입 폼*/	
+
+
+.member_id, .passwd, .name, .birth0, .phone0, .email{
+	font-size: 90%;
+	font-weight: bold;
+	padding-right:20px;
+}
+.s{
+	font-size: 80%;
+}
+.tr1{
+	height:20px;
+}
+table{
+	display:inline-block;
+}
+.register-main{
+	text-align:center;
+	border-color: rgb(46, 204, 113) rgb(19, 232, 255) rgb(19, 232, 255) rgb(46, 204, 113);
+	border-radius: 11px;
+	border-width: 2.5px;
+	border-style: solid;
+	padding:50px;
+	width:450px;
+	height:400px;
+	margin:30px;
+	line-height: 270%;
+}
+
+.register-inner{
+	text-align:center;
+	border:1px;
+}
+
+td{
+	
+	text-align:left;
+}
+
+.td3{
+	text-align:left;
+}
+
+.id{
+	vertical-align : bottom;
 }
 
 .form-notice{
-	margin-left:130px;
+	font-size: 70%;
+	height:20px;
+	vertical-align : top;
+}
+
+.txt{
+	width:200px;
+}
+
+.inBorder{
+	width:54px; height:25px;}
+	
+input#member_id.id,#passwd.pw,#name.txt, #email.txt{
+	width:200px;
+	text-align:left; 
+	height:25px;
+}
+input#birth1.inBorder,#phone3.phone,#phone2.phone{
+	width:52px;height:20px;
 }
 
 
-/*기존코드*/
-table{
-	text-align:left;
-	word-break:break-all;
-	height:auto;
+.reg-b{
+	background-color:#dcf5dd;
+	color:#636363;
+	font-size: 65%;
+	border-radius: 11px;
+	border:none;
+	width:65px;
+	height:25px;
+	vertical-align : bottom;
 }
 
-th,td{
-	border-bottom: 1px solid #e8e8e8;
-    padding: 10px;
+.reg-b2{
+	background-color:#adf7ff;
+	color:#636363;
+	font-weight:bold;
+	border-radius: 11px;
+	border:none;
+	width:65px;
+	height:25px;
 }
-
