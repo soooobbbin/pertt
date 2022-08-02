@@ -15,56 +15,21 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 수정</h2>
-		<form action="update.do" method="post"
+		<form action="updateContents.do" method="post"
 		      enctype="multipart/form-data" id="write_form">
-			<input type="hidden" name="c_num" 
-			                       value="${contents.c_num}">
+			<input type="hidden" name="c_num" value="${contents.c_num}">
 			<ul>
 				<li>
-					<label for="poster">파일</label>
-					<input type="file" name="poster"
-					  id="poster" 
-					  accept="image/gif,image/png,image/jpeg">
-					<c:if test="${!empty contents.poster}">
-					<br>
-					<span id="file_detail">
-						(${contents.poster})파일이 등록되어 있습니다. 
-						다시 파일을 업로드하면 기존 파일은 삭제됩니다.
-						<input type="button" value="파일삭제" id="file_del">
-					</span>
-					<script type="text/javascript">
-					$(function(){
-						//이벤트 연결
-						$('#file_del').click(function(){
-							let choice = confirm('삭제하시겠습니까?');
-							if(choice){
-								$.ajax({
-									url:'deleteContents.do',
-									type:'post',
-									data:{c_num:${contents.c_num}},
-									dataType:'json',
-									cache:false,
-									timeout:30000,
-									success:function(param){
-										if(param.result == 'logout'){
-											alert('로그인 후 사용하세요!');
-										}else if(param.result == 'success'){
-											$('#file_detail').hide();
-										}else if(param.result == 'wrongAccess'){
-											alert('잘못된 접속입니다.');
-										}else{
-											alert('파일 삭제 오류 발생');
-										}
-									},
-									error:function(){
-										alert('네트워크 오류 발생');
-									}
-								});
-							}
-						});
-					});
-					</script>
-					</c:if>  
+					<c:if test="${contents.ott_num == 1 || contents.ott_num == 2}">
+					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="300" height="170" class="con-poster">
+					</c:if>
+					<c:if test="${contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="130" height="160" class="con-poster">
+					</c:if>
+					<label for="poster">포스터</label>
+					<div class="poster-area">
+						<input type="file" value="파일 선택" id="poster_btn" name="poster">
+					</div>  
 				</li>
 				<li>
 					<label for="title">제목</label>
@@ -105,6 +70,19 @@
 					<label for="grade">등급</label>
 					<input type="text" name="grade" id="grade"
 					    value="${contents.grade}" maxlength="50">
+				</li>
+				<li>
+					<label for="category">카테고리</label>
+					<input type="number" name="category_num" id="category"
+					    value="${contents.category_num}" maxlength="50">
+				</li>
+				<li>
+					<label for="ott">OTT</label>
+					<input type="radio" id="netfilx" name="ott_num" value="1">넷플릭스
+					<input type="radio" id="disney" name="ott_num" value="2">디즈니
+					<input type="radio" id="watcha" name="ott_num" value="3">왓챠
+					<input type="radio" id="tving" name="ott_num" value="4">티빙
+					<input type="radio" id="wavve" name="ott_num" value="5">웨이브
 				</li>
 			</ul> 
 			<div class="align-center">
