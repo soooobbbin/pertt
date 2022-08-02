@@ -15,10 +15,10 @@
     background-color: #f0f0f0;
 }
 .rating .rate-check:checked + label {
-    background-color: #eb7a34;
+    background-color: #ffc800;
 }
 .rec-star {
    width: 15px;
     height: 15px;
-    background-color: #eb7a34;
+    background-color: #ffc800;
 }

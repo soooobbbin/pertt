@@ -23,53 +23,28 @@ public class OttDAO {
 	public void insertStar(OttReviewVO ottReview)throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		PreparedStatement pstmt2 = null;
-		PreparedStatement pstmt3 = null;
-		ResultSet rs = null;
 		String sql = null;
-		int ott_star_num = 0;
 		
 		try {
 			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션 할당
 			conn = DBUtil.getConnection();
-			conn.setAutoCommit(false);
-			//시퀀스에서 ott_star_num 구하기
-			sql = "select ott_star_seq.nextval from dual";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				ott_star_num = rs.getInt(1);
-			}
+			
 			//star 테이블에 저장
 			sql = "INSERT INTO ott_star (ott_star_num, price, usability, quality, ott_num, member_num) "
-					+ "VALUES(?,?,?,?,?,?)";
-			pstmt2 = conn.prepareStatement(sql);
-			pstmt.setInt(1, ott_star_num);
-			pstmt.setInt(2, ottReview.getPrice());
-			pstmt.setInt(3, ottReview.getUsability());
-			pstmt.setInt(4, ottReview.getQuality());
-			pstmt.setInt(5, ottReview.getOtt_num());
-			pstmt.setInt(6, ottReview.getMember_num());
-			pstmt2.executeUpdate();
-			//review 테이블에 저장
-			sql = "INSERT INTO ott_review (ott_review_num, ott_re_reg_date, "
-					+ "ott_star_num, ott_num, member_num) "
-					+ "VALUES(ott_review_seq.nextval,sysdate,?,?,?)";
-			pstmt3 = conn.prepareStatement(sql);
-			pstmt.setInt(1, ott_star_num);
-			pstmt.setInt(2, ottReview.getOtt_num());
-			pstmt.setInt(3, ottReview.getMember_num());
-			pstmt3.executeUpdate();
+					+ "VALUES(ott_star_seq.nextval,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ottReview.getPrice());
+			pstmt.setInt(2, ottReview.getUsability());
+			pstmt.setInt(3, ottReview.getQuality());
+			pstmt.setInt(4, ottReview.getOtt_num());
+			pstmt.setInt(5, ottReview.getMember_num());
+			pstmt.executeUpdate();
 			
-			conn.commit();
 		}catch(Exception e) {
-			conn.rollback();
 			throw new Exception(e);
 		}finally {
 			//자원정리
 			DBUtil.executeClose(null, pstmt, conn);
-			DBUtil.executeClose(null, pstmt2, conn);
-			DBUtil.executeClose(null, pstmt3, conn);
 		}
 	}
 	
@@ -227,15 +202,12 @@ public class OttDAO {
 		double starAvg = -1;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select avg(price+usability+quality), count(*) from ott_star where ott_num=?";
+			sql = "select round((price+usability+quality)/3) from ott_star where ott_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, ott_num);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getInt(2) == 0) {
-					starAvg = -1;
-				} else
-					starAvg = rs.getDouble(1);
+					starAvg = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -278,7 +250,7 @@ public class OttDAO {
 		OttReviewVO ottReview = null;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from ott_star s join ott_review r using (ott_star_num) " + "where s.member_num=? and s.ott_num=?";
+			sql = "select * from ott_star where member_num=? and ott_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, member_num);
 			pstmt.setInt(2, ott_num);
@@ -286,11 +258,6 @@ public class OttDAO {
 			if (rs.next()) {
 				ottReview = new OttReviewVO();
 				ottReview.setOtt_num(rs.getInt("ott_num"));
-				if (rs.getString("ott_re_content") != null) {
-					ottReview.setOtt_re_content(StringUtil.useBrNoHtml(rs.getString("ott_re_content")));
-				}
-				ottReview.setOtt_review_num(rs.getInt("ott_review_num"));
-				ottReview.setOtt_re_reg_date(rs.getDate("c_review_reg_date"));
 				ottReview.setOtt_star_num(rs.getInt("ott_star_num"));
 				ottReview.setMember_num(rs.getInt("member_num"));
 				ottReview.setId(getIdByMemberNum(rs.getInt("member_num")));
@@ -392,50 +359,56 @@ public class OttDAO {
 	//=============별점 끝===================//
 	
 	//member_num으로 id 구하기
-		public String getIdByMemberNum(int member_num) throws Exception {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = null;
-			String id = null;
-			try {
-				conn = DBUtil.getConnection();
-				sql = "select member_id from member where member_num =?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, member_num);
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					id = rs.getString(1);
-				}
-			} catch (Exception e) {
-				throw new Exception(e);
-			} finally {
-				DBUtil.executeClose(rs, pstmt, conn);
+	public String getIdByMemberNum(int member_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String id = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select member_id from member where member_num =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				id = rs.getString(1);
 			}
-			return id;
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
 		}
+		return id;
+	}
 	
 	
-	//ott 한줄평 등록
-	public void insertOttReview(OttReviewVO ottReview) throws Exception {
+	// 리뷰 등록&수정
+	public void modifyReviewContent(int ott_num, int member_num, int ott_review_num, String ott_re_content,
+			boolean isFirst) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		
+		String sub_sql = "";
+		String sub_sql2 = "";
+		int cnt = 0;
 		try {
-			//커넥션풀로부터 커넥션 할당
+			if (isFirst) {
+				sub_sql2 = "member_num=? and ott_num=?";
+			} else {
+				sub_sql = ", ott_re_mod_date=sysdate";
+				sub_sql2 = "ott_review_num = ?";
+			}
 			conn = DBUtil.getConnection();
-			//SQL문 작성
-			sql = "INSERT INTO ott_review (ott_review_num, ott_re_content, ott_star_num, ott_num, member_num) "
-					+ "VALUES (ott_review_seq.nextval,?,?,?,?)";
-			//PreparedStatement 객체 생성
+			sql = "update ott_review set ott_re_content=?" + sub_sql + " where " + sub_sql2;
 			pstmt = conn.prepareStatement(sql);
-			//?에 데이터 바인딩
-			pstmt.setString(1, ottReview.getOtt_re_content());
-			pstmt.setInt(2, ottReview.getOtt_star_num());
-			pstmt.setInt(3, ottReview.getOtt_num());
-			pstmt.setInt(4, ottReview.getMember_num());
-			//SQL문 실행
+			pstmt.setString(++cnt, ott_re_content);
+			if (isFirst) {
+				pstmt.setInt(++cnt, member_num);
+				pstmt.setInt(++cnt, ott_num);
+			} else {
+				pstmt.setInt(++cnt, ott_review_num);
+			}
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -503,6 +476,7 @@ public class OttDAO {
 				ottReview.setOtt_re_content(StringUtil.useBrNoHtml(rs.getString("ott_re_content")));
 				ottReview.setOtt_review_num(rs.getInt("ott_review_num"));
 				ottReview.setOtt_re_reg_date(rs.getDate("ott_re_reg_date"));
+				ottReview.setOtt_re_mod_date(rs.getDate("ott_re_mod_date"));
 				ottReview.setOtt_star_num(rs.getInt("ott_star_num"));
 				ottReview.setMember_num(rs.getInt("member_num"));
 				ottReview.setId(getIdByMemberNum(rs.getInt("member_num")));
@@ -573,5 +547,31 @@ public class OttDAO {
 			//자원정리
 			DBUtil.executeClose(null, pstmt, conn);
 		}
+	}
+	
+	// 내 리뷰 검색 (해당 작품에 리뷰 쓴 적 있는지 확인)
+	public boolean checkReview(int member_num, int ott_num) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		boolean check = false;
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from ott_review " + "where member_num=? and ott_num=? "
+					+ "and ott_re_content is not null";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_num);
+			pstmt.setInt(2, ott_num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				check = true;
+			}
+		} catch (Exception e) {
+			throw new Exception(e);
+		} finally {
+			DBUtil.executeClose(rs, pstmt, conn);
+		}
+		return check;
 	}
 }

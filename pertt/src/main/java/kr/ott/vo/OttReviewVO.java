@@ -7,6 +7,7 @@ public class OttReviewVO {
 	private int ott_review_num;
 	private String ott_re_content;
 	private Date ott_re_reg_date;
+	private Date ott_re_mod_date;
 	private int ott_num;
 	private int member_num;
 	private String id;
@@ -57,12 +58,17 @@ public class OttReviewVO {
 	public void setOtt_re_content(String ott_re_content) {
 		this.ott_re_content = ott_re_content;
 	}
-	
 	public Date getOtt_re_reg_date() {
 		return ott_re_reg_date;
 	}
 	public void setOtt_re_reg_date(Date ott_re_reg_date) {
 		this.ott_re_reg_date = ott_re_reg_date;
+	}
+	public Date getOtt_re_mod_date() {
+		return ott_re_mod_date;
+	}
+	public void setOtt_re_mod_date(Date ott_re_mod_date) {
+		this.ott_re_mod_date = ott_re_mod_date;
 	}
 	public int getOtt_star_num() {
 		return ott_star_num;

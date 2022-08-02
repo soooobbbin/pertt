@@ -12,6 +12,23 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ott-star.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ott-review.js"></script>
+<script>
+$(document).ready(function(){
+   $(document).on('click','.rating',function(e){
+      let elem = e.target;
+        if(elem.classList.contains('rate-check')){
+           $(this).find('.rate-check').each(function(index, item){
+                if(index < elem.value){
+                    item.checked = true;
+                }else{
+                    item.checked = false;
+                }
+            });
+            $(this).find('.rate-star').val(elem.value);
+        }
+   });
+});
+</script>
 </head>
 <body>
 <div class="page-main">
@@ -45,8 +62,8 @@
 		<!-- 별점 시작 -->
 		<div class="star">
 		    <form id="ottLike_form">
-		       <input type="hidden" name="ott_num" id="ott_num" value="${param.ott_num}"><!--  -->
-				<h1>가성비</h1>
+		       <input type="hidden" name="ott_num" id="ott_num" value="${param.ott_num}">
+				<h2>가성비</h2>
 				<div class="rating">
 				   <input type="hidden" name="price" value="0" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
@@ -62,7 +79,7 @@
 				    <label for="rating5"></label>
 				</div>
 				
-				<h1>사용성</h1>
+				<h2>사용성</h2>
 				<div class="rating">
 				   <input type="hidden" name="usability" value="0" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
@@ -78,7 +95,7 @@
 				    <label for="ratingb5"></label>
 				</div>
 				
-				<h1>콘텐츠</h1>
+				<h2>콘텐츠</h2>
 				<div class="rating">
 				   <input type="hidden" name="quality" value="0" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
@@ -93,10 +110,12 @@
 				    <input type="checkbox" id="ratingc5" value="5" class="rate-check">
 				    <label for="ratingc5"></label>
 				</div>
+				
 				<div class="align-center" style="margin:20px 0 0 0;">
 					<input type="submit" value="전송">
 				</div>
 			</form>
+			<div id="star_avg"></div>
 		</div>
 		<!-- 별점 끝 -->
 		
@@ -119,6 +138,7 @@
 			</form>
 		</div>
 		<!-- 한줄평 목록 출력 시작 -->
+		<c:if test="${count != 0 }">
 		<div id="output"></div>
 		<div class="paging-button" style="display:none;">
 			<input type="button" value="다음글 보기">
@@ -126,6 +146,10 @@
 		<div id="loading" style="display:none;">
 			<img src="${pageContext.request.contextPath}/images/ajax-loader.gif">
 		</div>
+		</c:if>
+		<c:if test="${count == 0 }" >
+			<h2>리뷰가 없습니다.</h2>
+		</c:if>
 		<!-- 한줄평 목록 출력 끝 -->
 		<!-- 한줄평 끝 -->
 	</div>
