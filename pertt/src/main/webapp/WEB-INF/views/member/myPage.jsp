@@ -121,7 +121,7 @@
 						<c:forEach var="review" items="${review }" >
 						<div id="my_re" class="my_re">
 							<div class="review-box" 
-							onclick="location.href='reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
+							onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
 								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
 								</div>
 								<span id="star"> ★ ${review.star}</span>
@@ -140,7 +140,7 @@
 							<c:forEach var="comment" items="${comment }" >
 									<div id="my_com" class="my_com">
 									<div class="comment-box" 
-									onclick="location.href='reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
 										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
 										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
 									</div>
