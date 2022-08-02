@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
@@ -10,17 +11,11 @@
 <head>
 <meta charset="UTF-8">
 <title>MY페이지</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/mypage.css"
-	type="text/css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/member.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/contents.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
 
 <body>
@@ -33,7 +28,7 @@
 		<div class="mypage-main">
 			
 			<input type="hidden" id="member_num" value="${member.member_num}">
-
+<div class="mp-my3">
 			<div class="mypage-my2">
 				<form class="mp-form">
 					<table class="mp-info">
@@ -78,8 +73,8 @@
 							onclick="location.href='deleteUserForm.do'"></li>
 					</ul>
 				</form>
-			</div>
 			
+			</div></div>
 						<div class="align-center">
 
 			<div class="content-main">
@@ -119,7 +114,7 @@
 					
 					
 						<!-- 리뷰 목록 부분 -->
-					
+				
 					<div  class="rere">
 						<c:forEach var="review" items="${review }" >
 
@@ -127,15 +122,15 @@
 						<a href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
 							<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
 						 <span style="color:#fcbf19;" class="star_re"><b>★ ${review.star}</b></span><br>
-							<span>${review.c_review_reg_date}</span>
+							<span id="regdate">${review.c_review_reg_date}</span>
 						</a>
-						</div>
-
-						
-						
-
+						</div>	
 						</c:forEach>
+						
 						 </div>
+					
+		
+		
 				 <div class="float-clear">
 		    	<hr width="100%" size="1" noshade="noshade" class="hrmy">
 		    </div>
@@ -158,9 +153,9 @@
 									<div id="my_com" class="my_com">
 									<div class="comment-box" 
 									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
-										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
+										<span id="com_reg_date" style="color:#969696;" >등록일: ${comment.com_reg_date }</span><br>
 										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
-										 <div class="float-clear"><hr width="90%"  noshade="noshade" class="hrmy2"></div>
+										 <div class="float-clear"><hr class="hrmy2"></div>
 									</div>
 									</div></div>
 								</c:forEach>

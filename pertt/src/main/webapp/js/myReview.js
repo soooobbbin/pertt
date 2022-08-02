@@ -51,11 +51,12 @@ $(function(){
 						myReviewView += '?c_review_num='+item.c_review_num;
 						myReviewView += '&c_num='+item.c_num;
 						myReviewView += '&#39;">';
+						myReviewView += '<div class="rl-1" >';
 						myReviewView += '<img id="contents-image" src="..';
 						myReviewView += '/images/'+item.ott_num +'/'+item.poster +'">';
-						myReviewView += '<span id="star"> ★' +item.star +'</span>';
+						myReviewView += '<span id="star" style="color:#fcbf19;"> ★' +item.star +'</span>'+'<br>';
 						myReviewView += '<span id="reg_date"> ' +item.c_review_reg_date +'</span>';
-						myReviewView += '</div>';
+						myReviewView += '</div>'+'</div>';
 						$('#my_re').append(myReviewView);
 					});//end of each
 					

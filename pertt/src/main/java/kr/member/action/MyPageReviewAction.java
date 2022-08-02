@@ -37,7 +37,7 @@ public class MyPageReviewAction implements Action{
 				pageNum = "1";
 			}
 			int count = rDao.getMyReviewCount(user_num);
-			int rowCount = 8;//한번에 리뷰 8개 보여주기
+			int rowCount = 9;//한번에 리뷰 8개 보여주기
 			PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), 
 												count, rowCount, 1, null);
 			mapAjax.put("count", count);
