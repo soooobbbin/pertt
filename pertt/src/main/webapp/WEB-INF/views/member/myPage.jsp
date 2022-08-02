@@ -79,7 +79,8 @@
 					</ul>
 				</form>
 			</div>
-<div class="align-center">
+			
+						<div class="align-center">
 
 			<div class="content-main">
 			<div class="mypage-my2">
@@ -90,7 +91,7 @@
 					<div class="re">
 
 						<div class="my-ottRe">
-							OTT 리뷰 <input type="submit" value="삭제" class="delete-btn">
+							OTT 리뷰<input type="submit" value="삭제" class="delete-btn">
 						</div>
 						<ul>
 							<li class="ottRe"><input type="checkbox" name="oRe_delete"></li>
@@ -101,8 +102,8 @@
 									<option value="왓챠">왓챠</option>
 									<option value="웨이브">웨이브</option>
 							</select></li>
-							<li class="ottRe">star ★★★</li>
-							<li class="ottRe">감상평</li>
+							<li class="ottRe" style="color:#fcbf19;"><b>★ 3</b></li>
+							<li class="ottRe">오리지널 작품에 볼 게 없다</li>
 						</ul>
 					</div>
 				<div class="content-main">
@@ -136,7 +137,7 @@
 						</c:forEach>
 						 </div>
 				 <div class="float-clear">
-		    	<hr width="100%" size="1" noshade="noshade">
+		    	<hr width="100%" size="1" noshade="noshade" class="hrmy">
 		    </div>
 					</div>
 				</div>
@@ -153,13 +154,15 @@
 								</div>
 							</div>
 							<c:forEach var="comment" items="${comment }" >
+							<div class="rere3">
 									<div id="my_com" class="my_com">
 									<div class="comment-box" 
 									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
 										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
 										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
+										 <div class="float-clear"><hr width="90%"  noshade="noshade" class="hrmy2"></div>
 									</div>
-									</div>
+									</div></div>
 								</c:forEach>
 								</div>
 					
@@ -172,4 +175,3 @@
 
 </body>
 </html>
-

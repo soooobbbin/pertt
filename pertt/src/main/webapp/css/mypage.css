@@ -141,7 +141,7 @@ body {
 .mp-btn {
 	font-size: 100%;
 	padding-left: 250px;
-	margin-left: 400px;
+	margin-left: 200px;
 }
 /*수정버튼*/
 .blue-btn {
@@ -186,11 +186,17 @@ body {
 	float: right;
 	text-align: center;
 	margin-bottom: 5px;
-	font-size: 80%;
+	
 	margin-right: 15px;
 }
 
 /* 내글 조회 */
+
+.comment-box{
+	text-align:left;
+	line-height: 200%;
+	margin-left:50px;
+}
 .align-center{
 	text-align:center;
 	display:inline-block;
@@ -204,11 +210,16 @@ body {
 
 .rere{
 	text-align: center;
-	padding:15px 50px 0px;
+	padding:20px 50px 0px;
 }
 
 .rere2{
 	display:inline-block;
+}
+.rere3{
+	padding-right:5px;
+	width: 560px;
+
 }
 .star_re{
 	font-size:120%;
@@ -221,9 +232,7 @@ body {
 }
 span{
 	text-align: center;
-}
-hr {
-	border: 0px solid;
+	line-height: 200%;
 }
 .rere .rere2 {
 	
@@ -234,8 +243,16 @@ hr {
 	
 	
 }
+.hrmy{
+	border:0 solid;
+	
+}
 
-
+.hrmy2{
+	border:0.1px dotted;
+	color:#f2f2f2;
+	padding-right:10px;
+}
 
 .rere2 .float-clear {
 	clear: both;

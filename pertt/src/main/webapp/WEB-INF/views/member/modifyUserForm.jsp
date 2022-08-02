@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -20,20 +22,20 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
+
 <body>
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<h2 class="mp-sub">MY PAGE</h2>
 		<div class="align-center">
 			<div class="content-main">
+
 				<div class="mypage-main">
 
 					<input type="hidden" id="member_num" value="${member.member_num}">
 
 					<div class="mypage-my2">
-
-						<form class="mp-form" action="modifyUser.do" method="post"
-							id="modify_form">
+						<form class="mp-form">
 							<table class="mp-info">
 								<tr>
 									<td colspan="2" class="mp-TxT">회원정보</td>
@@ -95,83 +97,109 @@
 						</form>
 					</div>
 
-					<form action="Review.do" id="Review" method="post"
-						class="mypage-my">
+					<div class="align-center">
 
-						<div class="mp-TxT">내 글 조회</div>
+						<div class="content-main">
+							<div class="mypage-my2">
+								<form action="Review.do" id="Review" method="post"
+									class="mypage-my">
 
-						<div class="re">
+									<div class="mp-TxT">내 글 조회</div>
 
-							<div class="my-ottRe">OTT 리뷰</div>
-							<ul>
+									<div class="re">
 
-								<li class="ottRe"><select name="ottReview">
-										<option value="넷플릭스">넷플릭스</option>
-										<option value="디즈니플러스">디즈니+</option>
-										<option value="티빙">티빙</option>
-										<option value="왓챠">왓챠</option>
-										<option value="웨이브">웨이브</option>
-								</select></li>
-								<li class="ottRe">star ★★★</li>
-								<li class="ottRe">감상평</li>
-							</ul>
-						</div>
+										<div class="my-ottRe">
+											<span>OTT 리뷰</span>
+										</div>
+										<ul>
 
-						<div class="re">
-						<div class="my-ottRe">
-							작품 리뷰
-							
-							<div class="more">
+											<li class="ottRe"><select name="ottReview">
+													<option value="넷플릭스">넷플릭스</option>
+													<option value="디즈니플러스">디즈니+</option>
+													<option value="티빙">티빙</option>
+													<option value="왓챠">왓챠</option>
+													<option value="웨이브">웨이브</option>
+											</select></li>
+											<li class="ottRe" style="color: #fcbf19;"><b>★ 3</b></li>
+											<li class="ottRe">오리지널 작품에 볼 게 없다</li>
+										</ul>
+									</div>
+									<div class="content-main">
+										<div class="re">
+											<div class="my-ottRe">
+												작품 리뷰
+												<div class="more">
+													<!-- 더보기 아이콘 > 리뷰 리스트로 이동 -->
+													<img
+														src="${pageContext.request.contextPath}/images/더보기.png"
+														width="40px" height="25px"
+														onclick="location.href='myReviewList.do'">
+												</div>
+												<!-- 더보기 아이콘 닫음 -->
+											</div>
 
-									
-								<img src="${pageContext.request.contextPath}/images/더보기.png"
-									width="40px" height="25px" onclick="location.href='myReviewList.do'">
-									
+
+											<!-- 리뷰 목록 부분 -->
+
+											<div class="rere">
+												<c:forEach var="review" items="${review }">
+
+													<div class="rere2">
+														<a
+															href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
+															<img class="myre_poster" id="contents-image"
+															src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+															<span style="color: #fcbf19;" class="star_re"><b>★
+																	${review.star}</b></span><br> <span>${review.c_review_reg_date}</span>
+														</a>
+													</div>
+
+												</c:forEach>
+											</div>
+											<div class="float-clear">
+												<hr width="100%" size="1" noshade="noshade" class="hrmy">
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="re">
+										<div class="my-ottRe">
+											내 댓글 목록
+											<div class="more">
+												<img src="${pageContext.request.contextPath}/images/더보기.png"
+													width="40px" height="25px"
+													onclick="location.href='myCommentList.do'">
+
+											</div>
+										</div>
+										<c:forEach var="comment" items="${comment }">
+											<div class="rere3">
+												<div id="my_com" class="my_com">
+													<div class="comment-box"
+														onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+														<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
+														<span id="com_content">
+															${fn:substring(comment.com_content, 0, 25)} </span>
+														<div class="float-clear">
+															<hr width="90%" noshade="noshade" class="hrmy2">
+														</div>
+													</div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+
+								</form>
 							</div>
-
 						</div>
-						
-						<!-- 리뷰 목록 부분 -->
-					
-						<c:forEach var="review" items="${review }" >
-						<div id="my_re" class="my_re">
-							<div class="review-box" 
-							onclick="location.href='reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
-								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
-								</div>
-								<span id="star"> ★ ${review.star}</span>
-								<span id="reg_date">${review.c_review_reg_date}</span>
-							</div>
-						
-						</c:forEach>
 					</div>
-						
-				
-						<div class="re">
-							<div class="my-ottRe">
-								내 댓글 목록				
-							</div>
-							<c:forEach var="comment" items="${comment }" >
-									<div id="my_com" class="my_com">
-									<div class="comment-box" 
-									onclick="location.href='reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
-										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
-										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
-									</div>
-									</div>
-								</c:forEach>
-								<div class="more">
-									<img src="${pageContext.request.contextPath}/images/더보기.png"
-										width="40px" height="25px" onclick="location.href='myCommentList.do'">
-								</div>
-						</div> 
-					
-					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
+
 </body>
 </html>
-
