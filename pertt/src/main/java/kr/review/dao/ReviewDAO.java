@@ -464,6 +464,8 @@ public class ReviewDAO {
 				comment.setMember_num(rs.getInt("member_num"));
 				comment.setC_num(rs.getInt("c_num"));
 				comment.setId(getIdByMemberNum(rs.getInt("member_num")));
+				ReviewVO reivew = getReviewDetail(rs.getInt("c_review_num"));
+				comment.setReview(reivew);
 				list.add(comment);
 			}
 		} catch (Exception e) {

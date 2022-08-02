@@ -117,13 +117,16 @@
 					
 					<div  class="rere">
 						<c:forEach var="review" items="${review }" >
-						<div class="rere2">
-						<a href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
-							<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
-						 <span style="color:#fcbf19;" class="star_re"><b>★ ${review.star}</b></span><br>
-							<span>${review.c_review_reg_date}</span>
-						</a>
-						</div>
+
+						<div id="my_re" class="my_re">
+							<div class="review-box" 
+							onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
+								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+								</div>
+								<span id="star"> ★ ${review.star}</span>
+								<span id="reg_date">${review.c_review_reg_date}</span>
+							</div>
+
 						</c:forEach>
 						 </div>
 				 <div class="float-clear">
@@ -147,7 +150,7 @@
 							<c:forEach var="comment" items="${comment }" >
 									<div id="my_com" class="my_com">
 									<div class="comment-box" 
-									onclick="location.href='reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
 										<span id="com_reg_date">등록일: ${comment.com_reg_date }</span><br>
 										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
 									</div>
