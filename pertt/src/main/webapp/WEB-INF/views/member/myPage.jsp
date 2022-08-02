@@ -101,24 +101,23 @@
 							<li class="ottRe">감상평</li>
 						</ul>
 					</div>
-
+				<div class="content-main">
 					<div class="re">
 						<div class="my-ottRe">
 							작품 리뷰
-							
 							<div class="more">
-
-									
+							<!-- 더보기 아이콘 > 리뷰 리스트로 이동 -->									
 								<img src="${pageContext.request.contextPath}/images/더보기.png"
 									width="40px" height="25px" onclick="location.href='myReviewList.do'">
-									
+							</div> <!-- 더보기 아이콘 닫음 -->
 							</div>
-
-						</div>
-						
+					
+					
 						<!-- 리뷰 목록 부분 -->
 					
+					<div  class="rere">
 						<c:forEach var="review" items="${review }" >
+
 						<div id="my_re" class="my_re">
 							<div class="review-box" 
 							onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
@@ -127,15 +126,26 @@
 								<span id="star"> ★ ${review.star}</span>
 								<span id="reg_date">${review.c_review_reg_date}</span>
 							</div>
-						
-						</c:forEach>
-					</div>
 
+						</c:forEach>
+						 </div>
+				 <div class="float-clear">
+		    	<hr width="100%" size="1" noshade="noshade">
+		    </div>
+					</div>
+				</div>
 
 				
+			<div class="content-main">
+		
 						<div class="re">
 							<div class="my-ottRe">
-								내 댓글 목록				
+								내 댓글 목록			
+								<div class="more">
+									<img src="${pageContext.request.contextPath}/images/더보기.png"
+										width="40px" height="25px" onclick="location.href='myCommentList.do'">
+									
+								</div	>
 							</div>
 							<c:forEach var="comment" items="${comment }" >
 									<div id="my_com" class="my_com">
@@ -146,9 +156,6 @@
 									</div>
 									</div>
 								</c:forEach>
-								<div class="more">
-									<img src="${pageContext.request.contextPath}/images/더보기.png"
-										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 								</div>
 						</div> 
 					
