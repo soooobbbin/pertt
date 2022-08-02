@@ -9,7 +9,14 @@ public class CommentVO {
 	private int c_num;
 	private String id;
 	
+	private ReviewVO review;
 	
+	public ReviewVO getReview() {
+		return review;
+	}
+	public void setReview(ReviewVO review) {
+		this.review = review;
+	}
 	public String getId() {
 		return id;
 	}
