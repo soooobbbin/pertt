@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /*공통*/
+
 h2 {
 	margin-top: 70px;
 }
@@ -14,6 +15,7 @@ body {
 /*MY PAGE */
 .mypage-main {
 	padding: 30px 0px;
+	text-align: center;
 }
 
 .mp-sub {
@@ -26,6 +28,7 @@ body {
 
 .mypage-my2 {
 	float: left;
+	display:inline-block;text-align: center;
 }
 
 .mp-form {
@@ -44,11 +47,12 @@ body {
 	padding-left: 30px;
 	margin-left: 395px;
 	text-align: left;
-	width: 430px;
-	height: 900px;
+	width: 430px; height : 900px;
+	
 	font-weight: bold;
 	height: 900px;
 }
+
 
 .mp-1 {
 	font-size: 110%;
@@ -89,7 +93,7 @@ body {
 .mp-3 {
 	border-bottom: 0px;
 	font-size: 110%;
-	font-weight: bold;
+ 	font-weight: bold;
 }
 
 /* 입력 폼 */
@@ -129,7 +133,7 @@ body {
 	padding-left: 20px;
 	font-size: 175%;
 	text-align: left;
-	font-weight: bold;
+		font-weight: bold;
 	border-bottom: 0px;
 }
 
@@ -166,6 +170,7 @@ body {
 	width: 75px;
 	height: 45px;
 }
+ 
 
 /*삭제 버튼*/
 .delete-btn {
@@ -186,6 +191,16 @@ body {
 }
 
 /* 내글 조회 */
+.align-center{
+	text-align:center;
+	display:inline-block;
+	}
+
+.content-main{
+	text-align:center;
+	
+}
+
 
 .rere{
 	text-align: center;
@@ -199,10 +214,9 @@ body {
 	font-size:120%;
 }
 .myre_poster {
-	width: 190px;
-	height: 180px;
+	width: 150px;
+	height: 150px;
 	float: left;
-	
 	text-align: center;
 }
 span{
@@ -214,8 +228,8 @@ hr {
 .rere .rere2 {
 	
 	margin-left: 10px;
-	width: 200px;
-	height: 180px;
+	width: 150px;
+	height: 170px;
 	float: left;
 	
 	
@@ -226,10 +240,8 @@ hr {
 .rere2 .float-clear {
 	clear: both;
 }
-
 .mypage-my {
-	float: left;
-	width: 35%;
+	width: 600px;
 	height: 820px;
 	border-radius: 11px;
 	border-width: 1px;
@@ -240,6 +252,8 @@ hr {
 	padding: 50px 30px;
 	margin-left: 70px;
 	padding-bottom: 30px;
+	display:inline-block;
+	
 }
 
 .my-ottRe {
@@ -257,11 +271,12 @@ hr {
 	margin-top: 17px;
 	margin-bottom: 18px;
 	text-align: left;
+	width:92%;
+	
 }
 
-.star_date {
-	float: left;
-}
+
+
 
 .ottRe {
 	float: left;
@@ -272,6 +287,7 @@ hr {
 .re {
 	margin-bottom: 80px;
 	margin-top: 8px;
+	
 }
 
 .more {
@@ -279,6 +295,7 @@ hr {
 	text-align: center;
 	margin-top: 8px;
 	margin-right: 20px;
+	
 }
 
 .sort {
@@ -296,6 +313,7 @@ hr {
 	float: left;
 }
 
+
 /*내글 조회-내 리뷰*/
 .my-re {
 	margin: 60px;
@@ -307,13 +325,18 @@ hr {
 	height: 173px;
 }
 
+
 /*기존코드*/
 table {
 	word-break: break-all;
-	height: auto;
+		height: auto;
 }
 
 th, td {
 	border-bottom: 1px solid #e8e8e8;
 	padding: 10px;
 }
+
+
+	
+	

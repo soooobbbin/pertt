@@ -29,6 +29,7 @@
 		<h2 class="mp-sub">MY PAGE</h2>
 		<div class="align-center">
 			<div class="content-main">
+		
 		<div class="mypage-main">
 			
 			<input type="hidden" id="member_num" value="${member.member_num}">
@@ -78,9 +79,12 @@
 					</ul>
 				</form>
 			</div>
+<div class="align-center">
 
+			<div class="content-main">
+			<div class="mypage-my2">
 			<form action="Review.do" id="Review" method="post" class="mypage-my">
-			
+		
 					<div class="mp-TxT">내 글 조회</div>
 
 					<div class="re">
@@ -118,14 +122,16 @@
 					<div  class="rere">
 						<c:forEach var="review" items="${review }" >
 
-						<div id="my_re" class="my_re">
-							<div class="review-box" 
-							onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
-								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
-								</div>
-								<span id="star"> ★ ${review.star}</span>
-								<span id="reg_date">${review.c_review_reg_date}</span>
-							</div>
+						<div class="rere2">
+						<a href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
+							<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+						 <span style="color:#fcbf19;" class="star_re"><b>★ ${review.star}</b></span><br>
+							<span>${review.c_review_reg_date}</span>
+						</a>
+						</div>
+
+						
+						
 
 						</c:forEach>
 						 </div>
@@ -136,8 +142,7 @@
 				</div>
 
 				
-			<div class="content-main">
-		
+
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록			
@@ -145,7 +150,7 @@
 									<img src="${pageContext.request.contextPath}/images/더보기.png"
 										width="40px" height="25px" onclick="location.href='myCommentList.do'">
 									
-								</div	>
+								</div>
 							</div>
 							<c:forEach var="comment" items="${comment }" >
 									<div id="my_com" class="my_com">
@@ -157,13 +162,13 @@
 									</div>
 								</c:forEach>
 								</div>
-						</div> 
 					
-			</form>
-			</div>
+			</form></div></div>
+			</div></div>	
+					</div>
 			</div>
 		</div>
-	</div>
+
 
 </body>
 </html>
