@@ -31,17 +31,15 @@ $(function(){
 					
 					$(param.myComment).each(function(index,item){
 						
-						let myCommnetView = '<div class="review-box" onclick="location.href=\'../review/reviewDetail.do';
+						let myCommnetView = '<ul class="mycom_list">'+'<li>'+'<div class="mycom-1" onclick="location.href=\'../review/reviewDetail.do';
 						myCommnetView += '?c_review_num='+item.c_review_num;
 						myCommnetView += '&c_num='+item.c_num;
 						myCommnetView += '&#39;">';
-						myCommnetView += '<span id="reg_date"> ' +item.com_reg_date +'</span>';
-						myCommnetView += '<span id="review_content"> ' +item.review.c_review_content +'</span>';
+						myCommnetView += '<div id="com_delete">'+ ' <input type="button" data-com_num="'+item.com_num+'" value="삭제" id="delete_com_btn">'+'</div>';
+						myCommnetView += '<span id="reg_date" style="color:#969696"> '+ item.com_reg_date + ' | ' +'</span>';
+						myCommnetView += '<span id="review_content"> ' +item.review.c_review_content +'</span>'+'<br>';
 						myCommnetView += '<p id="com_content"> ' +item.com_content +'</p>';
-						myCommnetView += '</div>';
-						myCommnetView += '<div id="com_delete">';
-						myCommnetView += ' <input type="button" data-com_num="'+item.com_num+'" value="삭제" id="delete_com_btn">';
-						myCommnetView += '</div>';
+						myCommnetView += '</div>'+'</li>'+'</ul>';
 						
 						$('#my_com').append(myCommnetView);
 					});//end of each

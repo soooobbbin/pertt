@@ -16,7 +16,7 @@
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 		<div class="align-center">
 			<div class="content-main">
-		<h2>내 작품 리뷰 목록</h2>
+		<h2>내 리뷰 모아보기</h2>
 
 	<div class="myReL-1">	
 		<div class="mysort">
