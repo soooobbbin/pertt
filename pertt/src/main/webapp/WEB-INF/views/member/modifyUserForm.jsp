@@ -168,32 +168,29 @@
 
 
 
-									<div class="re">
-										<div class="my-ottRe">
-											내 댓글 목록
-											<div class="more">
-												<img src="${pageContext.request.contextPath}/images/더보기.png"
-													width="40px" height="25px"
-													onclick="location.href='myCommentList.do'">
-
-											</div>
-										</div>
-										<c:forEach var="comment" items="${comment }">
-											<div class="rere3">
-												<div id="my_com" class="my_com">
-													<div class="comment-box"
-														onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
-														<span id="com_reg_date" style="color: #969696;">등록일:
-															${comment.com_reg_date }</span><br> <span id="com_content">
-															${fn:substring(comment.com_content, 0, 25)} </span>
-														<div class="float-clear">
-															<hr class="hrmy2">
-														</div>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
+						<div class="re">
+							<div class="my-ottRe">
+								내 댓글 목록			
+								<div class="more">
+									<img src="${pageContext.request.contextPath}/images/더보기.png"
+										width="40px" height="25px" onclick="location.href='myCommentList.do'">
+									
+								</div>
+							</div>
+							<c:forEach var="comment" items="${comment }" >
+							<div class="rere3">
+									<div id="my_com" class="my_com">
+									<div class="comment-box" 
+									onclick="location.href='${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${comment.c_review_num}&c_num=${comment.c_num}'">
+										<span id="com_reg_date" style="color:#969696;" > ${comment.com_reg_date } | </span>
+										<span id="review_content" style="color:#828282;"> 리뷰 내용 :  ${fn:substring(comment.review.c_review_content,0,12)}… </span><br>
+										<span id="com_content"> ${fn:substring(comment.com_content, 0, 25)} </span>
+										 <div class="float-clear"><hr class="hrmy2"></div>
 									</div>
+									</div></div>
+								</c:forEach>
+								</div>
+					
 
 								</form>
 							</div>

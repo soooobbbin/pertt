@@ -32,7 +32,7 @@ h2{
 	width:1000px;
 	height:auto;
 	padding:50px 50px ;
-	margin:0 350px 50px;
+	margin:0 400px 60px;
 	display:inline-block;
 }
 
@@ -64,7 +64,7 @@ h2{
 }
 
 span{
-	text-align: center;
+	
 	line-height: 130%;
 }
 
@@ -91,4 +91,40 @@ span{
 	border: 0px;
 	
 	
+}
+#delete_com_btn{
+	width:70px;
+	height:40px;
+	background-color:#93dbb8;
+	color: #ffffff;
+	font-weight: bold;
+	line-height: 2.3em;
+	font-size: 15px;
+	border-radius: 10px;
+	border: 0px;
+}
+.comMain{
+	text-align:left;
+}
+.mycom-1{
+	padding-top:20px;
+}
+
+#com_delete{
+	text-align:right;
+}
+
+#eotrmf{
+	font-style: italic;
+	text-align:center;
+	color:#8dc7a9;
+}
+.mycom_list li{
+	border: 1px solid #e0e0e0;
+	padding:30px;
+}
+
+#com_content{
+	font-weight:bold;
+	font-size:18px;
 }
