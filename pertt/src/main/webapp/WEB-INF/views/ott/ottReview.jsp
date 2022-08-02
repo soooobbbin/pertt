@@ -93,7 +93,7 @@
 				    <input type="checkbox" id="ratingc5" value="5" class="rate-check">
 				    <label for="ratingc5"></label>
 				</div>
-				<div class="align-center">
+				<div class="align-center" style="margin:20px 0 0 0;">
 					<input type="submit" value="전송">
 				</div>
 			</form>
@@ -101,8 +101,8 @@
 		<!-- 별점 끝 -->
 		
 		<!-- 한줄평 시작 -->
-		<div id="ott_review_div">
-			<span class="re-title">한줄평 달기</span>
+		<div id="oreview_div">
+			<span class="re-title">한줄평</span><br>
 			<form id="re_form" style="display:inline-block;">
 				<textarea rows="3" cols="50" name="ott_re_content" 
 				  id="ott_re_content" class="rep-content"

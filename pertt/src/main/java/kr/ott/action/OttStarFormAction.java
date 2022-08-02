@@ -16,47 +16,16 @@ public class OttStarFormAction implements Action{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		request.setCharacterEncoding("utf-8");
+		OttDAO dao = OttDAO.getInstance();
+		int ott_num = Integer.parseInt(request.getParameter("ott_num"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		int usability = Integer.parseInt(request.getParameter("usability"));
+		int quality = Integer.parseInt(request.getParameter("quality"));
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
-		if(user_num == null) { //로그인이 되지 않은 경우
-			return "redirect:/member/loginForm.do";
-		}
+		boolean starCheck = false;
 		
-		/*
-		//OTT 번호 받아서 별점 표시 호출
-		OttVO
-		OttDAO dao = OttDAO.getInstance();
-		OttRankVO ottRank = dao.getOttRank(ott_num);
-
-		//한줄평 목록
-		String pageNum = request.getParameter("pageNum");
-		if(pageNum == null) pageNum = "1";
-		
-		//각 OTT에 달린 한줄평 개수 구하기
-		OttDAO dao1 = OttDAO.getInstance();
-		int count = dao1.getOttReviewCount(ott_num);
-		
-		//페이지 처리
-		PagingUtil page = new PagingUtil(Integer.parseInt(pageNum), count, 8, 5, "ottReview.do");
-		
-		//각 OTT에 달린 별점 정보 보내 주기
-		if(count > 0) {
-			int ott_rank_num = 0;
-			dao.resultOttStar(ott_rank_num);
-		}
-		
-		//각 OTT에 달린 한줄평 정보 보내 주기
-		List<OttRankVO> list = null;
-		if(count > 0) {
-			list = dao.getOttReviewList(ott_num, page.getStartRow(), page.getEndRow());
-		}
-		
-		//request에 담아서 ottReview.jsp로 보내기
-		request.setAttribute("ottRank", ottRank);
-		request.setAttribute("count", count);//전체 글 수 
-		request.setAttribute("list", list);//리뷰 목록
-		request.setAttribute("page", page.getPage());//페이지
-		*/
 		return "/WEB-INF/views/ott/ottReview.jsp";
 	}
 }

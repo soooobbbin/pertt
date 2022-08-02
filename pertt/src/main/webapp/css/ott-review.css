@@ -19,7 +19,7 @@ div#ott_review_div{
 	margin-top:10px;
 }
 form#re_form{
-	width:650px;
+	width:80%;
 	border:none;
 }
 span.re-title{
@@ -30,6 +30,7 @@ span.re-title{
 span.letter-count{
 	font-size:10pt;
 	color:#999;
+	margin: 0 370px 0 0;
 }
 textarea.rep-content{
 	width:90%;

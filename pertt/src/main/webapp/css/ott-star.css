@@ -1,16 +1,16 @@
 .rating{
    display:inline-block;
-   width:500px;
+   width:200px;
 }
 .rating .rate-check {
    display:none;   
 }
 .rating .rate-check + label {
-    width: 20px;
-    height: 20px;
-    background-image: url('../images/star.png');
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/star.png);
     background-repeat: no-repeat;
-    background-size: 20px 20px;
+    background-size: 40px 40px;
     cursor: pointer;
     background-color: #f0f0f0;
 }
