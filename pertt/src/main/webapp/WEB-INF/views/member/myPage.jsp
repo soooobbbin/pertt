@@ -118,7 +118,7 @@
 						<!-- 리뷰 목록 부분 -->
 					
 						<c:forEach var="review" items="${review }" >
-						<div id="my_re">
+						<div id="my_re" class="my_re">
 							<div class="review-box" 
 							onclick="location.href='reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}'">
 								<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
@@ -131,7 +131,7 @@
 					</div>
 
 
-					<form action="deleteComment.do" method="post" id="deleteC_form">
+					
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록
@@ -143,12 +143,11 @@
 										width="40px" height="25px">
 								</div>
 
-								<input type="submit" value="삭제" class="delete-btn" id="delete_btn2">
+								
 							</div>
 							<table>
 								<tr>
-									<td rowspan="2"><input type="checkbox" name="delete_com" id="delete_com"
-										value="삭제"></td>
+									
 									<!--등록일 -->
 									<td colspan="2">등록일 ${comment.com_reg_date}</td>
 									<!--리뷰 컨텐츠 이름-->
@@ -161,10 +160,7 @@
 
 							</table>
 						</div>
-					</form>
 					
-					
-				
 			</form>
 			</div>
 			</div>
