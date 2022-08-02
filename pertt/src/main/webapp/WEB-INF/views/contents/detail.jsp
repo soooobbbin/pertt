@@ -14,13 +14,105 @@
 <div class="page-main">
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
-		<h2>${contents.title}</h2>
 		<form action="detail.do" method="post"
 		      id="detail_form">
 			<input type="hidden" name="c_num"
 			                    value="${contents.c_num}">
 			
-			<div class="align-center">
+			
+			<div class="detail-poster">
+				<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+				<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="300" height="170" class="con-poster">
+				</c:if>
+				<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+				<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="180" height="250" class="con-poster">
+				</c:if>
+			</div>
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-h2"><h2>${contents.title}</h2></div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail2-h2"><h2>${contents.title}</h2></div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-release" id="detail-div2">
+				<label>개봉일</label>${contents.release}
+			</div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-release" id="detail-div">
+				<label>개봉일</label>${contents.release}
+			</div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-country" id="detail-div2">
+				<label>국가</label>${contents.country}
+			</div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-country" id="detail-div">
+				<label>국가</label>${contents.country}
+			</div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-genre" id="detail-div2">
+				<label>장르</label>${contents.genre}
+			</div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-genre" id="detail-div">
+				<label>장르</label>${contents.genre}
+			</div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-tomato" id="detail-div2">
+				<label>러닝타임</label>${contents.tomato}
+			</div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-tomato" id="detail-div">
+				<label>러닝타임</label>${contents.tomato}
+			</div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-produce" id="detail-div2">
+				<label>출연/제작</label>${contents.produce}
+			</div>
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-produce" id="detail-div">
+				<label>출연/제작</label>${contents.produce}
+			</div>
+			</c:if>
+			
+			<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+			<div class="detail-grade" id="detail-div2">
+				<label>등급</label>${contents.grade}
+			</div>   
+			</c:if>
+			<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+			<div class="detail-grade" id="detail-div">
+				<label>등급</label>${contents.grade}
+			</div>   
+			</c:if>
+			
+			
+			<div class="detail-plot">
+				<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+				<label class="label-plot">줄거리</label><br><br>
+				</c:if>
+				<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+				<label class="label2-plot">줄거리</label><br><br>
+				</c:if>
+				<textarea rows="10" cols="80" class="text-plot">${contents.plot}</textarea>
+			</div>
+		</form>
+		<div class="align-center">
 				<input type="button" value="수정"
 					onclick="location.href='updateContentsForm.do?c_num=${contents.c_num}'">
 				<input type="button" value="목록"
@@ -37,42 +129,6 @@
 					};
 				</script>
 			</div>  
-			<hr size="1" noshade="noshade" width="80%">
-			<ul>
-				<li>
-					<label>포스터</label>
-					<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
-					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="300" height="170" class="con-poster">
-					</c:if>
-					<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
-					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="180" height="250" class="con-poster">
-					</c:if>
-				</li>
-				<li>
-					<label>제목</label>${contents.title}
-				</li>
-				<li>
-					<label>개봉일</label>${contents.release}
-				</li>
-				<li>
-					<label>국가</label>${contents.country}
-				</li>
-				<li>
-					<label>장르</label>${contents.genre}
-				</li>
-				<li>
-					<label>줄거리</label>${contents.plot}
-				</li>
-				<li>
-					<label>러닝타임</label>${contents.tomato}
-				</li>
-				<li>
-					<label>출연/제작</label>${contents.produce}
-				</li>
-				<li>
-					<label>등급</label>${contents.grade}
-			</ul>    
-		</form>
 	</div>
 </div>
 
