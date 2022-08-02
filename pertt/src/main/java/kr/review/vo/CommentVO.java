@@ -9,6 +9,7 @@ public class CommentVO {
 	private int c_num;
 	private String id;
 	
+	
 	public String getId() {
 		return id;
 	}
