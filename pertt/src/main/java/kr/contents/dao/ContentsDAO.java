@@ -197,7 +197,35 @@ public class ContentsDAO {
 		}
 		return contents;
 	}
-
+	//작품 포스터 수정
+	public void updateContentsPoster(String poster, int c_num) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			//JDBC 수행 1,2단계 : 커넥션풀로부터 커넥션을 할당
+			conn = DBUtil.getConnection();
+			//SQL문 작성
+			sql = "UPDATE contents SET poster=? WHERE c_num=?";
+			
+			//JDBC 수행 3단계 : PreparedStatement 객체 생성
+			pstmt = conn.prepareStatement(sql);
+			//?에 데이터를 바인딩
+			pstmt.setString(1, poster);
+			pstmt.setInt(2, c_num);
+			
+			//JDBC 수행 4단계
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			throw new Exception(e);
+		}finally {
+			//자원정리
+			DBUtil.executeClose(null, pstmt, conn);
+		}
+	}
+	
 	//작품 수정
 	public void updateContents(ContentsVO contentsVO) throws Exception{
 		Connection conn = null;

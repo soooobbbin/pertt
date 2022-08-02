@@ -26,14 +26,16 @@ public class UpdateContentsFormAction implements Action{
 			return "/WEB-INF/views/common/notice.jsp";
 		}
 		
-		//관리자로 로그인한 경우
-		int c_num = Integer.parseInt(request.getParameter("c_num"));
+		//작품번호 반환
+		int c_num = Integer.parseInt(
+				        request.getParameter("c_num"));
 		ContentsDAO dao = ContentsDAO.getInstance();
+		
+		//작품상세 정보 반환
 		ContentsVO contents = dao.getContents(c_num);
 		
-		
 		request.setAttribute("contents", contents);
-		
+				
 		return "/WEB-INF/views/contents/updateContentsForm.jsp";
 	}
 

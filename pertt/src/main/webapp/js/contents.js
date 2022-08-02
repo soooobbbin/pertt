@@ -22,7 +22,7 @@ $(function(){
 		
 		//파일의 용량 체크
 		if(con_poster.size > 1024*1024){
-			alert(Math.round(my_photo.size/1024) + 'kbytes(1024kbytes까지만 업로드 가능)');
+			alert(Math.round(con_poster.size/1024) + 'kbytes(1024kbytes까지만 업로드 가능)');
 			$('.con-poster').attr('src',photo_path);
 			$(this).val('');
 			return;

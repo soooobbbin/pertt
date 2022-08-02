@@ -41,8 +41,11 @@
 			<ul>
 				<li>
 					<label>포스터</label>
-					<c:if test="${!empty contents.poster}">
-					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="130" height="160" class="con-poster">
+					<c:if test="${!empty contents.poster && contents.ott_num == 1 || contents.ott_num == 2}">
+					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="300" height="170" class="con-poster">
+					</c:if>
+					<c:if test="${!empty contents.poster && contents.ott_num == 3 || contents.ott_num == 4 || contents.ott_num == 5}">
+					<img src="${pageContext.request.contextPath}/upload/${contents.poster}" width="180" height="250" class="con-poster">
 					</c:if>
 				</li>
 				<li>
