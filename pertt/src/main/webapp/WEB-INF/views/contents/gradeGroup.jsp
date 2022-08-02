@@ -47,7 +47,8 @@
 				<th>제목</th>
 				<th>개봉일</th>
 				<th>장르</th>
-				<th id="last-child">OTT</th>
+				<th>OTT</th>
+				<th id="last-child">등급</th>
 			</tr>
 			<c:forEach var="contents" items="${list}">
 			<tr>
@@ -57,21 +58,22 @@
 				<td>${contents.genre}</td>
 				<c:choose>
 				<c:when test="${contents.ott_num == 1}">
-				<td id="last-child">netflix</td>
+				<td>netflix</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 2}">
-				<td id="last-child">disney</td>
+				<td>disney</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 3}">
-				<td id="last-child">watcha</td>
+				<td>watcha</td>
 				</c:when>
 				<c:when test="${contents.ott_num == 4}">
-				<td id="last-child">tving</td>
+				<td>tving</td>
 				</c:when>
 				<c:otherwise>
-				<td id="last-child">wavve</td>
+				<td>wavve</td>
 				</c:otherwise>
 				</c:choose>
+				<td id="last-child">${contents.grade}</td>
 			</tr>
 			</c:forEach>
 		</table>

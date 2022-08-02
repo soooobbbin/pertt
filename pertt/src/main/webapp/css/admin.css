@@ -296,10 +296,55 @@ form.detail-form{
 	
 }
 
-
-
-
-
+/* 작품 상세 정보 */
+form#detail_form{
+	width: 800px;
+    margin: 0 auto;
+    padding: 50px 10px 10px 0px;
+    min-height: 400px;
+}
+.detail-poster {
+    float: left;
+}
+.detail-h2 h2 {
+	clear:both;
+    padding-top: 20px;
+    width: 400px;
+    margin: 0;
+}
+.detail2-h2 h2 {
+    padding-top: 0px;
+    margin: 35px 0 10px 200px;
+    width: 400px;
+}
+div#detail-div {
+    width: 500px;
+    margin: 10px 10px 10px 200px;
+}
+div#detail-div2 {
+    width: 500px;
+    margin: 10px 10px 10px 0px;
+}
+label {
+    width: 90px;
+    float: left;
+    font-weight: bold;
+}
+div.detail-grade {
+    padding-bottom: 10px;
+}
+label.label-plot {
+    width: 200px;
+    padding-top: 10px;
+}
+label.label2-plot {
+    width: 200px;
+    padding-top: 10px;
+}
+textarea.text-plot{
+    border: none;
+    font-size: 15px;
+}
 
 
 
