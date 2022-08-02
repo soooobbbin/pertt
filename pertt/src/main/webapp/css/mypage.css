@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 /*공통*/
+
+h2{
+	margin-top:70px;
+}
 body {
 	width: 100%;
 	margin: 0;
@@ -9,7 +13,7 @@ body {
 
 /*MY PAGE */
 .mypage-main {
-	padding: 60px 0px;
+	padding: 30px 0px;
 }
 
 .mp-sub {
@@ -216,6 +220,11 @@ body {
 	
 }
 
+.myre_poster{
+	width:200px;
+	height:200px;
+}
+
 .ottRe {
 	float: left;
 	margin: 15px 20px;
@@ -255,6 +264,7 @@ body {
 /*내글 조회-내 리뷰*/
 .my-re{
 	margin:60px;
+	float:left;
 }
 .rp-image{
 width: 130px; 
