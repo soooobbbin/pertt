@@ -39,10 +39,11 @@
 						<tr>
 							<td class="mp-1">아이디</td>
 							<td class="mp-4">${member.member_id}</td>
+							
 						</tr>
 						<tr>
 							<td class="mp-1">비밀번호</td>
-							<td class="mp-4">${member.passwd}</td>
+							<td class="mp-4"><c:if test="${member.passwd ne null && member.passwd!=''}">${fn:substring(member.passwd,0,fn:length(member.passwd)-3)}***</c:if></td>
 						</tr>
 						<tr>
 							<td class="mp-1">이름</td>
