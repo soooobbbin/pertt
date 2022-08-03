@@ -331,7 +331,7 @@ public class AdminDAO {
 			//관리자 헤더 카테고리 - 카테고리 분류
 			public List<ContentsVO> getCategoryGroup(
 					           int start,int end,
-					           String keyfield, String keyword,int category_num)
+					           String keyfield, String keyword)
 			                        throws Exception{
 				Connection conn = null;
 				PreparedStatement pstmt = null;
@@ -347,49 +347,21 @@ public class AdminDAO {
 					
 					if(keyword!=null && !"".equals(keyword)) {
 						//검색 처리
-						if(keyfield.equals("1")) sub_sql = "WHERE category_num = ?";
-						/*
-						else if(keyfield.equals("2")) sub_sql += " WHERE category_num = 2";
-						else if(keyfield.equals("3")) sub_sql += " WHERE category_num = 3";
-						else if(keyfield.equals("4")) sub_sql += " WHERE category_num = 4";
-						else if(keyfield.equals("5")) sub_sql += " WHERE category_num = 5";
+						/*if(keyfield.equals("1"))*/sub_sql = "WHERE category_num = ? AND c.title LIKE ? ";
 						
-						else if(keyfield.equals("6")) sub_sql += " WHERE category_num = 6";
-						else if(keyfield.equals("7")) sub_sql += " WHERE category_num = 7";
-						else if(keyfield.equals("8")) sub_sql += " WHERE category_num = 8";
-						else if(keyfield.equals("9")) sub_sql += " WHERE category_num = 9";
-						else if(keyfield.equals("10")) sub_sql += " WHERE category_num = 10";
-						
-						else if(keyfield.equals("11")) sub_sql += " WHERE category_num = 11";
-						else if(keyfield.equals("12")) sub_sql += " WHERE category_num = 12";
-						else if(keyfield.equals("13")) sub_sql += " WHERE category_num = 13";
-						else if(keyfield.equals("14")) sub_sql += " WHERE category_num = 14";
-						else if(keyfield.equals("15")) sub_sql += " WHERE category_num = 15";
-						
-						else if(keyfield.equals("16")) sub_sql += " WHERE category_num = 16";
-						else if(keyfield.equals("17")) sub_sql += " WHERE category_num = 17";
-						else if(keyfield.equals("18")) sub_sql += " WHERE category_num = 18";
-						else if(keyfield.equals("19")) sub_sql += " WHERE category_num = 19";
-						else if(keyfield.equals("20")) sub_sql += " WHERE category_num = 20";
-						
-						else if(keyfield.equals("21")) sub_sql += " WHERE category_num = 21";
-						else if(keyfield.equals("22")) sub_sql += " WHERE category_num = 22";
-						else if(keyfield.equals("23")) sub_sql += " WHERE category_num = 23";
-						else if(keyfield.equals("24")) sub_sql += " WHERE category_num = 24";
-						else if(keyfield.equals("25")) sub_sql += " WHERE category_num = 25";
-						*/
 					}
 					
 					sql = "SELECT * FROM (SELECT a.*, rownum rnum FROM "
 						+ "(SELECT * FROM contents c LEFT OUTER JOIN "
-						+ "category g USING (category_num) " + sub_sql + "AND c.title LIKE ?"
+						+ "category g USING (category_num) " + sub_sql
 						+ " ORDER BY c_num NULLS LAST)a) "
 						+ "WHERE rnum >= ? AND rnum <= ?";
 					
 					pstmt = conn.prepareStatement(sql);
 					
-					pstmt.setInt(++cnt, category_num);
+					
 					if(keyword!=null && !"".equals(keyword)) {
+						pstmt.setInt(++cnt, Integer.parseInt(keyfield));
 						pstmt.setString(++cnt, "%"+keyword+"%");
 					}
 					pstmt.setInt(++cnt, start);
@@ -427,7 +399,7 @@ public class AdminDAO {
 				}
 				
 				//카테고리별 레코드 수(검색 레코드 수)
-				public int getCategoryGroupCount(String keyfield,String keyword,int category_num)throws Exception{
+				public int getCategoryGroupCount(String keyfield, String keyword)throws Exception{
 					Connection conn = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
@@ -441,17 +413,18 @@ public class AdminDAO {
 					
 					if(keyword!=null && !"".equals(keyword)) {
 					//검색 처리
-					if(keyfield.equals("1")) sub_sql = "WHERE category_num = ?";
+					sub_sql = "WHERE category_num=? AND title LIKE ? ";
 					}
 					
 					sql = "SELECT COUNT(*) FROM contents LEFT OUTER JOIN "
-					+ "category USING (category_num) " + sub_sql + "AND title LIKE ?";
+					+ "category USING (category_num) " + sub_sql;
 					
 					pstmt = conn.prepareStatement(sql);
 					
-					pstmt.setInt(1, category_num);
+					
 					if(keyword!=null && !"".equals(keyword)) {
-					pstmt.setString(2, "%"+keyword+"%");
+						pstmt.setInt(1, Integer.parseInt(keyfield));
+						pstmt.setString(2, "%"+keyword+"%");
 					}
 					
 					rs = pstmt.executeQuery();
@@ -466,6 +439,7 @@ public class AdminDAO {
 						DBUtil.executeClose(rs, pstmt, conn);
 					}
 						return count;
+						
 					}
 			
 			//관리자 헤더 카테고리 - 등급 분류

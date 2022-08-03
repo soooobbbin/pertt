@@ -197,6 +197,7 @@ public class ContentsDAO {
 		}
 		return contents;
 	}
+	/*
 	//작품 포스터 수정
 	public void updateContentsPoster(String poster, int c_num) throws Exception{
 		Connection conn = null;
@@ -224,7 +225,7 @@ public class ContentsDAO {
 			//자원정리
 			DBUtil.executeClose(null, pstmt, conn);
 		}
-	}
+	} */
 	
 	//작품 수정
 	public void updateContents(ContentsVO contentsVO) throws Exception{
