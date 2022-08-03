@@ -4,6 +4,11 @@
 
 h2 {
 	margin-top: 70px;
+	margin-left: 300px;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 200%;
+	color: rgb(26, 188, 156);
 }
 
 body {
@@ -12,33 +17,32 @@ body {
 	padding: 0;
 }
 
-/*MY PAGE */
-.mypage-main {
-	padding: 30px 0px;
-	text-align: center;
-}
 
-.mp-sub {
-	margin-left: 400px;
-	font-style: italic;
-	font-weight: bold;
-	font-size: 200%;
-	color: rgb(26, 188, 156);
-}
-.mp-my3{
+	
+
+.mypage_form, .mp-form{
 	float:left;
-	text-align: center;
-}
-.mypage-my2 {
-display:inline-block ;
-	
-	
 }
 
-.mp-form {
-	border: 0px solid;
-	width: 125%;
+
+.mypage-inner{
+	text-align:center;
+	border:1px;
 }
+
+
+/*회원정보 글씨*/
+.mp-TxT{
+	line-height: 150%;
+	font-weight: 250%;
+	padding-left: 20px;
+	font-size: 175%;
+	text-align: left;
+	font-weight: bold;
+	border-bottom: 0px;
+}
+
+/*table 회원정보 */
 
 .mp-info {
 	line-height: 200%;
@@ -49,46 +53,45 @@ display:inline-block ;
 		rgb(46, 204, 113);
 	padding: 15px 20px;
 	padding-left: 30px;
-	margin-left: 395px;
+	margin-left: 285px;
 	text-align: left;
 	width: 430px; height : 900px;
-	
 	font-weight: bold;
-	height: 900px;
+	height: 900px; 
+	
 }
 
+/* 회원정보 폼 감싸는 div  - my page main 밑*/
+.mp-my3{
+	float:left;
+}
 
+/* 아이디 비밀번호 등 글자 부분 속성  td 속성*/
 .mp-1 {
 	font-size: 110%;
 	font-weight: bold;
+	border-top: 0px;
 }
-
-.mp-2 {
-	border-bottom: 0px;
-	font-size: 110%;
-}
-
+/* 끌고 올 데이터 값 속성  td 속성*/
 .mp-4 {
 	font-size: 105%;
 	color: #4f4f4f;
 }
 
+/* 회원 정보 테이블 사이사이 줄 */
+td {
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px;
+}
+
+/*가입일 속성*/
 .mp-5 {
 	border-bottom: 0px;
 	color: #4f4f4f;
 }
 
-.mptd {
-	font-size: 90%;
-	text-align: left;
-}
-
-.mptr {
-	font-size: 95%;
-	font-weight: bold;
-}
-
 /*가입일 밑에 테두리 없애기*/
+
 .mp-2 {
 	border-bottom: 0px;
 	font-size: 110%;
@@ -99,6 +102,8 @@ display:inline-block ;
 	font-size: 110%;
  	font-weight: bold;
 }
+/**/
+
 
 /* 입력 폼 */
 .mp-info input[type="text"] {
@@ -130,24 +135,13 @@ display:inline-block ;
 	width: 45px;
 	text-align: left;
 }
-
-.mp-TxT {
-	line-height: 150%;
-	font-weight: 250%;
-	padding-left: 20px;
-	font-size: 175%;
-	text-align: left;
-		font-weight: bold;
-	border-bottom: 0px;
-}
+/**/
 
 /*버튼*/
-.mp-btn {
-	font-size: 100%;
-	padding-left: 250px;
-	margin-left: 200px;
+
+.mp-btn{
+	margin-left: 500px;
 }
-/*수정버튼*/
 .blue-btn {
 	background-color: rgba(52, 152, 219, 0.25);
 	text-align: center;
@@ -174,98 +168,28 @@ display:inline-block ;
 	width: 75px;
 	height: 45px;
 }
- 
 
-/*삭제 버튼*/
-.delete-btn {
-	border-radius: 15px;
-	background-color: rgba(52, 152, 219, 0.25);
-	float: right-center;
-	color: rgb(41, 128, 185);
-	font-weight: bold;
-	border: 0px;
-	height: 40px;
-	width: 75px;
-	font-size: 105%;
+/*내 ott 삭제버튼*/
+.delete-btn{
 	float: right;
 	text-align: center;
-	margin-bottom: 5px;
 	
-	margin-right: 15px;
-}
-
-/* 내글 조회 */
-
-#regdate{
-	color:#8a8a8a;
-}
-
-.comment-box{
-	text-align:left;
-	line-height: 200%;
-	margin-left:50px;
-}
-.align-center{
-	text-align:center;
-	display:inline-block;
-	}
-
-.content-main{
-	text-align:center;
-	
-}
-
-
-.rere{
+	margin-right: 20px;
+	background-color: rgba(52, 152, 219, 0.25);
 	text-align: center;
-	padding:20px 50px 0px;
+	color: rgb(41, 128, 185);
+	font-weight: bold;
+	line-height: 2.3em;
+	border-radius: 10px;
+	border: 0px;
+	width: 75px;
+	height: 35px;
 }
+/**/
 
-.rere2{
-	display:inline-block;
-}
-.rere3{
-	padding-right:5px;
-	width: 560px;
 
-}
-.star_re{
-	font-size:120%;
-}
-.myre_poster {
-	width: 150px;
-	height: 150px;
-	float: left;
-	text-align: center;
-}
-span{
-	text-align: center;
-	line-height: 200%;
-}
-.rere .rere2 {
-	
-	margin-left: 10px;
-	width: 150px;
-	height: 170px;
-	float: left;
-	
-	
-}
-.hrmy{
-	border:0 solid;
-	
-}
-
-.hrmy2{
-	border:0.6px dotted;
-	color:#cccccc;
-	padding-right:10px;
-}
-
-.rere2 .float-clear {
-	clear: both;
-}
-.mypage-my {
+/*내글 조회*/
+.mypage-my4 {
 	width: 600px;
 	height: 820px;
 	border-radius: 11px;
@@ -275,12 +199,105 @@ span{
 		rgb(46, 204, 113);
 	padding-top: 20px;
 	padding: 50px 30px;
-	margin-left: 70px;
+	margin-left: 30px;
 	padding-bottom: 30px;
-	display:inline-block;
-	
+	display:block;
+	 
 }
 
+/*내글 조회 묶는 div*/
+.myre_main{
+	
+	display:inline-block;
+}
+
+/*작품 리뷰 속 리뷰 리스트 간격 및 정렬*/
+.rere{
+	text-align: center;
+	padding:20px 50px 0px;
+}
+/*작품 리뷰 속 리뷰 리스트 고정*/
+.rere2{
+	display:inline-block;
+}
+
+.rere .rere2 {
+	margin-left: 10px;
+	width: 150px;
+	height: 170px;
+	float: left;	
+}
+
+.rere2 .float-clear {
+	clear: both;
+}
+
+
+/*별점 속성*/
+.star_re{
+	font-size:120%;
+}
+/*작품 리뷰 포스터 속성값*/
+.myre_poster {
+	width: 150px;
+	height: 150px;
+	float: left;
+	text-align: center;
+}
+/*작품 리뷰 리스트 등록일 폰트 색*/
+#regdate{
+	color:#8a8a8a;
+}
+
+/*내글 조회-내 리뷰*/
+.my-re {
+	margin: 60px;
+	padding: 15px;
+}
+
+.rp-image {
+	width: 130px;
+	height: 173px;
+}
+
+
+
+/*댓글 목록*/
+
+
+/*댓글 리스트 감싸는 div */
+.rere3{
+	padding-right:5px;
+	width: 560px;
+
+}
+
+/*댓글 목록 박스*/
+.comment-box{
+	text-align:left;
+	line-height: 200%;
+	margin-left:50px;
+}
+
+/*댓글 글 간격 ui*/
+span{
+	text-align: center;
+	line-height: 200%;
+}
+
+/*작품 목록 밑에 hr 속성*/
+.hrmy{
+	border:0 solid;
+	
+}
+/*댓글 목록 줄*/
+.hrmy2{
+	border:0.6px dotted;
+	color:#cccccc;
+	padding-right:10px;
+}
+
+/*초록색 제목 바*/
 .my-ottRe {
 	background-color: rgba(46, 204, 113, 0.51);
 	border-radius: 30px;
@@ -301,20 +318,19 @@ span{
 }
 
 
-
-
+/*ott리뷰 li 속성*/
 .ottRe {
 	float: left;
 	margin: 15px 20px;
 	text-align: center;
 }
-
+/*작품 리뷰 감싸는 div*/
 .re {
 	margin-bottom: 80px;
 	margin-top: 8px;
 	
 }
-
+/* 메뉴 더보기 ... 이미지 */
 .more {
 	float: right;
 	text-align: center;
@@ -323,45 +339,4 @@ span{
 	
 }
 
-.sort {
-	float: left;
-	text-align: right;
-	margin: auto 15px;
-	font-weight: bold;
-	color: rgb(46, 204, 113);
-	font-size: 80%;
-}
 
-.l {
-	text-align: center;
-	color: #bdbdbd;
-	float: left;
-}
-
-
-/*내글 조회-내 리뷰*/
-.my-re {
-	margin: 60px;
-	padding: 15px;
-}
-
-.rp-image {
-	width: 130px;
-	height: 173px;
-}
-
-
-/*기존코드*/
-table {
-	word-break: break-all;
-		height: auto;
-}
-
-th, td {
-	border-bottom: 1px solid #e8e8e8;
-	padding: 10px;
-}
-
-
-	
-	
