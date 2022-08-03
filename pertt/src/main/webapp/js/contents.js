@@ -97,6 +97,13 @@ $(function(){
 			$('#category').focus();
 			return false;
 		}
+		
+		if( $("input[name='ott_num']:checked").length==0){  
+
+      		alert("OTT를 선택하세요!");
+			return false;
+		}
+   		
 	
 		
 	}); //end of submit
