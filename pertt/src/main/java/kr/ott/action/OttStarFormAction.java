@@ -25,13 +25,14 @@ public class OttStarFormAction implements Action{
 		//로그인한 member_num 받아오기
 		HttpSession session = request.getSession();
 		Integer user_num = (Integer)session.getAttribute("user_num");
-		OttReviewVO ottReview = new OttReviewVO();
+		OttReviewVO ottReview = null;
+		OttDAO dao2 = null;
 		if(user_num !=null) {//로그인한 경우
 			//내 별점찾기 목록이 있으면 별점 준 이력 있음(1)
 			ottReview = dao.selectMyStar(user_num, ott_num);
-			if( ottReview != null) {
+			if(ottReview != null) {
 				starCheck = 1;
-				System.out.println(ottReview.getPrice());
+				System.out.println(ottReview.getStar_avg());
 				request.setAttribute("ottReview", ottReview);
 			} else {
 				starCheck = 0;
@@ -41,6 +42,8 @@ public class OttStarFormAction implements Action{
 		request.setAttribute("u_num", user_num);
 		request.setAttribute("starCheck", starCheck); //별점 여부 확인
 		request.setAttribute("reviewCheck", reviewCheck); // 리뷰 여부 확인
+		request.setAttribute("ottStar", ottReview);
+		request.setAttribute("ottDAO", dao2);
 		
 		return "/WEB-INF/views/ott/ottReview.jsp";
 	}
