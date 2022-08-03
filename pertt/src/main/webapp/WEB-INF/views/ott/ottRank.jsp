@@ -40,7 +40,7 @@
 				<span style="margin: 0 120px;">3.4점</span>
 			</div>
 		</div>
-		<div class="price">
+		<div class="price" style="position:relative;">
 			<span class="fs30 middle">가성비</span>
 			<span class="basic middle">(5점 만점)</span>
 			<div class="prank">
@@ -91,7 +91,7 @@
 			</div>
 		</div>
 		<div class="price">
-			<span class="fs30 middle">가성비</span>
+			<span class="fs30 middle">콘텐츠</span>
 			<span class="basic middle">(5점 만점)</span>
 			<div class="prank">
 				<span class="p">1</span>
