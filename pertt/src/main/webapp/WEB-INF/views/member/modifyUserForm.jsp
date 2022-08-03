@@ -22,20 +22,18 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/contents.js"></script>
 </head>
-
 <body>
 	<div class="page-main">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
-		<h2 class="mp-sub">MY PAGE</h2>
-		<div class="align-center">
-			<div class="content-main">
-
-				<div class="mypage-main">
-
-					<input type="hidden" id="member_num" value="${member.member_num}">
+		<div class="content-main">
+				<h2>MY PAGE</h2>
+				<div class="mypage_main">
 					<div class="mp-my3">
-						<div class="mypage-my2">
-							<form class="mp-form">
+							<form class="mp-form" action="modifyUser.do" method="post"
+							id="modify_form">
+							
+							<div class="mypage-inner">
+					<input type="hidden" id="member_num" value="${member.member_num}">
 								<table class="mp-info">
 									<tr>
 										<td colspan="2" class="mp-TxT">회원정보</td>
@@ -88,86 +86,72 @@
 
 
 								</table>
-
+								</div>
+								
 								<ul class="mp-btn">
 									<li><input type="submit" value="수정" class="blue-btn">
 										<input type="button" value="뒤로가기" class="gray-btn"
 										onclick="location.href='myPage.do'"></li>
 								</ul>
 							</form>
-						</div>
+					
+				<div class="myre_main">
+						<form action="Review.do" id="Review" method="post" class="mypage-my4">
+						 	
+						 	<div class="mp-TxT">내 글 조회</div>
+						 	
+					<div class="re">
+
+							<div class="my-ottRe">
+							OTT 리뷰
+							</div>
+							<ul>
+								
+								<li class="ottRe"><select name="ottReview">
+									<option value="넷플릭스">넷플릭스</option>
+									<option value="디즈니플러스">디즈니+</option>
+									<option value="티빙">티빙</option>
+									<option value="왓챠">왓챠</option>
+									<option value="웨이브">웨이브</option>
+							</select></li>
+							<li class="ottRe" style="color:#fcbf19;"><b>★ 3</b></li>
+							<li class="ottRe">오리지널 작품에 볼 게 없다</li>
+							</ul>
 					</div>
+					
+					<!-- 작품 리뷰 -->
+			<div class="re">
+						<div class="my-ottRe">
+							작품 리뷰
+							<div class="more">
+							<!-- 더보기 아이콘 > 리뷰 리스트로 이동 -->									
+								<img src="${pageContext.request.contextPath}/images/더보기.png"
+									width="40px" height="25px" onclick="location.href='myReviewList.do'">
+							</div> <!-- 더보기 아이콘 닫음 -->
+							</div>
+					
+					
+						<!-- 리뷰 목록 부분 -->
+				
+				<div class="rere">
+						<c:forEach var="review" items="${review }" >
 
-					<div class="align-center">
-
-						<div class="content-main">
-							<div class="mypage-my2">
-								<form action="Review.do" id="Review" method="post"
-									class="mypage-my">
-
-									<div class="mp-TxT">내 글 조회</div>
-
-									<div class="re">
-
-										<div class="my-ottRe">
-											<span>OTT 리뷰</span>
-										</div>
-										<ul>
-
-											<li class="ottRe"><select name="ottReview">
-													<option value="넷플릭스">넷플릭스</option>
-													<option value="디즈니플러스">디즈니+</option>
-													<option value="티빙">티빙</option>
-													<option value="왓챠">왓챠</option>
-													<option value="웨이브">웨이브</option>
-											</select></li>
-											<li class="ottRe" style="color: #fcbf19;"><b>★ 3</b></li>
-											<li class="ottRe">오리지널 작품에 볼 게 없다</li>
-										</ul>
-									</div>
-									<div class="content-main">
-										<div class="re">
-											<div class="my-ottRe">
-												작품 리뷰
-												<div class="more">
-													<!-- 더보기 아이콘 > 리뷰 리스트로 이동 -->
-													<img
-														src="${pageContext.request.contextPath}/images/더보기.png"
-														width="40px" height="25px"
-														onclick="location.href='myReviewList.do'">
-												</div>
-												<!-- 더보기 아이콘 닫음 -->
-											</div>
-
-
-											<!-- 리뷰 목록 부분 -->
-
-											<div class="rere">
-												<c:forEach var="review" items="${review }">
-
-													<div class="rere2">
-														<a
-															href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
-															<img class="myre_poster" id="contents-image"
-															src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
-															<span style="color: #fcbf19;" class="star_re"><b>★
-																	${review.star}</b></span><br> <span id="regdate">${review.c_review_reg_date}</span>
-														</a>
-													</div>
-												</c:forEach>
-
-											</div>
-
-
-
-											<div class="float-clear">
-												<hr width="100%" size="1" noshade="noshade" class="hrmy">
-											</div>
-										</div>
-									</div>
-
-
-
+					<div class="rere2">
+						<a href="${pageContext.request.contextPath}/review/reviewDetail.do?c_review_num=${review.c_review_num}&c_num=${review.c_num}">
+							<img class="myre_poster" id="contents-image" src="${pageContext.request.contextPath}/images/${review.ott_num}/${review.poster}">
+						 <span style="color:#fcbf19;" class="star_re"><b>★ ${review.star}</b></span><br>
+							<span id="regdate">${review.c_review_reg_date}</span>
+						</a>
+					</div>	
+						</c:forEach>
+						
+				 </div>
+					
+					 <div class="float-clear">
+		    			<hr width="100%" size="1" noshade="noshade" class="hrmy">
+		    		</div>
+			</div>
+				
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록			
@@ -190,16 +174,16 @@
 									</div></div>
 								</c:forEach>
 								</div>
-					
-
+						 	
+						 		
+				
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+	
 
 
 </body>
