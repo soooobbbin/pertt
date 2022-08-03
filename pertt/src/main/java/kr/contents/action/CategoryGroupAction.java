@@ -34,13 +34,15 @@ public class CategoryGroupAction implements Action{
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum==null) pageNum = "1";
 		
+		
 		String keyfield = request.getParameter("keyfield");
 		String keyword = request.getParameter("keyword");
-		Integer category_num = Integer.parseInt(request.getParameter("category_num"));
+		//int category_num = Integer.parseInt(request.getParameter("category_num"));
+		
+		
 		
 		AdminDAO dao = AdminDAO.getInstance();
-		int count = dao.getCategoryGroupCount(
-				                        keyfield, keyword,category_num);
+		int count = dao.getCategoryGroupCount(keyfield,keyword);
 		//페이지 처리
 		//keyfield,keyword,currentPage,count,rowCount,pageCount,url
 		PagingUtil page = new PagingUtil(keyfield,keyword,
@@ -51,7 +53,7 @@ public class CategoryGroupAction implements Action{
 			list = dao.getCategoryGroup(
 					       page.getStartRow(),
 					       page.getEndRow(),
-					       keyfield,keyword,category_num);
+					       keyfield,keyword);
 		}
 		
 		request.setAttribute("count", count);

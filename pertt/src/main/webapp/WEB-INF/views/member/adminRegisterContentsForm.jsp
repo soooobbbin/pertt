@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/common/header_admin.jsp"/>
 	<div class="content-main">
 		<h2>작품 정보 등록</h2>
-		<form action="adminRegisterContents.do" method="post" id="contentsRegister_form"  enctype="multipart/form-data">
+		<form action="adminRegisterContents.do" method="post" name="contentsRegister_form" id="contentsRegister_form"  enctype="multipart/form-data">
 	
 			<%-- 작품 포스터 등록 --%>
 			<div class="contents-poster">
@@ -30,7 +30,7 @@
 					</li>
 					<li>
 						<div class="poster-area">
-							<input type="file" value="파일 선택" id="poster_btn" name="poster">
+							<input id="poster" type="file" value="파일 선택" id="poster_btn" name="poster">
 						</div>
 						
 					</li>
@@ -54,7 +54,7 @@
 					<tr>
 						<td>장르</td>
 						<td id="last-child">
-							<select name="genre" size="1">
+							<select name="genre" size="1" id="genre">
 								<option label="장르">
 								<option value="#로맨스">로맨스</option>
 								<option value="#스릴러">스릴러</option>
@@ -88,8 +88,8 @@
 					<tr>
 						<td>등급</td>
 						<td id="last-child">
-							<select name="grade" size="1">
-								<option value="등급">등급</option>
+							<select name="grade" size="1" id="grade">
+								<option label="등급">
 								<option value="ALL">ALL</option>
 								<option value="12+">12세 이상</option>
 								<option value="15+">15세 이상</option>
@@ -100,7 +100,7 @@
 					<tr>
 						<td>카테고리</td>
 						<td id="last-child">
-							<select name="category_num" size="1">
+							<select name="category_num" size="1" id="category">
 								<%-- 넷플릭스 카테고리 --%>
 								<optgroup label="넷플릭스 카테고리">
 								<option value="1">오리지널 영화</option>
@@ -147,11 +147,11 @@
 					<tr>
 						<td>OTT</td>
 						<td id="last-child">
-							<input type="radio" id="netfilx" name="ott_num" value="1">넷플릭스
-							<input type="radio" id="disney" name="ott_num" value="2">디즈니
-							<input type="radio" id="watcha" name="ott_num" value="3">왓챠
-							<input type="radio" id="tving" name="ott_num" value="4">티빙
-							<input type="radio" id="wavve" name="ott_num" value="5">웨이브
+							<input type="radio" id="ott" name="ott_num" value="1">넷플릭스
+							<input type="radio" id="ott" name="ott_num" value="2">디즈니
+							<input type="radio" id="ott" name="ott_num" value="3">왓챠
+							<input type="radio" id="ott" name="ott_num" value="4">티빙
+							<input type="radio" id="ott" name="ott_num" value="5">웨이브
 						</td>
 					</tr>
 				</table>
