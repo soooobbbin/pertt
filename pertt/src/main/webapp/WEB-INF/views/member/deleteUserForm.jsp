@@ -88,34 +88,37 @@
 				</tr>
 			</table>
 			<br>
-			<div class="align-center"> 
+			
 
-			<table>
+			<table class="dt-pw2">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="member_id" id="member_id"
+					<td class="dt-pw"><input type="text" name="member_id" id="member_id"
 						maxlength="12"></td>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="passwd" id="passwd"
+					<td class="dt-pw"><input type="password" name="passwd" id="passwd"
 						maxlength="12"></td>
 				</tr>
 				<tr>
-					<td>비밀번호 확인</td>
-					<td><input type="password" name="cpasswd" id="cpasswd" 
-						maxlength="12"> <span id="message_id"></span></td>
+					<td rowspan="2">비밀번호 확인</td>
+					<td class="dt-pw"><input type="password" name="cpasswd" id="cpasswd" 
+						maxlength="12"> </td>
 				</tr>
+				<tr><td><span id="message_id"></span></td>
 
 			</table>
-			</div>
+			
+			
 			
 			<div class="align-right"> 
 				<input type="button" 
 					value="탈퇴취소" class="blue-btn2" onclick="location.href='myPage.do'">
 					<input type="submit" value="회원탈퇴" class="gray-btn2" id="delete_btn"> 
-			</div>
-		</form>
-	</div>
+		
+</div>
+		</form></div>
+	
 
 
 </body>

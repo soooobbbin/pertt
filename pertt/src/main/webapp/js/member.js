@@ -22,7 +22,7 @@ $(function() {
 			success: function(param) {
 				if (param.result == 'idNotFound') {
 					idChecked = 1;
-					$('#message_id').css('color', '#000000').text('등록 가능 ID');
+					$('#message_id').css('color', '#03a5fc;').text('등록 가능 ID');
 				} else if (param.result == 'idDuplicated') {
 					idChecked = 0;
 					$('#message_id').css('color', 'red').text('중복된 ID');
@@ -239,7 +239,7 @@ $(function() {
 	//비밀번호와 비밀번호 확인 일치 여부 체크
 	$('#cpasswd').keyup(function() {
 		if ($('#passwd').val() == $('#cpasswd').val()) {
-			$('#message_id').text('비밀번호 일치');
+			$('#message_id').css('color', '#03a5fc;').text('비밀번호 일치');
 		} else {
 			$('#message_id').text('');
 		}
