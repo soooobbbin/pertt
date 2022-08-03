@@ -44,7 +44,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('별점 등록에서 네트워크 오류 발생');	
+				alert('이미 별점이 등록되었습니다.');	
 			}
 		});
 		
