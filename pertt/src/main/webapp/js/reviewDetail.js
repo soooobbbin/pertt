@@ -17,7 +17,7 @@ $(function(){
 		});
 	}
 	
-	//좋아요 등록
+	// 좋아요 등록
 	$('#output_like').click(function(){
 		$.ajax({
 			url:'writeLike.do',

@@ -77,7 +77,7 @@ $(document).ready(function(){
 							<!--  -->
 							<div class="rating">
 						      <input type="hidden" name="star" value="0" class="rate-star">    
-			                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+			                <!-- 해당  별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
 			                <c:forEach var="star" begin="1" end="5" varStatus="status">
 			                <input type="checkbox" id="rating${status.index}" value="${status.index}" class="rate-check"
 			                      <c:if test="${status.index<=review.star}">checked</c:if>>

@@ -33,7 +33,7 @@ public class ReviewAction implements Action{
 		ReviewDAO rDao = ReviewDAO.getInstance();
 		double starAvg = rDao.getStarAvg(c_num);		
 		starAvg = Math.round(starAvg*10)/10.0;
-		//============해당 작품에 별점/리뷰를 작성한 이력이 있는지 확인==========
+		//============ 해당 작품에 별점/리뷰를 작성한 이력이 있는지 확인 ==========
 		int starCheck = -1;
 		int reviewCheck = 0;
 		//로그인한 member_num 받아오기

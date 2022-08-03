@@ -3,7 +3,7 @@ $(function(){
 	let count;
 	let rowCount;
 	
-	//댓글 목록
+	// 댓글 목록
 	function selectList(pageNum){
 		currentPage = pageNum;
 		

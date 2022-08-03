@@ -22,7 +22,7 @@
 		<img id="contents-image" src="${pageContext.request.contextPath}/images/${contents.ott_num }/${contents.poster}">
 		<ul>
 			<li class="review_title2">${contents.title }</li>
-			<!-- ott_num에 따라 ott 이름 다르게 표시  -->
+			<!--  ott_num에 따라 ott 이름 다르게 표시  -->
 				<c:if test="${contents.ott_num == 1 }">
 					<li><span class="ott-name2"> NETFLIX</span></li>
 				</c:if>
