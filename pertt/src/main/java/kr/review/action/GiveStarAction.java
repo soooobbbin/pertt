@@ -41,7 +41,7 @@ public class GiveStarAction implements Action{
 				dao.insertStar(review);
 			}
 			starAvg = dao.getStarAvg(c_num);
-			starAvg = Math.round((starAvg*10)/10.0);
+			starAvg = Math.round(starAvg*10)/10.0;
 			mapAjax.put("result", "success");
 			mapAjax.put("starAvg", starAvg);
 		}

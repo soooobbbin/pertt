@@ -14,8 +14,10 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import kr.controller.Action;
 import kr.review.dao.ReviewDAO;
+import kr.review.vo.CommentVO;
 import kr.review.vo.ReviewVO;
 import kr.util.PagingUtil;
+import kr.util.StringUtil;
 
 public class ReviewListAction implements Action {
 	@Override
@@ -40,6 +42,12 @@ public class ReviewListAction implements Action {
 		List<ReviewVO> reviewList = null;
 		if (count > 0) {
 			reviewList = dao.getReviewList(c_num, page.getStartRow(), page.getEndRow(), sort);
+			for(ReviewVO review : reviewList) {
+				if(review.getC_review_content().length() > 106) {
+					review.setC_review_content((review.getC_review_content()).substring(0, 106)); 
+				}
+				review.setC_review_content(review.getC_review_content().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", " "));
+			}
 		} else {
 			reviewList = Collections.emptyList();
 		}

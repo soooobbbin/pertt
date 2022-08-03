@@ -2,6 +2,8 @@ $(function(){
 	let user_num = $('#user_num').val();
 	let starCheck = $('#starCheck').val();
 	let reviewCheck = $('#reviewCheck').val();
+	let sort;
+	if(sort == null) sort = '1'; //처음 페이지 들어와서 sort 값 없으면 최신순으로 정렬
 	
 	//=================== 별점주기 ========================
 	let c_num = $('#c_num').val();
@@ -63,7 +65,9 @@ $(function(){
 					reviewView += '&#39;">';
 					reviewView += '<span id="id">' +item.id +'</span>';
 					reviewView += '<span id="star">★' +item.star +'</span>';
-					reviewView += '<p id="content">'+item.c_review_content +'</p>'; //106자 제한주기
+					reviewView += '<div id="re_content">';
+					reviewView += '<p id="content">'+item.c_review_content +'</p>'; 
+					reviewView += '</div>';
 					reviewView += '<span id="like">좋아요 '+item.lcount +'</span>';
 					reviewView += '</div>';
 					
@@ -88,7 +92,7 @@ $(function(){
 	
 	//페이지 처리 이벤트 연결(다음 댓글 보기 버튼 클릭시 데이터 추가)
 	$('.paging-button input').click(function(){
-		selectList(currentPage + 1);
+		selectReviewList(currentPage + 1, 1);
 	});
 	
 	//==================리뷰 쓰기 창============================
