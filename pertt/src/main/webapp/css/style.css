@@ -296,14 +296,6 @@ input[id="zipcode"]{
 	margin-left:130px;
 }*/
 /*My Page*/
-.mypage-div{
-	width:48%;
-	float:left;
-	padding:5px;
-}
-.mypage-end{
-	clear:both;
-}
 .my-photo{
 	object-fit:cover;
 	/*정사각형이 아니라 직사각형일 경우 원 안에 보여지게 할 중심

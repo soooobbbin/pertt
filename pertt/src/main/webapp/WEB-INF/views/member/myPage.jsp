@@ -21,14 +21,15 @@
 <div class="page-main">
 		<jsp:include page="/WEB-INF/views/common/header.jsp" />
 		
-			<div class="content-main">
+			
 				<h2>MY PAGE</h2>
-				<div class="mypage_main">
+				<div class="content-main">
+				
 					<div class="mp-my3">
 					<form class=mypage_form id="mypage_form"
 						action="myPage.do" method="post">
 						<div class="mypage-inner">
-					<input type="hidden" id="member_num" value="${member.member_num}">
+					<!-- <input type="hidden" id="member_num" value="${member.member_num}">-->
 					<table class="mp-info">
 						<tr>
 							<td colspan="2" class="mp-TxT">회원정보</td>
@@ -132,6 +133,7 @@
 		    		</div>
 			</div>
 				
+				<!-- 댓글 목록 -->
 						<div class="re">
 							<div class="my-ottRe">
 								내 댓글 목록			
@@ -161,7 +163,7 @@
 						 	</div> <!--  myre_main  -->
 						 	</div></div><!--  mypage_main  -->
 						 	</div>
-						</div> <!--  content-main  -->
+						
 					
 				
 				
