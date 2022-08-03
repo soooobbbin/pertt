@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.ott.vo.OttReviewVO;
+import kr.review.vo.CommentVO;
 import kr.util.DBUtil;
 import kr.util.StringUtil;
 
@@ -226,7 +227,7 @@ public class OttDAO {
 		int star_avg = 0;
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select avg(price+usability+quality) from ott_star where ott_star_num =?";
+			sql = "select round((price+usability+quality)/3) from ott_star where ott_star_num=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, ott_star_num);
 			rs = pstmt.executeQuery();
@@ -384,31 +385,20 @@ public class OttDAO {
 	
 	
 	// 리뷰 등록&수정
-	public void modifyReviewContent(int ott_num, int member_num, int ott_review_num, String ott_re_content,
-			boolean isFirst) throws Exception {
+	public void insertReview(OttReviewVO ottReview) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
-		String sub_sql = "";
-		String sub_sql2 = "";
-		int cnt = 0;
 		try {
-			if (isFirst) {
-				sub_sql2 = "member_num=? and ott_num=?";
-			} else {
-				sub_sql = ", ott_re_mod_date=sysdate";
-				sub_sql2 = "ott_review_num = ?";
-			}
 			conn = DBUtil.getConnection();
-			sql = "update ott_review set ott_re_content=?" + sub_sql + " where " + sub_sql2;
+			sql = "INSERT INTO ott_review (ott_review_num,ott_re_reg_date," 
+					+ "ott_re_content,ott_star_num,ott_num,member_num) "
+					+ "VALUES (c_review_com_seq.nextval,sysdate,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(++cnt, ott_re_content);
-			if (isFirst) {
-				pstmt.setInt(++cnt, member_num);
-				pstmt.setInt(++cnt, ott_num);
-			} else {
-				pstmt.setInt(++cnt, ott_review_num);
-			}
+			pstmt.setString(1, ottReview.getOtt_re_content());
+			pstmt.setInt(2, ottReview.getOtt_star_num());
+			pstmt.setInt(3, ottReview.getOtt_num());
+			pstmt.setInt(4, ottReview.getMember_num());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw new Exception(e);

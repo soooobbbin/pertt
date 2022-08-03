@@ -65,50 +65,35 @@ $(document).ready(function(){
 		       <input type="hidden" name="ott_num" id="ott_num" value="${param.ott_num}">
 				<h2>가성비</h2>
 				<div class="rating">
-				   <input type="hidden" name="price" value="0" class="rate-star">    
+				   <input type="hidden" name="price" value="${ottStar.price}" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-				    <input type="checkbox" id="rating1" value="1" class="rate-check">
-				    <label for="rating1"></label>
-				    <input type="checkbox" id="rating2" value="2" class="rate-check">
-				    <label for="rating2"></label>
-				    <input type="checkbox" id="rating3" value="3" class="rate-check">
-				    <label for="rating3"></label>
-				    <input type="checkbox" id="rating4" value="4" class="rate-check">
-				    <label for="rating4"></label>
-				    <input type="checkbox" id="rating5" value="5" class="rate-check">
-				    <label for="rating5"></label>
+				    <c:forEach var="star" begin="1" end="5" varStatus="status">
+				    <input type="checkbox" id="rating${status.index}" value="${status.index}" class="rate-check"
+				        <c:if test="${status.index<=ottStar.price}">checked</c:if>/>
+				    <label for="rating${status.index}"></label>
+				    </c:forEach>
 				</div>
 				
 				<h2>사용성</h2>
 				<div class="rating">
-				   <input type="hidden" name="usability" value="0" class="rate-star">    
+				   <input type="hidden" name="usability" value="${ottStar.usability}" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-				    <input type="checkbox" id="ratingb1" value="1" class="rate-check">
-				    <label for="ratingb1"></label>
-				    <input type="checkbox" id="ratingb2" value="2" class="rate-check">
-				    <label for="ratingb2"></label>
-				    <input type="checkbox" id="ratingb3" value="3" class="rate-check">
-				    <label for="ratingb3"></label>
-				    <input type="checkbox" id="ratingb4" value="4" class="rate-check">
-				    <label for="ratingb4"></label>
-				    <input type="checkbox" id="ratingb5" value="5" class="rate-check">
-				    <label for="ratingb5"></label>
+				   <c:forEach var="star" begin="1" end="5" varStatus="status">
+				    <input type="checkbox" id="rating${status.index}" value="${status.index}" class="rate-check"
+				        <c:if test="${status.index<=ottStar.usability}">checked</c:if>/>
+				    <label for="rating${status.index}"></label>
+				    </c:forEach>
 				</div>
 				
 				<h2>콘텐츠</h2>
 				<div class="rating">
-				   <input type="hidden" name="quality" value="0" class="rate-star">    
+				   <input type="hidden" name="quality" value="${ottStar.quality}" class="rate-star">    
 				    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-				    <input type="checkbox" id="ratingc1" value="1" class="rate-check">
-				    <label for="ratingc1"></label>
-				    <input type="checkbox" id="ratingc2" value="2" class="rate-check">
-				    <label for="ratingc2"></label>
-				    <input type="checkbox" id="ratingc3" value="3" class="rate-check">
-				    <label for="ratingc3"></label>
-				    <input type="checkbox" id="ratingc4" value="4" class="rate-check">
-				    <label for="ratingc4"></label>
-				    <input type="checkbox" id="ratingc5" value="5" class="rate-check">
-				    <label for="ratingc5"></label>
+				    <c:forEach var="star" begin="1" end="5" varStatus="status">
+				    <input type="checkbox" id="rating${status.index}" value="${status.index}" class="rate-check"
+				        <c:if test="${status.index<=ottStar.quality}">checked</c:if>/>
+				    <label for="rating${status.index}"></label>
+				    </c:forEach>
 				</div>
 				
 				<div class="align-center" style="margin:20px 0 0 0;">

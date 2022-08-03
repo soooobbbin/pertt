@@ -92,15 +92,11 @@ $(function(){
 				if(param.result == 'logout'){
 					alert('로그인해야 작성할 수 있습니다.');
 				}else if(param.result == 'success'){
-					//폼 초기화
-					initForm();
-					//댓글 작성이 성공하면 새로 삽입한 글을 포함해서
-					//첫번째 페이지의 게시글을 다시 호출함
-					selectList(1);
+					alert('등록이 완료되었습니다.');
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생');
+				alert('한줄평 등록에서 네트워크 오류 발생');
 			}
 		});
 		
@@ -160,7 +156,7 @@ $(function(){
 				}
 			},
 			error:function(){
-				alert('네트워크 오류 발생!');
+				alert('한줄평 삭제에서 네트워크 오류 발생!');
 			}
 		});
 		

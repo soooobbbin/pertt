@@ -3,6 +3,24 @@ $(function(){
 	let starCheck = $('#starCheck').val();
 	let reviewCheck = $('#reviewCheck').val();
    
+   function selectStar(ott_num){
+		$.ajax({
+			url:'ottReview.do',
+			type:'post',
+			data:{ott_num:ott_num},
+			dataType:'json',
+			cache:false,
+			timeout:30000,
+			success:function(param){
+				alert(param.price);
+			},
+			error:function(){
+				alert('별점 불러오기에서 네트워크 오류 발생');	
+			}
+		});
+	}
+
+
    $('#ottLike_form').submit(function(event){
 		let form_data = $(this).serialize();
 		
@@ -34,7 +52,6 @@ $(function(){
 		//기본 이벤트 제거
 		event.preventDefault();
 	});
-   
-   
-   
+	//초기 데이터 호출
+	//selectStar(1);
 });
